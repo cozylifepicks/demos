@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Verde Landscape Design — Garden &amp; Outdoor Living Studio, Austin TX</title>
+<meta name="description" content="Verde Landscape Design is a concept showcase: an Austin garden design studio for outdoor living spaces, native planting, and year-round garden care.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+/* ============================================================
+   VERDE LANDSCAPE DESIGN — organic luxury
+   cream · deep botanical green · terracotta · Fraunces + Inter
+   ============================================================ */
+:root{
+  --cream:#F5EFE3;
+  --cream-soft:#FAF6EC;
+  --cream-deep:#EBE3D1;
+  --green:#1C3A2A;
+  --green-deep:#122A1C;
+  --green-mid:#2E5540;
+  --green-wash:#E3E6D8;
+  --ink:#2C3A2C;
+  --muted:#5C6653;
+  --terra:#C0673F;
+  --terra-text:#9C4A2B;
+  --terra-btn:#A5522C;
+  --terra-btn-hover:#8C4322;
+  --terra-soft:#D98F63;
+  --gold:#D9A441;
+  --line:rgba(44,58,44,.16);
+  --line-dark:rgba(245,239,227,.18);
+  --shadow-soft:0 18px 50px rgba(28,42,28,.12);
+  --shadow-deep:0 30px 80px rgba(10,24,14,.35);
+  --ease-out:cubic-bezier(.19,1,.22,1);
+  --header-h:84px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  font-size:16.5px;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+/* fine paper grain over everything */
+body::after{
+  content:"";position:fixed;inset:0;z-index:98;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit}
+h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif;font-weight:400;line-height:1.08;letter-spacing:-.015em}
+em{font-style:italic}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.wrap-narrow{max-width:880px;margin:0 auto;padding:0 24px}
+::selection{background:var(--terra-soft);color:var(--green-deep)}
+
+a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visible{
+  outline:3px solid var(--terra-btn);outline-offset:3px;border-radius:4px;
+}
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:200;background:var(--green-deep);color:var(--cream-soft);
+  padding:14px 22px;border-radius:0 0 12px 0;font-weight:600;text-decoration:none;
+}
+.skip:focus{left:0}
+
+/* ---------- eyebrow / headings ---------- */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:12px;
+  font-size:.76rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--terra-text);
+}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--terra);flex:none}
+.on-dark .eyebrow{color:var(--terra-soft)}
+.on-dark .eyebrow::before{background:var(--terra-soft)}
+h2{font-size:clamp(2.1rem,4.6vw,3.4rem);margin-top:18px;color:var(--green-deep)}
+.on-dark h2{color:var(--cream-soft)}
+.sub{color:var(--muted);margin-top:18px;max-width:36rem;font-size:1.05rem}
+.on-dark .sub{color:#C3CDB6}
+section{padding:clamp(84px,10vw,140px) 0;scroll-margin-top:96px}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:11px;
+  font-weight:600;font-size:1rem;letter-spacing:.01em;text-decoration:none;cursor:pointer;
+  border-radius:999px;padding:17px 32px;min-height:52px;border:none;
+  transition:transform .3s var(--ease-out),background .25s,box-shadow .3s,border-color .25s,color .25s;
+  position:relative;overflow:hidden;
+}
+.btn-terra{background:var(--terra-btn);color:#fff;box-shadow:0 12px 32px rgba(165,82,44,.35)}
+.btn-terra:hover{background:var(--terra-btn-hover);transform:translateY(-3px);box-shadow:0 18px 40px rgba(140,67,34,.4)}
+.btn-terra::after{ /* gloss sweep on hover */
+  content:"";position:absolute;top:0;left:-90%;width:55%;height:100%;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.32),transparent);
+  transform:skewX(-20deg);transition:left .7s var(--ease-out);
+}
+.btn-terra:hover::after{left:135%}
+.btn-line{background:transparent;color:var(--cream-soft);border:1.5px solid rgba(245,239,227,.5)}
+.btn-line:hover{border-color:var(--cream-soft);background:rgba(245,239,227,.1);transform:translateY(-3px)}
+.btn-green{background:var(--green);color:var(--cream-soft)}
+.btn-green:hover{background:var(--green-deep);transform:translateY(-3px)}
+.magnetic{display:inline-block;will-change:transform}
+
+/* ---------- scroll progress ---------- */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--green-mid),var(--terra));}
+
+/* ---------- header ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(245,239,227,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;
+  transition:box-shadow .35s,border-color .35s,background .35s;
+}
+header.scrolled{box-shadow:0 10px 40px rgba(28,42,28,.12);border-color:var(--line);background:rgba(245,239,227,.96)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:var(--header-h);transition:height .35s var(--ease-out)}
+header.scrolled .nav{height:64px}
+.logo{display:inline-flex;align-items:center;gap:12px;text-decoration:none;min-height:44px}
+.logo-mark{
+  width:42px;height:42px;border-radius:50%;background:var(--green);color:var(--cream-soft);
+  display:grid;place-items:center;flex:none;transition:transform .4s var(--ease-out),background .3s;
+}
+.logo:hover .logo-mark{transform:rotate(-12deg) scale(1.06);background:var(--green-deep)}
+.logo-name{font-family:'Fraunces',Georgia,serif;font-size:1.35rem;color:var(--green-deep);letter-spacing:-.01em;line-height:1}
+.logo-name small{display:block;font-family:'Inter',sans-serif;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--terra-text);margin-top:3px}
+.nav-links{display:none;gap:6px;list-style:none}
+.nav-links a{
+  text-decoration:none;font-size:.92rem;font-weight:500;color:var(--ink);
+  padding:12px 14px;min-height:44px;display:inline-flex;align-items:center;position:relative;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:14px;right:14px;bottom:8px;height:1.5px;background:var(--terra);
+  transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease-out);
+}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-call{
+  display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:600;font-size:.93rem;
+  color:var(--cream-soft);background:var(--green);padding:12px 22px;min-height:44px;border-radius:999px;
+  transition:background .25s,transform .3s var(--ease-out);
+}
+.nav-call:hover{background:var(--green-deep);transform:translateY(-2px)}
+@media(min-width:1000px){.nav-links{display:flex}}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;
+  background:linear-gradient(170deg,var(--green-deep),var(--green) 55%,var(--green-mid));
+  color:var(--cream-soft);
+}
+.hero-bg{position:absolute;inset:-12% 0;will-change:transform}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero-veil{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(18,42,28,.45) 0%,rgba(18,42,28,.25) 40%,rgba(18,42,28,.82) 100%),
+             linear-gradient(90deg,rgba(18,42,28,.5),transparent 60%);
+}
+.hero-leaf{position:absolute;color:rgba(245,239,227,.16);pointer-events:none;will-change:transform}
+.hero-leaf.l1{top:12%;right:6%;width:min(30vw,300px)}
+.hero-leaf.l2{bottom:24%;left:-40px;width:min(24vw,220px);transform:rotate(140deg)}
+.hero-in{position:relative;z-index:2;width:100%;padding:150px 0 clamp(56px,8vh,110px)}
+.hero-rating{
+  display:inline-flex;flex-wrap:wrap;align-items:center;gap:10px 14px;font-size:.9rem;color:#E9E2D0;
+  border:1px solid rgba(245,239,227,.28);border-radius:999px;padding:9px 20px;backdrop-filter:blur(4px);
+  background:rgba(18,42,28,.3);
+}
+.hero-rating .stars{color:var(--gold);letter-spacing:3px;font-size:.95rem}
+.hero-rating strong{color:#fff;font-weight:600}
+.hero h1{
+  font-size:clamp(2.7rem,7.4vw,5.4rem);font-weight:300;color:var(--cream-soft);
+  max-width:13ch;margin-top:26px;
+}
+.hero h1 em{font-weight:400;color:var(--terra-soft)}
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em;margin-bottom:-.08em}
+.js .hero h1 .w>span{display:inline-block;transform:translateY(110%);animation:wordUp 1s var(--ease-out) forwards}
+@keyframes wordUp{to{transform:none}}
+.hero-lead{margin-top:26px;font-size:clamp(1.05rem,1.6vw,1.25rem);color:#DCE2CE;max-width:36rem;font-weight:400}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:16px;margin-top:38px;align-items:center}
+.js .hero-fade{opacity:0;animation:heroFade 1s var(--ease-out) forwards}
+@keyframes heroFade{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.js .d1{animation-delay:.15s}.js .d2{animation-delay:.3s}.js .d3{animation-delay:.5s}.js .d4{animation-delay:.7s}
+.hero-scroll{
+  position:absolute;bottom:34px;right:32px;z-index:3;display:none;align-items:center;gap:14px;
+  color:#D8DFC9;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+  writing-mode:vertical-rl;
+}
+.hero-scroll::after{content:"";width:1px;height:64px;background:linear-gradient(180deg,#D8DFC9,transparent);animation:scrollPulse 2.4s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{transform:scaleY(.4);transform-origin:top;opacity:.5}50%{transform:scaleY(1);opacity:1}}
+@media(min-width:900px){.hero-scroll{display:flex}}
+
+/* ---------- marquee ---------- */
+.marquee{
+  background:var(--green-deep);color:var(--cream-soft);overflow:hidden;padding:22px 0;
+  border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);
+}
+.marquee-track{display:flex;width:max-content;animation:marq 30s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-seg{display:flex;align-items:center;flex:none}
+.marquee-seg span{
+  font-family:'Fraunces',Georgia,serif;font-size:clamp(1.2rem,2.4vw,1.7rem);font-weight:300;
+  font-style:italic;white-space:nowrap;padding:0 28px;color:#E7E0CD;
+}
+.marquee-seg svg{color:var(--terra-soft);flex:none}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ---------- studio / intro ---------- */
+.studio-grid{display:grid;gap:56px;align-items:start}
+@media(min-width:960px){.studio-grid{grid-template-columns:1.05fr .95fr;gap:80px}}
+.studio-copy .statement{
+  font-family:'Fraunces',Georgia,serif;font-size:clamp(1.5rem,2.6vw,2.05rem);line-height:1.4;
+  color:var(--green-deep);font-weight:300;margin-top:28px;
+}
+.studio-copy .statement em{color:var(--terra-text)}
+.studio-copy p.body{margin-top:24px;color:var(--muted);max-width:34rem}
+.studio-media{position:relative}
+.studio-photo{
+  border-radius:200px 200px 18px 18px;overflow:hidden;box-shadow:var(--shadow-soft);
+  aspect-ratio:4/5;background:linear-gradient(160deg,var(--green-mid),var(--green-deep));
+}
+.studio-photo img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease-out)}
+.studio-media:hover .studio-photo img{transform:scale(1.05)}
+.studio-vine{position:absolute;left:-70px;bottom:-30px;width:130px;color:var(--green-mid);opacity:.85;display:none}
+@media(min-width:1100px){.studio-vine{display:block}}
+.studio-card{
+  position:absolute;right:-14px;bottom:32px;background:var(--cream-soft);border:1px solid var(--line);
+  border-radius:16px;padding:16px 22px;box-shadow:var(--shadow-soft);max-width:230px;
+}
+.studio-card .serif{font-size:1.5rem;color:var(--green-deep)}
+.studio-card small{color:var(--muted);font-size:.8rem;line-height:1.5;display:block;margin-top:2px}
+
+/* self-drawing SVG line art */
+.draw path{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.js .draw path{stroke-dasharray:1;stroke-dashoffset:1}
+.js .draw.drawn path{stroke-dashoffset:0;transition:stroke-dashoffset 1.5s var(--ease-out)}
+.js .draw.drawn path:nth-of-type(2){transition-delay:.35s}
+.js .draw.drawn path:nth-of-type(3){transition-delay:.55s}
+.js .draw.drawn path:nth-of-type(4){transition-delay:.75s}
+.js .draw.drawn path:nth-of-type(5){transition-delay:.95s}
+.js .draw.drawn path:nth-of-type(6){transition-delay:1.15s}
+
+/* ---------- stats band ---------- */
+.stats{background:var(--cream-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:0}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr}
+@media(min-width:880px){.stats-grid{grid-template-columns:repeat(4,1fr)}}
+.stat{padding:44px 20px;text-align:center;border-right:1px solid var(--line)}
+.stat:last-child{border-right:none}
+.stat:nth-child(2){border-right:none}
+@media(min-width:880px){.stat:nth-child(2){border-right:1px solid var(--line)}}
+.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+@media(min-width:880px){.stat:nth-child(-n+2){border-bottom:none}}
+.stat .num{font-family:'Fraunces',Georgia,serif;font-size:clamp(2.4rem,4.5vw,3.4rem);color:var(--green-deep);line-height:1}
+.stat .num sup{font-size:.45em;color:var(--terra-text);top:-.7em}
+.stat .lbl{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+
+/* ---------- services ---------- */
+.svc-grid{display:grid;gap:0;margin-top:64px;border-top:1px solid var(--line)}
+@media(min-width:880px){.svc-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1180px){.svc-grid{grid-template-columns:repeat(4,1fr);border-left:1px solid var(--line)}}
+.svc{
+  position:relative;padding:44px 32px 52px;border-bottom:1px solid var(--line);background:transparent;overflow:hidden;
+  transition:background .45s,transform .45s var(--ease-out),box-shadow .45s;
+}
+@media(min-width:1180px){.svc{border-right:1px solid var(--line);border-bottom:1px solid var(--line)}}
+.svc::before{ /* gloss sweep */
+  content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.5),transparent);
+  transform:skewX(-18deg);transition:left .8s var(--ease-out);pointer-events:none;
+}
+.svc:hover{background:var(--cream-soft);transform:translateY(-8px);box-shadow:var(--shadow-soft);z-index:1}
+.svc:hover::before{left:130%}
+.svc .idx{font-family:'Fraunces',Georgia,serif;font-style:italic;color:var(--terra-text);font-size:1rem}
+.svc .ico{width:56px;height:56px;margin:22px 0 20px;color:var(--green);transition:transform .5s var(--ease-out),color .3s}
+.svc:hover .ico{transform:translateY(-4px) rotate(-6deg);color:var(--terra-text)}
+.svc h3{font-size:1.55rem;color:var(--green-deep)}
+.svc p{color:var(--muted);font-size:.95rem;margin-top:14px}
+.svc .more{display:inline-block;margin-top:20px;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--terra-text)}
+
+/* ---------- before / after ---------- */
+.on-dark{background:var(--green-deep);color:var(--cream-soft)}
+.ba-stage{margin-top:64px;position:relative}
+.ba{
+  position:relative;border-radius:22px;overflow:hidden;box-shadow:var(--shadow-deep);
+  aspect-ratio:16/10;user-select:none;-webkit-user-select:none;touch-action:pan-y;cursor:col-resize;
+  background:linear-gradient(150deg,var(--green-mid),var(--green-deep));
+  --pos:50%;
+}
+@media(max-width:700px){.ba{aspect-ratio:4/5}}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ba .after-wrap{position:absolute;inset:0;clip-path:inset(0 0 0 var(--pos))}
+.ba-label{
+  position:absolute;top:20px;z-index:5;font-size:.72rem;font-weight:700;letter-spacing:.24em;
+  padding:9px 16px;border-radius:999px;backdrop-filter:blur(6px);pointer-events:none;
+}
+.ba-label.before{left:20px;background:rgba(18,42,28,.55);color:#F2EDDD;border:1px solid rgba(245,239,227,.3)}
+.ba-label.after{right:20px;background:rgba(245,239,227,.9);color:var(--green-deep)}
+.ba-divider{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;background:var(--cream-soft);z-index:4;transform:translateX(-1px);pointer-events:none;box-shadow:0 0 24px rgba(0,0,0,.4)}
+.ba-handle{
+  position:absolute;top:50%;left:var(--pos);z-index:6;transform:translate(-50%,-50%);
+  width:58px;height:58px;border-radius:50%;background:var(--cream-soft);color:var(--green-deep);
+  display:grid;place-items:center;border:none;cursor:col-resize;
+  box-shadow:0 10px 30px rgba(0,0,0,.45), inset 0 0 0 1.5px var(--green-deep);
+  transition:transform .25s var(--ease-out);
+}
+.ba-handle:hover{transform:translate(-50%,-50%) scale(1.1)}
+.ba-hint{
+  position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:5;pointer-events:none;
+  background:rgba(18,42,28,.65);border:1px solid rgba(245,239,227,.3);color:#EFE9D8;
+  font-size:.8rem;letter-spacing:.08em;padding:8px 18px;border-radius:999px;backdrop-filter:blur(6px);
+  animation:hintPulse 2.4s ease-in-out infinite;transition:opacity .5s;
+}
+@keyframes hintPulse{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.06)}}
+.ba.used .ba-hint{opacity:0}
+.ba-caption{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:center;text-align:center;color:#B9C4AC;font-size:.92rem}
+.ba-caption strong{color:var(--cream-soft);font-weight:600}
+
+/* ---------- portfolio ---------- */
+.folio-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px}
+.folio-grid{display:grid;gap:26px;margin-top:64px}
+@media(min-width:820px){
+  .folio-grid{grid-template-columns:repeat(12,1fr)}
+  .folio-grid .f1{grid-column:1/8}
+  .folio-grid .f2{grid-column:8/13;margin-top:72px}
+  .folio-grid .f3{grid-column:1/6;margin-top:-46px}
+  .folio-grid .f4{grid-column:6/13}
+  .folio-grid .f5{grid-column:1/8}
+  .folio-grid .f6{grid-column:8/13;margin-top:72px}
+}
+.folio-item{position:relative;display:block;perspective:900px}
+.folio-frame{
+  position:relative;border-radius:18px;overflow:hidden;box-shadow:var(--shadow-soft);
+  background:linear-gradient(155deg,var(--green-mid) 0%,var(--green-deep) 100%);
+  transform-style:preserve-3d;transition:transform .5s var(--ease-out),box-shadow .5s;
+}
+.folio-item:hover .folio-frame{box-shadow:0 34px 70px rgba(28,42,28,.25)}
+.f1 .folio-frame,.f4 .folio-frame,.f5 .folio-frame{aspect-ratio:16/11}
+.f2 .folio-frame,.f3 .folio-frame,.f6 .folio-frame{aspect-ratio:4/4.7}
+.folio-frame img{width:100%;height:100%;object-fit:cover;transition:transform 1.3s var(--ease-out)}
+.folio-item:hover .folio-frame img,.folio-item:focus-visible .folio-frame img{transform:scale(1.07)}
+.folio-frame::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 46%,rgba(18,42,28,.78) 100%);
+  opacity:0;transition:opacity .5s;
+}
+.folio-item:hover .folio-frame::after,.folio-item:focus-visible .folio-frame::after{opacity:1}
+.folio-meta{
+  position:absolute;left:26px;right:26px;bottom:22px;z-index:2;color:var(--cream-soft);
+  transform:translateY(14px);opacity:0;transition:transform .5s var(--ease-out),opacity .5s;
+}
+.folio-item:hover .folio-meta,.folio-item:focus-visible .folio-meta{transform:none;opacity:1}
+.folio-meta .t{font-family:'Fraunces',Georgia,serif;font-size:1.5rem}
+.folio-meta .l{font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--terra-soft);margin-top:5px}
+.folio-num{
+  position:absolute;top:18px;left:22px;z-index:2;font-family:'Fraunces',Georgia,serif;font-style:italic;
+  color:var(--cream-soft);font-size:1.05rem;background:rgba(18,42,28,.5);backdrop-filter:blur(6px);
+  padding:5px 14px;border-radius:999px;border:1px solid rgba(245,239,227,.25);
+}
+.folio-under{margin-top:16px;display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+.folio-under .t{font-family:'Fraunces',Georgia,serif;font-size:1.25rem;color:var(--green-deep)}
+.folio-under .l{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+@media(min-width:820px){.folio-under{display:none}}
+
+/* ---------- process ---------- */
+.process{background:var(--cream-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.proc-list{margin-top:70px;position:relative;display:grid;gap:0;max-width:820px}
+.proc-stem{position:absolute;left:31px;top:10px;bottom:10px;width:2px;background:var(--line);overflow:hidden}
+.proc-stem i{position:absolute;inset:0;background:var(--terra);transform:scaleY(0);transform-origin:top;transition:transform 1.6s var(--ease-out);display:block}
+.proc-stem.drawn i{transform:scaleY(1)}
+.proc{display:grid;grid-template-columns:64px 1fr;gap:26px;padding:34px 0;align-items:start}
+.proc .dot{
+  width:64px;height:64px;border-radius:50%;background:var(--cream);border:1.5px solid var(--line);
+  display:grid;place-items:center;font-family:'Fraunces',Georgia,serif;font-style:italic;
+  font-size:1.25rem;color:var(--terra-text);position:relative;z-index:1;
+  transition:background .35s,border-color .35s,color .35s,transform .5s var(--ease-out);
+}
+.proc:hover .dot{background:var(--green);border-color:var(--green);color:var(--cream-soft);transform:scale(1.08)}
+.proc h3{font-size:1.7rem;color:var(--green-deep)}
+.proc h3 .season{font-family:'Inter',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--terra-text);display:block;margin-bottom:8px}
+.proc p{color:var(--muted);margin-top:10px;max-width:34rem}
+
+/* ---------- testimonials ---------- */
+.quotes .stage{position:relative;margin-top:56px;min-height:340px}
+@media(max-width:640px){.quotes .stage{min-height:430px}}
+.quote-slide{
+  position:absolute;inset:0;opacity:0;visibility:hidden;transform:translateY(18px);
+  transition:opacity .7s var(--ease-out),transform .7s var(--ease-out),visibility .7s;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+}
+.quote-slide.active{opacity:1;visibility:visible;transform:none}
+.quote-slide .stars{color:var(--gold);letter-spacing:5px;font-size:1.1rem}
+.quote-slide blockquote{
+  font-family:'Fraunces',Georgia,serif;font-weight:300;font-size:clamp(1.4rem,2.8vw,2.1rem);
+  line-height:1.42;color:var(--green-deep);max-width:19em;margin-top:22px;
+}
+.quote-slide blockquote em{color:var(--terra-text)}
+.quote-slide .who{margin-top:26px;font-weight:600;color:var(--green-deep)}
+.quote-slide .who span{display:block;font-weight:500;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.q-dots{display:flex;justify-content:center;gap:2px;margin-top:8px}
+.q-dots button{
+  width:44px;height:44px;border:none;background:none;cursor:pointer;display:grid;place-items:center;border-radius:50%;
+}
+.q-dots button i{width:9px;height:9px;border-radius:50%;background:var(--line);display:block;transition:background .3s,transform .3s}
+.q-dots button:hover i{background:var(--terra-soft)}
+.q-dots button.on i{background:var(--terra-btn);transform:scale(1.5)}
+.q-google{margin-top:22px;text-align:center;font-size:.88rem;color:var(--muted)}
+.q-google strong{color:var(--green-deep)}
+
+/* ---------- FAQ ---------- */
+.faq-list{margin-top:56px;border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-item summary{
+  list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:26px 6px;min-height:44px;
+  font-family:'Fraunces',Georgia,serif;font-size:clamp(1.15rem,2vw,1.45rem);color:var(--green-deep);
+  transition:color .25s;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:hover{color:var(--terra-text)}
+.faq-item summary .cross{
+  flex:none;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);position:relative;
+  transition:transform .45s var(--ease-out),background .3s,border-color .3s;
+}
+.faq-item summary .cross::before,.faq-item summary .cross::after{
+  content:"";position:absolute;top:50%;left:50%;background:var(--terra-text);transition:background .3s;
+}
+.faq-item summary .cross::before{width:14px;height:1.6px;transform:translate(-50%,-50%)}
+.faq-item summary .cross::after{width:1.6px;height:14px;transform:translate(-50%,-50%)}
+.faq-item[open] summary .cross{transform:rotate(135deg);background:var(--green);border-color:var(--green)}
+.faq-item[open] summary .cross::before,.faq-item[open] summary .cross::after{background:var(--cream-soft)}
+.faq-item .ans{padding:0 6px 30px;color:var(--muted);max-width:44rem}
+.js .faq-item .ans{animation:ansIn .5s var(--ease-out)}
+@keyframes ansIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+
+/* ---------- CTA band ---------- */
+.cta-band{position:relative;overflow:hidden}
+.cta-band .vine-r{position:absolute;right:-30px;top:50%;transform:translateY(-50%);width:180px;color:rgba(245,239,227,.22);display:none}
+@media(min-width:1000px){.cta-band .vine-r{display:block}}
+.cta-inner{text-align:center;position:relative;z-index:1}
+.cta-inner h2{font-size:clamp(2.3rem,5.4vw,4rem);max-width:16ch;margin:18px auto 0}
+.cta-inner h2 em{color:var(--terra-soft)}
+.cta-inner .sub{margin:20px auto 0}
+.cta-actions{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-top:40px}
+.cta-note{margin-top:26px;font-size:.85rem;color:#9FAF97;letter-spacing:.04em}
+
+/* ---------- footer ---------- */
+footer{background:#0C1F13;color:#AEBBA4;padding:70px 0 34px;font-size:.92rem}
+.foot-grid{display:grid;gap:40px}
+@media(min-width:880px){.foot-grid{grid-template-columns:1.4fr 1fr 1fr}}
+.foot-brand .logo-name{color:var(--cream-soft)}
+.foot-brand p{margin-top:16px;max-width:26rem;color:#8FA087}
+.foot h4{font-family:'Inter',sans-serif;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--terra-soft);margin-bottom:18px;font-weight:600}
+.foot ul{list-style:none}
+.foot ul li{margin-bottom:10px}
+.foot a{color:#D6DCC8;text-decoration:none;padding:4px 0;display:inline-block;min-height:auto}
+.foot a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.foot-tel{font-family:'Fraunces',Georgia,serif;font-size:1.5rem;color:var(--cream-soft) !important}
+.foot-bottom{
+  margin-top:56px;padding-top:26px;border-top:1px solid rgba(245,239,227,.12);
+  display:flex;flex-wrap:wrap;gap:10px 30px;justify-content:space-between;font-size:.8rem;color:#7E8F76;
+}
+
+/* ---------- mobile call bar ---------- */
+.callbar{display:none}
+@media(max-width:720px){
+  .callbar{
+    display:block;position:fixed;bottom:0;left:0;right:0;z-index:110;
+    background:var(--green-deep);border-top:1px solid rgba(245,239,227,.2);
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  }
+  .callbar a{
+    display:flex;align-items:center;justify-content:center;gap:10px;min-height:52px;
+    background:var(--terra-btn);color:#fff;border-radius:999px;text-decoration:none;
+    font-weight:700;font-size:1.05rem;letter-spacing:.01em;box-shadow:0 8px 24px rgba(0,0,0,.35);
+  }
+  body{padding-bottom:84px}
+  .hero-in{padding-top:120px;padding-bottom:118px}
+}
+
+/* ---------- scroll reveal ---------- */
+.js .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s var(--ease-out)}
+.js .reveal.in{opacity:1;transform:none}
+.js .stagger>*{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s var(--ease-out)}
+.js .stagger.in>*{opacity:1;transform:none}
+.js .stagger.in>*:nth-child(2){transition-delay:.1s}
+.js .stagger.in>*:nth-child(3){transition-delay:.2s}
+.js .stagger.in>*:nth-child(4){transition-delay:.3s}
+.js .stagger.in>*:nth-child(5){transition-delay:.4s}
+.js .stagger.in>*:nth-child(6){transition-delay:.5s}
+.js .stagger.in>.svc{transition:background .45s,transform .45s var(--ease-out),box-shadow .45s;transition-delay:0s}
+
+/* ---------- image fallbacks ---------- */
+.img-fail img{display:none !important}
+.img-fail{
+  background:
+    radial-gradient(120% 90% at 15% 10%,rgba(217,143,99,.25),transparent 55%),
+    linear-gradient(155deg,var(--green-mid) 0%,var(--green) 55%,var(--green-deep) 100%) !important;
+}
+.img-fail::before{
+  content:"🌿";position:absolute;inset:0;display:grid;place-items:center;
+  font-size:3rem;opacity:.5;
+}
+.hero.img-fail::before{content:none}
+
+/* ---------- reduced motion: everything calm, everything visible ---------- */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .js .reveal,.js .stagger>*{opacity:1;transform:none}
+  .js .hero h1 .w>span{transform:none}
+  .js .hero-fade{opacity:1}
+  .js .draw path{stroke-dasharray:none;stroke-dashoffset:0}
+  .proc-stem i{transform:scaleY(1)}
+  .marquee-track{animation:none !important;width:auto;flex-wrap:wrap}
+  .marquee-seg:nth-child(2){display:none}
+  .ba-hint{animation:none}
+  .hero-bg{inset:0}
+}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<div id="progress" aria-hidden="true"></div>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="Verde Landscape Design — back to top">
+      <span class="logo-mark" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C7.2 16.4 5.4 11.2 12 3c6.6 8.2 4.8 13.4 0 18Z"/><path d="M12 21V9"/></svg>
+      </span>
+      <span class="logo-name">Verde<small>Landscape Design</small></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links">
+        <li><a href="#studio">Studio</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#transformation">Transformations</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <a class="nav-call" href="tel:+15550163400">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      (555) 016-3400
+    </a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<div class="hero" id="heroRoot">
+  <div class="hero-bg" id="heroBg">
+    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80"
+         alt="Dusk falling over a designed backyard with a pool, warm lighting and layered planting"
+         fetchpriority="high"
+         onerror="document.getElementById('heroRoot').classList.add('img-fail')">
+  </div>
+  <div class="hero-veil" aria-hidden="true"></div>
+  <svg class="hero-leaf l1" id="pxLeaf1" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+    <path d="M100 190C55 150 35 105 100 15c65 90 45 135 0 175Z"/><path d="M100 190V55"/>
+    <path d="M100 150c-18-8-30-20-36-38M100 150c18-8 30-20 36-38M100 110c-14-6-24-16-29-30M100 110c14-6 24-16 29-30"/>
+  </svg>
+  <svg class="hero-leaf l2" id="pxLeaf2" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+    <path d="M100 190C55 150 35 105 100 15c65 90 45 135 0 175Z"/><path d="M100 190V55"/>
+  </svg>
+
+  <div class="wrap hero-in">
+    <p class="hero-rating hero-fade d1">
+      <span class="stars" aria-hidden="true">★★★★★</span>
+      <span><strong>4.9</strong> · 156 reviews</span>
+      <span aria-hidden="true">·</span>
+      <span>Austin, Texas</span>
+    </p>
+    <h1 aria-label="Gardens that feel inherited, not installed.">
+      <span aria-hidden="true">
+        <span class="w"><span style="animation-delay:.1s">Gardens</span></span>
+        <span class="w"><span style="animation-delay:.2s">that</span></span>
+        <span class="w"><span style="animation-delay:.3s">feel</span></span><br>
+        <span class="w"><em><span style="animation-delay:.42s">inherited,</span></em></span>
+        <span class="w"><span style="animation-delay:.54s">not</span></span>
+        <span class="w"><span style="animation-delay:.64s">installed.</span></span>
+      </span>
+    </h1>
+    <p class="hero-lead hero-fade d3">Verde is a landscape design studio for people who want more from their land — outdoor rooms for slow evenings, native planting that shrugs off Texas summers, and gardens that grow lovelier every year.</p>
+    <div class="hero-ctas hero-fade d4">
+      <span class="magnetic"><a class="btn btn-terra" href="tel:+15550163400">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Book a design consultation
+      </a></span>
+      <a class="btn btn-line" href="#portfolio">View the portfolio</a>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">Scroll</div>
+</div>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="marquee-seg">
+      <span>Garden Design</span><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21C7.2 16.4 5.4 11.2 12 3c6.6 8.2 4.8 13.4 0 18Z"/></svg>
+      <span>Outdoor Living</span><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21C7.2 16.4 5.4 11.2 12 3c6.6 8.2 4.8 13.4 0 18Z"/></svg>
+      <span>Native Planting</span><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21C7.2 16.4 5.4 11.2 12 3c6.6 8.2 4.8 13.4 0 18Z"/></svg>
+      <span>Year-Round Care</span><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21C7.2 16.4 5.4 11.2 12 3c6.6 8.2 4.8 13.4 0 18Z"/></svg>
+      <span>Est. 2010 · Austin, Texas</span><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21C7.2 16.4 5.4 11.2 12 3c6.6 8.2 4.8 13.4 0 18Z"/></svg>
+    </div>
+    <div class="marquee-seg">
+      <span>Garden Design</span><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21C7.2 16.4 5.4 11.2 12 3c6.6 8.2 4.8 13.4 0 18Z"/></svg>
+      <span>Outdoor Living</span><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21C7.2 16.4 5.4 11.2 12 3c6.6 8.2 4.8 13.4 0 18Z"/></svg>
+      <span>Native Planting</span><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21C7.2 16.4 5.4 11.2 12 3c6.6 8.2 4.8 13.4 0 18Z"/></svg>
+      <span>Year-Round Care</span><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21C7.2 16.4 5.4 11.2 12 3c6.6 8.2 4.8 13.4 0 18Z"/></svg>
+      <span>Est. 2010 · Austin, Texas</span><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21C7.2 16.4 5.4 11.2 12 3c6.6 8.2 4.8 13.4 0 18Z"/></svg>
+    </div>
+  </div>
+</div>
+
+<!-- ============ STUDIO ============ -->
+<section id="studio">
+  <div class="wrap studio-grid">
+    <div class="studio-copy reveal">
+      <span class="eyebrow">The studio</span>
+      <p class="statement">We don't decorate yards. We compose <em>living spaces</em> — shade where you'll actually sit, paths that invite a slower walk, planting that belongs to this soil and this light.</p>
+      <p class="body">Founded in Austin in 2010, Verde is a small studio on purpose. Every project is led personally by our principal designers, from the first walk of your property to the last plant set in the ground — and through the seasons that follow.</p>
+      <p class="body">We work almost entirely with Texas natives and climate-adapted plants, which is why Verde gardens look effortless in August, not just in April.</p>
+    </div>
+    <div class="studio-media reveal">
+      <svg class="studio-vine draw" viewBox="0 0 140 360" aria-hidden="true">
+        <path pathLength="1" d="M70 354 C46 300 92 258 66 200 C48 158 88 118 64 60 C56 40 60 20 70 6"/>
+        <path pathLength="1" d="M58 306 C36 300 24 282 28 262 C50 266 62 284 58 306Z"/>
+        <path pathLength="1" d="M78 246 C100 240 112 222 108 202 C86 206 74 224 78 246Z"/>
+        <path pathLength="1" d="M60 192 C38 186 26 168 30 148 C52 152 64 170 60 192Z"/>
+        <path pathLength="1" d="M76 128 C98 122 110 104 106 84 C84 88 72 106 76 128Z"/>
+        <path pathLength="1" d="M62 64 C42 58 32 42 36 24 C56 28 66 44 62 64Z"/>
+      </svg>
+      <figure class="studio-photo" data-ph>
+        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=1200&q=80"
+             alt="A designer's hand brushing through layered green foliage in a glasshouse"
+             loading="lazy"
+             onerror="this.closest('[data-ph]').classList.add('img-fail')">
+      </figure>
+      <div class="studio-card">
+        <span class="serif">Design‑led,</span>
+        <small>studio-built, and tended by the same hands for years afterward.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<div class="stats" aria-label="Studio track record">
+  <div class="wrap stats-grid">
+    <div class="stat"><div class="num"><span data-count="16">16</span></div><div class="lbl">Years in Austin</div></div>
+    <div class="stat"><div class="num"><span data-count="240">240</span><sup>+</sup></div><div class="lbl">Gardens composed</div></div>
+    <div class="stat"><div class="num"><span data-count="92">92</span><sup>%</sup></div><div class="lbl">Native &amp; adapted planting</div></div>
+    <div class="stat"><div class="num"><span data-count="4.9" data-dec="1">4.9</span><sup>★</sup></div><div class="lbl">Across 156 reviews</div></div>
+  </div>
+</div>
+
+<!-- ============ SERVICES ============ -->
+<section id="services">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">What we do</span>
+      <h2>Four crafts, <em>one</em> garden</h2>
+      <p class="sub">Everything under one roof — so the pergola, the planting, and the plan for year five all speak the same language.</p>
+    </div>
+    <div class="svc-grid stagger">
+      <article class="svc">
+        <span class="idx">No. 01</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" width="56" height="56" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15c4 0 5-6 9-6s5 4 9 4"/><circle cx="8" cy="8" r="1.6"/></svg></div>
+        <h3>Garden Design</h3>
+        <p>Full master plans: layout, levels, stone, water, light, and a planting scheme composed for all four seasons — drawn by hand, refined with you.</p>
+        <span class="more" aria-hidden="true">Concept to planting plan</span>
+      </article>
+      <article class="svc">
+        <span class="idx">No. 02</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" width="56" height="56" aria-hidden="true"><path d="M3 9h18"/><path d="M5 9v12M19 9v12"/><path d="M5 5h14"/><path d="M7 5v4M12 5v4M17 5v4"/><path d="M8 16h8"/></svg></div>
+        <h3>Outdoor Living</h3>
+        <p>Pergolas, dining terraces, fire courts, and poolside rooms — built for long Hill Country evenings and finished like the inside of your home.</p>
+        <span class="more" aria-hidden="true">Rooms under the sky</span>
+      </article>
+      <article class="svc">
+        <span class="idx">No. 03</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" width="56" height="56" aria-hidden="true"><path d="M12 22v-8"/><path d="M12 14C7 14 4 11 4 6c5 0 8 3 8 8Z"/><path d="M12 14c5 0 8-3 8-8-5 0-8 3-8 8Z"/></svg></div>
+        <h3>Native Planting</h3>
+        <p>Muhly grass, salvia, live oak, agarita — plant communities that feed pollinators, sip water, and look better each year without a fight.</p>
+        <span class="more" aria-hidden="true">Built for Texas heat</span>
+      </article>
+      <article class="svc">
+        <span class="idx">No. 04</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" width="56" height="56" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/><path d="M12 19c0-3 2-4 4-4 0 3-2 4-4 4Z"/></svg></div>
+        <h3>Maintenance Plans</h3>
+        <p>Seasonal care by the people who designed your garden: pruning with intent, quiet edits, and a garden that matures instead of merely surviving.</p>
+        <span class="more" aria-hidden="true">Tended, not trimmed</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BEFORE / AFTER ============ -->
+<section class="on-dark" id="transformation">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center">
+      <span class="eyebrow" style="justify-content:center">The transformation</span>
+      <h2>Same ground. <em>New life.</em></h2>
+      <p class="sub" style="margin-left:auto;margin-right:auto">Drag the divider to see one Barton Hills backyard go from tired lawn to a layered, living garden.</p>
+    </div>
+    <div class="ba-stage reveal">
+      <div class="ba" id="ba" data-ph>
+        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1400&q=80"
+             alt="Before: a plain suburban backyard with flat, thirsty lawn"
+             loading="lazy"
+             onerror="this.closest('[data-ph]').classList.add('img-fail')">
+        <div class="after-wrap" data-ph>
+          <img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?w=1400&q=80"
+               alt="After: the same yard redesigned with curved beds, layered planting and a manicured lawn"
+               loading="lazy"
+               onerror="this.closest('[data-ph]').classList.add('img-fail')">
+        </div>
+        <span class="ba-label before" aria-hidden="true">BEFORE</span>
+        <span class="ba-label after" aria-hidden="true">AFTER</span>
+        <div class="ba-divider" aria-hidden="true"></div>
+        <button class="ba-handle" id="baHandle" type="button"
+                role="slider" aria-label="Reveal before and after comparison"
+                aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% after revealed">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l-5 6 5 6"/><path d="M15 6l5 6-5 6"/></svg>
+        </button>
+        <span class="ba-hint" id="baHint" aria-hidden="true">Drag to compare</span>
+      </div>
+      <p class="ba-caption"><strong>Barton Hills residence</strong><span>Design + build, 9 weeks</span><span>Native beds · limestone path · night lighting</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORTFOLIO ============ -->
+<section id="portfolio">
+  <div class="wrap">
+    <div class="folio-head reveal">
+      <div>
+        <span class="eyebrow">Selected work</span>
+        <h2>Recent <em>compositions</em></h2>
+      </div>
+      <p class="sub" style="margin-top:0;max-width:24rem">Six gardens from the last few seasons, across Austin and the Hill Country.</p>
+    </div>
+    <div class="folio-grid stagger">
+      <a class="folio-item f1" href="#consult" data-tilt aria-label="Evening Terrace, Westlake Hills — start a conversation about a garden like this">
+        <div class="folio-frame" data-ph>
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&q=80" alt="Modern pool terrace glowing at dusk with warm architectural lighting" loading="lazy" onerror="this.closest('[data-ph]').classList.add('img-fail')">
+          <span class="folio-num" aria-hidden="true">i.</span>
+          <div class="folio-meta" aria-hidden="true"><div class="t">Evening Terrace</div><div class="l">Westlake Hills · Outdoor living</div></div>
+        </div>
+        <div class="folio-under" aria-hidden="true"><span class="t">Evening Terrace</span><span class="l">Westlake Hills</span></div>
+      </a>
+      <a class="folio-item f2" href="#consult" data-tilt aria-label="The Pollinator Path, Barton Creek — start a conversation about a garden like this">
+        <div class="folio-frame" data-ph>
+          <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1200&q=80" alt="Gravel path winding between overflowing perennial flower borders" loading="lazy" onerror="this.closest('[data-ph]').classList.add('img-fail')">
+          <span class="folio-num" aria-hidden="true">ii.</span>
+          <div class="folio-meta" aria-hidden="true"><div class="t">The Pollinator Path</div><div class="l">Barton Creek · Native planting</div></div>
+        </div>
+        <div class="folio-under" aria-hidden="true"><span class="t">The Pollinator Path</span><span class="l">Barton Creek</span></div>
+      </a>
+      <a class="folio-item f3" href="#consult" data-tilt aria-label="Courtyard Modern, Tarrytown — start a conversation about a garden like this">
+        <div class="folio-frame" data-ph>
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80" alt="Clean-lined modern home framed by structured evergreen planting" loading="lazy" onerror="this.closest('[data-ph]').classList.add('img-fail')">
+          <span class="folio-num" aria-hidden="true">iii.</span>
+          <div class="folio-meta" aria-hidden="true"><div class="t">Courtyard Modern</div><div class="l">Tarrytown · Garden design</div></div>
+        </div>
+        <div class="folio-under" aria-hidden="true"><span class="t">Courtyard Modern</span><span class="l">Tarrytown</span></div>
+      </a>
+      <a class="folio-item f4" href="#consult" data-tilt aria-label="Poolside Canopy, Lake Austin — start a conversation about a garden like this">
+        <div class="folio-frame" data-ph>
+          <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=80" alt="Resort-style pool wrapped in lush tropical canopy planting" loading="lazy" onerror="this.closest('[data-ph]').classList.add('img-fail')">
+          <span class="folio-num" aria-hidden="true">iv.</span>
+          <div class="folio-meta" aria-hidden="true"><div class="t">Poolside Canopy</div><div class="l">Lake Austin · Outdoor living</div></div>
+        </div>
+        <div class="folio-under" aria-hidden="true"><span class="t">Poolside Canopy</span><span class="l">Lake Austin</span></div>
+      </a>
+      <a class="folio-item f5" href="#consult" data-tilt aria-label="Hill Country Meadow, Dripping Springs — start a conversation about a garden like this">
+        <div class="folio-frame" data-ph>
+          <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200&q=80" alt="Golden meadow at sunset with a mown path curving toward oak trees" loading="lazy" onerror="this.closest('[data-ph]').classList.add('img-fail')">
+          <span class="folio-num" aria-hidden="true">v.</span>
+          <div class="folio-meta" aria-hidden="true"><div class="t">Hill Country Meadow</div><div class="l">Dripping Springs · Native planting</div></div>
+        </div>
+        <div class="folio-under" aria-hidden="true"><span class="t">Hill Country Meadow</span><span class="l">Dripping Springs</span></div>
+      </a>
+      <a class="folio-item f6" href="#consult" data-tilt aria-label="The Lavender Line, Mueller — start a conversation about a garden like this">
+        <div class="folio-frame" data-ph>
+          <img src="https://images.unsplash.com/photo-1466781783364-36c955e42a7f?w=1200&q=80" alt="Rows of flowering lavender catching low evening light" loading="lazy" onerror="this.closest('[data-ph]').classList.add('img-fail')">
+          <span class="folio-num" aria-hidden="true">vi.</span>
+          <div class="folio-meta" aria-hidden="true"><div class="t">The Lavender Line</div><div class="l">Mueller · Sensory garden</div></div>
+        </div>
+        <div class="folio-under" aria-hidden="true"><span class="t">The Lavender Line</span><span class="l">Mueller</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">How it unfolds</span>
+      <h2>A garden in <em>four</em> movements</h2>
+    </div>
+    <div class="proc-list stagger">
+      <div class="proc-stem" id="procStem" aria-hidden="true"><i></i></div>
+      <div class="proc">
+        <div class="dot" aria-hidden="true">i</div>
+        <div><h3><span class="season">First — the walk</span>Walk &amp; listen</h3>
+        <p>We spend an hour on your land with you. Where the light falls, where the water runs, how you actually live outside — the design starts here, not at a drafting table.</p></div>
+      </div>
+      <div class="proc">
+        <div class="dot" aria-hidden="true">ii</div>
+        <div><h3><span class="season">Second — the drawing</span>Compose the design</h3>
+        <p>Concept sketches, then a full master plan: spaces, materials, levels, lighting, and a planting palette chosen for this exact soil and sun.</p></div>
+      </div>
+      <div class="proc">
+        <div class="dot" aria-hidden="true">iii</div>
+        <div><h3><span class="season">Third — the build</span>Build with care</h3>
+        <p>Our own crews and long-trusted stonemasons build in careful phases — protected trees, clean site, and a designer on the ground at every stage.</p></div>
+      </div>
+      <div class="proc">
+        <div class="dot" aria-hidden="true">iv</div>
+        <div><h3><span class="season">Fourth — the years</span>Tend the seasons</h3>
+        <p>A young garden is a promise. Our maintenance plans keep that promise: seasonal pruning, quiet replanting, and edits as the garden finds its shape.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="quotes" id="quotes">
+  <div class="wrap-narrow">
+    <div class="reveal" style="text-align:center">
+      <span class="eyebrow" style="justify-content:center">Kind words</span>
+      <h2>What our clients <em>say</em></h2>
+    </div>
+    <div class="stage reveal" id="qStage" aria-roledescription="carousel" aria-label="Client testimonials">
+      <div class="quote-slide active" role="group" aria-roledescription="slide" aria-label="Testimonial 1 of 4">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <blockquote>“Two summers in and the garden is <em>more</em> beautiful than the day they finished. Verde designed something that grows, not something that fades.”</blockquote>
+        <p class="who">Margaret &amp; Tom L. <span>Barton Hills · Full garden design</span></p>
+      </div>
+      <div class="quote-slide" role="group" aria-roledescription="slide" aria-label="Testimonial 2 of 4">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <blockquote>“They turned a scorched, unusable backyard into the room we use <em>most</em>. We eat outside ten months a year now.”</blockquote>
+        <p class="who">Priya N. <span>Tarrytown · Outdoor living</span></p>
+      </div>
+      <div class="quote-slide" role="group" aria-roledescription="slide" aria-label="Testimonial 3 of 4">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <blockquote>“August hit 105° and our garden didn't blink. The native planting they composed is <em>alive</em> with hummingbirds every morning.”</blockquote>
+        <p class="who">Daniel R. <span>Mueller · Native planting</span></p>
+      </div>
+      <div class="quote-slide" role="group" aria-roledescription="slide" aria-label="Testimonial 4 of 4">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <blockquote>“The same designer who drew our garden still prunes it. That continuity shows — every season it looks <em>intentional</em>.”</blockquote>
+        <p class="who">Elena &amp; Marcus V. <span>Westlake Hills · Maintenance plan</span></p>
+      </div>
+    </div>
+    <div class="q-dots" role="tablist" aria-label="Choose testimonial">
+      <button class="on" role="tab" aria-selected="true" aria-label="Testimonial 1"><i aria-hidden="true"></i></button>
+      <button role="tab" aria-selected="false" aria-label="Testimonial 2"><i aria-hidden="true"></i></button>
+      <button role="tab" aria-selected="false" aria-label="Testimonial 3"><i aria-hidden="true"></i></button>
+      <button role="tab" aria-selected="false" aria-label="Testimonial 4"><i aria-hidden="true"></i></button>
+    </div>
+    <p class="q-google reveal"><strong>4.9 ★</strong> average across <strong>156 reviews</strong> — thank you, Austin.</p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" style="padding-top:0">
+  <div class="wrap-narrow">
+    <div class="reveal">
+      <span class="eyebrow">Good to know</span>
+      <h2>Questions, <em>answered</em></h2>
+    </div>
+    <div class="faq-list reveal" id="faqList">
+      <details class="faq-item" open>
+        <summary>How does a project begin?<span class="cross" aria-hidden="true"></span></summary>
+        <div class="ans"><p>With a phone call and then a walk. We visit your property, listen to how you want to live outside, and follow up with a written design proposal. From there, most gardens move from first sketch to finished planting in one to two seasons.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Will a native garden look wild and messy?<span class="cross" aria-hidden="true"></span></summary>
+        <div class="ans"><p>Only if that's what you want. Native doesn't mean untamed — we compose natives into structured, deliberate designs: clipped forms against loose grasses, clean stone edges, clear sight lines. You get the resilience of Texas plants with the polish of a designed garden.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Do you build the gardens you design?<span class="cross" aria-hidden="true"></span></summary>
+        <div class="ans"><p>Yes — design and build live under one roof. Our own crews handle planting and softscape, and we partner with stonemasons and carpenters we've trusted for over a decade for terraces, pergolas, and water features. One studio stays accountable for the whole garden.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>How much water will my garden need?<span class="cross" aria-hidden="true"></span></summary>
+        <div class="ans"><p>Far less than a conventional lawn. Because we plant almost entirely natives and climate-adapted species, most Verde gardens need only establishment watering in year one, then modest drip irrigation after that — many beds eventually thrive on rainfall alone.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>What happens after the garden is planted?<span class="cross" aria-hidden="true"></span></summary>
+        <div class="ans"><p>That's when the relationship really starts. Our seasonal maintenance plans put the original design team in your garden through the year — pruning with intent, editing as plants mature, and keeping the composition true to the drawing as it grows into itself.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="on-dark cta-band" id="consult">
+  <svg class="vine-r draw" viewBox="0 0 140 360" aria-hidden="true">
+    <path pathLength="1" d="M70 354 C46 300 92 258 66 200 C48 158 88 118 64 60 C56 40 60 20 70 6"/>
+    <path pathLength="1" d="M58 306 C36 300 24 282 28 262 C50 266 62 284 58 306Z"/>
+    <path pathLength="1" d="M78 246 C100 240 112 222 108 202 C86 206 74 224 78 246Z"/>
+    <path pathLength="1" d="M60 192 C38 186 26 168 30 148 C52 152 64 170 60 192Z"/>
+    <path pathLength="1" d="M76 128 C98 122 110 104 106 84 C84 88 72 106 76 128Z"/>
+  </svg>
+  <div class="wrap cta-inner reveal">
+    <span class="eyebrow" style="justify-content:center">Begin here</span>
+    <h2>Let's walk your <em>garden</em> together.</h2>
+    <p class="sub" style="margin-left:auto;margin-right:auto">A design consultation is a conversation, not a commitment. Tell us about your land — we'll bring the ideas.</p>
+    <div class="cta-actions">
+      <span class="magnetic"><a class="btn btn-terra" href="tel:+15550163400">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call (555) 016-3400
+      </a></span>
+      <a class="btn btn-line" href="#portfolio">See the work first</a>
+    </div>
+    <p class="cta-note">Studio hours Mon–Fri, 8am–5pm · Consultations across Austin &amp; the Hill Country</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="#top" aria-label="Verde Landscape Design — back to top" style="text-decoration:none">
+          <span class="logo-mark" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C7.2 16.4 5.4 11.2 12 3c6.6 8.2 4.8 13.4 0 18Z"/><path d="M12 21V9"/></svg>
+          </span>
+          <span class="logo-name">Verde<small>Landscape Design</small></span>
+        </a>
+        <p>A landscape design studio in Austin, Texas — composing outdoor rooms, native planting, and gardens that grow more beautiful with every season.</p>
+      </div>
+      <div class="foot">
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="#studio">About the studio</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#process">Our process</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="foot">
+        <h4>Visit &amp; call</h4>
+        <ul>
+          <li><a class="foot-tel" href="tel:+15550163400">(555) 016-3400</a></li>
+          <li>Mon–Fri · 8am–5pm</li>
+          <li>Austin, Texas &amp; the Hill Country</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Verde Landscape Design</span>
+      <span>A concept showcase by MainStreet Web Studio — Verde Landscape Design is a demonstration brand.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MOBILE CALL BAR ============ -->
+<div class="callbar">
+  <a href="tel:+15550163400" aria-label="Call Verde Landscape Design at (555) 016-3400">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call the studio — (555) 016-3400
+  </a>
+</div>
+
+<noscript><style>.reveal,.stagger>*{opacity:1;transform:none}</style></noscript>
+
+<script>
+(function(){
+'use strict';
+var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+/* ---------- scroll progress + header state + parallax (one rAF loop) ---------- */
+var prog = document.getElementById('progress'),
+    hdr = document.getElementById('hdr'),
+    heroBg = document.getElementById('heroBg'),
+    leaf1 = document.getElementById('pxLeaf1'),
+    leaf2 = document.getElementById('pxLeaf2'),
+    ticking = false;
+
+function onScroll(){
+  if(ticking) return;
+  ticking = true;
+  requestAnimationFrame(function(){
+    var d = document.documentElement,
+        y = d.scrollTop,
+        max = d.scrollHeight - d.clientHeight;
+    prog.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+    hdr.classList.toggle('scrolled', y > 12);
+    if(!reduced && y < innerHeight * 1.4){
+      heroBg.style.transform = 'translate3d(0,' + (y * .28) + 'px,0)';
+      leaf1.style.transform = 'translate3d(0,' + (y * .14) + 'px,0) rotate(' + (y * .012) + 'deg)';
+      leaf2.style.transform = 'translate3d(0,' + (y * .07) + 'px,0) rotate(' + (140 + y * .02) + 'deg)';
+    }
+    ticking = false;
+  });
+}
+addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+/* ---------- scroll reveals + self-drawing SVG + process stem ---------- */
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(!e.isIntersecting) return;
+    e.target.classList.add(e.target.classList.contains('draw') ? 'drawn' : 'in');
+    if(e.target.id === 'procStem') e.target.classList.add('drawn');
+    io.unobserve(e.target);
+  });
+},{threshold:.18, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal, .stagger, .draw, #procStem').forEach(function(el){ io.observe(el); });
+
+/* ---------- animated counters ---------- */
+var cio = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(!e.isIntersecting) return;
+    cio.unobserve(e.target);
+    var el = e.target,
+        end = parseFloat(el.dataset.count),
+        dec = +(el.dataset.dec || 0);
+    if(reduced){ el.textContent = end.toFixed(dec); return; }
+    var t0 = performance.now();
+    (function tick(t){
+      var p = Math.min((t - t0) / 1600, 1);
+      el.textContent = (end * (1 - Math.pow(1 - p, 4))).toFixed(dec);
+      if(p < 1) requestAnimationFrame(tick);
+    })(t0);
+  });
+},{threshold:.6});
+document.querySelectorAll('.stat [data-count]').forEach(function(el){ cio.observe(el); });
+
+/* ---------- testimonial carousel ---------- */
+var slides = [].slice.call(document.querySelectorAll('.quote-slide')),
+    dots = [].slice.call(document.querySelectorAll('.q-dots button')),
+    stage = document.getElementById('qStage'),
+    cur = 0, timer = null;
+
+function show(i){
+  slides[cur].classList.remove('active');
+  dots[cur].classList.remove('on');
+  dots[cur].setAttribute('aria-selected','false');
+  cur = i;
+  slides[cur].classList.add('active');
+  dots[cur].classList.add('on');
+  dots[cur].setAttribute('aria-selected','true');
+}
+function restart(){
+  if(timer) clearInterval(timer);
+  if(reduced) return;
+  timer = setInterval(function(){ show((cur + 1) % slides.length); }, 6000);
+}
+dots.forEach(function(d, i){
+  d.addEventListener('click', function(){ show(i); restart(); });
+});
+['mouseenter','focusin','touchstart'].forEach(function(ev){
+  stage.addEventListener(ev, function(){ if(timer) clearInterval(timer); }, {passive:true});
+});
+['mouseleave','focusout','touchend'].forEach(function(ev){
+  stage.addEventListener(ev, restart);
+});
+restart();
+
+/* ---------- FAQ: close others when one opens ---------- */
+var faqs = [].slice.call(document.querySelectorAll('.faq-item'));
+faqs.forEach(function(d){
+  d.addEventListener('toggle', function(){
+    if(d.open) faqs.forEach(function(o){ if(o !== d) o.open = false; });
+  });
+});
+
+/* ---------- before / after slider ---------- */
+var ba = document.getElementById('ba'),
+    handle = document.getElementById('baHandle'),
+    pos = 50, dragging = false;
+
+function setPos(p){
+  pos = Math.max(0, Math.min(100, p));
+  ba.style.setProperty('--pos', pos + '%');
+  handle.setAttribute('aria-valuenow', Math.round(pos));
+  handle.setAttribute('aria-valuetext', Math.round(pos) + '% after revealed');
+}
+function posFromEvent(ev){
+  var r = ba.getBoundingClientRect();
+  return ((ev.clientX - r.left) / r.width) * 100;
+}
+ba.addEventListener('pointerdown', function(ev){
+  dragging = true;
+  ba.classList.add('used');
+  ba.setPointerCapture(ev.pointerId);
+  setPos(posFromEvent(ev));
+});
+ba.addEventListener('pointermove', function(ev){
+  if(dragging) setPos(posFromEvent(ev));
+});
+['pointerup','pointercancel'].forEach(function(ev){
+  ba.addEventListener(ev, function(){ dragging = false; });
+});
+handle.addEventListener('keydown', function(ev){
+  var step = ev.shiftKey ? 10 : 4, used = true;
+  if(ev.key === 'ArrowLeft' || ev.key === 'ArrowDown') setPos(pos - step);
+  else if(ev.key === 'ArrowRight' || ev.key === 'ArrowUp') setPos(pos + step);
+  else if(ev.key === 'Home') setPos(0);
+  else if(ev.key === 'End') setPos(100);
+  else used = false;
+  if(used){ ev.preventDefault(); ba.classList.add('used'); }
+});
+
+/* ---------- magnetic buttons (desktop, motion allowed) ---------- */
+if(finePointer && !reduced){
+  document.querySelectorAll('.magnetic').forEach(function(m){
+    var btn = m.querySelector('.btn');
+    m.addEventListener('pointermove', function(ev){
+      var r = m.getBoundingClientRect(),
+          dx = (ev.clientX - (r.left + r.width / 2)) / (r.width / 2),
+          dy = (ev.clientY - (r.top + r.height / 2)) / (r.height / 2);
+      btn.style.transform = 'translate(' + (dx * 7) + 'px,' + (dy * 5) + 'px)';
+    });
+    m.addEventListener('pointerleave', function(){
+      btn.style.transform = '';
+    });
+  });
+}
+
+/* ---------- tilt on portfolio cards (desktop, motion allowed) ---------- */
+if(finePointer && !reduced){
+  document.querySelectorAll('[data-tilt] .folio-frame').forEach(function(card){
+    var item = card.closest('[data-tilt]');
+    item.addEventListener('pointermove', function(ev){
+      var r = card.getBoundingClientRect(),
+          rx = ((ev.clientY - r.top) / r.height - .5) * -5,
+          ry = ((ev.clientX - r.left) / r.width - .5) * 5;
+      card.style.transform = 'rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
+    });
+    item.addEventListener('pointerleave', function(){
+      card.style.transform = '';
+    });
+  });
+}
+})();
+</script>
+</body>
+</html>

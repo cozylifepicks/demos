@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Summit Peak Roofing — Storm Damage &amp; Roof Replacement, Denver CO</title>
+<meta name="description" content="Concept showcase: Summit Peak Roofing, Denver's storm-damage roofing specialists. Hail repair, full replacements, inspections and gutters. A demonstration site by MainStreet Web Studio.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --bg:#0B1220; --bg-2:#0E1729; --bg-deep:#070C16; --card:#111C33; --card-2:#0F1930;
+  --ink:#EAF1FC; --muted:#A9B7D2; --faint:#7C8BAA;
+  --cyan:#3FE0FF; --cyan-soft:#8FEBFF; --cyan-dim:rgba(63,224,255,.14);
+  --amber:#FFB63C; --amber-deep:#F59E0B; --amber-ink:#171006;
+  --line:rgba(148,178,255,.14); --line-strong:rgba(148,178,255,.26);
+  --radius:18px;
+  --shadow:0 18px 50px rgba(2,6,16,.55);
+  --glow-cyan:0 0 22px rgba(63,224,255,.45);
+  --glow-amber:0 10px 32px rgba(255,182,60,.35);
+  --display:'Anton',Impact,sans-serif;
+  --body:'Inter',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+::selection{background:var(--amber);color:var(--amber-ink)}
+h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:.01em;line-height:1.04;text-transform:uppercase}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--amber);color:var(--amber-ink);font-weight:800;padding:14px 22px;border-radius:0 0 12px 0;z-index:200}
+.skip:focus{left:0}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--cyan);outline-offset:3px;border-radius:6px}
+
+/* ============ BUTTONS ============ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:800;font-family:var(--body);
+  border-radius:14px;padding:16px 30px;min-height:56px;text-decoration:none;font-size:1.03rem;cursor:pointer;border:none;
+  position:relative;overflow:hidden;transition:transform .2s ease, box-shadow .2s ease, background .2s ease}
+.btn-storm{background:linear-gradient(180deg,#FFC55C,var(--amber-deep));color:var(--amber-ink);box-shadow:var(--glow-amber)}
+.btn-storm::after{content:"";position:absolute;top:-10%;left:-70%;width:45%;height:120%;transform:skewX(-22deg);
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.85) 45%,rgba(63,224,255,.55) 55%,transparent);
+  opacity:0;transition:opacity .1s}
+.btn-storm:hover::after,.btn-storm:focus-visible::after{opacity:1;animation:boltSweep .55s ease-out}
+@keyframes boltSweep{0%{left:-70%;opacity:1}55%{opacity:1}100%{left:135%;opacity:0}}
+.btn-storm:hover{transform:translateY(-3px);box-shadow:0 16px 42px rgba(255,182,60,.5)}
+.btn-ghost{background:rgba(63,224,255,.06);color:var(--cyan-soft);border:1.5px solid rgba(63,224,255,.4)}
+.btn-ghost:hover{border-color:var(--cyan);color:#fff;transform:translateY(-3px);box-shadow:var(--glow-cyan)}
+
+/* ============ SCROLL PROGRESS ============ */
+#progress{position:fixed;top:0;left:0;height:4px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--cyan),var(--amber));box-shadow:0 0 12px rgba(63,224,255,.7)}
+
+/* ============ HEADER ============ */
+header{position:sticky;top:0;z-index:90;background:rgba(11,18,32,.78);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);transition:box-shadow .3s, background .3s}
+header.scrolled{box-shadow:0 10px 34px rgba(2,6,16,.65);background:rgba(8,13,24,.94)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-top:16px;padding-bottom:16px;transition:padding .3s}
+header.scrolled .nav{padding-top:9px;padding-bottom:9px}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;font-family:var(--display);font-size:1.12rem;
+  letter-spacing:.04em;text-transform:uppercase;color:#fff}
+.logo .mark{width:38px;height:38px;border-radius:10px;background:linear-gradient(150deg,#14233F,#0B1220);
+  border:1px solid var(--line-strong);display:grid;place-items:center;color:var(--amber);flex:none}
+.logo b{color:var(--cyan);font-weight:400}
+.nav-links{display:none;gap:26px;font-weight:600;font-size:.93rem;color:var(--muted)}
+.nav-links a{text-decoration:none;padding:10px 2px;position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:4px;height:2px;background:var(--cyan);transition:right .25s ease}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{right:0}
+@media(min-width:900px){.nav-links{display:flex}}
+.nav-call{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:800;font-size:.95rem;
+  color:var(--amber-ink);background:linear-gradient(180deg,#FFC55C,var(--amber-deep));padding:12px 20px;min-height:44px;
+  border-radius:12px;transition:transform .2s, box-shadow .2s}
+.nav-call:hover{transform:translateY(-2px);box-shadow:var(--glow-amber)}
+.nav-call .num-short{display:none}
+
+/* ============ HERO / STORM STAGE ============ */
+.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#05080F 0%,#0A1120 40%,#0D1730 78%,#0B1220 100%);
+  min-height:min(94svh,920px);display:flex;align-items:center}
+.hero .stars{position:absolute;inset:0;opacity:.5;background-image:
+  radial-gradient(1.5px 1.5px at 12% 18%,rgba(255,255,255,.6),transparent),
+  radial-gradient(1px 1px at 34% 8%, rgba(255,255,255,.5),transparent),
+  radial-gradient(1.5px 1.5px at 58% 14%,rgba(200,230,255,.55),transparent),
+  radial-gradient(1px 1px at 76% 6%, rgba(255,255,255,.45),transparent),
+  radial-gradient(1.5px 1.5px at 89% 22%,rgba(200,230,255,.5),transparent),
+  radial-gradient(1px 1px at 46% 26%, rgba(255,255,255,.35),transparent)}
+.plx{position:absolute;left:-6%;right:-6%;pointer-events:none;will-change:transform}
+.cloud{width:100%;height:auto;filter:blur(22px);opacity:.9}
+.plx-1{top:-16%}.plx-2{top:-4%}.plx-3{top:10%}
+.plx-1 .cloud{filter:blur(30px);opacity:.75}
+.plx-3 .cloud{filter:blur(16px)}
+.drift{animation:drift 46s ease-in-out infinite alternate}
+.drift-b{animation:drift 34s ease-in-out infinite alternate-reverse}
+@keyframes drift{from{transform:translateX(-2.2%)}to{transform:translateX(2.2%)}}
+.silhouette{position:absolute;left:0;right:0;bottom:-2px;pointer-events:none;will-change:transform}
+.silhouette svg{display:block;width:100%;height:auto}
+.win{animation:winGlow 5s ease-in-out infinite}
+.win:nth-child(odd){animation-delay:2.2s}
+@keyframes winGlow{0%,100%{opacity:.95}50%{opacity:.45}}
+.flash{position:absolute;inset:0;pointer-events:none;opacity:0;mix-blend-mode:screen;background:
+  radial-gradient(closest-side at 72% 12%,rgba(210,244,255,.75),rgba(120,205,255,.18) 42%,transparent 72%)}
+.flash.zap{animation:zap 1s ease-out}
+@keyframes zap{0%{opacity:0}4%{opacity:.95}10%{opacity:.08}16%{opacity:.65}26%{opacity:.05}36%{opacity:.28}52%{opacity:0}100%{opacity:0}}
+.hero-in{position:relative;z-index:2;width:100%;padding-top:110px;padding-bottom:190px}
+.storm-pill{display:inline-flex;align-items:center;gap:10px;background:rgba(63,224,255,.08);border:1px solid rgba(63,224,255,.32);
+  color:var(--cyan-soft);border-radius:999px;padding:9px 18px;font-weight:600;font-size:.86rem;letter-spacing:.02em;
+  opacity:0;animation:rise .7s .05s forwards}
+.storm-pill .dot{width:9px;height:9px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px var(--amber);animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.55}}
+.hero h1{margin-top:22px;font-size:clamp(2.35rem,9.8vw,6.4rem);color:#fff;text-shadow:0 6px 40px rgba(2,8,20,.8)}
+.hero h1 .line{display:block;opacity:0;transform:translateY(34px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
+.hero h1 .line:nth-child(2){animation-delay:.14s}
+.hero h1 .line:nth-child(3){animation-delay:.28s}
+.hero h1 .hot{background:linear-gradient(92deg,var(--amber) 20%,#FFD98A 50%,var(--cyan) 95%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+@keyframes rise{to{opacity:1;transform:none}}
+.hero .lead{margin-top:22px;max-width:36rem;font-size:1.13rem;color:var(--muted);opacity:0;animation:rise .8s .42s forwards}
+.hero .lead strong{color:var(--ink)}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;opacity:0;animation:rise .8s .56s forwards}
+.trust{display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;margin-top:30px;color:var(--muted);font-size:.95rem;opacity:0;animation:rise .8s .7s forwards}
+.stars-row{color:var(--amber);letter-spacing:3px;font-size:1.1rem;text-shadow:0 0 14px rgba(255,182,60,.6)}
+.trust strong{color:#fff}
+.trust .sep{color:var(--faint)}
+
+/* ============ MARQUEE ============ */
+.marq-tilt{overflow:hidden;position:relative;z-index:3;margin-top:-56px;padding:26px 0}
+.marq{background:linear-gradient(90deg,#FFC55C,var(--amber-deep));transform:rotate(-1.3deg);width:112%;margin-left:-6%;
+  box-shadow:0 20px 50px rgba(2,6,16,.5);border-top:2px solid rgba(255,255,255,.35);border-bottom:2px solid rgba(0,0,0,.25)}
+.marq-track{display:flex;width:max-content;animation:marq 26s linear infinite}
+.marq ul{display:flex;list-style:none;gap:0;padding:14px 0}
+.marq li{font-family:var(--display);text-transform:uppercase;font-size:1.15rem;letter-spacing:.06em;color:var(--amber-ink);
+  white-space:nowrap;display:flex;align-items:center}
+.marq li::after{content:"⚡";margin:0 22px;font-size:.95rem;color:#7A4E06}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ============ STATS ============ */
+.stats{padding:64px 0 10px}
+.stats .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px;text-align:center}
+.stat{padding:26px 12px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,rgba(63,224,255,.04),transparent)}
+.stat .num{font-family:var(--display);font-size:clamp(2.2rem,4.5vw,3rem);color:#fff;line-height:1}
+.stat .num .u{color:var(--amber)}
+.stat .lbl{font-size:.87rem;color:var(--muted);margin-top:8px}
+
+/* ============ SECTIONS ============ */
+section{padding:92px 0;position:relative;overflow:hidden}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-weight:800;text-transform:uppercase;letter-spacing:.18em;
+  font-size:.78rem;color:var(--cyan)}
+.kicker::before{content:"";width:34px;height:2px;background:linear-gradient(90deg,var(--cyan),transparent)}
+h2{font-size:clamp(2rem,5.4vw,3.4rem);margin-top:14px;color:#fff}
+h2 .hot{color:var(--amber)}
+.sub{color:var(--muted);margin-top:14px;max-width:40rem;font-size:1.03rem}
+.ghost-word{position:absolute;top:26px;right:-8px;font-family:var(--display);text-transform:uppercase;line-height:1;
+  font-size:clamp(4.5rem,14vw,11rem);color:transparent;-webkit-text-stroke:1px rgba(148,178,255,.09);pointer-events:none;user-select:none}
+
+/* ============ SERVICES / TILT CARDS ============ */
+.grid-svc{display:grid;gap:18px;margin-top:44px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.svc{background:linear-gradient(165deg,var(--card),var(--card-2));border:1px solid var(--line);border-radius:var(--radius);
+  padding:30px 26px;position:relative;overflow:hidden;transform-style:preserve-3d;
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s}
+.svc:hover{border-color:rgba(63,224,255,.5);box-shadow:0 24px 60px rgba(2,6,16,.6),0 0 0 1px rgba(63,224,255,.15) inset}
+.svc::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .3s;pointer-events:none;
+  background:radial-gradient(320px 220px at var(--gx,70%) var(--gy,20%),rgba(63,224,255,.13),transparent 70%)}
+.svc:hover::before{opacity:1}
+.svc::after{content:"";position:absolute;top:-20%;left:-80%;width:40%;height:140%;transform:skewX(-20deg);pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.14),transparent);opacity:0}
+.svc:hover::after{opacity:1;animation:boltSweep .7s ease-out}
+.svc .ico{width:56px;height:56px;border-radius:14px;background:var(--cyan-dim);border:1px solid rgba(63,224,255,.3);
+  display:grid;place-items:center;color:var(--cyan);margin-bottom:18px;transition:transform .25s, background .25s, color .25s}
+.svc:hover .ico{transform:rotate(-7deg) scale(1.1);background:var(--cyan);color:#06121C}
+.svc h3{font-size:1.25rem;color:#fff;letter-spacing:.03em}
+.svc p{color:var(--muted);font-size:.95rem;margin-top:10px}
+.svc .go{margin-top:16px;font-weight:700;font-size:.88rem;color:var(--amber);letter-spacing:.02em}
+
+/* ============ BOLT DIVIDER ============ */
+.bolt-wrap{display:flex;justify-content:center;padding:6px 0 0}
+.bolt-svg{width:54px;height:92px;overflow:visible}
+.bolt-path{fill:none;stroke:var(--amber);stroke-width:3;stroke-linejoin:round;stroke-linecap:round;
+  filter:drop-shadow(0 0 8px rgba(255,182,60,.8));stroke-dasharray:1;stroke-dashoffset:1}
+.drawn .bolt-path{transition:stroke-dashoffset 1.3s ease .15s;stroke-dashoffset:0}
+
+/* ============ BEFORE / AFTER ============ */
+.proof{background:linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 50%,var(--bg) 100%)}
+.ba-frame{--pos:50%;position:relative;margin-top:46px;border-radius:22px;overflow:hidden;aspect-ratio:16/10;
+  border:1px solid var(--line-strong);box-shadow:var(--shadow),0 0 0 6px rgba(63,224,255,.05);
+  touch-action:pan-y;user-select:none;cursor:col-resize;background:#0A1226}
+@media(max-width:640px){.ba-frame{aspect-ratio:4/3.4}}
+.ba-layer{position:absolute;inset:0}
+.ba-layer img{width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ba-over{clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+.ba-fail{background:linear-gradient(160deg,#1B2A4A,#0A1226 60%),radial-gradient(400px 200px at 70% 20%,rgba(63,224,255,.2),transparent)}
+.ba-tag{position:absolute;top:18px;font-family:var(--display);text-transform:uppercase;letter-spacing:.12em;font-size:.95rem;
+  padding:9px 18px;border-radius:10px;transition:opacity .25s;z-index:3}
+.ba-tag-b{left:18px;background:rgba(11,18,32,.82);color:var(--amber);border:1px solid rgba(255,182,60,.5)}
+.ba-tag-a{right:18px;background:rgba(11,18,32,.82);color:var(--cyan);border:1px solid rgba(63,224,255,.5)}
+.hide-b .ba-tag-b{opacity:0}
+.hide-a .ba-tag-a{opacity:0}
+.ba-line{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;transform:translateX(-50%);z-index:2;
+  background:linear-gradient(180deg,var(--cyan),#fff 50%,var(--cyan));box-shadow:0 0 18px rgba(63,224,255,.8)}
+.ba-handle{position:absolute;top:50%;left:var(--pos);transform:translate(-50%,-50%);z-index:4;width:58px;height:58px;
+  border-radius:50%;background:rgba(9,15,28,.9);border:2px solid var(--cyan);color:var(--cyan);cursor:grab;
+  display:grid;place-items:center;touch-action:none;box-shadow:0 0 24px rgba(63,224,255,.55),0 10px 30px rgba(2,6,16,.6);
+  transition:transform .15s, box-shadow .15s}
+.ba-handle:hover{transform:translate(-50%,-50%) scale(1.08)}
+.ba-handle:active{cursor:grabbing}
+.ba-cap{margin-top:18px;color:var(--muted);font-size:.93rem;max-width:44rem}
+.ba-cap b{color:var(--ink)}
+
+/* ============ STORM RESPONSE BAND ============ */
+.storm-band .cols{display:grid;gap:34px;margin-top:44px;align-items:center}
+@media(min-width:920px){.storm-band .cols{grid-template-columns:1fr 1fr;gap:56px}}
+.photo-card{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line-strong);box-shadow:var(--shadow);aspect-ratio:4/4.6}
+@media(min-width:920px){.photo-card{aspect-ratio:4/4.2}}
+.photo-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.photo-card:hover img{transform:scale(1.05)}
+.photo-card::after{content:"";position:absolute;top:-20%;left:-90%;width:45%;height:140%;transform:skewX(-20deg);pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.22),transparent);opacity:0}
+.photo-card:hover::after{opacity:1;animation:boltSweep .8s ease-out}
+.photo-card .ph-tag{position:absolute;left:16px;bottom:16px;background:rgba(9,15,28,.86);border:1px solid var(--line-strong);
+  color:var(--ink);padding:10px 16px;border-radius:12px;font-weight:700;font-size:.86rem;display:flex;gap:8px;align-items:center}
+.photo-card .ph-tag .zapdot{color:var(--amber)}
+.img-fail{background:linear-gradient(150deg,#16264A,#0A1226 65%),radial-gradient(360px 220px at 30% 20%,rgba(255,182,60,.14),transparent)}
+.check-list{list-style:none;margin-top:26px;display:grid;gap:14px}
+.check-list li{display:flex;gap:14px;align-items:flex-start;color:var(--muted)}
+.check-list li strong{color:var(--ink)}
+.check-list .tick{flex:none;width:28px;height:28px;border-radius:8px;background:var(--cyan-dim);border:1px solid rgba(63,224,255,.35);
+  color:var(--cyan);display:grid;place-items:center;margin-top:2px}
+.storm-band .btn{margin-top:30px}
+
+/* ============ PROCESS ============ */
+.process{background:var(--bg-2)}
+.grid-steps{display:grid;gap:18px;margin-top:44px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.step{background:linear-gradient(165deg,var(--card),var(--card-2));border:1px solid var(--line);border-radius:var(--radius);
+  padding:30px 26px;position:relative;overflow:hidden;transition:transform .25s, box-shadow .25s, border-color .25s}
+.step:hover{transform:translateY(-8px);border-color:rgba(255,182,60,.45);box-shadow:0 22px 55px rgba(2,6,16,.6)}
+.step .n{font-family:var(--display);font-size:3.4rem;line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--amber);opacity:.95}
+.step h3{margin-top:14px;font-size:1.2rem;color:#fff;letter-spacing:.03em}
+.step p{color:var(--muted);font-size:.95rem;margin-top:10px}
+.crew-strip{display:grid;gap:18px;margin-top:44px;align-items:stretch}
+@media(min-width:920px){.crew-strip{grid-template-columns:1.15fr .85fr}}
+.crew-quote{background:linear-gradient(160deg,rgba(63,224,255,.07),transparent 60%),var(--card-2);border:1px solid var(--line);
+  border-radius:20px;padding:34px 30px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.crew-quote .qmark{font-family:var(--display);font-size:3.4rem;line-height:.6;color:var(--cyan);opacity:.8}
+.crew-quote p{font-size:1.18rem;color:var(--ink);font-weight:500}
+.crew-quote .who{color:var(--muted);font-size:.9rem}
+.crew-quote .who b{color:var(--amber)}
+
+/* ============ REVIEWS ============ */
+.carousel{position:relative;margin-top:44px;max-width:780px}
+.rev{background:linear-gradient(165deg,var(--card),var(--card-2));border:1px solid var(--line);border-left:3px solid var(--amber);
+  border-radius:var(--radius);padding:34px 30px;display:none;flex-direction:column;gap:16px}
+.rev.active{display:flex;animation:fadeSlide .5s ease}
+@keyframes fadeSlide{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
+.rev p{font-size:1.1rem;color:var(--ink)}
+.rev .who{font-weight:700;font-size:.92rem;color:var(--cyan-soft)}
+.rev .who span{display:block;font-weight:500;color:var(--faint);font-size:.82rem;margin-top:2px}
+.dots{display:flex;gap:2px;margin-top:10px}
+.dots button{width:44px;height:44px;border:none;background:none;cursor:pointer;display:grid;place-items:center;padding:0}
+.dots button .d{width:11px;height:11px;border-radius:50%;background:var(--line-strong);transition:background .2s, transform .2s, box-shadow .2s}
+.dots button.on .d{background:var(--amber);transform:scale(1.35);box-shadow:0 0 10px rgba(255,182,60,.8)}
+.fict-note{margin-top:18px;color:var(--faint);font-size:.82rem}
+
+/* ============ AREA ============ */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:10px 20px;font-size:.93rem;font-weight:600;
+  color:var(--muted);transition:transform .2s, background .2s, color .2s, border-color .2s;cursor:default}
+.chip:hover{transform:translateY(-3px);background:var(--cyan);border-color:var(--cyan);color:#06121C}
+
+/* ============ FAQ ============ */
+.faq-sec{background:var(--bg-2)}
+.qa{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-top:14px;overflow:hidden;transition:border-color .25s}
+.qa.open{border-color:rgba(63,224,255,.4)}
+.qa .q{width:100%;text-align:left;background:none;border:none;font:inherit;color:var(--ink);font-weight:700;
+  padding:22px 24px;min-height:44px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:1.02rem}
+.qa .chev{transition:transform .3s;color:var(--amber);flex:none}
+.qa.open .chev{transform:rotate(180deg)}
+.qa .a{max-height:0;overflow:hidden;transition:max-height .4s ease;color:var(--muted);font-size:.96rem}
+.qa.open .a{max-height:260px}
+.qa .a p{padding:0 24px 22px}
+
+/* ============ FINAL CTA ============ */
+.final{padding:110px 0}
+.final .panel{position:relative;border-radius:26px;overflow:hidden;border:1px solid var(--line-strong);
+  background:linear-gradient(160deg,#0E1B36,#080E1C);box-shadow:var(--shadow);padding:70px 26px;text-align:center}
+.final .panel .bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.28;pointer-events:none}
+.final .panel .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,11,22,.55),rgba(7,11,22,.88));pointer-events:none}
+.final .inner{position:relative;z-index:2;max-width:46rem;margin:0 auto}
+.final h2{font-size:clamp(2.2rem,6vw,3.8rem)}
+.final .sub{margin-left:auto;margin-right:auto}
+.mag-zone{display:inline-block;margin-top:36px;padding:26px}
+.final .tel-alt{margin-top:18px;color:var(--muted);font-size:.95rem}
+.final .tel-alt a{color:var(--cyan-soft);font-weight:700;text-decoration:none}
+.final .tel-alt a:hover{text-decoration:underline}
+
+/* ============ FOOTER ============ */
+footer{background:var(--bg-deep);border-top:1px solid var(--line);padding:52px 0 46px;color:var(--muted);font-size:.92rem}
+.foot{display:flex;flex-wrap:wrap;gap:26px 48px;justify-content:space-between}
+.foot .fname{font-family:var(--display);text-transform:uppercase;color:#fff;font-size:1.2rem;letter-spacing:.04em}
+.foot .fname b{color:var(--cyan);font-weight:400}
+.foot a{color:#fff;font-weight:700;text-decoration:none}
+.foot a:hover{color:var(--cyan-soft)}
+.foot .col p{margin-top:8px}
+.disclaimer{margin-top:30px;padding-top:22px;border-top:1px solid var(--line);font-size:.82rem;color:var(--faint);line-height:1.7}
+.disclaimer .studio{color:var(--muted)}
+
+/* ============ REVEALS ============ */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.stagger>*{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.stagger.in>*{opacity:1;transform:none}
+.stagger.in>*:nth-child(2){transition-delay:.1s}
+.stagger.in>*:nth-child(3){transition-delay:.2s}
+.stagger.in>*:nth-child(4){transition-delay:.3s}
+.stagger.in>*:nth-child(5){transition-delay:.38s}
+.stagger.in>*:nth-child(6){transition-delay:.46s}
+.stagger.in>*:nth-child(7){transition-delay:.52s}
+.stagger.in>*:nth-child(8){transition-delay:.58s}
+.stagger.in>*:nth-child(9){transition-delay:.64s}
+.stagger.in>*:nth-child(10){transition-delay:.7s}
+.stagger.in>*:nth-child(11){transition-delay:.76s}
+.stagger.in>*:nth-child(12){transition-delay:.82s}
+
+/* ============ MOBILE CALL BAR ============ */
+.callbar{display:none}
+@media(max-width:720px){
+  .callbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:100;
+    background:linear-gradient(180deg,#FFC55C,var(--amber-deep));box-shadow:0 -8px 30px rgba(2,6,16,.6)}
+  .callbar a{display:flex;align-items:center;gap:10px;color:var(--amber-ink);text-decoration:none;
+    font-weight:800;font-size:1.08rem;padding:17px;min-height:56px;width:100%;justify-content:center}
+  body{padding-bottom:64px}
+  .nav-call .num-txt{display:none}
+  .nav-call .num-short{display:inline}
+  .hero-in{padding-top:84px;padding-bottom:170px}
+}
+
+/* ============ REDUCED MOTION ============ */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .reveal,.stagger>*{opacity:1;transform:none}
+  .storm-pill,.hero h1 .line,.hero .lead,.cta-row,.trust{opacity:1;transform:none}
+  .flash{display:none}
+  .marq-track{animation:none !important}
+  .bolt-path{stroke-dashoffset:0}
+  .plx{transform:none !important}
+}
+</style>
+<noscript><style>
+.reveal,.stagger>*{opacity:1;transform:none}
+.qa .a{max-height:none}
+.storm-pill,.hero h1 .line,.hero .lead,.cta-row,.trust{opacity:1;transform:none}
+</style></noscript>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="progress" aria-hidden="true"></div>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="Summit Peak Roofing — home">
+      <span class="mark" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M2 19L9 7l3.5 5.5L16 7l6 12" stroke="#3FE0FF"/><path d="M12.5 10l-2.5 5h2.6l-1.6 4 4.6-6h-2.7l1.6-3z" fill="currentColor" stroke="none"/></svg>
+      </span>
+      Summit Peak <b>Roofing</b>
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#services">Services</a>
+      <a href="#proof">Before &amp; After</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="nav-call" href="tel:+15550142800" aria-label="Call Summit Peak Roofing at (555) 014-2800">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="num-txt">(555) 014-2800</span><span aria-hidden="true" class="num-short">Call</span>
+    </a>
+  </div>
+</header>
+
+<main id="main">
+<div class="hero" id="top">
+  <div class="stars" aria-hidden="true"></div>
+
+  <!-- parallax storm layers -->
+  <div class="plx plx-1" data-speed="0.14" aria-hidden="true"><div class="drift">
+    <svg class="cloud" viewBox="0 0 1440 260" preserveAspectRatio="none"><g fill="#16233F"><ellipse cx="180" cy="120" rx="320" ry="90"/><ellipse cx="620" cy="80" rx="380" ry="100"/><ellipse cx="1080" cy="130" rx="360" ry="95"/><ellipse cx="1400" cy="70" rx="300" ry="85"/></g></svg>
+  </div></div>
+  <div class="plx plx-2" data-speed="0.3" aria-hidden="true"><div class="drift-b">
+    <svg class="cloud" viewBox="0 0 1440 260" preserveAspectRatio="none"><g fill="#101B33"><ellipse cx="80" cy="90" rx="300" ry="85"/><ellipse cx="500" cy="140" rx="340" ry="95"/><ellipse cx="950" cy="80" rx="380" ry="100"/><ellipse cx="1350" cy="140" rx="320" ry="90"/></g></svg>
+  </div></div>
+  <div class="plx plx-3" data-speed="0.5" aria-hidden="true"><div class="drift">
+    <svg class="cloud" viewBox="0 0 1440 240" preserveAspectRatio="none"><g fill="#0B1424"><ellipse cx="240" cy="100" rx="340" ry="80"/><ellipse cx="740" cy="60" rx="360" ry="90"/><ellipse cx="1220" cy="110" rx="340" ry="85"/></g></svg>
+  </div></div>
+
+  <div class="flash" id="flash" aria-hidden="true"></div>
+
+  <div class="wrap hero-in">
+    <span class="storm-pill"><span class="dot" aria-hidden="true"></span> Hail season is here — Denver crews on standby 24/7</span>
+    <h1>
+      <span class="line">The storm picked</span>
+      <span class="line">the wrong</span>
+      <span class="line hot">roof.</span>
+    </h1>
+    <p class="lead"><strong>Summit Peak Roofing</strong> is Denver's storm-damage specialist — hail repair, full replacements, inspections and gutters. On your roof fast, documented to the shingle, cleaned up like we were never there.</p>
+    <div class="cta-row">
+      <a class="btn btn-storm" href="tel:+15550142800">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call (555) 014-2800
+      </a>
+      <a class="btn btn-ghost" href="#proof">See a roof reborn ↓</a>
+    </div>
+    <div class="trust">
+      <span class="stars-row" aria-hidden="true">★★★★★</span>
+      <span><strong>5.0</strong> · 214 Google reviews</span>
+      <span class="sep" aria-hidden="true">·</span>
+      <span>Licensed &amp; insured in Colorado</span>
+    </div>
+  </div>
+
+  <!-- mountain + roofline silhouette -->
+  <div class="silhouette" data-speed="0.06" aria-hidden="true">
+    <svg viewBox="0 0 1440 300" preserveAspectRatio="none">
+      <path fill="#0A1122" d="M0,300 L0,170 L130,105 L250,180 L380,95 L540,200 L660,125 L780,190 L900,105 L1030,180 L1150,135 L1270,200 L1360,150 L1440,190 L1440,300 Z"/>
+      <path fill="#050A14" d="M0,300 L0,252 L58,252 L108,208 L158,252 L228,252 L228,232 L236,232 L236,214 L252,214 L252,232 L298,184 L368,232 L368,252 L466,252 L516,218 L566,252 L656,252 L656,228 L738,172 L820,228 L820,252 L938,252 L988,222 L1038,252 L1136,252 L1136,232 L1216,187 L1296,232 L1296,252 L1440,252 L1440,300 Z"/>
+      <g fill="#FFB63C">
+        <rect class="win" x="292" y="216" width="7" height="9" rx="1"/>
+        <rect class="win" x="732" y="206" width="8" height="10" rx="1"/>
+        <rect class="win" x="1210" y="216" width="7" height="9" rx="1"/>
+        <rect class="win" x="510" y="232" width="6" height="8" rx="1"/>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<!-- amber marquee -->
+<div class="marq-tilt" aria-hidden="true">
+  <div class="marq">
+    <div class="marq-track">
+      <ul>
+        <li>Hail damage repair</li><li>Full replacements</li><li>24/7 storm response</li><li>Roof inspections</li><li>Gutters &amp; downspouts</li><li>Insurance documentation</li>
+      </ul>
+      <ul>
+        <li>Hail damage repair</li><li>Full replacements</li><li>24/7 storm response</li><li>Roof inspections</li><li>Gutters &amp; downspouts</li><li>Insurance documentation</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- stats -->
+<div class="stats" aria-label="Track record">
+  <div class="wrap stagger">
+    <div class="stat"><div class="num"><span class="cnt" data-count="214">214</span></div><div class="lbl">Google reviews</div></div>
+    <div class="stat"><div class="num"><span class="cnt" data-count="5.0" data-dec="1">5.0</span><span class="u">★</span></div><div class="lbl">Average rating</div></div>
+    <div class="stat"><div class="num"><span class="cnt" data-count="1900">1,900</span><span class="u">+</span></div><div class="lbl">Roofs restored</div></div>
+    <div class="stat"><div class="num"><span class="cnt" data-count="14">14</span><span class="u">yrs</span></div><div class="lbl">On Denver rooftops</div></div>
+  </div>
+</div>
+
+<!-- services -->
+<section id="services">
+  <span class="ghost-word" aria-hidden="true">STORM</span>
+  <div class="wrap">
+    <span class="kicker">What we do</span>
+    <h2 class="reveal">Built for Colorado <span class="hot">weather</span></h2>
+    <p class="sub reveal">Front Range hail doesn't negotiate — neither do we. Four specialties, one crew that treats your roof like the only thing standing between your family and the sky. Because it is.</p>
+    <div class="grid-svc stagger">
+      <article class="svc tilt">
+        <div class="ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 14a5 5 0 1 0-9.9-1.3A3.8 3.8 0 0 0 8 20h9a3.5 3.5 0 0 0 .5-6z"/><path d="M8 22.5l.01 0M12 23.5l.01 0M16 22.5l.01 0"/></svg></div>
+        <h3>Hail &amp; Storm Repair</h3>
+        <p>Bruised shingles, cracked mats, wind-lifted edges. We find every hit, fix what's fixable, and tell you straight when it isn't.</p>
+        <div class="go" aria-hidden="true">Storm just hit? Call now →</div>
+      </article>
+      <article class="svc tilt">
+        <div class="ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 9.5V21h14V9.5"/><path d="M5 13h14M5 17h14"/></svg></div>
+        <h3>Full Roof Replacement</h3>
+        <p>Tear-off to ridge cap, most homes in a single day. Impact-rated shingles built for the next storm, not just the last one.</p>
+        <div class="go" aria-hidden="true">One-day installs →</div>
+      </article>
+      <article class="svc tilt">
+        <div class="ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/><path d="M8 10.5h5M10.5 8v5"/></svg></div>
+        <h3>Roof Inspections</h3>
+        <p>Drone pass, deck walk, attic check. You get a photo report you keep — whether or not you ever hire us.</p>
+        <div class="go" aria-hidden="true">No-obligation →</div>
+      </article>
+      <article class="svc tilt">
+        <div class="ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h16a4 4 0 0 1 4 4v1h-6"/><path d="M2 6v3a3 3 0 0 0 3 3h9"/><path d="M18 11v7a2 2 0 0 1-2 2"/><path d="M18 21l.01 0"/></svg></div>
+        <h3>Gutters &amp; Downspouts</h3>
+        <p>Seamless gutters sized for Front Range downpours, hung true, pitched right, and guarded against the cottonwoods.</p>
+        <div class="go" aria-hidden="true">Snowmelt-ready →</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- before / after -->
+<section class="proof" id="proof">
+  <span class="ghost-word" aria-hidden="true">PROOF</span>
+  <div class="wrap">
+    <div class="bolt-wrap reveal" id="boltWrap">
+      <svg class="bolt-svg" viewBox="0 0 54 92" aria-hidden="true"><path class="bolt-path" pathLength="1" d="M32 2 L10 46 L24 46 L16 90 L46 38 L30 38 L40 2 Z"/></svg>
+    </div>
+    <span class="kicker">Drag the divider</span>
+    <h2 class="reveal">The proof is <span class="hot">on the roof</span></h2>
+    <p class="sub reveal">One June hailstorm, one Denver home. Drag the handle to see what our crew walked onto — and what they left behind.</p>
+
+    <div class="ba-frame reveal" id="baFrame">
+      <div class="ba-layer ba-under">
+        <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=1600&q=80" alt="After: the same home with a fully replaced, storm-rated shingle roof" draggable="false" onerror="this.parentElement.classList.add('ba-fail');this.remove()">
+      </div>
+      <div class="ba-layer ba-over">
+        <img src="https://images.unsplash.com/photo-1632759145351-1d592919f522?w=1600&q=80" alt="Before: hail-stripped shingles torn back to the decking with a roofer assessing the damage" draggable="false" onerror="this.parentElement.classList.add('ba-fail');this.remove()">
+      </div>
+      <span class="ba-tag ba-tag-b" aria-hidden="true">Before</span>
+      <span class="ba-tag ba-tag-a" aria-hidden="true">After</span>
+      <div class="ba-line" aria-hidden="true"></div>
+      <div class="ba-handle" id="baHandle" role="slider" tabindex="0" aria-label="Compare before and after roof photos. Use arrow keys to move the divider." aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="Divider at 50 percent">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l-5 6 5 6"/><path d="M15 6l5 6-5 6"/></svg>
+      </div>
+    </div>
+    <p class="ba-cap reveal"><b>Left:</b> hail tore the field shingles back to bare decking. <b>Right:</b> full tear-off and replacement with class 4 impact-rated architectural shingles — finished before the next front rolled in.</p>
+  </div>
+</section>
+
+<!-- storm response -->
+<section class="storm-band">
+  <div class="wrap">
+    <span class="kicker">24/7 storm response</span>
+    <h2 class="reveal">When the sirens fade, <span class="hot">call the crew</span></h2>
+    <div class="cols">
+      <div class="reveal">
+        <p class="sub" style="margin-top:0">The hour after a hailstorm is chaos — door-knockers, panic, and a roof you can't see from the ground. Here's what happens when you call us instead:</p>
+        <ul class="check-list stagger">
+          <li><span class="tick" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><strong>Same-day emergency tarping</strong> — we stop the water first and talk paperwork second.</span></li>
+          <li><span class="tick" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><strong>Every hit photographed</strong> — a time-stamped damage report that speaks adjuster fluently.</span></li>
+          <li><span class="tick" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><strong>We meet your adjuster on the roof</strong> — so nothing gets missed and nothing gets invented.</span></li>
+          <li><span class="tick" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><strong>A local crew you can find tomorrow</strong> — Denver-based for 14 years, not a truck that follows storms across state lines.</span></li>
+        </ul>
+        <a class="btn btn-storm" href="tel:+15550142800">Storm damage? Call now</a>
+      </div>
+      <div class="photo-card reveal">
+        <img src="https://images.unsplash.com/photo-1594156596782-656c93e4d504?w=1200&q=80" alt="A dark supercell storm front rolling over a Colorado road" onerror="this.parentElement.classList.add('img-fail');this.remove()">
+        <span class="ph-tag"><span class="zapdot" aria-hidden="true">⚡</span> Front Range, hail season</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- process -->
+<section class="process">
+  <span class="ghost-word" aria-hidden="true">PLAN</span>
+  <div class="wrap">
+    <span class="kicker">How it works</span>
+    <h2 class="reveal">Three steps between you <span class="hot">and a new roof</span></h2>
+    <div class="grid-steps stagger">
+      <article class="step"><div class="n" aria-hidden="true">01</div><h3>Inspect</h3><p>Drone pass over every slope, then boots on shingles and a flashlight in the attic. If your roof is fine, we're the ones who'll tell you so.</p></article>
+      <article class="step"><div class="n" aria-hidden="true">02</div><h3>Document</h3><p>You get a photo-by-photo condition report you keep, adjuster-ready. No mystery clipboard, no pressure on your doorstep.</p></article>
+      <article class="step"><div class="n" aria-hidden="true">03</div><h3>Rebuild</h3><p>Tear-off, ice-and-water shield, impact-rated shingles — most homes done in a day, then a magnetic sweep of your whole yard for nails.</p></article>
+    </div>
+    <div class="crew-strip">
+      <div class="photo-card reveal" style="aspect-ratio:16/9.5">
+        <img src="https://images.unsplash.com/photo-1635424710928-0544e8512eae?w=1200&q=80" alt="Summit Peak crew member in a full safety harness walking a shingle roof" onerror="this.parentElement.classList.add('img-fail');this.remove()">
+        <span class="ph-tag"><span class="zapdot" aria-hidden="true">⚡</span> Harnessed on every pitch</span>
+      </div>
+      <div class="crew-quote reveal">
+        <span class="qmark" aria-hidden="true">&ldquo;</span>
+        <p>We don't leave until the roof is tight, the gutters run clean, and the magnet sweep comes up empty.</p>
+        <div class="who"><b>Crew standard №4</b> — the Summit Peak field book</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- reviews -->
+<section id="reviews">
+  <span class="ghost-word" aria-hidden="true">5.0★</span>
+  <div class="wrap">
+    <span class="kicker">Homeowners talking</span>
+    <h2 class="reveal">5.0 stars across <span class="hot">214 reviews</span></h2>
+    <div class="carousel reveal" id="carousel" aria-label="Customer testimonials">
+      <div class="rev active">
+        <span class="stars-row" aria-hidden="true">★★★★★</span>
+        <p>&ldquo;Golf-ball hail in June. Summit Peak tarped us the same night, documented every hit, and the new roof went on in a single day. The crew ran a magnet over the whole yard — not one nail left behind.&rdquo;</p>
+        <div class="who">Dana K. <span>Washington Park, Denver</span></div>
+      </div>
+      <div class="rev">
+        <span class="stars-row" aria-hidden="true">★★★★★</span>
+        <p>&ldquo;Three roofers told me three different stories. Summit Peak showed me drone photos and explained exactly what the hail did — and didn't do. Zero pressure, total professionals.&rdquo;</p>
+        <div class="who">Marcus B. <span>Highlands Ranch</span></div>
+      </div>
+      <div class="rev">
+        <span class="stars-row" aria-hidden="true">★★★★★</span>
+        <p>&ldquo;The insurance side felt impossible until their inspector walked the roof with our adjuster. The report did the talking. New shingles, new gutters, and the house has never looked better.&rdquo;</p>
+        <div class="who">Priya S. <span>Aurora</span></div>
+      </div>
+      <div class="rev">
+        <span class="stars-row" aria-hidden="true">★★★★★</span>
+        <p>&ldquo;From first call to final sweep: eight days. They boarded the flowerbeds, kept the driveway spotless, and every crew member was unfailingly polite. Our neighbors hired them the next week.&rdquo;</p>
+        <div class="who">Tom &amp; Ellie R. <span>Golden</span></div>
+      </div>
+      <div class="dots" role="group" aria-label="Choose testimonial">
+        <button class="on" aria-label="Show testimonial 1"><span class="d" aria-hidden="true"></span></button>
+        <button aria-label="Show testimonial 2"><span class="d" aria-hidden="true"></span></button>
+        <button aria-label="Show testimonial 3"><span class="d" aria-hidden="true"></span></button>
+        <button aria-label="Show testimonial 4"><span class="d" aria-hidden="true"></span></button>
+      </div>
+    </div>
+    <p class="fict-note">Summit Peak Roofing is a fictional demonstration brand — these testimonials are illustrative.</p>
+  </div>
+</section>
+
+<!-- area -->
+<section id="area" style="padding-top:0">
+  <div class="wrap">
+    <span class="kicker">Where we climb</span>
+    <h2 class="reveal">Serving the <span class="hot">Denver metro</span></h2>
+    <div class="chips stagger">
+      <span class="chip">Denver</span><span class="chip">Aurora</span><span class="chip">Lakewood</span>
+      <span class="chip">Arvada</span><span class="chip">Westminster</span><span class="chip">Thornton</span>
+      <span class="chip">Centennial</span><span class="chip">Highlands Ranch</span><span class="chip">Littleton</span>
+      <span class="chip">Golden</span><span class="chip">Parker</span><span class="chip">Broomfield</span>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-sec" id="faq">
+  <span class="ghost-word" aria-hidden="true">ASK</span>
+  <div class="wrap">
+    <span class="kicker">Good to know</span>
+    <h2 class="reveal">Storm questions, <span class="hot">straight answers</span></h2>
+    <div class="reveal" style="max-width:780px">
+      <div class="qa open">
+        <button class="q" aria-expanded="true" onclick="toggleQA(this)">How do I know if my roof has hail damage?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>From the ground: dented gutters and downspouts, granules piling in splash zones, and soft dark bruises on shingles. From the roof: that's our job. We inspect, photograph every slope, and hand you the evidence — even if the answer is "your roof is fine."</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">Will you work with my insurance company?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>Yes. We document the damage, prepare an adjuster-ready report, and meet your adjuster on the roof so the claim reflects what's actually up there. The decision is always the insurer's — but they'll be deciding with complete information.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">How long does a full replacement take?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>Most single-family homes: one day, tear-off to ridge cap. Steep pitches, multiple layers, or complex rooflines can take two. You'll know the plan — and the weather window — before a single shingle comes off.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">The storm just hit — can you secure my roof tonight?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>That's what the 24/7 line is for. We run emergency tarping and dry-in crews during storm season so water stops getting in tonight, and the permanent fix gets planned in daylight.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">Do you handle gutters too?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>Seamless gutters, downspouts, and guards — usually installed the day after your roof so everything drains the way the roofline intends. Hail-dented gutters are also documented in your inspection report.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- final CTA -->
+<section class="final">
+  <div class="wrap">
+    <div class="panel reveal">
+      <img class="bgimg" src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1600&q=80" alt="" role="presentation" onerror="this.remove()">
+      <div class="veil" aria-hidden="true"></div>
+      <div class="inner">
+        <span class="kicker" style="justify-content:center">Before the next storm</span>
+        <h2>Your roof has a <span class="hot">weakness.</span><br>Let's find it first.</h2>
+        <p class="sub">A no-obligation inspection with a photo report you keep. If your roof is solid, you'll sleep better. If it isn't, you'll know before the sky does.</p>
+        <span class="mag-zone" id="magZone">
+          <a class="btn btn-storm" id="magBtn" href="tel:+15550142800">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Book my roof inspection
+          </a>
+        </span>
+        <p class="tel-alt">Or call us directly: <a href="tel:+15550142800">(555) 014-2800</a> — 24/7 during storm season</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="col">
+        <div class="fname">Summit Peak <b>Roofing</b></div>
+        <p>Hail &amp; storm repair · Full replacements<br>Inspections · Gutters &amp; downspouts</p>
+      </div>
+      <div class="col">
+        <p><a href="tel:+15550142800" aria-label="Call (555) 014-2800">(555) 014-2800</a><br>
+        Denver, Colorado — serving the metro<br>24/7 storm response line</p>
+      </div>
+      <div class="col">
+        <p>★★★★★ 5.0 — 214 reviews<br>Licensed &amp; insured (CO)<br>10-year workmanship warranty</p>
+      </div>
+    </div>
+    <p class="disclaimer"><span class="studio">A concept showcase by MainStreet Web Studio — Summit Peak Roofing is a demonstration brand.</span><br>
+    All company details, reviews, ratings and testimonials on this page are fictional and for portfolio demonstration only. © 2026 MainStreet Web Studio.</p>
+  </div>
+</footer>
+
+<div class="callbar"><a href="tel:+15550142800" aria-label="Call Summit Peak Roofing now at (555) 014-2800">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  Storm damage? Tap to call
+</a></div>
+
+<script>
+(function(){
+"use strict";
+var REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+/* ---- scroll progress + header + parallax ---- */
+var prog = document.getElementById('progress'),
+    hdr = document.getElementById('hdr'),
+    plxEls = [].slice.call(document.querySelectorAll('.plx,.silhouette')),
+    ticking = false;
+function onScroll(){
+  if(ticking) return;
+  ticking = true;
+  requestAnimationFrame(function(){
+    var h = document.documentElement, top = h.scrollTop;
+    prog.style.width = (top / (h.scrollHeight - h.clientHeight) * 100) + '%';
+    hdr.classList.toggle('scrolled', top > 8);
+    if(!REDUCED){
+      for(var i = 0; i < plxEls.length; i++){
+        var s = parseFloat(plxEls[i].getAttribute('data-speed')) || 0;
+        plxEls[i].style.transform = 'translate3d(0,' + (top * s) + 'px,0)';
+      }
+    }
+    ticking = false;
+  });
+}
+addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+/* ---- random lightning flash ---- */
+var flash = document.getElementById('flash');
+function scheduleFlash(){
+  setTimeout(function(){
+    if(!document.hidden){
+      flash.classList.remove('zap');
+      void flash.offsetWidth;
+      flash.classList.add('zap');
+    }
+    scheduleFlash();
+  }, 5500 + Math.random() * 9000);
+}
+if(!REDUCED) scheduleFlash();
+
+/* ---- scroll reveals + bolt draw ---- */
+var io = new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+},{threshold:.15});
+document.querySelectorAll('.reveal,.stagger').forEach(function(el){ io.observe(el); });
+
+var boltWrap = document.getElementById('boltWrap');
+if(boltWrap){
+  var bio = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){ boltWrap.classList.add('drawn'); bio.unobserve(boltWrap); }
+    });
+  },{threshold:.6});
+  bio.observe(boltWrap);
+}
+
+/* ---- animated counters ---- */
+var counters = document.querySelectorAll('.cnt');
+if(!REDUCED && 'IntersectionObserver' in window){
+  var cio = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      cio.unobserve(e.target);
+      var el = e.target,
+          end = parseFloat(el.getAttribute('data-count')),
+          dec = parseInt(el.getAttribute('data-dec') || '0', 10),
+          t0 = performance.now();
+      (function tick(t){
+        var p = Math.min((t - t0) / 1500, 1),
+            v = end * (1 - Math.pow(1 - p, 3));
+        el.textContent = dec ? v.toFixed(dec) : Math.round(v).toLocaleString('en-US');
+        if(p < 1) requestAnimationFrame(tick);
+      })(t0);
+    });
+  },{threshold:.5});
+  counters.forEach(function(el){ cio.observe(el); });
+}
+
+/* ---- before/after slider ---- */
+var frame = document.getElementById('baFrame'),
+    handle = document.getElementById('baHandle');
+if(frame && handle){
+  var pos = 50, dragging = false;
+  function setPos(p){
+    pos = Math.max(0, Math.min(100, p));
+    frame.style.setProperty('--pos', pos + '%');
+    var r = Math.round(pos);
+    handle.setAttribute('aria-valuenow', r);
+    handle.setAttribute('aria-valuetext', 'Divider at ' + r + ' percent');
+    frame.classList.toggle('hide-b', pos < 13);
+    frame.classList.toggle('hide-a', pos > 87);
+  }
+  function posFromEvent(e){
+    var r = frame.getBoundingClientRect();
+    return (e.clientX - r.left) / r.width * 100;
+  }
+  frame.addEventListener('pointerdown', function(e){
+    dragging = true;
+    try{ frame.setPointerCapture(e.pointerId); }catch(_){}
+    setPos(posFromEvent(e));
+  });
+  frame.addEventListener('pointermove', function(e){ if(dragging) setPos(posFromEvent(e)); });
+  frame.addEventListener('pointerup', function(){ dragging = false; });
+  frame.addEventListener('pointercancel', function(){ dragging = false; });
+  handle.addEventListener('keydown', function(e){
+    var step = e.shiftKey ? 10 : 4;
+    if(e.key === 'ArrowLeft'){ setPos(pos - step); e.preventDefault(); }
+    else if(e.key === 'ArrowRight'){ setPos(pos + step); e.preventDefault(); }
+    else if(e.key === 'Home'){ setPos(0); e.preventDefault(); }
+    else if(e.key === 'End'){ setPos(100); e.preventDefault(); }
+  });
+  /* entrance sweep when scrolled into view */
+  if(!REDUCED){
+    setPos(88);
+    var sio = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        sio.unobserve(frame);
+        var t0 = performance.now();
+        (function sweep(t){
+          if(dragging) return;
+          var p = Math.min((t - t0) / 1300, 1);
+          setPos(88 - 38 * (1 - Math.pow(1 - p, 3)));
+          if(p < 1) requestAnimationFrame(sweep);
+        })(t0);
+      });
+    },{threshold:.45});
+    sio.observe(frame);
+  }
+}
+
+/* ---- testimonial carousel ---- */
+var car = document.getElementById('carousel');
+if(car){
+  var revs = [].slice.call(car.querySelectorAll('.rev')),
+      dotBtns = [].slice.call(car.querySelectorAll('.dots button')),
+      cur = 0, timer = null;
+  function showRev(i){
+    revs[cur].classList.remove('active');
+    dotBtns[cur].classList.remove('on');
+    cur = i;
+    revs[cur].classList.add('active');
+    dotBtns[cur].classList.add('on');
+  }
+  function startAuto(){
+    if(REDUCED || timer) return;
+    timer = setInterval(function(){ showRev((cur + 1) % revs.length); }, 6000);
+  }
+  function stopAuto(){ clearInterval(timer); timer = null; }
+  dotBtns.forEach(function(b, i){
+    b.addEventListener('click', function(){ showRev(i); stopAuto(); startAuto(); });
+  });
+  car.addEventListener('mouseenter', stopAuto);
+  car.addEventListener('mouseleave', startAuto);
+  car.addEventListener('focusin', stopAuto);
+  car.addEventListener('focusout', startAuto);
+  startAuto();
+}
+
+/* ---- FAQ accordion ---- */
+window.toggleQA = function(btn){
+  var qa = btn.closest('.qa'),
+      open = qa.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+};
+
+/* ---- tilt cards (hover-capable devices only) ---- */
+if(FINE && !REDUCED){
+  document.querySelectorAll('.tilt').forEach(function(card){
+    card.addEventListener('pointermove', function(e){
+      var r = card.getBoundingClientRect(),
+          px = (e.clientX - r.left) / r.width,
+          py = (e.clientY - r.top) / r.height;
+      card.style.transform = 'perspective(750px) rotateX(' + ((.5 - py) * 7) + 'deg) rotateY(' + ((px - .5) * 9) + 'deg) translateY(-6px)';
+      card.style.setProperty('--gx', (px * 100) + '%');
+      card.style.setProperty('--gy', (py * 100) + '%');
+    });
+    card.addEventListener('pointerleave', function(){ card.style.transform = ''; });
+  });
+}
+
+/* ---- magnetic CTA button ---- */
+var magZone = document.getElementById('magZone'), magBtn = document.getElementById('magBtn');
+if(magZone && magBtn && FINE && !REDUCED){
+  magZone.addEventListener('pointermove', function(e){
+    var r = magZone.getBoundingClientRect(),
+        dx = (e.clientX - (r.left + r.width / 2)) * .28,
+        dy = (e.clientY - (r.top + r.height / 2)) * .28;
+    dx = Math.max(-16, Math.min(16, dx));
+    dy = Math.max(-12, Math.min(12, dy));
+    magBtn.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+  });
+  magZone.addEventListener('pointerleave', function(){ magBtn.style.transform = ''; });
+}
+})();
+</script>
+</body>
+</html>
