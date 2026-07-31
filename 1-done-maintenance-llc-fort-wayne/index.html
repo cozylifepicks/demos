@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1&amp;Done Maintenance LLC — Handyman, Drywall &amp; Roof Repair in Fort Wayne, IN</title>
+<meta name="description" content="Fort Wayne's 4.9-star handyman and home maintenance crew. Drywall and texture repair, roofing fixes, carpentry and honest pricing. Call (260) 372-8388.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0E1B2E; --navy-2:#0A1524; --navy-3:#060E19;
+  --paper:#FFFFFF; --mist:#F1F4F8; --line:#DCE3EC; --muted:#5A6779; --ink:#16233A;
+  --amber:#F5A524; --amber-deep:#D08508; --sky:#2E7DD1;
+  --radius:12px; --shadow:0 18px 42px rgba(14,27,46,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.62;font-size:16.5px}
+h1,h2,h3,.num{font-family:'Sora',sans-serif;letter-spacing:-.025em;line-height:1.08}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
+.dark :focus-visible,header :focus-visible,footer :focus-visible,.callbar :focus-visible{outline-color:var(--amber)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:1.02rem;
+  border-radius:var(--radius);padding:15px 28px;min-height:54px;text-decoration:none;cursor:pointer;border:0;
+  transition:transform .16s ease,background .16s ease,box-shadow .16s ease}
+.btn svg{flex:none}
+.btn-call{background:var(--amber);color:#2A1B02;box-shadow:0 12px 26px rgba(245,165,36,.36)}
+.btn-call:hover{background:#FFB93F;transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.42)}
+.btn-ghost:hover{border-color:#fff;transform:translateY(-2px)}
+
+.demo-note{position:sticky;top:0;z-index:60;background:var(--amber);color:#2A1B02;font-size:.84rem;font-weight:600;text-align:center;padding:9px 52px}
+.demo-note button{position:absolute;right:4px;top:50%;transform:translateY(-50%);background:none;border:none;color:#2A1B02;font-size:1.05rem;cursor:pointer;padding:12px 16px;min-width:44px;min-height:44px}
+
+header{position:sticky;top:0;z-index:50;background:rgba(10,21,36,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:13px 0;gap:12px}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:#fff;font-family:'Sora',sans-serif;font-weight:800;font-size:1.1rem;min-height:44px}
+.logo .mark{width:40px;height:40px;background:var(--amber);border-radius:11px;display:flex;align-items:center;justify-content:center;color:#2A1B02;flex:none;font-weight:800;font-size:.95rem}
+.logo small{display:block;font-family:'Inter',sans-serif;font-weight:500;font-size:.69rem;letter-spacing:.13em;color:#93A3B8;text-transform:uppercase;line-height:1.3}
+.nav-call{display:inline-flex;align-items:center;gap:9px;text-decoration:none;background:var(--amber);color:#2A1B02;
+  font-weight:700;font-size:1rem;padding:11px 20px;min-height:46px;border-radius:var(--radius);transition:background .16s}
+.nav-call:hover{background:#FFB93F}
+
+.hero{background:var(--navy-2);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:
+  radial-gradient(760px 420px at 84% 4%,rgba(46,125,209,.32),transparent 62%),
+  radial-gradient(460px 300px at 8% 96%,rgba(245,165,36,.13),transparent 60%)}
+.hero-in{position:relative;z-index:1;display:grid;gap:46px;padding:66px 0 80px;align-items:center}
+.flag{display:inline-flex;align-items:center;gap:8px;background:rgba(245,165,36,.13);border:1px solid rgba(245,165,36,.4);
+  color:#FFD98F;font-size:.83rem;font-weight:600;letter-spacing:.04em;padding:8px 15px;border-radius:999px}
+.hero h1{font-size:clamp(2.4rem,6.2vw,3.9rem);font-weight:800;margin-top:20px}
+.hero h1 .am{color:var(--amber)}
+.hero p.lead{margin-top:18px;font-size:1.14rem;color:#B3C1D3;max-width:33rem}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+.trust{display:flex;flex-wrap:wrap;align-items:center;gap:10px 26px;margin-top:32px;color:#B3C1D3;font-size:.95rem}
+.trust .stars{color:var(--amber);letter-spacing:2px;font-size:1.05rem}
+.trust strong{color:#fff}
+.hero-media{position:relative;max-width:420px}
+.hero-media .photo{border-radius:var(--radius);box-shadow:0 26px 54px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.1)}
+.hero-media .tag{position:absolute;left:-12px;bottom:-18px;background:#fff;color:var(--ink);border-radius:11px;
+  box-shadow:var(--shadow);padding:12px 16px;display:flex;align-items:center;gap:10px;font-weight:600;font-size:.87rem}
+.hero-media .tag .stars{color:var(--amber);letter-spacing:1px}
+@media(min-width:900px){.hero-in{grid-template-columns:1.14fr .86fr}}
+
+/* proof band */
+.band{background:var(--navy);color:#fff;padding:0}
+.band-in{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2px;background:rgba(255,255,255,.09)}
+.band-in div{background:var(--navy);padding:26px 20px;text-align:center}
+.band-in .n{font-family:'Sora',sans-serif;font-weight:800;font-size:1.9rem;color:var(--amber);line-height:1}
+.band-in .l{font-size:.85rem;color:#93A3B8;margin-top:7px}
+
+section{padding:74px 0}
+.kicker{display:inline-flex;align-items:center;gap:9px;font-weight:700;letter-spacing:.15em;font-size:.78rem;text-transform:uppercase;color:var(--sky)}
+.kicker::before{content:"";width:26px;height:3px;background:var(--amber);border-radius:2px}
+h2{font-size:clamp(1.8rem,4.3vw,2.55rem);font-weight:800;margin-top:14px}
+.sub{color:var(--muted);margin-top:13px;max-width:40rem}
+.dark .sub{color:#B3C1D3}
+
+.grid-services{display:grid;gap:18px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(245px,1fr))}
+.svc{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px;
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.svc:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--sky)}
+.svc .ico{width:52px;height:52px;border-radius:12px;background:var(--mist);display:flex;align-items:center;justify-content:center;color:var(--sky);margin-bottom:16px}
+.svc h3{font-size:1.2rem;font-weight:700}
+.svc p{color:var(--muted);font-size:.95rem;margin-top:8px}
+
+.steps{background:var(--mist)}
+.grid-steps{display:grid;gap:18px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:30px}
+.step .num{font-weight:800;font-size:2.2rem;color:var(--amber-deep);line-height:1}
+.step h3{margin-top:10px;font-size:1.18rem;font-weight:700}
+.step p{color:var(--muted);font-size:.95rem;margin-top:8px}
+
+.rev-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px}
+.score{display:flex;align-items:center;gap:16px;background:var(--navy-2);color:#fff;border-radius:var(--radius);padding:18px 24px}
+.score .big{font-family:'Sora',sans-serif;font-weight:800;font-size:2.5rem;line-height:1;color:var(--amber)}
+.score .stars{color:var(--amber);letter-spacing:2px}
+.score small{display:block;color:#B3C1D3;font-size:.83rem}
+.grid-reviews{display:grid;gap:18px;margin-top:36px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.rev{background:var(--paper);border:1px solid var(--line);border-top:4px solid var(--amber);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;gap:14px}
+.rev .stars{color:var(--amber);letter-spacing:2px}
+.rev p{font-size:.95rem}
+.rev .who{font-weight:700;font-size:.9rem}
+.rev .who span{display:block;font-weight:500;color:var(--muted);font-size:.81rem}
+.all-reviews{margin-top:28px}
+.all-reviews a{display:inline-flex;align-items:center;min-height:44px;color:var(--sky);font-weight:700;text-decoration-thickness:2px}
+
+.area{background:var(--mist)}
+.area-grid{display:grid;gap:28px;margin-top:32px}
+@media(min-width:860px){.area-grid{grid-template-columns:1fr 1fr;align-items:start}}
+.map{border:0;width:100%;height:320px;border-radius:var(--radius);box-shadow:var(--shadow);background:#dfe5ec}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.chip{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:10px 19px;font-size:.92rem;font-weight:600}
+.addr{margin-top:18px;font-size:1rem;color:var(--muted)}
+.addr strong{display:block;color:var(--ink);font-weight:700}
+
+.quote{background:var(--navy-2);color:#fff;position:relative;overflow:hidden}
+.quote::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(640px 340px at 90% 10%,rgba(46,125,209,.3),transparent 62%)}
+.quote .wrap{position:relative;z-index:1}
+.quote .kicker{color:var(--amber)}
+.form{margin-top:32px;display:grid;gap:16px;max-width:560px}
+.form label{font-weight:600;font-size:.92rem;display:block;margin-bottom:6px}
+.form input,.form textarea{width:100%;border:1.5px solid rgba(255,255,255,.24);background:rgba(255,255,255,.06);color:#fff;
+  border-radius:10px;padding:14px;font:inherit;font-size:1rem;min-height:48px}
+.form input::placeholder,.form textarea::placeholder{color:#8B9BB0}
+.form input:focus,.form textarea:focus{outline:3px solid var(--amber);outline-offset:2px;border-color:transparent}
+.form-note{font-size:.86rem;color:#B3C1D3}
+.form .btn-call{justify-self:start}
+
+footer{background:var(--navy-3);color:#96A5B8;padding:46px 0;font-size:.91rem}
+.foot{display:flex;flex-wrap:wrap;gap:18px 40px;justify-content:space-between;align-items:center}
+.foot .fname{font-family:'Sora',sans-serif;font-weight:800;color:#fff;font-size:1.2rem}
+.foot a{display:inline-flex;align-items:center;min-height:44px;color:#fff;font-weight:700;text-decoration:none}
+.disclaimer{margin-top:24px;padding-top:18px;border-top:1px solid #1B2A3E;font-size:.79rem;color:#71829A}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.btn,.svc{transition:none}}
+
+.callbar{display:none}
+@media(max-width:720px){
+  .callbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--amber);justify-content:center}
+  .callbar a{display:flex;align-items:center;gap:10px;color:#2A1B02;text-decoration:none;font-weight:700;font-size:1.08rem;padding:16px;width:100%;justify-content:center;min-height:58px}
+  body{padding-bottom:66px}
+  .hero-media{margin:0 auto}
+  .hero-media .tag{left:6px}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-note" id="demoNote">
+  Demo preview built for 1&amp;Done Maintenance LLC — not their official site.
+  <button aria-label="Dismiss notice" onclick="document.getElementById('demoNote').style.display='none'">&times;</button>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="1&amp;Done Maintenance LLC — home">
+      <span class="mark" aria-hidden="true">1&amp;D</span>
+      <span>1&amp;Done Maintenance<small>Fort Wayne · Indiana</small></span>
+    </a>
+    <a class="nav-call" href="tel:+12603728388">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      (260) 372-8388
+    </a>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero dark">
+  <div class="wrap hero-in">
+    <div>
+      <span class="flag">Handyman &amp; home maintenance · Fort Wayne, IN</span>
+      <h1>One call.<br><span class="am">One visit. Done.</span></h1>
+      <p class="lead">Drywall that disappears into the wall, roof repairs you can't spot afterwards, and the whole punch list handled by people who answer the phone. 154 Fort Wayne neighbours, 4.9 stars.</p>
+      <div class="cta-row">
+        <a class="btn btn-call" href="tel:+12603728388">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call (260) 372-8388
+        </a>
+        <a class="btn btn-ghost" href="#quote">Request a quote</a>
+      </div>
+      <div class="trust">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <span><strong>4.9</strong> · 154 Google reviews</span>
+        <span>Fast response</span>
+        <span>Weekend calls answered</span>
+      </div>
+    </div>
+    <div class="hero-media reveal">
+      <img class="photo" src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmm-R8qaeudYBd-XHcs9ddx6yTnCjqnVQMP1gF2_kpPRkJQ4zE-IPM0OM9bnmCc9X1Gf9OP-UrBjF9V2HdbMZzj55a6swVBVbGQ-qXYrZQDdR8ImgYizZ8eqirQfZ8iYz2aXGU9RA=w408-h544-k-no" alt="Work by 1&amp;Done Maintenance LLC — photo from their Google Business listing" width="408" height="544" onerror="this.parentElement.style.display='none'">
+      <div class="tag"><span class="stars" aria-hidden="true">★★★★★</span> "The finish is impeccable"</div>
+    </div>
+  </div>
+</div>
+
+<div class="band">
+  <div class="wrap band-in">
+    <div><div class="n">4.9★</div><div class="l">Google rating</div></div>
+    <div><div class="n">154</div><div class="l">Google reviews</div></div>
+    <div><div class="n">Same week</div><div class="l">Typical turnaround</div></div>
+    <div><div class="n">Fort Wayne</div><div class="l">Locally owned</div></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <span class="kicker">What we do</span>
+    <h2>Repairs that look like nothing ever happened</h2>
+    <p class="sub">Interior, exterior, big or small — the kind of work where the proof is that you can't tell it was done.</p>
+    <div class="grid-services">
+      <div class="svc reveal">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+        <h3>Drywall &amp; Ceiling Repair</h3>
+        <p>Holes, cracks, water damage — patched and textured to match, including Spanish lace and popcorn ceilings.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 12 10-8 10 8"/><path d="M4 11v9h16v-9"/><path d="M9 20v-6h6v6"/></svg></div>
+        <h3>Roof &amp; Storm Repairs</h3>
+        <p>Missing shingles after a windstorm put back seamlessly — often the same weekend you call.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3>General Handyman Work</h3>
+        <p>Doors, trim, fixtures, mounts and the twenty small jobs that have been waiting since spring.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 16V9"/><path d="M12 16V5"/><path d="M17 16v-4"/></svg></div>
+        <h3>Garage Doors &amp; Openers</h3>
+        <p>Doors that stick, springs that have given up, openers that ignore the remote — diagnosed and fixed.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 12-8.4 8.4a1.5 1.5 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="M21.5 11.5 19.6 9.6A2 2 0 0 1 19 8.2V7l-2.3-2.3a6 6 0 0 0-4.2-1.7L9 3l.9.8A6.2 6.2 0 0 1 12 8.4V10l2 2h1.2a2 2 0 0 1 1.4.6l1.9 1.9"/></svg></div>
+        <h3>Carpentry &amp; Finish Work</h3>
+        <p>Trim, shelving, framing repairs and rot replacement — square, level, and cleanly finished.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>Landlord &amp; Turnover Repairs</h3>
+        <p>Between tenants or before a sale: a single crew for the whole list, invoiced once.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="wrap">
+    <span class="kicker">How it works</span>
+    <h2>Why it's called 1&amp;Done</h2>
+    <div class="grid-steps">
+      <div class="step reveal"><div class="num">01</div><h3>You get a fast answer</h3><p>Call or message with what's wrong. Reviewers keep mentioning the same thing: they respond fast.</p></div>
+      <div class="step reveal"><div class="num">02</div><h3>A great rate, up front</h3><p>You hear the price before the work starts — no surprise line items at the end.</p></div>
+      <div class="step reveal"><div class="num">03</div><h3>Finished in one trip</h3><p>The job gets done the week you call, and the repair blends in like it was never broken.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="rev-head">
+      <div>
+        <span class="kicker">Real Google reviews</span>
+        <h2>154 reviews. 4.9 stars.</h2>
+      </div>
+      <div class="score reveal" role="img" aria-label="Rated 4.9 out of 5 stars across 154 Google reviews">
+        <span class="big" aria-hidden="true">4.9</span>
+        <span aria-hidden="true"><span class="stars">★★★★★</span><small>154 Google reviews</small></span>
+      </div>
+    </div>
+    <div class="grid-reviews">
+      <div class="rev reveal">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <p>"We needed a couple dry wall repairs with a Spanish lace texture and a popcorn ceiling (husband fell through the ceiling 😱). They were extremely professional. Responded fast and came out the same week we contacted them to do the repair. The finish is impeccable."</p>
+        <div class="who">Sara Causer <span>Google review</span></div>
+      </div>
+      <div class="rev reveal">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <p>"We had an insane windstorm yesterday and later in the day noticed some shingles were gone. Reached out and the came out on a Saturday, gave us a great rate and the job looks seamless! Like there wasn't any work that needed done!"</p>
+        <div class="who">Andrew and Erin Harris <span>Google review</span></div>
+      </div>
+      <div class="rev reveal">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <p>"I had a great experience with this handyman! He was very professional, friendly, and easy to communicate with from start to finish. He showed up on time, got straight to work, and completed the job quickly without cutting corners."</p>
+        <div class="who">Sergio Torino <span>Google review</span></div>
+      </div>
+    </div>
+    <p class="all-reviews"><a href="https://www.google.com/maps/search/1%26Done+Maintenance+LLC+Fort+Wayne+IN" rel="noopener">Read all 154 reviews on Google Maps →</a></p>
+  </div>
+</section>
+
+<section class="area" id="area">
+  <div class="wrap">
+    <span class="kicker">Where to find us</span>
+    <h2>Based in Fort Wayne, working across Allen County</h2>
+    <div class="area-grid">
+      <div>
+        <p class="sub">Home base is on 24th Avenue — but most days we're out at a house somewhere across the county.</p>
+        <p class="addr"><strong>1&amp;Done Maintenance LLC</strong>2223 24th Ave, Fort Wayne, IN 46802</p>
+        <div class="chips">
+          <span class="chip">Fort Wayne</span><span class="chip">New Haven</span><span class="chip">Huntertown</span>
+          <span class="chip">Leo-Cedarville</span><span class="chip">Woodburn</span><span class="chip">Grabill</span>
+          <span class="chip">Roanoke</span><span class="chip">Allen County</span>
+        </div>
+      </div>
+      <iframe class="map reveal" title="Map showing 2223 24th Ave, Fort Wayne, Indiana" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=2223%2024th%20Ave%2C%20Fort%20Wayne%2C%20IN%2046802&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="quote dark" id="quote">
+  <div class="wrap">
+    <span class="kicker">Get a quote</span>
+    <h2>Tell us what needs fixing</h2>
+    <p class="sub">Fastest answer: call <a href="tel:+12603728388" style="color:#fff;font-weight:700">(260) 372-8388</a>. Or leave your details and we'll get back to you:</p>
+    <form class="form" onsubmit="event.preventDefault();this.querySelector('.form-note').textContent='This form is activated on your live website — for now, please call (260) 372-8388.';">
+      <div><label for="fname">Your name</label><input id="fname" name="name" placeholder="Jane Smith" autocomplete="name"></div>
+      <div><label for="fphone">Phone number</label><input id="fphone" name="phone" type="tel" placeholder="(260) 555-0100" autocomplete="tel"></div>
+      <div><label for="fjob">What needs doing?</label><textarea id="fjob" name="job" rows="3" placeholder="e.g. Patch and re-texture a ceiling in the back bedroom, plus two loose shingles above the garage"></textarea></div>
+      <button class="btn btn-call" type="submit">Send my request</button>
+      <p class="form-note">Demo preview — the form activates on the live site.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="fname">1&amp;Done Maintenance LLC</div>
+        <div>Handyman · Drywall · Roof repair · Carpentry</div>
+      </div>
+      <div>
+        <a href="tel:+12603728388">(260) 372-8388</a><br>
+        2223 24th Ave, Fort Wayne, IN 46802
+      </div>
+    </div>
+    <p class="disclaimer">This is a demo website preview created for 1&amp;Done Maintenance LLC and is not their official website. Business details (phone, address, rating, reviews) come from their public Google Maps listing. Want this site live, or want it removed? Reply to the email that brought you here.</p>
+  </div>
+</footer>
+
+<div class="callbar"><a href="tel:+12603728388">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  Tap to call — (260) 372-8388</a>
+</div>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

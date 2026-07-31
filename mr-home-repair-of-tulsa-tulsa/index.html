@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mr. Home Repair of Tulsa — Handyman &amp; Home Repair, Tulsa OK</title>
+<meta name="description" content="Rodney at Mr. Home Repair of Tulsa: pergolas, plumbing fixes, assembly, carpentry and honest handyman work. A perfect 5.0 on Google. Call (918) 500-3277.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#241F1A; --ink-2:#1A1613; --ink-3:#12100D;
+  --cream:#FAF6F0; --paper:#FFFFFF; --line:#E5DCD0; --muted:#6B6055;
+  --teal:#0F7B72; --teal-deep:#0A5A54; --clay:#C4633A; --gold:#E0A32E;
+  --radius:4px; --shadow:0 16px 40px rgba(36,31,26,.15);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;font-size:16.5px}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:700;line-height:1.12;letter-spacing:-.015em}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--teal-deep);outline-offset:3px}
+.dark :focus-visible,header :focus-visible,footer :focus-visible,.callbar :focus-visible{outline-color:var(--gold)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:1.02rem;
+  border-radius:var(--radius);padding:15px 28px;min-height:54px;text-decoration:none;cursor:pointer;border:0;
+  transition:transform .16s ease,background .16s ease,box-shadow .16s ease}
+.btn svg{flex:none}
+.btn-call{background:var(--clay);color:#fff;box-shadow:0 12px 26px rgba(196,99,58,.35)}
+.btn-call:hover{background:#A9502C;transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.45)}
+.btn-ghost:hover{border-color:#fff;transform:translateY(-2px)}
+
+.demo-note{position:sticky;top:0;z-index:60;background:var(--gold);color:#2B1F03;font-size:.84rem;font-weight:500;text-align:center;padding:9px 52px}
+.demo-note button{position:absolute;right:4px;top:50%;transform:translateY(-50%);background:none;border:none;color:#2B1F03;font-size:1.05rem;cursor:pointer;padding:12px 16px;min-width:44px;min-height:44px}
+
+header{position:sticky;top:0;z-index:50;background:rgba(26,22,19,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:13px 0;gap:12px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;font-family:'Fraunces',serif;font-weight:700;font-size:1.14rem;min-height:44px}
+.logo .mark{width:40px;height:40px;background:var(--teal);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;color:#fff;flex:none}
+.logo small{display:block;font-family:'DM Sans',sans-serif;font-weight:500;font-size:.68rem;letter-spacing:.16em;color:#A79C90;text-transform:uppercase;line-height:1.4}
+.nav-call{display:inline-flex;align-items:center;gap:9px;text-decoration:none;background:var(--clay);color:#fff;
+  font-weight:700;font-size:1rem;padding:11px 20px;min-height:46px;border-radius:var(--radius);transition:background .16s}
+.nav-call:hover{background:#A9502C}
+
+.hero{background:var(--ink-2);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:
+  radial-gradient(700px 420px at 86% 6%,rgba(15,123,114,.35),transparent 62%),
+  repeating-linear-gradient(90deg,rgba(255,255,255,.018) 0 1px,transparent 1px 46px)}
+.hero-in{position:relative;z-index:1;display:grid;gap:46px;padding:70px 0 84px;align-items:center}
+.flag{display:inline-flex;align-items:center;gap:8px;background:rgba(15,123,114,.2);border:1px solid rgba(15,123,114,.55);
+  color:#8FDDD6;font-size:.83rem;font-weight:500;letter-spacing:.06em;padding:8px 15px;border-radius:var(--radius)}
+.hero h1{font-size:clamp(2.4rem,6.2vw,4rem);margin-top:22px}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero p.lead{margin-top:18px;font-size:1.14rem;color:#C0B6AA;max-width:33rem}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+.trust{display:flex;flex-wrap:wrap;align-items:center;gap:10px 26px;margin-top:32px;color:#C0B6AA;font-size:.95rem}
+.trust .stars{color:var(--gold);letter-spacing:2px;font-size:1.05rem}
+.trust strong{color:#fff}
+.hero-media{position:relative;max-width:440px}
+.hero-media .photo{border-radius:var(--radius);box-shadow:0 24px 52px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.12)}
+.hero-media .tag{position:absolute;left:-12px;bottom:-18px;background:var(--paper);color:var(--ink);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:13px 17px;display:flex;align-items:center;gap:10px;font-weight:500;font-size:.87rem}
+.hero-media .tag .stars{color:var(--gold);letter-spacing:1px}
+@media(min-width:900px){.hero-in{grid-template-columns:1.13fr .87fr}}
+
+section{padding:76px 0}
+.kicker{display:inline-flex;align-items:center;gap:9px;font-weight:700;letter-spacing:.18em;font-size:.76rem;text-transform:uppercase;color:var(--teal)}
+.kicker::before{content:"";width:24px;height:2px;background:var(--clay)}
+h2{font-size:clamp(1.85rem,4.4vw,2.7rem);margin-top:14px}
+.sub{color:var(--muted);margin-top:13px;max-width:40rem}
+.dark .sub{color:#C0B6AA}
+
+.grid-services{display:grid;gap:1px;margin-top:42px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));background:var(--line);border:1px solid var(--line)}
+.svc{background:var(--paper);padding:30px;transition:background .18s ease}
+.svc:hover{background:#FFFDF9}
+.svc .ico{width:48px;height:48px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;color:var(--teal);margin-bottom:16px}
+.svc h3{font-size:1.22rem}
+.svc p{color:var(--muted);font-size:.95rem;margin-top:8px}
+
+.steps{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.grid-steps{display:grid;gap:26px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.step{position:relative;padding-left:60px}
+.step .num{position:absolute;left:0;top:0;width:44px;height:44px;border-radius:50%;background:var(--teal);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:1.15rem}
+.step h3{font-size:1.18rem}
+.step p{color:var(--muted);font-size:.95rem;margin-top:8px}
+
+.rev-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px}
+.score{display:flex;align-items:center;gap:16px;background:var(--ink-2);color:#fff;border-radius:var(--radius);padding:18px 24px}
+.score .big{font-family:'Fraunces',serif;font-weight:700;font-size:2.5rem;line-height:1;color:var(--gold)}
+.score .stars{color:var(--gold);letter-spacing:2px}
+.score small{display:block;color:#C0B6AA;font-size:.83rem}
+.grid-reviews{display:grid;gap:20px;margin-top:36px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.rev{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:30px;display:flex;flex-direction:column;gap:14px}
+.rev .stars{color:var(--gold);letter-spacing:2px}
+.rev p{font-size:.96rem;font-style:italic}
+.rev .who{font-weight:700;font-size:.9rem;font-style:normal}
+.rev .who span{display:block;font-weight:400;color:var(--muted);font-size:.81rem}
+.all-reviews{margin-top:28px}
+.all-reviews a{display:inline-flex;align-items:center;min-height:44px;color:var(--teal-deep);font-weight:700;text-decoration-thickness:2px}
+
+.area{background:var(--paper);border-top:1px solid var(--line)}
+.area-grid{display:grid;gap:28px;margin-top:32px}
+@media(min-width:860px){.area-grid{grid-template-columns:1fr 1fr;align-items:start}}
+.map{border:0;width:100%;height:320px;border-radius:var(--radius);box-shadow:var(--shadow);background:#e8e2d9}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.chip{background:var(--cream);border:1px solid var(--line);border-radius:var(--radius);padding:10px 18px;font-size:.92rem;font-weight:500}
+.addr{margin-top:18px;font-size:1rem;color:var(--muted)}
+.addr strong{display:block;color:var(--ink);font-weight:700}
+
+.quote{background:var(--ink-2);color:#fff;position:relative;overflow:hidden}
+.quote::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(600px 340px at 90% 10%,rgba(15,123,114,.3),transparent 62%)}
+.quote .wrap{position:relative;z-index:1}
+.quote .kicker{color:var(--gold)}
+.quote .kicker::before{background:var(--gold)}
+.form{margin-top:32px;display:grid;gap:16px;max-width:560px}
+.form label{font-weight:500;font-size:.92rem;display:block;margin-bottom:6px}
+.form input,.form textarea{width:100%;border:1.5px solid rgba(255,255,255,.24);background:rgba(255,255,255,.06);color:#fff;
+  border-radius:var(--radius);padding:14px;font:inherit;font-size:1rem;min-height:48px}
+.form input::placeholder,.form textarea::placeholder{color:#9A8F83}
+.form input:focus,.form textarea:focus{outline:3px solid var(--gold);outline-offset:2px;border-color:transparent}
+.form-note{font-size:.86rem;color:#C0B6AA}
+.form .btn-call{justify-self:start}
+
+footer{background:var(--ink-3);color:#A79C90;padding:46px 0;font-size:.91rem}
+.foot{display:flex;flex-wrap:wrap;gap:18px 40px;justify-content:space-between;align-items:center}
+.foot .fname{font-family:'Fraunces',serif;font-weight:700;color:#fff;font-size:1.24rem}
+.foot a{display:inline-flex;align-items:center;min-height:44px;color:#fff;font-weight:700;text-decoration:none}
+.disclaimer{margin-top:24px;padding-top:18px;border-top:1px solid #2A2520;font-size:.79rem;color:#83786D}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.btn,.svc{transition:none}}
+
+.callbar{display:none}
+@media(max-width:720px){
+  .callbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--clay);justify-content:center}
+  .callbar a{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:700;font-size:1.08rem;padding:16px;width:100%;justify-content:center;min-height:58px}
+  body{padding-bottom:66px}
+  .hero-media{margin:0 auto}
+  .hero-media .tag{left:6px}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-note" id="demoNote">
+  Demo preview built for Mr. Home Repair of Tulsa — not their official site.
+  <button aria-label="Dismiss notice" onclick="document.getElementById('demoNote').style.display='none'">&times;</button>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="Mr. Home Repair of Tulsa — home">
+      <span class="mark" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span>
+      <span>Mr. Home Repair<small>of Tulsa</small></span>
+    </a>
+    <a class="nav-call" href="tel:+19185003277">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      (918) 500-3277
+    </a>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero dark">
+  <div class="wrap hero-in">
+    <div>
+      <span class="flag">Handyman &amp; home repair · Tulsa, Oklahoma</span>
+      <h1>Skills you'd expect<br>from someone with<br><em>twice the grey hair.</em></h1>
+      <p class="lead">Rodney takes on the jobs other people quote too high and finish too slow — pergola covers, leaky toilets, assembly, carpentry and repairs. Fourteen Tulsa customers, fourteen five-star reviews.</p>
+      <div class="cta-row">
+        <a class="btn btn-call" href="tel:+19185003277">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call (918) 500-3277
+        </a>
+        <a class="btn btn-ghost" href="#quote">Ask about your project</a>
+      </div>
+      <div class="trust">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <span><strong>5.0</strong> · 14 Google reviews</span>
+        <span>Free measure &amp; quote</span>
+        <span>Fair, competitive pricing</span>
+      </div>
+    </div>
+    <div class="hero-media reveal">
+      <img class="photo" src="https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=owmeQPEN62ip1iNpJUvO5A&cb_client=search.gws-prod.gps&w=408&h=240&yaw=177.49492&pitch=0&thumbfov=100" alt="The Mr. Home Repair of Tulsa location on S Sheridan Rd — image from their Google Business listing" width="408" height="240" onerror="this.parentElement.style.display='none'">
+      <div class="tag"><span class="stars" aria-hidden="true">★★★★★</span> Every review: 5 stars</div>
+    </div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <span class="kicker">What Rodney does</span>
+    <h2>One person, a very long list of skills</h2>
+    <p class="sub">If it's attached to your house and it isn't working right, it's worth a phone call before you hire a specialist.</p>
+    <div class="grid-services">
+      <div class="svc reveal">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V6l9-3 9 3v15"/><path d="M3 11h18"/><path d="M8 21v-6"/><path d="M16 21v-6"/></svg></div>
+        <h3>Decks, Pergolas &amp; Covers</h3>
+        <p>Measured precisely on site, options priced honestly, and installed so the shade lands where you want it.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22a7 7 0 0 0 7-7c0-4-7-12-7-12S5 11 5 15a7 7 0 0 0 7 7z"/></svg></div>
+        <h3>Plumbing Repairs</h3>
+        <p>Leaky toilets, running fills, dripping fixtures — sorted properly rather than tightened and hoped for.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3>General Home Repair</h3>
+        <p>Doors, drywall, trim, hardware and the odd jobs that keep sliding down the weekend list.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18"/><path d="M3.5 9h17"/><path d="M3.5 15h17"/></svg></div>
+        <h3>Assembly &amp; Installation</h3>
+        <p>Basketball goals, playsets, furniture and mounts — built square, anchored right, and left standing straight.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 12-8.4 8.4a1.5 1.5 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="M21.5 11.5 19.6 9.6A2 2 0 0 1 19 8.2V7l-2.3-2.3a6 6 0 0 0-4.2-1.7L9 3l.9.8A6.2 6.2 0 0 1 12 8.4V10l2 2h1.2a2 2 0 0 1 1.4.6l1.9 1.9"/></svg></div>
+        <h3>Carpentry &amp; Woodwork</h3>
+        <p>Shelving, framing fixes, rot repair and trim — clean joints, tight fits, finished properly.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></div>
+        <h3>Punch Lists &amp; Small Projects</h3>
+        <p>Give him the whole list at once — it's cheaper and faster than five different trades on five different days.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="wrap">
+    <span class="kicker">How it goes</span>
+    <h2>No mystery, no pressure</h2>
+    <div class="grid-steps">
+      <div class="step reveal"><div class="num">1</div><h3>Call and describe it</h3><p>You talk to Rodney directly. He'll tell you straight away whether it's something he takes on.</p></div>
+      <div class="step reveal"><div class="num">2</div><h3>He measures and prices it</h3><p>For bigger jobs he comes out, measures precisely, and points you to real options at real prices.</p></div>
+      <div class="step reveal"><div class="num">3</div><h3>The work gets done well</h3><p>Professional, friendly, competitively priced — the three words that show up in review after review.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="rev-head">
+      <div>
+        <span class="kicker">Real Google reviews</span>
+        <h2>Fourteen reviews. Not one below five stars.</h2>
+      </div>
+      <div class="score reveal" role="img" aria-label="Rated 5.0 out of 5 stars across 14 Google reviews">
+        <span class="big" aria-hidden="true">5.0</span>
+        <span aria-hidden="true"><span class="stars">★★★★★</span><small>14 Google reviews</small></span>
+      </div>
+    </div>
+    <div class="grid-reviews">
+      <div class="rev reveal">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <p>"Wish we had found Rodney 25 years ago!!! He may not have been old enough to work back then but the end results rival the most seasoned handymen out there. Incredible skills and extremely fair priced!"</p>
+        <div class="who">Jan Pierce <span>Google review</span></div>
+      </div>
+      <div class="rev reveal">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <p>"We had a wonderful experience with Rodney at Mr. Home Repair of Tulsa! He put together a basketball goal for us and fixed a leaky toilet. he was very professional and friendly and his prices were very competitive. We will definitely use again and have already recommended him to several friends."</p>
+        <div class="who">Daniel Dennison <span>Google review</span></div>
+      </div>
+      <div class="rev reveal">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <p>"Rodney was very helpful and affordable when we wanted to REPLACE THE PERGOLA COVER over our deck. Rodney came to our home to precisely measure the dimensions for the pergola cover."</p>
+        <div class="who">Alan Conger <span>Google review</span></div>
+      </div>
+    </div>
+    <p class="all-reviews"><a href="https://www.google.com/maps/search/Mr.+Home+Repair+of+Tulsa" rel="noopener">Read all 14 reviews on Google Maps →</a></p>
+  </div>
+</section>
+
+<section class="area" id="area">
+  <div class="wrap">
+    <span class="kicker">Service area</span>
+    <h2>South Tulsa and everywhere around it</h2>
+    <div class="area-grid">
+      <div>
+        <p class="sub">The shop is on South Sheridan — most jobs are within a short drive of it.</p>
+        <p class="addr"><strong>Mr. Home Repair of Tulsa</strong>8990 S Sheridan Rd, Suite B, Tulsa, OK 74137</p>
+        <div class="chips">
+          <span class="chip">South Tulsa</span><span class="chip">Midtown</span><span class="chip">Jenks</span>
+          <span class="chip">Bixby</span><span class="chip">Broken Arrow</span><span class="chip">Glenpool</span>
+          <span class="chip">Owasso</span><span class="chip">Sand Springs</span>
+        </div>
+      </div>
+      <iframe class="map reveal" title="Map showing 8990 S Sheridan Rd, Tulsa, Oklahoma" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=8990%20S%20Sheridan%20Rd%2C%20Tulsa%2C%20OK%2074137&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="quote dark" id="quote">
+  <div class="wrap">
+    <span class="kicker">Get in touch</span>
+    <h2>What are you trying to get fixed?</h2>
+    <p class="sub">Fastest answer: call <a href="tel:+19185003277" style="color:#fff;font-weight:700">(918) 500-3277</a>. Or leave your details and Rodney will get back to you:</p>
+    <form class="form" onsubmit="event.preventDefault();this.querySelector('.form-note').textContent='This form is activated on your live website — for now, please call (918) 500-3277.';">
+      <div><label for="fname">Your name</label><input id="fname" name="name" placeholder="Jane Smith" autocomplete="name"></div>
+      <div><label for="fphone">Phone number</label><input id="fphone" name="phone" type="tel" placeholder="(918) 555-0100" autocomplete="tel"></div>
+      <div><label for="fjob">What's the project?</label><textarea id="fjob" name="job" rows="3" placeholder="e.g. Replace the cover on a 12x14 pergola, and a toilet in the guest bath that won't stop running"></textarea></div>
+      <button class="btn btn-call" type="submit">Send my request</button>
+      <p class="form-note">Demo preview — the form activates on the live site.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="fname">Mr. Home Repair of Tulsa</div>
+        <div>Handyman · Carpentry · Plumbing repairs · Assembly</div>
+      </div>
+      <div>
+        <a href="tel:+19185003277">(918) 500-3277</a><br>
+        8990 S Sheridan Rd, Suite B, Tulsa, OK 74137
+      </div>
+    </div>
+    <p class="disclaimer">This is a demo website preview created for Mr. Home Repair of Tulsa and is not their official website. Business details (phone, address, rating, reviews) come from their public Google Maps and directory listings. Want this site live, or want it removed? Reply to the email that brought you here.</p>
+  </div>
+</footer>
+
+<div class="callbar"><a href="tel:+19185003277">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  Tap to call — (918) 500-3277</a>
+</div>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
