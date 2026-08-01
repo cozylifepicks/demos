@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Voltcraft Electric — Licensed Electricians, Columbus OH</title>
+<meta name="description" content="Concept showcase: Voltcraft Electric, a licensed Columbus, Ohio electrical contractor. Panel upgrades, EV chargers, rewiring, lighting, troubleshooting. A demonstration site by MainStreet Web Studio.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%2317181A'/><path d='M28 24 L50 66 L72 24' stroke='%23A98942' stroke-width='9' fill='none'/><path d='M50 66 L50 82' stroke='%23A98942' stroke-width='9'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ================= TOKENS ================= */
+:root{
+  --bg:#17181A; --bg-2:#1B1C1F; --bg-deep:#121316; --card:#1D1E22; --card-2:#191A1D;
+  --panel:#141518;
+  --ink:#EDEAE2; --muted:#A9A59A; --faint:#8A8679;
+  --brass:#A98942; --brass-bright:#C4A25C; --brass-dim:rgba(169,137,66,.12); --brass-line:rgba(169,137,66,.38);
+  --paper:#E9E5DB; --paper-2:#E2DDD1; --paper-ink:#26241E; --paper-muted:#5B564A; --paper-brass:#755B25; --paper-line:rgba(38,36,30,.18);
+  --line:rgba(237,234,226,.08); --line-strong:rgba(237,234,226,.17);
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --grot:'Archivo',system-ui,sans-serif;
+  --ease:cubic-bezier(.22,.72,.18,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{font-family:var(--grot);background:var(--bg);color:var(--ink);line-height:1.68;font-size:16.5px;overflow-x:clip;
+  -webkit-font-smoothing:antialiased}
+@supports not (overflow:clip){html,body{overflow-x:hidden}}
+img{max-width:100%;display:block}
+a{color:inherit}
+::selection{background:var(--brass);color:#17130A}
+h1,h2{font-weight:800;letter-spacing:-.015em;line-height:1.02;text-transform:uppercase}
+h3{font-weight:700;letter-spacing:-.005em}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--brass);color:#17130A;font-weight:700;padding:14px 22px;z-index:300;text-decoration:none}
+.skip:focus{left:0}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--brass-bright);outline-offset:3px;border-radius:2px}
+
+/* fine engineering grid on the base */
+.gridfield{position:relative}
+.gridfield::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(rgba(237,234,226,.028) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(237,234,226,.028) 1px,transparent 1px);
+  background-size:56px 56px}
+
+/* ================= TYPE UTILITIES ================= */
+.spec{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--brass)}
+.spec .idx{color:var(--faint)}
+.speclong{display:flex;align-items:center;gap:14px}
+.speclong::after{content:"";height:1px;flex:1;max-width:120px;background:var(--brass-line)}
+h2{font-size:clamp(1.95rem,4.8vw,3.1rem);margin-top:16px;color:var(--ink)}
+h2 .b{color:var(--brass-bright)}
+.sub{color:var(--muted);margin-top:16px;max-width:41rem;font-size:1.01rem}
+section{padding:100px 0;position:relative}
+
+/* ================= BUTTONS ================= */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--grot);font-weight:700;
+  font-size:.98rem;letter-spacing:.01em;text-decoration:none;cursor:pointer;border:none;min-height:54px;padding:15px 28px;
+  border-radius:3px;position:relative;transition:transform .22s var(--ease),box-shadow .22s,background .22s,border-color .22s,color .22s}
+.btn-primary{background:var(--brass);color:#17130A}
+.btn-primary:hover{background:var(--brass-bright);transform:translateY(-2px);box-shadow:0 14px 34px rgba(169,137,66,.28)}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line-strong)}
+.btn-ghost:hover{border-color:var(--brass);color:var(--brass-bright);transform:translateY(-2px)}
+.btn .tick{position:absolute;width:7px;height:7px;border-color:var(--brass-bright);border-style:solid;opacity:0;transition:opacity .2s}
+.btn-primary .tick{border-color:#17130A}
+.btn .tick.tl{top:3px;left:3px;border-width:1px 0 0 1px}
+.btn .tick.br{bottom:3px;right:3px;border-width:0 1px 1px 0}
+.btn:hover .tick{opacity:.85}
+
+/* ================= PROGRESS / HEADER ================= */
+#progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:140;background:var(--brass-bright)}
+header{position:sticky;top:0;z-index:120;background:rgba(23,24,26,.82);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);transition:background .3s,box-shadow .3s}
+header.scrolled{background:rgba(18,19,22,.96);box-shadow:0 12px 34px rgba(8,9,10,.5)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:18px;padding-bottom:18px;transition:padding .3s var(--ease)}
+header.scrolled .nav{padding-top:10px;padding-bottom:10px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo .mark{width:38px;height:38px;flex:none;border:1px solid var(--brass-line);border-radius:3px;display:grid;place-items:center;color:var(--brass);
+  transition:background .25s,color .25s}
+.logo:hover .mark{background:var(--brass);color:#17130A}
+.logo .wordmark{display:flex;flex-direction:column;line-height:1.05}
+.logo .word{font-weight:800;letter-spacing:.06em;font-size:1.02rem;text-transform:uppercase}
+.logo .tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.34em;color:var(--muted);text-transform:uppercase}
+.nav-links{display:none;gap:30px;font-family:var(--mono);font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.nav-links a{text-decoration:none;padding:10px 0;position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:5px;height:1px;background:var(--brass-bright);transition:right .28s var(--ease)}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{right:0}
+@media(min-width:940px){.nav-links{display:flex}}
+.nav-call{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-family:var(--mono);font-weight:600;font-size:.82rem;
+  letter-spacing:.06em;color:var(--brass-bright);border:1px solid var(--brass-line);padding:11px 18px;min-height:44px;border-radius:3px;
+  transition:background .22s,color .22s,transform .22s}
+.nav-call:hover{background:var(--brass);color:#17130A;transform:translateY(-1px)}
+.nav-call .num-short{display:none}
+
+/* ================= HERO ================= */
+.hero{position:relative;overflow:clip;border-bottom:1px solid var(--line);background:
+  radial-gradient(900px 520px at 82% -10%,rgba(169,137,66,.07),transparent 60%),var(--bg)}
+.hero-grid{position:relative;z-index:2;display:grid;gap:56px;padding-top:86px;padding-bottom:70px;align-items:center}
+@media(min-width:980px){.hero-grid{grid-template-columns:1.06fr .94fr;gap:48px;padding-top:110px;padding-bottom:92px}}
+.hero .spec{opacity:0;transform:translateY(18px);animation:hrise .7s var(--ease) .05s forwards}
+.hero h1{margin-top:22px;font-size:clamp(2.55rem,8.2vw,4.9rem);color:var(--ink)}
+.hero h1 .line{display:block;opacity:0;transform:translateY(30px);animation:hrise .8s var(--ease) forwards}
+.hero h1 .line:nth-child(1){animation-delay:.12s}
+.hero h1 .line:nth-child(2){animation-delay:.24s}
+.hero h1 .line:nth-child(3){animation-delay:.36s}
+.hero h1 .b{color:var(--brass-bright)}
+@keyframes hrise{to{opacity:1;transform:none}}
+.hero .lead{margin-top:24px;max-width:33rem;color:var(--muted);font-size:1.06rem;opacity:0;animation:hrise .8s var(--ease) .5s forwards}
+.hero .lead strong{color:var(--ink);font-weight:600}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;opacity:0;animation:hrise .8s var(--ease) .62s forwards}
+.trust{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin-top:30px;font-family:var(--mono);font-size:.78rem;
+  letter-spacing:.05em;color:var(--muted);opacity:0;animation:hrise .8s var(--ease) .74s forwards}
+.trust .stars{color:var(--brass-bright);letter-spacing:2px}
+.trust strong{color:var(--ink);font-weight:600}
+.trust .sep{color:var(--faint)}
+
+/* single-line diagram plate */
+.diagram-plate{position:relative;border:1px solid var(--line-strong);border-radius:4px;background:var(--card-2);
+  padding:26px 22px 18px;opacity:0;animation:hrise .9s var(--ease) .4s forwards}
+.diagram-plate::before,.diagram-plate::after{content:"";position:absolute;width:14px;height:14px;border-style:solid;border-color:var(--brass)}
+.diagram-plate::before{top:-1px;left:-1px;border-width:2px 0 0 2px}
+.diagram-plate::after{bottom:-1px;right:-1px;border-width:0 2px 2px 0}
+.diagram-plate .plate-head{display:flex;justify-content:space-between;gap:10px;font-family:var(--mono);font-size:.66rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:8px}
+.diagram-plate .plate-head b{color:var(--brass);font-weight:500}
+.sld{width:100%;height:auto;display:block}
+.sld .wire{fill:none;stroke:var(--ink);stroke-width:1.4;opacity:.85}
+.sld .wire.bus{stroke-width:2.6}
+.sld .wire.hot{stroke:var(--brass-bright)}
+.sld .sym{fill:none;stroke:var(--brass);stroke-width:1.4}
+.sld .node{fill:var(--brass-bright);stroke:none}
+.sld text{font-family:var(--mono);font-size:8.4px;letter-spacing:.08em;fill:var(--faint);text-transform:uppercase}
+.sld .lbl-b{fill:var(--brass)}
+.js .sld [pathLength]{stroke-dasharray:1;stroke-dashoffset:1}
+.js .sld.drawn [pathLength]{transition:stroke-dashoffset 1.1s var(--ease);stroke-dashoffset:0}
+.js .sld.drawn .d2[pathLength]{transition-delay:.35s}
+.js .sld.drawn .d3[pathLength]{transition-delay:.7s}
+.js .sld.drawn .d4[pathLength]{transition-delay:1.05s}
+.js .sld.drawn .d5[pathLength]{transition-delay:1.4s}
+.js .sld .node,.js .sld text{opacity:0;transition:opacity .6s ease 1.7s}
+.js .sld.drawn .node,.js .sld.drawn text{opacity:1}
+.sld .node{opacity:1}
+
+/* hero coordinate readout */
+.coords{position:absolute;right:26px;bottom:18px;z-index:3;font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;
+  color:var(--faint);display:none;pointer-events:none;text-transform:uppercase}
+@media(min-width:980px){.js .coords{display:block}}
+
+/* title block strip */
+.titleblock{border-top:1px solid var(--line);background:var(--bg-deep)}
+.titleblock .cells{display:flex;flex-wrap:wrap}
+.titleblock .cell{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);
+  padding:12px 18px;border-right:1px solid var(--line);flex:1 1 auto;white-space:nowrap}
+.titleblock .cell b{color:var(--muted);font-weight:500}
+.titleblock .cell:first-child{padding-left:0}
+
+/* ================= DATA STRIP ================= */
+.datastrip{border-bottom:1px solid var(--line);background:var(--bg-2);overflow:clip;padding:14px 0}
+.ds-track{display:flex;width:max-content;animation:ds 46s linear infinite}
+.ds-track ul{display:flex;list-style:none;align-items:center}
+.ds-track li{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);white-space:nowrap;display:flex;align-items:center}
+.ds-track li::after{content:"⌁";margin:0 26px;color:var(--brass);letter-spacing:0}
+@keyframes ds{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ================= STATS ================= */
+.stats{padding:78px 0 0}
+.stats .row{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--line-strong);border-radius:4px;overflow:hidden;background:var(--card-2)}
+@media(min-width:820px){.stats .row{grid-template-columns:repeat(4,1fr)}}
+.stat{padding:32px 26px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);position:relative}
+.stat::before{content:"";position:absolute;top:10px;left:10px;width:8px;height:8px;border-top:1px solid var(--brass-line);border-left:1px solid var(--brass-line)}
+.stat .num{font-weight:800;font-size:clamp(2rem,4.4vw,2.9rem);line-height:1;color:var(--ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stat .num .u{color:var(--brass-bright);font-weight:700}
+.stat .lbl{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:12px}
+
+/* ================= WIRING DIVIDER ================= */
+.divider{display:block;margin:0 auto;padding:0;max-width:1180px}
+.divider svg{display:block;width:100%;height:44px;overflow:visible}
+.divider .dw{fill:none;stroke:var(--line-strong);stroke-width:1.3}
+.divider .dw.comp{stroke:var(--brass)}
+.divider .dnode{fill:var(--brass)}
+.js .divider [pathLength]{stroke-dasharray:1;stroke-dashoffset:1}
+.js .divider.drawn [pathLength]{transition:stroke-dashoffset 1.4s var(--ease);stroke-dashoffset:0}
+.js .divider.drawn .comp[pathLength]{transition-delay:.5s;transition-duration:.9s}
+.js .divider .dnode{opacity:0;transition:opacity .5s ease 1.2s}
+.js .divider.drawn .dnode{opacity:1}
+
+/* ================= SERVICES ================= */
+.grid-svc{display:grid;gap:16px;margin-top:48px;grid-template-columns:1fr}
+@media(min-width:700px){.grid-svc{grid-template-columns:1fr 1fr}}
+@media(min-width:1020px){.grid-svc{grid-template-columns:1fr 1fr 1fr}}
+.svc{background:var(--card-2);border:1px solid var(--line);border-radius:4px;padding:28px 26px;position:relative;
+  transition:transform .28s var(--ease),border-color .28s,background .28s}
+.svc:hover{transform:translateY(-5px);border-color:var(--line-strong);background:var(--card)}
+.svc .corner{position:absolute;width:12px;height:12px;border-style:solid;border-color:var(--brass);opacity:0;transition:opacity .25s}
+.svc .corner.tl{top:-1px;left:-1px;border-width:2px 0 0 2px}
+.svc .corner.br{bottom:-1px;right:-1px;border-width:0 2px 2px 0}
+.svc:hover .corner{opacity:1}
+.svc .fig{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;color:var(--faint);text-transform:uppercase}
+.svc .ico{width:52px;height:52px;margin:20px 0 16px;border:1px solid var(--line);border-radius:3px;display:grid;place-items:center;
+  color:var(--muted);transition:color .25s,border-color .25s}
+.svc:hover .ico{color:var(--brass-bright);border-color:var(--brass-line)}
+.svc .ico svg{display:block}
+.js .svc .ico path[pathLength],.js .svc .ico circle[pathLength],.js .svc .ico rect[pathLength]{stroke-dasharray:1;stroke-dashoffset:1}
+.js .stagger.in .svc .ico path[pathLength],.js .stagger.in .svc .ico circle[pathLength],.js .stagger.in .svc .ico rect[pathLength]{
+  transition:stroke-dashoffset 1s var(--ease) .35s;stroke-dashoffset:0}
+.svc h3{font-size:1.16rem;color:var(--ink)}
+.svc p{color:var(--muted);font-size:.93rem;margin-top:10px}
+.svc .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+.svc .tags span{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);
+  border:1px solid var(--brass-line);border-radius:2px;padding:4px 9px}
+
+/* ================= DIAGNOSTIC WIDGET ================= */
+.diag{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.diag-grid{display:grid;gap:26px;margin-top:48px}
+@media(min-width:960px){.diag-grid{grid-template-columns:.9fr 1.1fr;gap:34px;align-items:stretch}}
+/* breaker panel */
+.bpanel{border:1px solid var(--line-strong);border-radius:5px;background:linear-gradient(178deg,#212226,#1B1C1F);position:relative;padding:20px}
+.bpanel::before,.bpanel::after,.bpanel .screw3,.bpanel .screw4{content:"";position:absolute;width:7px;height:7px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#3A3B40,#232428 70%);box-shadow:inset 0 0 0 1px rgba(0,0,0,.55)}
+.bpanel::before{top:9px;left:9px}
+.bpanel::after{top:9px;right:9px}
+.bpanel .screw3{bottom:9px;left:9px}
+.bpanel .screw4{bottom:9px;right:9px}
+.bpanel .phead{display:flex;justify-content:space-between;align-items:center;gap:10px;font-family:var(--mono);font-size:.66rem;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);padding:2px 4px 14px}
+.bpanel .phead .live{display:inline-flex;align-items:center;gap:7px;color:var(--brass-bright)}
+.bpanel .phead .live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--brass-bright);animation:blink 2.2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.breakers{list-style:none;margin-top:6px}
+.breaker{width:100%;display:flex;align-items:center;gap:16px;background:none;border:none;border-bottom:1px solid var(--line);
+  padding:15px 6px;cursor:pointer;font:inherit;color:var(--muted);text-align:left;min-height:56px;transition:background .2s,color .2s}
+.breakers li:last-child .breaker{border-bottom:none}
+.breaker:hover{background:rgba(237,234,226,.03);color:var(--ink)}
+.breaker .sw{flex:none;width:40px;height:20px;border:1px solid var(--line-strong);border-radius:3px;position:relative;background:var(--bg-deep);transition:border-color .25s}
+.breaker .sw::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:14px;border-radius:2px;background:#3B3C42;transition:transform .25s var(--ease),background .25s}
+.breaker[aria-selected="true"]{color:var(--ink)}
+.breaker[aria-selected="true"] .sw{border-color:var(--brass)}
+.breaker[aria-selected="true"] .sw::after{transform:translateX(18px);background:var(--brass)}
+.breaker .bid{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;color:var(--faint);flex:none;width:38px}
+.breaker[aria-selected="true"] .bid{color:var(--brass-bright)}
+.breaker .bname{font-weight:600;font-size:.95rem;flex:1}
+.breaker .bamp{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;color:var(--faint)}
+/* readout */
+.readout{border:1px solid var(--line-strong);border-radius:5px;background:var(--panel);padding:26px 26px 24px;position:relative;overflow:clip;display:flex;flex-direction:column}
+.readout::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--brass-bright);transform:scaleX(0);transform-origin:left}
+.readout.pulse::before{animation:sweep 1s var(--ease) forwards}
+@keyframes sweep{to{transform:scaleX(1)}}
+.readout .rstatus{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-bright);min-height:1.4em}
+.readout .rstatus .cur{display:inline-block;width:.55em;height:1em;background:var(--brass-bright);vertical-align:text-bottom;margin-left:2px;animation:blink 1s steps(1) infinite}
+.readout h3{font-size:clamp(1.35rem,2.6vw,1.7rem);margin-top:14px;color:var(--ink);text-transform:uppercase;letter-spacing:.01em}
+.readout .rdesc{color:var(--muted);font-size:.95rem;margin-top:12px}
+.readout .rfields{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden;margin-top:22px}
+.readout .rf{background:var(--panel);padding:12px 14px}
+.readout .rf .k{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+.readout .rf .v{font-family:var(--mono);font-size:.8rem;color:var(--ink);margin-top:4px;letter-spacing:.04em}
+.readout .loadrow{margin-top:22px}
+.readout .loadrow .k{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+.readout .loadrow .k .pct{color:var(--brass-bright)}
+.readout .bar{height:6px;border:1px solid var(--line-strong);border-radius:2px;margin-top:8px;overflow:hidden;background:var(--bg-deep)}
+.readout .bar i{display:block;height:100%;width:0;background:repeating-linear-gradient(115deg,var(--brass) 0 7px,rgba(169,137,66,.4) 7px 12px);transition:width .9s var(--ease) .15s}
+.readout .rcta{margin-top:auto;padding-top:26px}
+.readout .rcta a{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--brass-bright);text-decoration:none;border-bottom:1px solid var(--brass-line);padding-bottom:4px;transition:color .2s,border-color .2s}
+.readout .rcta a:hover{color:var(--ink);border-color:var(--ink)}
+.diag-note{margin-top:18px;font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+
+/* ================= METHOD (PAPER) ================= */
+.method{background:var(--paper);color:var(--paper-ink);position:relative}
+.method::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(38,36,30,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(38,36,30,.05) 1px,transparent 1px);
+  background-size:56px 56px}
+.method .wrap{position:relative}
+.method .spec{color:var(--paper-brass)}
+.method .spec .idx{color:var(--paper-muted)}
+.method .speclong::after{background:rgba(117,91,37,.5)}
+.method h2{color:var(--paper-ink)}
+.method h2 .b{color:var(--paper-brass)}
+.method .sub{color:var(--paper-muted)}
+.steps{display:grid;gap:0;margin-top:54px;border:1px solid var(--paper-line);background:var(--paper-2);border-radius:4px;overflow:hidden}
+@media(min-width:860px){.steps{grid-template-columns:repeat(4,1fr)}}
+.step{padding:30px 26px 34px;border-bottom:1px solid var(--paper-line);position:relative;background:var(--paper);transition:background .25s}
+@media(min-width:860px){.step{border-bottom:none;border-right:1px solid var(--paper-line)}.step:last-child{border-right:none}}
+.step:last-child{border-bottom:none}
+.step:hover{background:var(--paper-2)}
+.step .n{font-family:var(--mono);font-weight:600;font-size:.72rem;letter-spacing:.2em;color:var(--paper-brass)}
+.step .bign{font-weight:800;font-size:3rem;line-height:1;margin-top:14px;color:transparent;-webkit-text-stroke:1.3px rgba(38,36,30,.42);letter-spacing:-.02em}
+.step h3{margin-top:14px;font-size:1.08rem;color:var(--paper-ink);text-transform:uppercase;letter-spacing:.02em}
+.step p{color:var(--paper-muted);font-size:.92rem;margin-top:10px}
+.step .anno{margin-top:18px;font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-brass)}
+.dimline{display:flex;align-items:center;gap:0;margin-top:26px;color:var(--paper-muted);font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase}
+.dimline::before,.dimline::after{content:"";flex:1;height:1px;background:rgba(38,36,30,.3)}
+.dimline span{padding:0 16px}
+.dimline .cap{border-left:1px solid rgba(38,36,30,.3);border-right:1px solid rgba(38,36,30,.3);height:9px;width:0}
+
+/* ================= FIELD WORK ================= */
+.field .cols{display:grid;gap:34px;margin-top:48px;align-items:center}
+@media(min-width:960px){.field .cols{grid-template-columns:1.02fr .98fr;gap:56px}}
+.plate{position:relative;border:1px solid var(--line-strong);border-radius:4px;overflow:hidden;background:var(--card-2)}
+.plate::before{content:"";position:absolute;top:-1px;left:-1px;width:14px;height:14px;border-top:2px solid var(--brass);border-left:2px solid var(--brass);z-index:2}
+.plate img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/4.4;transition:transform .7s var(--ease),filter .7s}
+@media(min-width:960px){.plate img{aspect-ratio:4/4.05}}
+.plate:hover img{transform:scale(1.035)}
+.plate .pcap{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:10px;background:rgba(18,19,22,.9);
+  border-top:1px solid var(--line-strong);padding:11px 16px;font-family:var(--mono);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.plate .pcap b{color:var(--brass);font-weight:500}
+.plate.img-fail{aspect-ratio:4/4.4;background:
+  radial-gradient(340px 220px at 30% 25%,rgba(169,137,66,.13),transparent 70%),linear-gradient(165deg,#222327,#17181A)}
+.plate.small img{aspect-ratio:16/10}
+.plate.small.img-fail{aspect-ratio:16/10}
+.checklist{list-style:none;margin-top:28px;display:grid;gap:15px}
+.checklist li{display:flex;gap:15px;align-items:flex-start;color:var(--muted);font-size:.97rem}
+.checklist li strong{color:var(--ink);font-weight:600}
+.checklist .ck{flex:none;width:26px;height:26px;margin-top:3px;border:1px solid var(--brass-line);border-radius:2px;display:grid;place-items:center;color:var(--brass-bright)}
+.field .btn{margin-top:32px}
+.field .stackplates{display:grid;gap:16px}
+
+/* ================= REVIEWS ================= */
+.reviews .carousel{position:relative;margin-top:48px;max-width:820px}
+.rev{display:none;flex-direction:column;gap:20px;border:1px solid var(--line);border-left:2px solid var(--brass);border-radius:4px;
+  background:var(--card-2);padding:36px 32px}
+.rev.active{display:flex;animation:revin .55s var(--ease)}
+@keyframes revin{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.rev .stars{color:var(--brass-bright);letter-spacing:3px;font-size:.95rem}
+.rev blockquote{font-size:clamp(1.08rem,2.2vw,1.3rem);line-height:1.55;color:var(--ink);font-weight:500;letter-spacing:-.005em}
+.rev .who{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brass)}
+.rev .who span{color:var(--faint)}
+.dots{display:flex;gap:2px;margin-top:12px}
+.dots button{width:44px;height:44px;border:none;background:none;cursor:pointer;display:grid;place-items:center;padding:0}
+.dots button .d{width:16px;height:3px;border-radius:1px;background:var(--line-strong);transition:background .25s,width .25s}
+.dots button:hover .d{background:var(--muted)}
+.dots button.on .d{background:var(--brass-bright);width:26px}
+.fict-note{margin-top:16px;font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+
+/* ================= AREA ================= */
+.area{padding-top:0}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px;max-width:880px}
+.chip{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  border:1px solid var(--line);border-radius:2px;padding:9px 16px;cursor:default;transition:color .2s,border-color .2s,transform .2s}
+.chip:hover{color:var(--brass-bright);border-color:var(--brass-line);transform:translateY(-2px)}
+
+/* ================= FAQ ================= */
+.faq{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.qa{border:1px solid var(--line);border-radius:4px;background:var(--card-2);margin-top:12px;transition:border-color .25s}
+.qa.open{border-color:var(--brass-line)}
+.qa .q{width:100%;text-align:left;background:none;border:none;font:inherit;color:var(--ink);font-weight:600;font-size:1rem;
+  padding:21px 22px;min-height:44px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:18px}
+.qa .q .qn{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;color:var(--faint);margin-right:4px;flex:none}
+.qa.open .q .qn{color:var(--brass-bright)}
+.qa .q .qt{flex:1}
+.qa .ind{flex:none;width:22px;height:22px;position:relative}
+.qa .ind::before,.qa .ind::after{content:"";position:absolute;top:50%;left:50%;background:var(--brass);transition:transform .3s var(--ease)}
+.qa .ind::before{width:14px;height:1.6px;transform:translate(-50%,-50%)}
+.qa .ind::after{width:1.6px;height:14px;transform:translate(-50%,-50%)}
+.qa.open .ind::after{transform:translate(-50%,-50%) rotate(90deg)}
+.qa .a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease);color:var(--muted);font-size:.95rem}
+.qa.open .a{max-height:320px}
+.qa .a p{padding:0 22px 22px;max-width:46rem}
+.faq-inner{max-width:800px}
+
+/* ================= FINAL CTA ================= */
+.final{padding:110px 0}
+.final .panelbox{position:relative;border:1px solid var(--line-strong);border-radius:6px;background:
+  radial-gradient(680px 340px at 50% -10%,rgba(169,137,66,.1),transparent 65%),var(--card-2);
+  padding:78px 26px;text-align:center;overflow:clip}
+.final .panelbox::before,.final .panelbox::after{content:"";position:absolute;width:18px;height:18px;border-style:solid;border-color:var(--brass)}
+.final .panelbox::before{top:-1px;left:-1px;border-width:2px 0 0 2px}
+.final .panelbox::after{bottom:-1px;right:-1px;border-width:0 2px 2px 0}
+.final .inner{position:relative;z-index:2;max-width:44rem;margin:0 auto}
+.final .speclong{justify-content:center}
+.final .speclong::after{display:none}
+.final h2{font-size:clamp(2.1rem,5.6vw,3.4rem)}
+.final .sub{margin-left:auto;margin-right:auto}
+.final .btn{margin-top:36px}
+.final .tel-alt{margin-top:20px;font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;color:var(--muted)}
+.final .tel-alt a{color:var(--brass-bright);text-decoration:none;border-bottom:1px solid var(--brass-line)}
+.final .tel-alt a:hover{color:var(--ink);border-color:var(--ink)}
+.final .trace{position:absolute;inset:auto 0 0 0;height:90px;opacity:.5;pointer-events:none}
+.final .trace svg{width:100%;height:100%}
+.final .trace .tw{fill:none;stroke:var(--brass);stroke-width:1.1;opacity:.55}
+.js .final .trace [pathLength]{stroke-dasharray:1;stroke-dashoffset:1}
+.js .final .trace.drawn [pathLength]{transition:stroke-dashoffset 1.6s var(--ease) .2s;stroke-dashoffset:0}
+
+/* ================= FOOTER ================= */
+footer{background:var(--bg-deep);border-top:1px solid var(--line);padding:56px 0 50px;color:var(--muted);font-size:.92rem}
+.foot{display:flex;flex-wrap:wrap;gap:30px 54px;justify-content:space-between}
+.foot .fname{font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);font-size:1.05rem}
+.foot .fname i{font-style:normal;color:var(--brass-bright)}
+.foot .fsub{font-family:var(--mono);font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--faint);margin-top:4px}
+.foot a{color:var(--ink);font-weight:600;text-decoration:none}
+.foot a:hover{color:var(--brass-bright)}
+.foot .col p{margin-top:10px;line-height:1.8}
+.foot .mono{font-family:var(--mono);font-size:.78rem;letter-spacing:.05em}
+.disclaimer{margin-top:34px;padding-top:24px;border-top:1px solid var(--line);font-size:.8rem;color:var(--faint);line-height:1.75}
+.disclaimer .studio{color:var(--muted)}
+
+/* ================= REVEALS ================= */
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s var(--ease)}
+.js .reveal.in{opacity:1;transform:none}
+.js .stagger>*{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s var(--ease)}
+.js .stagger.in>*{opacity:1;transform:none}
+.js .stagger.in>*:nth-child(2){transition-delay:.09s}
+.js .stagger.in>*:nth-child(3){transition-delay:.18s}
+.js .stagger.in>*:nth-child(4){transition-delay:.27s}
+.js .stagger.in>*:nth-child(5){transition-delay:.36s}
+.js .stagger.in>*:nth-child(6){transition-delay:.45s}
+.js .stagger.in>*:nth-child(7){transition-delay:.52s}
+.js .stagger.in>*:nth-child(8){transition-delay:.59s}
+.js .stagger.in>*:nth-child(9){transition-delay:.66s}
+.js .stagger.in>*:nth-child(10){transition-delay:.73s}
+.js .stagger.in>*:nth-child(11){transition-delay:.8s}
+.js .stagger.in>*:nth-child(12){transition-delay:.87s}
+.js .stagger.in>*:nth-child(13){transition-delay:.94s}
+.js .stagger.in>*:nth-child(14){transition-delay:1.01s}
+
+/* ================= MOBILE CALL BAR ================= */
+.callbar{display:none}
+@media(max-width:720px){
+  .callbar{display:block;position:fixed;bottom:0;left:0;right:0;z-index:130;background:var(--brass);border-top:1px solid rgba(23,19,10,.3);
+    box-shadow:0 -10px 30px rgba(8,9,10,.55)}
+  .callbar a{display:flex;align-items:center;justify-content:center;gap:10px;color:#17130A;text-decoration:none;
+    font-weight:700;font-size:1.02rem;padding:16px;min-height:56px}
+  .callbar a .m{font-family:var(--mono);font-weight:600;letter-spacing:.04em}
+  body{padding-bottom:60px}
+  .nav-call .num-txt{display:none}
+  .nav-call .num-short{display:inline}
+  section{padding:78px 0}
+  .final{padding:88px 0}
+}
+
+/* ================= REDUCED MOTION ================= */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .js .reveal,.js .stagger>*{opacity:1;transform:none}
+  .hero .spec,.hero h1 .line,.hero .lead,.cta-row,.trust,.diagram-plate{opacity:1;transform:none;animation:none}
+  .js .sld [pathLength],.js .divider [pathLength],.js .final .trace [pathLength],
+  .js .svc .ico path[pathLength],.js .svc .ico circle[pathLength],.js .svc .ico rect[pathLength]{stroke-dashoffset:0;stroke-dasharray:none}
+  .js .sld .node,.js .sld text,.js .divider .dnode{opacity:1}
+  .ds-track{animation:none !important}
+  .readout::before{display:none}
+  .readout .rstatus .cur{animation:none}
+  .readout .bar i{transition:none}
+}
+</style>
+<noscript><style>
+.reveal,.stagger>*{opacity:1;transform:none}
+.qa .a{max-height:none}
+.hero .spec,.hero h1 .line,.hero .lead,.cta-row,.trust,.diagram-plate{opacity:1;transform:none;animation:none}
+.rev{display:flex}
+</style></noscript>
+<script>document.documentElement.className+=" js"</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="progress" aria-hidden="true"></div>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="Voltcraft Electric — home">
+      <span class="mark" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4l7 12 7-12"/><path d="M12 16v5"/><circle cx="12" cy="16" r="1.4" fill="currentColor" stroke="none"/></svg>
+      </span>
+      <span class="wordmark"><span class="word">Voltcraft</span><span class="tag">Electric</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#services">Capabilities</a>
+      <a href="#diagnostic">Diagnostic</a>
+      <a href="#method">Method</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="nav-call" href="tel:+15550273300" aria-label="Call Voltcraft Electric at (555) 027-3300">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="num-txt">(555) 027-3300</span><span class="num-short" aria-hidden="true">Call</span>
+    </a>
+  </div>
+</header>
+
+<main id="main">
+<!-- ============ HERO ============ -->
+<div class="hero gridfield" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="spec speclong"><span class="idx">REF. 01 /</span>&nbsp; Licensed &amp; insured — Columbus, Ohio</p>
+      <h1>
+        <span class="line">Electrical work,</span>
+        <span class="line">done to</span>
+        <span class="line"><span class="b">tolerance.</span></span>
+      </h1>
+      <p class="lead"><strong>Voltcraft Electric</strong> treats your home like an engineering document. Panels, circuits and fixtures — measured twice, torqued to spec, labeled so clearly the next electrician will smile.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:+15550273300">
+          <span class="tick tl" aria-hidden="true"></span><span class="tick br" aria-hidden="true"></span>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call (555) 027-3300
+        </a>
+        <a class="btn btn-ghost" href="#services">
+          <span class="tick tl" aria-hidden="true"></span><span class="tick br" aria-hidden="true"></span>
+          View capabilities
+        </a>
+      </div>
+      <p class="trust">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <span><strong>4.8</strong> · 203 Google reviews</span>
+        <span class="sep" aria-hidden="true">/</span>
+        <span>OH LIC. EL-27310</span>
+      </p>
+    </div>
+
+    <figure class="diagram-plate" aria-label="Decorative single-line diagram of a residential electrical service">
+      <figcaption class="plate-head"><b>Fig. 00</b><span>Service entrance — single line</span><span>Rev. D</span></figcaption>
+      <svg class="sld" id="sld" viewBox="0 0 440 330" role="img" aria-hidden="true">
+        <!-- utility feed -->
+        <path class="wire hot" pathLength="1" d="M60 18 V52"/>
+        <circle class="node" cx="60" cy="18" r="3"/>
+        <text x="76" y="24">Utility feed</text>
+        <!-- meter -->
+        <circle class="sym" pathLength="1" cx="60" cy="72" r="20"/>
+        <text class="lbl-b" x="53" y="76">kWh</text>
+        <text x="92" y="76">Meter</text>
+        <!-- meter to main -->
+        <path class="wire hot d2" pathLength="1" d="M60 92 V126"/>
+        <!-- main breaker -->
+        <path class="sym d2" pathLength="1" d="M52 126 h16 M52 150 h16 M53 149 L74 122"/>
+        <text x="92" y="141">Main — 200A</text>
+        <!-- main to bus -->
+        <path class="wire hot d3" pathLength="1" d="M60 150 V196"/>
+        <!-- bus -->
+        <path class="wire bus d3" pathLength="1" d="M60 196 H396"/>
+        <text x="336" y="188">Bus A/B</text>
+        <!-- branch 1 : lighting -->
+        <path class="wire d4" pathLength="1" d="M116 196 V232 M116 252 V282"/>
+        <path class="sym d4" pathLength="1" d="M109 232 L127 226"/>
+        <circle class="sym d5" pathLength="1" cx="116" cy="296" r="13"/>
+        <path class="sym d5" pathLength="1" d="M107 287 L125 305 M125 287 L107 305"/>
+        <circle class="node" cx="116" cy="196" r="3"/>
+        <text x="98" y="326">15A</text>
+        <!-- branch 2 : receptacles -->
+        <path class="wire d4" pathLength="1" d="M186 196 V232 M186 252 V282"/>
+        <path class="sym d4" pathLength="1" d="M179 232 L197 226"/>
+        <circle class="sym d5" pathLength="1" cx="186" cy="296" r="13"/>
+        <path class="sym d5" pathLength="1" d="M173 296 h9 M194 296 h9"/>
+        <circle class="node" cx="186" cy="196" r="3"/>
+        <text x="168" y="326">20A</text>
+        <!-- branch 3 : EV -->
+        <path class="wire hot d4" pathLength="1" d="M256 196 V232 M256 252 V282"/>
+        <path class="sym d4" pathLength="1" d="M249 232 L267 226"/>
+        <rect class="sym d5" pathLength="1" x="242" y="283" width="28" height="26" rx="3"/>
+        <path class="sym d5" pathLength="1" d="M258 288 l-6 9 h8 l-6 9"/>
+        <circle class="node" cx="256" cy="196" r="3"/>
+        <text class="lbl-b" x="234" y="326">40A · EV</text>
+        <!-- branch 4 : HVAC -->
+        <path class="wire d4" pathLength="1" d="M326 196 V232 M326 252 V282"/>
+        <path class="sym d4" pathLength="1" d="M319 232 L337 226"/>
+        <circle class="sym d5" pathLength="1" cx="326" cy="296" r="13"/>
+        <path class="sym d5" pathLength="1" d="M319 299 q3.5-7 7 0 t7 0"/>
+        <circle class="node" cx="326" cy="196" r="3"/>
+        <text x="308" y="326">30A</text>
+        <!-- ground -->
+        <path class="wire d5" pathLength="1" d="M396 196 V236"/>
+        <path class="sym d5" pathLength="1" d="M384 236 h24 M388 243 h16 M392 250 h8"/>
+        <circle class="node" cx="396" cy="196" r="3"/>
+        <text x="378" y="270">GND</text>
+      </svg>
+    </figure>
+  </div>
+  <p class="coords" id="coords" aria-hidden="true">X 0000.0&nbsp;&nbsp;Y 0000.0&nbsp;&nbsp;·&nbsp;&nbsp;GRID LOCKED</p>
+</div>
+
+<!-- title block -->
+<div class="titleblock" aria-hidden="true">
+  <div class="wrap cells">
+    <span class="cell">Drawn: <b>Voltcraft Field Ops</b></span>
+    <span class="cell">Checked: <b>QA-2</b></span>
+    <span class="cell">Scale: <b>1:1</b></span>
+    <span class="cell">Rev: <b>D</b></span>
+    <span class="cell">Sheet <b>1 of 1</b></span>
+  </div>
+</div>
+
+<!-- data strip -->
+<div class="datastrip" aria-hidden="true">
+  <div class="ds-track">
+    <ul>
+      <li>Panel upgrades</li><li>EV chargers</li><li>Whole-home rewires</li><li>Lighting systems</li><li>Troubleshooting</li><li>Generator &amp; backup</li>
+    </ul>
+    <ul>
+      <li>Panel upgrades</li><li>EV chargers</li><li>Whole-home rewires</li><li>Lighting systems</li><li>Troubleshooting</li><li>Generator &amp; backup</li>
+    </ul>
+  </div>
+</div>
+
+<!-- stats -->
+<div class="stats" aria-label="Track record">
+  <div class="wrap">
+    <div class="row stagger">
+      <div class="stat"><div class="num"><span class="cnt" data-count="4.8" data-dec="1">4.8</span><span class="u">★</span></div><div class="lbl">Avg. Google rating</div></div>
+      <div class="stat"><div class="num"><span class="cnt" data-count="203">203</span></div><div class="lbl">Verified reviews</div></div>
+      <div class="stat"><div class="num"><span class="cnt" data-count="17">17</span><span class="u">yrs</span></div><div class="lbl">In service</div></div>
+      <div class="stat"><div class="num"><span class="cnt" data-count="6120">6,120</span><span class="u">+</span></div><div class="lbl">Work orders closed out</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SERVICES ============ -->
+<section id="services">
+  <div class="wrap">
+    <p class="spec speclong reveal"><span class="idx">SEC. 02 /</span>&nbsp; Capabilities</p>
+    <h2 class="reveal">Six circuits.<br>One <span class="b">standard.</span></h2>
+    <p class="sub reveal">No upsells, no mystery line items. Every job starts with a load calculation and ends with a labeled panel, a torque check, and photos in your closeout file.</p>
+    <div class="grid-svc stagger">
+      <article class="svc">
+        <span class="corner tl" aria-hidden="true"></span><span class="corner br" aria-hidden="true"></span>
+        <p class="fig">Fig. 01</p>
+        <div class="ico" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect pathLength="1" x="4" y="3" width="20" height="22" rx="1.5"/><path pathLength="1" d="M9 8h4M9 12h4M9 16h4M15 8h4M15 12h4M15 16h4M9 21h10"/></svg></div>
+        <h3>Panel Upgrades</h3>
+        <p>Fuse boxes and overloaded 100A panels brought up to a clean 200A service — permitted, inspected, and labeled circuit by circuit.</p>
+        <div class="tags"><span>200A</span><span>NEC-compliant</span><span>Permitted</span></div>
+      </article>
+      <article class="svc">
+        <span class="corner tl" aria-hidden="true"></span><span class="corner br" aria-hidden="true"></span>
+        <p class="fig">Fig. 02</p>
+        <div class="ico" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect pathLength="1" x="6" y="4" width="16" height="18" rx="2"/><path pathLength="1" d="M15.5 8l-4.5 6.5h6L12.5 21"/><path pathLength="1" d="M14 22v3"/></svg></div>
+        <h3>EV Charger Installation</h3>
+        <p>Level 2 charging, sized against your real panel capacity — load calc first, dedicated circuit, conduit runs straight enough to check with a level.</p>
+        <div class="tags"><span>Level 2</span><span>Load calc</span><span>40–60A</span></div>
+      </article>
+      <article class="svc">
+        <span class="corner tl" aria-hidden="true"></span><span class="corner br" aria-hidden="true"></span>
+        <p class="fig">Fig. 03</p>
+        <div class="ico" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M4 13L14 4l10 9"/><path pathLength="1" d="M6.5 11.5V24h15V11.5"/><path pathLength="1" d="M10 24v-6c2.5-2 5.5 2 8 0v6"/></svg></div>
+        <h3>Whole-Home Rewiring</h3>
+        <p>Knob-and-tube and aluminum branch wiring retired for good. Dust barriers up, power restored every evening, walls closed like we were never there.</p>
+        <div class="tags"><span>Copper</span><span>AFCI</span><span>Occupied-home safe</span></div>
+      </article>
+      <article class="svc">
+        <span class="corner tl" aria-hidden="true"></span><span class="corner br" aria-hidden="true"></span>
+        <p class="fig">Fig. 04</p>
+        <div class="ico" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle pathLength="1" cx="14" cy="12" r="8"/><path pathLength="1" d="M8.6 6.6L19.4 17.4M19.4 6.6L8.6 17.4"/><path pathLength="1" d="M14 20v5M10 25h8"/></svg></div>
+        <h3>Lighting Systems</h3>
+        <p>Recessed layouts, under-cabinet runs, and dimming that never flickers — planned on paper first, aimed and balanced on the ladder last.</p>
+        <div class="tags"><span>LED</span><span>Dimming</span><span>Layout plan</span></div>
+      </article>
+      <article class="svc">
+        <span class="corner tl" aria-hidden="true"></span><span class="corner br" aria-hidden="true"></span>
+        <p class="fig">Fig. 05</p>
+        <div class="ico" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M2 14h5V7h5v14h5v-7h5"/><circle pathLength="1" cx="22" cy="14" r="4"/><path pathLength="1" d="M25 17l2.5 2.5"/></svg></div>
+        <h3>Troubleshooting &amp; Repair</h3>
+        <p>Dead outlets, nuisance trips, mystery warm switches. We diagnose with meters and thermal imaging — not guesswork — and show you the evidence.</p>
+        <div class="tags"><span>Thermal scan</span><span>Same week</span><span>Documented</span></div>
+      </article>
+      <article class="svc">
+        <span class="corner tl" aria-hidden="true"></span><span class="corner br" aria-hidden="true"></span>
+        <p class="fig">Fig. 06</p>
+        <div class="ico" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle pathLength="1" cx="14" cy="14" r="9"/><path pathLength="1" d="M9 15.5q2.5-6 5 0t5 0"/><path pathLength="1" d="M14 2v3M14 23v3"/></svg></div>
+        <h3>Generator &amp; Backup</h3>
+        <p>Transfer switches and interlock kits installed so an outage is a ten-second flip — not a night of extension cords through the window.</p>
+        <div class="tags"><span>Transfer switch</span><span>Interlock</span><span>Outage-ready</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 1160 44" preserveAspectRatio="xMidYMid meet">
+    <path class="dw" pathLength="1" d="M0 22 H430"/>
+    <path class="dw comp" pathLength="1" d="M430 22 l8-11 14 22 14-22 14 22 14-22 14 22 8-11"/>
+    <path class="dw" pathLength="1" d="M516 22 H660"/>
+    <path class="dw comp" pathLength="1" d="M660 10 V34 M674 10 V34"/>
+    <path class="dw" pathLength="1" d="M674 22 H1160"/>
+    <circle class="dnode" cx="430" cy="22" r="3.2"/>
+    <circle class="dnode" cx="674" cy="22" r="3.2"/>
+  </svg>
+</div>
+
+<!-- ============ DIAGNOSTIC WIDGET ============ -->
+<section class="diag" id="diagnostic">
+  <div class="wrap">
+    <p class="spec speclong reveal"><span class="idx">SEC. 03 /</span>&nbsp; Interactive — run a diagnostic</p>
+    <h2 class="reveal">Flip a breaker.<br>Read the <span class="b">spec.</span></h2>
+    <p class="sub reveal">Select a circuit on the panel to see how we scope it — crew, timeline, and what "done" means before anyone touches a wire.</p>
+
+    <div class="diag-grid reveal">
+      <div class="bpanel">
+        <span class="screw3" aria-hidden="true"></span><span class="screw4" aria-hidden="true"></span>
+        <p class="phead"><span>VC Main Panel — 200A</span><span class="live">Live</span></p>
+        <ul class="breakers" role="tablist" aria-label="Choose a service circuit">
+          <li><button class="breaker" id="tab-0" role="tab" aria-selected="true" aria-controls="readout" data-idx="0">
+            <span class="sw" aria-hidden="true"></span><span class="bid">S-01</span><span class="bname">Panel Upgrade</span><span class="bamp">200A</span></button></li>
+          <li><button class="breaker" id="tab-1" role="tab" aria-selected="false" tabindex="-1" aria-controls="readout" data-idx="1">
+            <span class="sw" aria-hidden="true"></span><span class="bid">S-02</span><span class="bname">EV Charger</span><span class="bamp">48A</span></button></li>
+          <li><button class="breaker" id="tab-2" role="tab" aria-selected="false" tabindex="-1" aria-controls="readout" data-idx="2">
+            <span class="sw" aria-hidden="true"></span><span class="bid">S-03</span><span class="bname">Whole-Home Rewire</span><span class="bamp">MULTI</span></button></li>
+          <li><button class="breaker" id="tab-3" role="tab" aria-selected="false" tabindex="-1" aria-controls="readout" data-idx="3">
+            <span class="sw" aria-hidden="true"></span><span class="bid">S-04</span><span class="bname">Lighting System</span><span class="bamp">15A</span></button></li>
+          <li><button class="breaker" id="tab-4" role="tab" aria-selected="false" tabindex="-1" aria-controls="readout" data-idx="4">
+            <span class="sw" aria-hidden="true"></span><span class="bid">S-05</span><span class="bname">Troubleshooting</span><span class="bamp">DIAG</span></button></li>
+          <li><button class="breaker" id="tab-5" role="tab" aria-selected="false" tabindex="-1" aria-controls="readout" data-idx="5">
+            <span class="sw" aria-hidden="true"></span><span class="bid">S-06</span><span class="bname">Generator / Backup</span><span class="bamp">50A</span></button></li>
+        </ul>
+      </div>
+
+      <div class="readout" id="readout" role="tabpanel" aria-labelledby="tab-0" tabindex="0">
+        <p class="rstatus" id="rstatus" aria-hidden="true">CIRCUIT S-01 · NOMINAL<span class="cur"></span></p>
+        <h3 id="rname">Panel Upgrade</h3>
+        <p class="rdesc" id="rdesc">Your panel is the spine of the house. We replace fuse boxes and tired 100A panels with a clean 200A service — every breaker mapped, every lug torqued to the manufacturer's spec sheet.</p>
+        <div class="rfields">
+          <div class="rf"><p class="k">Crew</p><p class="v" id="rcrew">2 licensed electricians</p></div>
+          <div class="rf"><p class="k">Typical duration</p><p class="v" id="rtime">1 day on site</p></div>
+          <div class="rf"><p class="k">Closeout</p><p class="v" id="rclose">Permit + inspection</p></div>
+          <div class="rf"><p class="k">Directory</p><p class="v" id="rdir">Typed circuit labels</p></div>
+        </div>
+        <div class="loadrow" aria-hidden="true">
+          <p class="k"><span>Scope load</span><span class="pct" id="rpct">72%</span></p>
+          <div class="bar"><i id="rbar" style="width:72%"></i></div>
+        </div>
+        <p class="rcta"><a href="tel:+15550273300">Discuss this circuit — (555) 027-3300</a></p>
+      </div>
+    </div>
+    <p class="diag-note">Interactive demo — figures are illustrative, not a quote.</p>
+  </div>
+</section>
+
+<!-- ============ METHOD (PAPER) ============ -->
+<section class="method" id="method">
+  <div class="wrap">
+    <p class="spec speclong reveal"><span class="idx">DWG. VC-200 /</span>&nbsp; The Voltcraft method</p>
+    <h2 class="reveal">Four steps, drawn<br>before they're <span class="b">done.</span></h2>
+    <p class="sub reveal">The same sequence on every work order — printed on the clipboard, initialed as we go. Craft is repeatable or it isn't craft.</p>
+    <div class="steps stagger">
+      <article class="step">
+        <p class="n">STEP / 01</p>
+        <p class="bign" aria-hidden="true">01</p>
+        <h3>Measure</h3>
+        <p>Load calculation, panel survey, thermal scan. We quantify the system before we form an opinion about it.</p>
+        <p class="anno">± Zero guesswork</p>
+      </article>
+      <article class="step">
+        <p class="n">STEP / 02</p>
+        <p class="bign" aria-hidden="true">02</p>
+        <h3>Draw</h3>
+        <p>A written scope with a one-line diagram — what changes, what doesn't, and the inspection plan. You sign the drawing, not a vague promise.</p>
+        <p class="anno">Scope in writing</p>
+      </article>
+      <article class="step">
+        <p class="n">STEP / 03</p>
+        <p class="bign" aria-hidden="true">03</p>
+        <h3>Build</h3>
+        <p>Straight conduit, torque-checked terminations, floor protection down and dust barriers up. The work looks like the drawing.</p>
+        <p class="anno">Torque-verified</p>
+      </article>
+      <article class="step">
+        <p class="n">STEP / 04</p>
+        <p class="bign" aria-hidden="true">04</p>
+        <h3>Certify</h3>
+        <p>City inspection passed, panel directory typed, closeout photos delivered. The job isn't done until it's documented.</p>
+        <p class="anno">Photos + directory</p>
+      </article>
+    </div>
+    <p class="dimline reveal" aria-hidden="true"><span class="cap"></span><span>First call → certified closeout · one continuous record</span><span class="cap"></span></p>
+  </div>
+</section>
+
+<!-- ============ FIELD WORK ============ -->
+<section class="field" id="field">
+  <div class="wrap">
+    <p class="spec speclong reveal"><span class="idx">SEC. 05 /</span>&nbsp; Field standards</p>
+    <h2 class="reveal">The panel is our <span class="b">signature.</span></h2>
+    <div class="cols">
+      <div class="reveal">
+        <p class="sub" style="margin-top:6px">Open any panel we've touched and you can read the house like a table of contents. That's not decoration — it's the difference between a five-minute fix and an afternoon of guessing, years from now.</p>
+        <ul class="checklist stagger">
+          <li><span class="ck" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><strong>Torque-verified terminations</strong> — every lug checked with a calibrated driver, not a wrist estimate.</span></li>
+          <li><span class="ck" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><strong>Typed circuit directories</strong> — no pencil scrawl. Every breaker named, tested, and load-verified.</span></li>
+          <li><span class="ck" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><strong>Permits pulled by us</strong> — we schedule the inspector and stand next to them while they check our work.</span></li>
+          <li><span class="ck" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><strong>Closeout photo file</strong> — before, during, after. Your records, delivered the day we finish.</span></li>
+        </ul>
+        <a class="btn btn-ghost" href="tel:+15550273300"><span class="tick tl" aria-hidden="true"></span><span class="tick br" aria-hidden="true"></span>Talk to a licensed electrician</a>
+      </div>
+      <div class="stackplates">
+        <figure class="plate reveal">
+          <img src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=1200&q=80" alt="Neatly organized breaker and control panel with labeled circuits and precise cable management" loading="lazy" onerror="this.parentElement.classList.add('img-fail');this.remove()">
+          <figcaption class="pcap"><span><b>Plate 07</b> — Panel dress &amp; labeling</span><span>Ref. VC-441</span></figcaption>
+        </figure>
+        <figure class="plate small reveal">
+          <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1200&q=80" alt="Licensed electrician testing wiring at a service panel with a multimeter" loading="lazy" onerror="this.parentElement.classList.add('img-fail');this.remove()">
+          <figcaption class="pcap"><span><b>Plate 08</b> — Live verification, field</span><span>Ref. VC-442</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 1160 44" preserveAspectRatio="xMidYMid meet">
+    <path class="dw" pathLength="1" d="M0 22 H500"/>
+    <path class="dw comp" pathLength="1" d="M500 22 h10 M518 10 a12 12 0 1 1 0 24 M536 22 h10"/>
+    <path class="dw" pathLength="1" d="M546 22 H1160"/>
+    <circle class="dnode" cx="500" cy="22" r="3.2"/>
+    <circle class="dnode" cx="546" cy="22" r="3.2"/>
+  </svg>
+</div>
+
+<!-- ============ REVIEWS ============ -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <p class="spec speclong reveal"><span class="idx">SEC. 06 /</span>&nbsp; Field reports — 4.8 across 203 reviews</p>
+    <h2 class="reveal">Signed off by the<br>people who <span class="b">live there.</span></h2>
+    <div class="carousel reveal" id="carousel" aria-label="Customer testimonials">
+      <div class="rev active">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <blockquote>&ldquo;Our 1962 fuse box was a museum piece. Voltcraft ran a full load calculation before quoting, upgraded us to 200A in a day, and left a typed directory inside the panel door. The city inspector actually complimented the work.&rdquo;</blockquote>
+        <p class="who">Dana W. — <span>Clintonville · Panel upgrade</span></p>
+      </div>
+      <div class="rev">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <blockquote>&ldquo;EV charger installed in an afternoon. The conduit run is so straight it looks machine-made, and every breaker in the panel is now labeled — including the ones they didn't touch. That's just who they are.&rdquo;</blockquote>
+        <p class="who">Marcus T. — <span>Dublin · EV charger</span></p>
+      </div>
+      <div class="rev">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <blockquote>&ldquo;Two other electricians guessed. Voltcraft measured. They found the fault in forty minutes — a failing backstabbed outlet — showed me the thermal image, fixed it, and left the wall looking untouched.&rdquo;</blockquote>
+        <p class="who">Priya S. — <span>Grandview Heights · Troubleshooting</span></p>
+      </div>
+      <div class="rev">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <blockquote>&ldquo;Whole-house rewire with us living in it. Dust barriers on every doorway, power back on each evening by six, and the final walkthrough came with a photo file of everything behind our walls. Meticulous is the word.&rdquo;</blockquote>
+        <p class="who">Tom &amp; Elena R. — <span>Bexley · Whole-home rewire</span></p>
+      </div>
+      <div class="dots" role="group" aria-label="Choose testimonial">
+        <button class="on" aria-label="Show testimonial 1"><span class="d" aria-hidden="true"></span></button>
+        <button aria-label="Show testimonial 2"><span class="d" aria-hidden="true"></span></button>
+        <button aria-label="Show testimonial 3"><span class="d" aria-hidden="true"></span></button>
+        <button aria-label="Show testimonial 4"><span class="d" aria-hidden="true"></span></button>
+      </div>
+    </div>
+    <p class="fict-note">Voltcraft Electric is a fictional demonstration brand — testimonials are illustrative.</p>
+  </div>
+</section>
+
+<!-- ============ AREA ============ -->
+<section class="area" id="area">
+  <div class="wrap">
+    <p class="spec speclong reveal"><span class="idx">SEC. 07 /</span>&nbsp; Coverage grid</p>
+    <h2 class="reveal">Serving greater <span class="b">Columbus.</span></h2>
+    <div class="chips stagger">
+      <span class="chip">Downtown</span><span class="chip">Short North</span><span class="chip">German Village</span>
+      <span class="chip">Clintonville</span><span class="chip">Grandview Heights</span><span class="chip">Upper Arlington</span>
+      <span class="chip">Bexley</span><span class="chip">Worthington</span><span class="chip">Westerville</span>
+      <span class="chip">Dublin</span><span class="chip">Hilliard</span><span class="chip">Gahanna</span>
+      <span class="chip">Powell</span><span class="chip">New Albany</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <p class="spec speclong reveal"><span class="idx">SEC. 08 /</span>&nbsp; Specifications — Q&amp;A</p>
+    <h2 class="reveal">Straight answers,<br>no <span class="b">jargon.</span></h2>
+    <div class="faq-inner reveal">
+      <div class="qa open">
+        <button class="q" aria-expanded="true" onclick="toggleQA(this)"><span class="qn" aria-hidden="true">Q.01</span><span class="qt">How do I know if my panel needs an upgrade?</span><span class="ind" aria-hidden="true"></span></button>
+        <div class="a"><p>Warning signs: fuses instead of breakers, breakers that trip when two appliances run, warm panel covers, or a 100A service feeding a house with modern loads. We'll run a load calculation and tell you plainly — including when the honest answer is "your panel is fine."</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)"><span class="qn" aria-hidden="true">Q.02</span><span class="qt">Do you pull permits and handle inspections?</span><span class="ind" aria-hidden="true"></span></button>
+        <div class="a"><p>Always, and we schedule the inspector ourselves. Unpermitted electrical work can void insurance and stall a home sale. Every Voltcraft job closes with a passed inspection in your closeout file.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)"><span class="qn" aria-hidden="true">Q.03</span><span class="qt">How long does an EV charger installation take?</span><span class="ind" aria-hidden="true"></span></button>
+        <div class="a"><p>Most installs are a single afternoon once the load calculation confirms your panel can carry the circuit. If it can't, we'll show you the numbers and the options — never a surprise mid-job.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)"><span class="qn" aria-hidden="true">Q.04</span><span class="qt">My house has aluminum or knob-and-tube wiring. Is that urgent?</span><span class="ind" aria-hidden="true"></span></button>
+        <div class="a"><p>It's worth a professional look soon — both can be safe or hazardous depending on condition and connections. We inspect, document with photos and thermal imaging, and give you a prioritized plan instead of a scare story.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)"><span class="qn" aria-hidden="true">Q.05</span><span class="qt">Will you actually label everything?</span><span class="ind" aria-hidden="true"></span></button>
+        <div class="a"><p>Typed directory in the panel door, printed labels on new runs, and a photo record of what's behind the walls. It's the cheapest insurance a house can have, and it's included on every job — no exceptions.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final">
+  <div class="wrap">
+    <div class="panelbox reveal">
+      <div class="inner">
+        <p class="spec speclong"><span class="idx">REF. 09 /</span>&nbsp; Final connection</p>
+        <h2>Put your home on a<br><span class="b">solid circuit.</span></h2>
+        <p class="sub">One call gets you a licensed electrician on the phone — not a call center. Tell us what's humming, tripping, or overdue, and we'll bring the meters.</p>
+        <a class="btn btn-primary" href="tel:+15550273300">
+          <span class="tick tl" aria-hidden="true"></span><span class="tick br" aria-hidden="true"></span>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call (555) 027-3300
+        </a>
+        <p class="tel-alt">Weekdays 7–6 · emergency line after hours: <a href="tel:+15550273300">(555) 027-3300</a></p>
+      </div>
+      <div class="trace" aria-hidden="true">
+        <svg viewBox="0 0 1100 90" preserveAspectRatio="none">
+          <path class="tw" pathLength="1" d="M0 70 H320 L360 30 H520"/>
+          <path class="tw" pathLength="1" d="M1100 20 H760 L720 60 H600"/>
+          <path class="tw" pathLength="1" d="M0 88 H460 L490 58 H560"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="col">
+        <p class="fname">Voltcraft <i>Electric</i></p>
+        <p class="fsub">Precision electrical — Columbus OH</p>
+        <p>Panel upgrades · EV chargers · Rewiring<br>Lighting · Troubleshooting · Backup power</p>
+      </div>
+      <div class="col">
+        <p class="mono"><a href="tel:+15550273300" aria-label="Call (555) 027-3300">(555) 027-3300</a></p>
+        <p>Columbus, Ohio — greater metro<br>Weekdays 7–6 · after-hours emergency line</p>
+      </div>
+      <div class="col">
+        <p class="mono">★ 4.8 — 203 reviews</p>
+        <p>Licensed &amp; insured · OH Lic. EL-27310<br>Workmanship guaranteed in writing</p>
+      </div>
+    </div>
+    <p class="disclaimer"><span class="studio">A concept showcase by MainStreet Web Studio — Voltcraft Electric is a demonstration brand.</span><br>
+    All company details, license numbers, ratings, reviews and testimonials on this page are fictional and for portfolio demonstration only. © 2026 MainStreet Web Studio.</p>
+  </div>
+</footer>
+
+<div class="callbar"><a href="tel:+15550273300" aria-label="Call Voltcraft Electric now at (555) 027-3300">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  Call the shop — <span class="m">(555) 027-3300</span>
+</a></div>
+
+<script>
+(function(){
+"use strict";
+var REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+/* ---- scroll progress + header shrink ---- */
+var prog = document.getElementById('progress'),
+    hdr = document.getElementById('hdr'),
+    ticking = false;
+function onScroll(){
+  if(ticking) return;
+  ticking = true;
+  requestAnimationFrame(function(){
+    var h = document.documentElement, top = h.scrollTop,
+        max = h.scrollHeight - h.clientHeight;
+    prog.style.width = (max > 0 ? (top / max * 100) : 0) + '%';
+    hdr.classList.toggle('scrolled', top > 8);
+    ticking = false;
+  });
+}
+addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+/* ---- reveals, staggers, self-drawing line art ---- */
+var io = new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+},{threshold:.15});
+document.querySelectorAll('.reveal,.stagger').forEach(function(el){ io.observe(el); });
+
+var dio = new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add('drawn'); dio.unobserve(e.target); }
+  });
+},{threshold:.35});
+document.querySelectorAll('.divider,.final .trace').forEach(function(el){ dio.observe(el); });
+
+/* hero single-line diagram draws on load */
+var sld = document.getElementById('sld');
+if(sld){
+  setTimeout(function(){ sld.classList.add('drawn'); }, REDUCED ? 0 : 450);
+}
+
+/* ---- count-up stats ---- */
+var counters = document.querySelectorAll('.cnt');
+if(!REDUCED && 'IntersectionObserver' in window){
+  var cio = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      cio.unobserve(e.target);
+      var el = e.target,
+          end = parseFloat(el.getAttribute('data-count')),
+          dec = parseInt(el.getAttribute('data-dec') || '0', 10),
+          t0 = performance.now();
+      (function tick(t){
+        var p = Math.min((t - t0) / 1400, 1),
+            v = end * (1 - Math.pow(1 - p, 3));
+        el.textContent = dec ? v.toFixed(dec) : Math.round(v).toLocaleString('en-US');
+        if(p < 1) requestAnimationFrame(tick);
+      })(t0);
+    });
+  },{threshold:.5});
+  counters.forEach(function(el){ cio.observe(el); });
+}
+
+/* ---- hero coordinate readout ---- */
+var coords = document.getElementById('coords'),
+    hero = document.querySelector('.hero');
+if(coords && hero && FINE && !REDUCED){
+  var cTick = false;
+  hero.addEventListener('pointermove', function(e){
+    if(cTick) return;
+    cTick = true;
+    requestAnimationFrame(function(){
+      var r = hero.getBoundingClientRect(),
+          x = (e.clientX - r.left).toFixed(1),
+          y = (e.clientY - r.top).toFixed(1);
+      coords.textContent = 'X ' + String(x).padStart(6, '0') + '  Y ' + String(y).padStart(6, '0') + '  ·  GRID LOCKED';
+      cTick = false;
+    });
+  });
+}
+
+/* ---- diagnostic widget ---- */
+var SERVICES = [
+  {status:'CIRCUIT S-01 · NOMINAL', name:'Panel Upgrade',
+   desc:'Your panel is the spine of the house. We replace fuse boxes and tired 100A panels with a clean 200A service — every breaker mapped, every lug torqued to the manufacturer’s spec sheet.',
+   crew:'2 licensed electricians', time:'1 day on site', close:'Permit + inspection', dir:'Typed circuit labels', pct:72},
+  {status:'CIRCUIT S-02 · NOMINAL', name:'EV Charger Install',
+   desc:'Level 2 charging on a dedicated circuit, sized against your panel’s real headroom. Load calculation first, straight conduit always, and a charger that never shares a breaker with your dryer.',
+   crew:'1–2 licensed electricians', time:'One afternoon', close:'Permit + load calc file', dir:'Labeled 48A circuit', pct:58},
+  {status:'CIRCUIT S-03 · NOMINAL', name:'Whole-Home Rewire',
+   desc:'Knob-and-tube and aluminum branch wiring retired room by room, with dust barriers up and power restored every evening. The house stays livable; the walls close like we were never there.',
+   crew:'3-person crew + lead', time:'4–8 days, phased', close:'Inspection per phase', dir:'Full panel re-map', pct:94},
+  {status:'CIRCUIT S-04 · NOMINAL', name:'Lighting System',
+   desc:'Recessed layouts, under-cabinet runs, and dimming that never flickers. We plan the layout on paper, mock the beam angles, then aim and balance every fixture from the ladder.',
+   crew:'2 licensed electricians', time:'1–2 days', close:'Aim + dim calibration', dir:'Scene labels at switch', pct:45},
+  {status:'CIRCUIT S-05 · TRACING FAULT…', name:'Troubleshooting & Repair',
+   desc:'Dead outlets, nuisance trips, warm switch plates. We diagnose with meters and thermal imaging — not parts-swapping — and show you the evidence before and after the fix.',
+   crew:'1 diagnostic lead', time:'Most: same visit', close:'Findings report', dir:'Fault photo log', pct:31},
+  {status:'CIRCUIT S-06 · STANDBY READY', name:'Generator & Backup',
+   desc:'Transfer switches and interlock kits installed and load-tested, so an outage becomes a ten-second flip instead of a night of extension cords through the window.',
+   crew:'2 licensed electricians', time:'1 day on site', close:'Live transfer test', dir:'Standby circuit map', pct:66}
+];
+var tabs = [].slice.call(document.querySelectorAll('.breaker')),
+    readout = document.getElementById('readout'),
+    rstatus = document.getElementById('rstatus'),
+    rname = document.getElementById('rname'),
+    rdesc = document.getElementById('rdesc'),
+    rcrew = document.getElementById('rcrew'),
+    rtime = document.getElementById('rtime'),
+    rclose = document.getElementById('rclose'),
+    rdir = document.getElementById('rdir'),
+    rpct = document.getElementById('rpct'),
+    rbar = document.getElementById('rbar'),
+    typeTimer = null, curTab = 0;
+
+function typeStatus(text){
+  if(typeTimer){ clearInterval(typeTimer); typeTimer = null; }
+  if(REDUCED){
+    rstatus.innerHTML = '';
+    rstatus.appendChild(document.createTextNode(text));
+    return;
+  }
+  var i = 0;
+  rstatus.innerHTML = '<span class="cur"></span>';
+  typeTimer = setInterval(function(){
+    i++;
+    rstatus.innerHTML = '';
+    rstatus.appendChild(document.createTextNode(text.slice(0, i)));
+    var cur = document.createElement('span');
+    cur.className = 'cur';
+    rstatus.appendChild(cur);
+    if(i >= text.length){ clearInterval(typeTimer); typeTimer = null; }
+  }, 26);
+}
+
+function selectTab(i, focus){
+  if(!tabs.length) return;
+  var d = SERVICES[i];
+  tabs[curTab].setAttribute('aria-selected', 'false');
+  tabs[curTab].setAttribute('tabindex', '-1');
+  curTab = i;
+  tabs[i].setAttribute('aria-selected', 'true');
+  tabs[i].removeAttribute('tabindex');
+  if(focus) tabs[i].focus();
+  readout.setAttribute('aria-labelledby', 'tab-' + i);
+  rname.textContent = d.name;
+  rdesc.textContent = d.desc;
+  rcrew.textContent = d.crew;
+  rtime.textContent = d.time;
+  rclose.textContent = d.close;
+  rdir.textContent = d.dir;
+  rpct.textContent = d.pct + '%';
+  rbar.style.width = d.pct + '%';
+  typeStatus(d.status);
+  readout.classList.remove('pulse');
+  void readout.offsetWidth;
+  if(!REDUCED) readout.classList.add('pulse');
+}
+tabs.forEach(function(t, i){
+  t.addEventListener('click', function(){ selectTab(i, false); });
+  t.addEventListener('keydown', function(e){
+    var n = null;
+    if(e.key === 'ArrowDown' || e.key === 'ArrowRight') n = (i + 1) % tabs.length;
+    else if(e.key === 'ArrowUp' || e.key === 'ArrowLeft') n = (i - 1 + tabs.length) % tabs.length;
+    else if(e.key === 'Home') n = 0;
+    else if(e.key === 'End') n = tabs.length - 1;
+    if(n !== null){ e.preventDefault(); selectTab(n, true); }
+  });
+});
+
+/* ---- testimonial carousel ---- */
+var car = document.getElementById('carousel');
+if(car){
+  var revs = [].slice.call(car.querySelectorAll('.rev')),
+      dotBtns = [].slice.call(car.querySelectorAll('.dots button')),
+      cur = 0, timer = null;
+  function showRev(i){
+    revs[cur].classList.remove('active');
+    dotBtns[cur].classList.remove('on');
+    cur = i;
+    revs[cur].classList.add('active');
+    dotBtns[cur].classList.add('on');
+  }
+  function startAuto(){
+    if(REDUCED || timer) return;
+    timer = setInterval(function(){ showRev((cur + 1) % revs.length); }, 6500);
+  }
+  function stopAuto(){ clearInterval(timer); timer = null; }
+  dotBtns.forEach(function(b, i){
+    b.addEventListener('click', function(){ showRev(i); stopAuto(); startAuto(); });
+  });
+  car.addEventListener('mouseenter', stopAuto);
+  car.addEventListener('mouseleave', startAuto);
+  car.addEventListener('focusin', stopAuto);
+  car.addEventListener('focusout', startAuto);
+  startAuto();
+}
+
+/* ---- FAQ accordion ---- */
+window.toggleQA = function(btn){
+  var qa = btn.closest('.qa'),
+      open = qa.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+};
+})();
+</script>
+</body>
+</html>

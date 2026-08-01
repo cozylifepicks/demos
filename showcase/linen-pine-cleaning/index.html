@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Linen &amp; Pine Home Cleaning — Boutique House Cleaning Studio, Nashville TN</title>
+<meta name="description" content="Linen &amp; Pine is a concept showcase: a boutique Nashville home-cleaning studio with plant-based products, a signature linen finish, and the same gentle team every visit.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧺</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+/* ==============================================================
+   LINEN & PINE HOME CLEANING — warm boutique serif, light & airy
+   linen · soft sage · muted clay · Fraunces + Mulish
+   ============================================================== */
+:root{
+  --linen:#FAF6EF;
+  --linen-soft:#FFFDF9;
+  --linen-deep:#F2EBDF;
+  --sage-wash:#E9ECDD;
+  --sage:#7C9080;
+  --sage-deep:#4E6355;
+  --pine:#2E4438;
+  --pine-deep:#22352B;
+  --pine-ink:#182720;
+  --ink:#33403A;
+  --muted:#5C665A;
+  --clay:#C08A6A;
+  --clay-text:#9A5535;
+  --clay-btn:#9A5535;
+  --clay-btn-hover:#84462A;
+  --clay-soft:#E0A886;
+  --gold:#B9862F;
+  --gold-dark-bg:#D9A441;
+  --line:rgba(51,64,58,.15);
+  --line-dark:rgba(250,246,239,.16);
+  --shadow-soft:0 16px 44px rgba(46,68,56,.10);
+  --shadow-lift:0 26px 60px rgba(46,68,56,.16);
+  --shadow-deep:0 30px 80px rgba(16,30,22,.35);
+  --ease-out:cubic-bezier(.19,1,.22,1);
+  --header-h:86px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{
+  font-family:'Mulish',system-ui,sans-serif;
+  background:var(--linen);
+  color:var(--ink);
+  font-size:16.5px;
+  line-height:1.72;
+  -webkit-font-smoothing:antialiased;
+}
+/* faint linen-paper grain */
+body::after{
+  content:"";position:fixed;inset:0;z-index:98;pointer-events:none;opacity:.04;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit}
+[hidden]{display:none !important}
+h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif;font-weight:400;line-height:1.1;letter-spacing:-.015em}
+em{font-style:italic}
+.wrap{max-width:1220px;margin:0 auto;padding:0 24px}
+::selection{background:var(--clay-soft);color:var(--pine-deep)}
+
+a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visible{
+  outline:3px solid var(--clay-btn);outline-offset:3px;border-radius:4px;
+}
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:200;background:var(--pine-deep);color:var(--linen-soft);
+  padding:14px 22px;border-radius:0 0 12px 0;font-weight:700;text-decoration:none;
+}
+.skip:focus{left:0}
+
+/* ---------- eyebrow / headings ---------- */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:12px;
+  font-size:.74rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--clay-text);
+}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--clay);flex:none}
+.eyebrow.center{justify-content:center}
+.eyebrow.center::after{content:"";width:34px;height:1px;background:var(--clay);flex:none}
+.on-dark .eyebrow{color:var(--clay-soft)}
+.on-dark .eyebrow::before,.on-dark .eyebrow::after{background:var(--clay-soft)}
+h2{font-size:clamp(2.1rem,4.6vw,3.5rem);margin-top:18px;color:var(--pine-deep);font-weight:300}
+h2 em{color:var(--clay-text);font-weight:400}
+.on-dark h2{color:var(--linen-soft)}
+.on-dark h2 em{color:var(--clay-soft)}
+.sub{color:var(--muted);margin-top:18px;max-width:37rem;font-size:1.05rem}
+.on-dark .sub{color:#C2CCB6}
+section{padding:clamp(84px,10vw,140px) 0;scroll-margin-top:96px}
+
+/* hand-drawn underline flourish under one word */
+.uline{position:relative;white-space:nowrap}
+.uline svg{
+  position:absolute;left:0;right:0;bottom:-.18em;width:100%;height:.35em;color:var(--clay);overflow:visible;
+}
+.uline svg path{fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round}
+.js .uline svg path{stroke-dasharray:1;stroke-dashoffset:1}
+.js .in .uline svg path,.js .uline.drawn svg path{stroke-dashoffset:0;transition:stroke-dashoffset 1.1s .5s var(--ease-out)}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:11px;
+  font-weight:700;font-size:1rem;letter-spacing:.01em;text-decoration:none;cursor:pointer;
+  border-radius:999px;padding:17px 32px;min-height:52px;border:none;
+  transition:transform .3s var(--ease-out),background .25s,box-shadow .3s,border-color .25s,color .25s;
+  position:relative;overflow:hidden;
+}
+.btn-clay{background:var(--clay-btn);color:#fff;box-shadow:0 12px 30px rgba(154,85,53,.28)}
+.btn-clay:hover{background:var(--clay-btn-hover);transform:translateY(-3px);box-shadow:0 18px 40px rgba(132,70,42,.34)}
+.btn-clay::after{
+  content:"";position:absolute;top:0;left:-90%;width:55%;height:100%;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.34),transparent);
+  transform:skewX(-20deg);transition:left .7s var(--ease-out);
+}
+.btn-clay:hover::after{left:135%}
+.btn-pine{background:var(--pine);color:var(--linen-soft)}
+.btn-pine:hover{background:var(--pine-deep);transform:translateY(-3px);box-shadow:0 16px 36px rgba(34,53,43,.25)}
+.btn-ghost{background:transparent;color:var(--pine-deep);border:1.5px solid rgba(51,64,58,.35)}
+.btn-ghost:hover{border-color:var(--pine-deep);background:rgba(46,68,56,.06);transform:translateY(-3px)}
+.btn-ghost-light{background:transparent;color:var(--linen-soft);border:1.5px solid rgba(250,246,239,.5)}
+.btn-ghost-light:hover{border-color:var(--linen-soft);background:rgba(250,246,239,.1);transform:translateY(-3px)}
+
+/* ---------- scroll progress ---------- */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--sage-deep),var(--clay));}
+
+/* ---------- header ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(250,246,239,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;
+  transition:box-shadow .35s,border-color .35s,background .35s;
+}
+header.scrolled{box-shadow:0 10px 36px rgba(46,68,56,.10);border-color:var(--line);background:rgba(250,246,239,.96)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:var(--header-h);transition:height .35s var(--ease-out)}
+header.scrolled .nav{height:64px}
+.logo{display:inline-flex;align-items:center;gap:12px;text-decoration:none;min-height:44px}
+.logo-mark{
+  width:44px;height:44px;border-radius:50%;background:var(--sage-wash);color:var(--sage-deep);
+  border:1px solid rgba(78,99,85,.25);
+  display:grid;place-items:center;flex:none;transition:transform .45s var(--ease-out),background .3s,color .3s;
+}
+.logo:hover .logo-mark{transform:rotate(-10deg) scale(1.06);background:var(--pine);color:var(--linen-soft)}
+.logo-name{font-family:'Fraunces',Georgia,serif;font-size:1.3rem;color:var(--pine-deep);letter-spacing:-.01em;line-height:1}
+.logo-name em{color:var(--clay-text)}
+.logo-name small{display:block;font-family:'Mulish',sans-serif;font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:var(--sage-deep);margin-top:4px;font-weight:700}
+.nav-links{display:none;gap:4px;list-style:none}
+.nav-links a{
+  text-decoration:none;font-size:.93rem;font-weight:600;color:var(--ink);
+  padding:12px 14px;min-height:44px;display:inline-flex;align-items:center;position:relative;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:14px;right:14px;bottom:8px;height:1.5px;background:var(--clay);
+  transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease-out);
+}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-call{
+  display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:700;font-size:.93rem;
+  color:var(--linen-soft);background:var(--pine);padding:12px 22px;min-height:44px;border-radius:999px;
+  transition:background .25s,transform .3s var(--ease-out),box-shadow .3s;
+}
+.nav-call:hover{background:var(--pine-deep);transform:translateY(-2px);box-shadow:0 10px 26px rgba(34,53,43,.22)}
+@media(min-width:1040px){.nav-links{display:flex}}
+
+/* ---------- hero (light, split) ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(90% 70% at 85% 12%,rgba(233,236,221,.9),transparent 60%),
+    radial-gradient(70% 60% at 8% 90%,rgba(242,235,223,.9),transparent 60%),
+    var(--linen);
+  padding:calc(var(--header-h) + clamp(40px,7vh,84px)) 0 clamp(60px,8vh,104px);
+}
+.hero-grid{display:grid;gap:52px;align-items:center}
+@media(min-width:980px){.hero-grid{grid-template-columns:1.04fr .96fr;gap:64px}}
+.hero-rating{
+  display:inline-flex;flex-wrap:wrap;align-items:center;gap:10px 14px;font-size:.9rem;color:var(--ink);
+  border:1px solid var(--line);border-radius:999px;padding:9px 20px;background:rgba(255,253,249,.8);
+  box-shadow:0 6px 20px rgba(46,68,56,.06);
+}
+.hero-rating .stars{color:var(--gold);letter-spacing:3px;font-size:.95rem}
+.hero-rating strong{color:var(--pine-deep);font-weight:700}
+.hero h1{
+  font-size:clamp(2.65rem,6.6vw,4.9rem);font-weight:300;color:var(--pine-deep);
+  max-width:12ch;margin-top:26px;
+}
+.hero h1 em{font-weight:400;color:var(--clay-text)}
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.09em;margin-bottom:-.09em}
+.js .hero h1 .w>span{display:inline-block;transform:translateY(112%);animation:wordUp 1s var(--ease-out) forwards}
+@keyframes wordUp{to{transform:none}}
+.hero-lead{margin-top:24px;font-size:clamp(1.03rem,1.5vw,1.2rem);color:var(--muted);max-width:33rem}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:16px;margin-top:36px;align-items:center}
+.hero-note{margin-top:22px;font-size:.85rem;color:var(--muted);display:flex;align-items:center;gap:9px}
+.hero-note svg{color:var(--sage-deep);flex:none}
+.js .hero-fade{opacity:0;animation:heroFade 1s var(--ease-out) forwards}
+@keyframes heroFade{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.js .d1{animation-delay:.12s}.js .d2{animation-delay:.3s}.js .d3{animation-delay:.5s}.js .d4{animation-delay:.66s}.js .d5{animation-delay:.8s}
+
+.hero-media{position:relative;max-width:520px;margin:0 auto;width:100%}
+.js .hero-media{opacity:0;animation:heroFade 1.1s .35s var(--ease-out) forwards}
+.hero-arch{
+  position:relative;border-radius:260px 260px 26px 26px;overflow:hidden;box-shadow:var(--shadow-lift);
+  aspect-ratio:4/5;background:linear-gradient(160deg,var(--sage-wash),var(--linen-deep));
+}
+.hero-arch img{width:100%;height:104%;object-fit:cover;will-change:transform}
+.hero-blob{
+  position:absolute;z-index:-1;top:-7%;right:-14%;width:75%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,var(--sage-wash),rgba(233,236,221,0) 70%);
+}
+.hero-sprig{position:absolute;left:-72px;bottom:8%;width:130px;color:var(--sage-deep);opacity:.9;display:none;pointer-events:none}
+@media(min-width:1160px){.hero-sprig{display:block}}
+.hero-card{
+  position:absolute;left:-16px;bottom:34px;background:var(--linen-soft);border:1px solid var(--line);
+  border-radius:18px;padding:16px 20px;box-shadow:var(--shadow-soft);max-width:236px;
+  display:flex;gap:13px;align-items:flex-start;
+}
+@media(max-width:430px){.hero-card{left:8px;right:8px;max-width:none}}
+.hero-card .ic{
+  width:40px;height:40px;border-radius:50%;background:var(--sage-wash);color:var(--sage-deep);
+  display:grid;place-items:center;flex:none;
+}
+.hero-card strong{display:block;font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:1.02rem;color:var(--pine-deep);line-height:1.25}
+.hero-card small{color:var(--muted);font-size:.78rem;line-height:1.5;display:block;margin-top:3px}
+.hero-scroll{
+  position:absolute;bottom:30px;left:24px;display:none;align-items:center;gap:14px;
+  color:var(--muted);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;writing-mode:vertical-rl;
+}
+.hero-scroll::after{content:"";width:1px;height:58px;background:linear-gradient(180deg,var(--sage-deep),transparent);animation:scrollPulse 2.4s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{transform:scaleY(.4);transform-origin:top;opacity:.5}50%{transform:scaleY(1);opacity:1}}
+@media(min-width:1290px){.hero-scroll{display:flex}}
+
+/* ---------- soft marquee ---------- */
+.marquee{
+  background:var(--sage-wash);overflow:hidden;padding:20px 0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.marquee-track{display:flex;width:max-content;animation:marq 34s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-seg{display:flex;align-items:center;flex:none}
+.marquee-seg span{
+  font-family:'Fraunces',Georgia,serif;font-size:clamp(1.15rem,2.2vw,1.55rem);font-weight:300;
+  font-style:italic;white-space:nowrap;padding:0 26px;color:var(--pine-deep);
+}
+.marquee-seg svg{color:var(--sage-deep);flex:none}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ---------- studio / intro ---------- */
+.studio-grid{display:grid;gap:60px;align-items:center}
+@media(min-width:980px){.studio-grid{grid-template-columns:.96fr 1.04fr;gap:84px}}
+.studio-media{position:relative;max-width:520px;margin:0 auto;width:100%}
+.studio-photo{
+  border-radius:26px;overflow:hidden;box-shadow:var(--shadow-soft);
+  aspect-ratio:4/4.6;background:linear-gradient(160deg,var(--sage-wash),var(--linen-deep));
+}
+.studio-photo img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease-out)}
+.studio-media:hover .studio-photo img{transform:scale(1.05)}
+.studio-mini{
+  position:absolute;right:-14px;bottom:-34px;width:44%;border-radius:18px;overflow:hidden;
+  border:6px solid var(--linen);box-shadow:var(--shadow-lift);aspect-ratio:1/1.05;
+  background:var(--sage-wash);transform:rotate(2.5deg);transition:transform .5s var(--ease-out);
+}
+.studio-media:hover .studio-mini{transform:rotate(0deg) translateY(-4px)}
+.studio-mini img{width:100%;height:100%;object-fit:cover}
+.studio-sprig{position:absolute;left:-64px;top:-40px;width:120px;color:var(--sage-deep);display:none;pointer-events:none}
+@media(min-width:1140px){.studio-sprig{display:block}}
+.studio-copy .statement{
+  font-family:'Fraunces',Georgia,serif;font-size:clamp(1.5rem,2.6vw,2.05rem);line-height:1.42;
+  color:var(--pine-deep);font-weight:300;margin-top:28px;
+}
+.studio-copy .statement em{color:var(--clay-text)}
+.studio-copy p.body{margin-top:22px;color:var(--muted);max-width:34rem}
+.studio-marks{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.studio-marks span{
+  display:inline-flex;align-items:center;gap:8px;font-size:.82rem;font-weight:700;color:var(--sage-deep);
+  border:1px solid rgba(78,99,85,.3);border-radius:999px;padding:8px 16px;background:var(--linen-soft);
+  transition:transform .3s var(--ease-out),border-color .3s;
+}
+.studio-marks span:hover{transform:translateY(-2px);border-color:var(--sage-deep)}
+
+/* self-drawing SVG line art */
+.draw path{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.js .draw path{stroke-dasharray:1;stroke-dashoffset:1}
+.js .draw.drawn path{stroke-dashoffset:0;transition:stroke-dashoffset 1.6s var(--ease-out)}
+.js .draw.drawn path:nth-of-type(2){transition-delay:.3s}
+.js .draw.drawn path:nth-of-type(3){transition-delay:.5s}
+.js .draw.drawn path:nth-of-type(4){transition-delay:.7s}
+.js .draw.drawn path:nth-of-type(5){transition-delay:.9s}
+.js .draw.drawn path:nth-of-type(6){transition-delay:1.1s}
+.js .draw.drawn path:nth-of-type(7){transition-delay:1.3s}
+
+/* ---------- stats band ---------- */
+.stats{background:var(--linen-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr}
+@media(min-width:880px){.stats-grid{grid-template-columns:repeat(4,1fr)}}
+.stat{padding:46px 18px;text-align:center;border-right:1px solid var(--line)}
+.stat:last-child{border-right:none}
+.stat:nth-child(2){border-right:none}
+@media(min-width:880px){.stat:nth-child(2){border-right:1px solid var(--line)}}
+.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+@media(min-width:880px){.stat:nth-child(-n+2){border-bottom:none}}
+.stat .num{font-family:'Fraunces',Georgia,serif;font-size:clamp(2.3rem,4.4vw,3.3rem);color:var(--pine-deep);line-height:1;font-weight:300}
+.stat .num sup{font-size:.45em;color:var(--clay-text);top:-.7em}
+.stat .lbl{font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:12px;font-weight:700}
+
+/* ---------- services ---------- */
+.svc-grid{display:grid;gap:22px;margin-top:64px}
+@media(min-width:760px){.svc-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1140px){.svc-grid{grid-template-columns:repeat(4,1fr)}}
+.svc{
+  position:relative;padding:38px 30px 44px;border:1px solid var(--line);border-radius:22px;
+  background:var(--linen-soft);overflow:hidden;
+  transition:transform .45s var(--ease-out),box-shadow .45s,border-color .45s;
+}
+.svc::before{
+  content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.6),transparent);
+  transform:skewX(-18deg);transition:left .8s var(--ease-out);pointer-events:none;
+}
+.svc:hover{transform:translateY(-8px);box-shadow:var(--shadow-lift);border-color:rgba(124,144,128,.5)}
+.svc:hover::before{left:130%}
+.svc .idx{font-family:'Fraunces',Georgia,serif;font-style:italic;color:var(--clay-text);font-size:.98rem}
+.svc .ico{
+  width:58px;height:58px;margin:20px 0 18px;border-radius:50%;background:var(--sage-wash);color:var(--sage-deep);
+  display:grid;place-items:center;transition:transform .5s var(--ease-out),background .35s,color .35s;
+}
+.svc:hover .ico{transform:translateY(-4px) rotate(-7deg);background:var(--pine);color:var(--linen-soft)}
+.svc h3{font-size:1.45rem;color:var(--pine-deep);font-weight:400}
+.svc p{color:var(--muted);font-size:.94rem;margin-top:13px}
+.svc .more{display:inline-block;margin-top:18px;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--clay-text)}
+
+/* ---------- room explorer (signature) ---------- */
+.rooms{background:var(--sage-wash);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.room-tabs{
+  display:flex;flex-wrap:wrap;gap:10px;margin-top:52px;
+}
+.room-tab{
+  border:1.5px solid rgba(51,64,58,.28);background:transparent;border-radius:999px;
+  padding:12px 24px;min-height:48px;font-weight:700;font-size:.95rem;color:var(--ink);cursor:pointer;
+  display:inline-flex;align-items:center;gap:9px;
+  transition:background .3s,color .3s,border-color .3s,transform .3s var(--ease-out),box-shadow .3s;
+}
+.room-tab svg{flex:none;opacity:.8}
+.room-tab:hover{transform:translateY(-2px);border-color:var(--pine)}
+.room-tab[aria-selected="true"]{
+  background:var(--pine);border-color:var(--pine);color:var(--linen-soft);
+  box-shadow:0 12px 28px rgba(34,53,43,.22);
+}
+.room-panel{display:grid;gap:44px;margin-top:44px;align-items:center}
+@media(min-width:960px){.room-panel{grid-template-columns:1.02fr .98fr;gap:64px}}
+.room-scene{position:relative;max-width:560px;width:100%}
+.room-photo{
+  border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lift);aspect-ratio:4/3.1;
+  background:linear-gradient(160deg,var(--linen-deep),#DDE2CF);
+}
+.room-photo img{width:100%;height:100%;object-fit:cover}
+.js .room-panel.enter .room-scene{opacity:0;transform:translateY(18px) scale(.985)}
+.js .room-panel.in .room-scene{opacity:1;transform:none;transition:opacity .7s ease,transform .7s var(--ease-out)}
+/* hotspots */
+.spot{
+  position:absolute;width:34px;height:34px;border-radius:50%;border:none;cursor:pointer;
+  background:rgba(255,253,249,.95);color:var(--pine-deep);
+  box-shadow:0 6px 18px rgba(16,30,22,.3), inset 0 0 0 1.5px var(--pine-deep);
+  display:grid;place-items:center;font-weight:700;
+  transition:transform .35s var(--ease-out),background .3s;
+  transform:translate(-50%,-50%);
+}
+.spot::before{
+  content:"";position:absolute;inset:-7px;border-radius:50%;border:1.5px solid rgba(255,253,249,.8);
+  animation:spotPing 2.6s ease-out infinite;pointer-events:none;
+}
+@keyframes spotPing{0%{transform:scale(.7);opacity:.9}70%{transform:scale(1.25);opacity:0}100%{opacity:0}}
+.spot:hover,.spot.open{transform:translate(-50%,-50%) scale(1.12);background:var(--linen-soft)}
+.spot .tip{
+  position:absolute;bottom:calc(100% + 12px);left:50%;transform:translate(-50%,6px);
+  background:var(--pine-deep);color:var(--linen-soft);font-size:.8rem;font-weight:600;line-height:1.45;
+  width:max-content;max-width:190px;padding:10px 14px;border-radius:12px;text-align:left;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .3s,transform .3s var(--ease-out),visibility .3s;
+  box-shadow:0 14px 30px rgba(16,30,22,.3);
+}
+.spot .tip::after{
+  content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  border:6px solid transparent;border-top-color:var(--pine-deep);
+}
+.spot.edge-r .tip{left:auto;right:-8px;transform:translateY(6px)}
+.spot.edge-r .tip::after{left:auto;right:16px;transform:none}
+.spot.edge-l .tip{left:-8px;transform:translateY(6px)}
+.spot.edge-l .tip::after{left:20px;transform:none}
+.spot:hover .tip,.spot:focus-visible .tip,.spot.open .tip{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.spot.edge-r:hover .tip,.spot.edge-r:focus-visible .tip,.spot.edge-r.open .tip,
+.spot.edge-l:hover .tip,.spot.edge-l:focus-visible .tip,.spot.edge-l.open .tip{transform:translateY(0)}
+.room-hint{
+  margin-top:16px;font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:8px;
+}
+.room-hint svg{color:var(--sage-deep);flex:none}
+/* checklist side */
+.room-copy h3{font-size:clamp(1.6rem,2.6vw,2.15rem);color:var(--pine-deep);font-weight:300}
+.room-copy h3 em{color:var(--clay-text)}
+.room-count{
+  display:inline-flex;align-items:baseline;gap:8px;margin-top:14px;
+  font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--sage-deep);
+}
+.room-count .n{font-family:'Fraunces',Georgia,serif;font-size:1.9rem;letter-spacing:0;color:var(--clay-text);line-height:1}
+.room-list{list-style:none;margin-top:22px;border-top:1px solid var(--line)}
+.room-list li{
+  display:flex;gap:14px;align-items:flex-start;padding:14px 2px;border-bottom:1px solid var(--line);
+  color:var(--ink);font-size:.98rem;
+}
+.room-list .chk{
+  flex:none;width:26px;height:26px;border-radius:50%;background:var(--linen-soft);
+  border:1.5px solid rgba(78,99,85,.45);color:var(--sage-deep);display:grid;place-items:center;margin-top:2px;
+}
+.room-list .chk svg path{fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.js .room-panel .room-list li{opacity:0;transform:translateY(14px)}
+.js .room-panel .room-list .chk svg path{stroke-dasharray:1;stroke-dashoffset:1}
+.js .room-panel.in .room-list li{opacity:1;transform:none;transition:opacity .55s ease,transform .55s var(--ease-out)}
+.js .room-panel.in .room-list .chk svg path{stroke-dashoffset:0;transition:stroke-dashoffset .5s .25s var(--ease-out)}
+.js .room-panel.in .room-list li:nth-child(2){transition-delay:.08s}
+.js .room-panel.in .room-list li:nth-child(3){transition-delay:.16s}
+.js .room-panel.in .room-list li:nth-child(4){transition-delay:.24s}
+.js .room-panel.in .room-list li:nth-child(5){transition-delay:.32s}
+.js .room-panel.in .room-list li:nth-child(6){transition-delay:.4s}
+.js .room-panel.in .room-list li:nth-child(2) .chk svg path{transition-delay:.33s}
+.js .room-panel.in .room-list li:nth-child(3) .chk svg path{transition-delay:.41s}
+.js .room-panel.in .room-list li:nth-child(4) .chk svg path{transition-delay:.49s}
+.js .room-panel.in .room-list li:nth-child(5) .chk svg path{transition-delay:.57s}
+.js .room-panel.in .room-list li:nth-child(6) .chk svg path{transition-delay:.65s}
+
+/* ---------- ritual / process ---------- */
+.ritual-grid{display:grid;gap:40px;margin-top:70px;position:relative}
+@media(min-width:900px){
+  .ritual-grid{grid-template-columns:repeat(3,1fr);gap:44px}
+  .ritual-grid::before{
+    content:"";position:absolute;top:39px;left:12%;right:12%;height:0;
+    border-top:2px dashed rgba(78,99,85,.4);z-index:0;
+  }
+}
+.rit{position:relative;text-align:center;padding:0 8px;z-index:1}
+.rit .dot{
+  width:78px;height:78px;border-radius:50%;background:var(--linen-soft);border:1.5px solid rgba(78,99,85,.4);
+  display:grid;place-items:center;margin:0 auto;
+  font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:1.4rem;color:var(--clay-text);
+  transition:background .35s,border-color .35s,color .35s,transform .5s var(--ease-out),box-shadow .4s;
+}
+.rit:hover .dot{background:var(--pine);border-color:var(--pine);color:var(--linen-soft);transform:scale(1.08);box-shadow:0 16px 34px rgba(34,53,43,.22)}
+.rit h3{font-size:1.55rem;color:var(--pine-deep);margin-top:24px;font-weight:400}
+.rit p{color:var(--muted);margin-top:12px;font-size:.96rem;max-width:21rem;margin-left:auto;margin-right:auto}
+.rit .tag{display:inline-block;margin-top:14px;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--sage-deep)}
+
+/* ---------- testimonials ---------- */
+.quotes{background:var(--linen-soft);border-top:1px solid var(--line)}
+.quotes .stage{position:relative;margin-top:52px;min-height:330px}
+@media(max-width:640px){.quotes .stage{min-height:470px}}
+.quote-slide{
+  position:absolute;inset:0;opacity:0;visibility:hidden;transform:translateY(18px);
+  transition:opacity .7s var(--ease-out),transform .7s var(--ease-out),visibility .7s;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+}
+.quote-slide.active{opacity:1;visibility:visible;transform:none}
+.quote-slide .stars{color:var(--gold);letter-spacing:5px;font-size:1.05rem}
+.quote-slide blockquote{
+  font-family:'Fraunces',Georgia,serif;font-weight:300;font-size:clamp(1.35rem,2.7vw,2.05rem);
+  line-height:1.46;color:var(--pine-deep);max-width:20em;margin-top:22px;
+}
+.quote-slide blockquote em{color:var(--clay-text)}
+.quote-slide .who{margin-top:26px;font-weight:700;color:var(--pine-deep)}
+.quote-slide .who span{display:block;font-weight:600;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:5px}
+.q-dots{display:flex;justify-content:center;gap:2px;margin-top:10px}
+.q-dots button{width:44px;height:44px;border:none;background:none;cursor:pointer;display:grid;place-items:center;border-radius:50%}
+.q-dots button i{width:9px;height:9px;border-radius:50%;background:rgba(51,64,58,.22);display:block;transition:background .3s,transform .3s}
+.q-dots button:hover i{background:var(--clay)}
+.q-dots button.on i{background:var(--clay-btn);transform:scale(1.5)}
+.q-note{margin-top:20px;text-align:center;font-size:.88rem;color:var(--muted)}
+.q-note strong{color:var(--pine-deep)}
+
+/* ---------- FAQ ---------- */
+.faq-list{margin-top:56px;border-top:1px solid var(--line);max-width:860px}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-item summary{
+  list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:26px 6px;min-height:44px;
+  font-family:'Fraunces',Georgia,serif;font-size:clamp(1.12rem,2vw,1.4rem);color:var(--pine-deep);
+  transition:color .25s;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:hover{color:var(--clay-text)}
+.faq-item summary .cross{
+  flex:none;width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(78,99,85,.45);position:relative;
+  transition:transform .45s var(--ease-out),background .3s,border-color .3s;
+}
+.faq-item summary .cross::before,.faq-item summary .cross::after{
+  content:"";position:absolute;top:50%;left:50%;background:var(--sage-deep);transition:background .3s;
+}
+.faq-item summary .cross::before{width:14px;height:1.6px;transform:translate(-50%,-50%)}
+.faq-item summary .cross::after{width:1.6px;height:14px;transform:translate(-50%,-50%)}
+.faq-item[open] summary .cross{transform:rotate(135deg);background:var(--pine);border-color:var(--pine)}
+.faq-item[open] summary .cross::before,.faq-item[open] summary .cross::after{background:var(--linen-soft)}
+.faq-item .ans{padding:0 6px 30px;color:var(--muted);max-width:44rem}
+.js .faq-item .ans{animation:ansIn .5s var(--ease-out)}
+@keyframes ansIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+
+/* ---------- CTA band ---------- */
+.on-dark{background:linear-gradient(165deg,var(--pine) 0%,var(--pine-deep) 70%,var(--pine-ink) 100%);color:var(--linen-soft)}
+.cta-band{position:relative;overflow:hidden}
+.cta-band .sprig-r{position:absolute;right:-24px;top:50%;transform:translateY(-50%) rotate(14deg);width:190px;color:rgba(250,246,239,.3);display:none;pointer-events:none}
+.cta-band .sprig-l{position:absolute;left:-30px;bottom:-24px;transform:rotate(-18deg);width:150px;color:rgba(250,246,239,.2);display:none;pointer-events:none}
+@media(min-width:1000px){.cta-band .sprig-r,.cta-band .sprig-l{display:block}}
+.cta-inner{text-align:center;position:relative;z-index:1}
+.cta-inner h2{font-size:clamp(2.3rem,5.4vw,4rem);max-width:17ch;margin:18px auto 0}
+.cta-inner .sub{margin:20px auto 0}
+.cta-actions{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-top:40px}
+.cta-note{margin-top:26px;font-size:.85rem;color:#A9B6A0;letter-spacing:.04em}
+
+/* ---------- footer ---------- */
+footer{background:var(--pine-ink);color:#AAB6A2;padding:70px 0 34px;font-size:.92rem}
+.foot-grid{display:grid;gap:40px}
+@media(min-width:880px){.foot-grid{grid-template-columns:1.4fr 1fr 1fr}}
+.foot-brand .logo-name{color:var(--linen-soft)}
+.foot-brand .logo-name em{color:var(--clay-soft)}
+.foot-brand .logo-name small{color:#8FA087}
+.foot-brand p{margin-top:16px;max-width:26rem;color:#8FA087}
+.foot h4{font-family:'Mulish',sans-serif;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--clay-soft);margin-bottom:18px;font-weight:700}
+.foot ul{list-style:none}
+.foot ul li{margin-bottom:10px}
+.foot a{color:#D3DAC8;text-decoration:none;padding:4px 0;display:inline-block}
+.foot a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.foot-tel{font-family:'Fraunces',Georgia,serif;font-size:1.5rem;color:var(--linen-soft) !important}
+.foot-bottom{
+  margin-top:56px;padding-top:26px;border-top:1px solid rgba(250,246,239,.12);
+  display:flex;flex-wrap:wrap;gap:10px 30px;justify-content:space-between;font-size:.8rem;color:#8FA087;
+}
+
+/* ---------- mobile call bar ---------- */
+.callbar{display:none}
+@media(max-width:720px){
+  .callbar{
+    display:block;position:fixed;bottom:0;left:0;right:0;z-index:110;
+    background:rgba(250,246,239,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-top:1px solid var(--line);
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  }
+  .callbar a{
+    display:flex;align-items:center;justify-content:center;gap:10px;min-height:52px;
+    background:var(--clay-btn);color:#fff;border-radius:999px;text-decoration:none;
+    font-weight:700;font-size:1.02rem;letter-spacing:.01em;box-shadow:0 10px 26px rgba(154,85,53,.32);
+  }
+  body{padding-bottom:84px}
+}
+
+/* ---------- scroll reveal ---------- */
+.js .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s var(--ease-out)}
+.js .reveal.in{opacity:1;transform:none}
+.js .stagger>*{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s var(--ease-out)}
+.js .stagger.in>*{opacity:1;transform:none}
+.js .stagger.in>*:nth-child(2){transition-delay:.1s}
+.js .stagger.in>*:nth-child(3){transition-delay:.2s}
+.js .stagger.in>*:nth-child(4){transition-delay:.3s}
+.js .stagger.in>*:nth-child(5){transition-delay:.4s}
+.js .stagger.in>*:nth-child(6){transition-delay:.5s}
+.js .stagger.in>.svc{transition:transform .45s var(--ease-out),box-shadow .45s,border-color .45s;transition-delay:0s}
+
+/* ---------- image fallbacks ---------- */
+.img-fail img{display:none !important}
+.img-fail{
+  background:
+    radial-gradient(120% 90% at 15% 10%,rgba(224,168,134,.35),transparent 55%),
+    linear-gradient(155deg,var(--sage-wash) 0%,#D8DEC9 55%,#C8D1B8 100%) !important;
+  position:relative;
+}
+.img-fail::before{
+  content:"🧺";position:absolute;inset:0;display:grid;place-items:center;font-size:3rem;opacity:.55;
+}
+
+/* ---------- reduced motion: calm and fully visible ---------- */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .js .reveal,.js .stagger>*{opacity:1;transform:none}
+  .js .hero h1 .w>span{transform:none}
+  .js .hero-fade,.js .hero-media{opacity:1;animation:none}
+  .js .draw path,.js .uline svg path,.js .room-panel .room-list .chk svg path{stroke-dasharray:none;stroke-dashoffset:0}
+  .js .room-panel .room-list li{opacity:1;transform:none}
+  .js .room-panel.enter .room-scene{opacity:1;transform:none}
+  .marquee-track{animation:none !important;width:auto;flex-wrap:wrap}
+  .marquee-seg:nth-child(2){display:none}
+  .spot::before{animation:none;opacity:0}
+}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<div id="progress" aria-hidden="true"></div>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="Linen and Pine Home Cleaning — back to top">
+      <span class="logo-mark" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M12 6c-2.4.2-4-.8-4.8-2.6C9 3 10.8 3.6 12 6Z"/><path d="M12 6c2.4.2 4-.8 4.8-2.6C15 3 13.2 3.6 12 6Z"/><path d="M12 11c-2.8.2-4.7-.9-5.6-3C9.2 7.7 11.2 8.5 12 11Z"/><path d="M12 11c2.8.2 4.7-.9 5.6-3C14.8 7.7 12.8 8.5 12 11Z"/><path d="M12 16.5c-3 .2-5.2-1-6.2-3.4C9.4 12.9 11.5 13.8 12 16.5Z"/><path d="M12 16.5c3 .2 5.2-1 6.2-3.4C14.6 12.9 12.5 13.8 12 16.5Z"/></svg>
+      </span>
+      <span class="logo-name">Linen <em>&amp;</em> Pine<small>Home Cleaning</small></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links">
+        <li><a href="#studio">The Studio</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#rooms">Room by Room</a></li>
+        <li><a href="#ritual">The Ritual</a></li>
+        <li><a href="#kindwords">Kind Words</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <a class="nav-call" href="tel:+15550238100">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      (555) 023-8100
+    </a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<div class="hero" id="heroRoot">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="hero-rating hero-fade d1">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <span><strong>5.0</strong> · 178 reviews</span>
+        <span aria-hidden="true">·</span>
+        <span>Nashville, Tennessee</span>
+      </p>
+      <h1 aria-label="A home kept like a boutique hotel.">
+        <span aria-hidden="true">
+          <span class="w"><span style="animation-delay:.08s">A</span></span>
+          <span class="w"><span style="animation-delay:.16s">home</span></span>
+          <span class="w"><span style="animation-delay:.24s">kept</span></span><br>
+          <span class="w"><span style="animation-delay:.34s">like</span></span>
+          <span class="w"><span style="animation-delay:.42s">a</span></span>
+          <span class="w"><em><span style="animation-delay:.52s">boutique</span></em></span>
+          <span class="w"><em><span style="animation-delay:.64s">hotel.</span></em></span>
+        </span>
+      </h1>
+      <p class="hero-lead hero-fade d3">Linen &amp; Pine is a small Nashville cleaning studio for people who love their homes. The same gentle team, plant-based products, and our signature linen finish — beds squared, towels folded, every room left breathing.</p>
+      <div class="hero-ctas hero-fade d4">
+        <a class="btn btn-clay" href="tel:+15550238100">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call to reserve a clean
+        </a>
+        <a class="btn btn-ghost" href="#rooms">See what we clean</a>
+      </div>
+      <p class="hero-note hero-fade d5">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        Bonded &amp; insured · Plant-based products · Same team, every visit
+      </p>
+    </div>
+
+    <div class="hero-media">
+      <div class="hero-blob" aria-hidden="true"></div>
+      <svg class="hero-sprig draw" id="heroSprig" viewBox="0 0 140 320" aria-hidden="true">
+        <path pathLength="1" d="M70 314 C52 262 88 224 66 172 C50 134 84 100 64 52 C58 34 62 16 70 4"/>
+        <path pathLength="1" d="M60 272 C40 268 28 252 30 234 C50 238 62 252 60 272Z"/>
+        <path pathLength="1" d="M76 216 C96 212 108 196 106 178 C86 182 74 196 76 216Z"/>
+        <path pathLength="1" d="M60 162 C40 158 28 142 30 124 C50 128 62 142 60 162Z"/>
+        <path pathLength="1" d="M74 106 C94 102 106 86 104 68 C84 72 72 86 74 106Z"/>
+      </svg>
+      <div class="hero-arch" data-ph>
+        <img id="heroImg" src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1100&q=80"
+             alt="A calm, sunlit living room in warm linen tones — plumped cushions, layered textures, everything in its place"
+             fetchpriority="high"
+             onerror="this.closest('[data-ph]').classList.add('img-fail')">
+      </div>
+      <div class="hero-card">
+        <span class="ic" aria-hidden="true">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16M4 8a2 2 0 0 1-2-2c0-1.1.9-2 2-2h16a2 2 0 0 1 2 2 2 2 0 0 1-2 2M4 8v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M9 12h6"/></svg>
+        </span>
+        <span>
+          <strong>The linen finish</strong>
+          <small>Beds squared, towels folded in thirds, pillows plumped — on every single visit.</small>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">Scroll</div>
+</div>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="marquee-seg">
+      <span>The Signature Clean</span><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4Z"/></svg>
+      <span>The Deep Reset</span><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4Z"/></svg>
+      <span>Moving Days</span><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4Z"/></svg>
+      <span>Guest-Ready Turns</span><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4Z"/></svg>
+      <span>Est. 2014 · Nashville, Tennessee</span><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4Z"/></svg>
+    </div>
+    <div class="marquee-seg">
+      <span>The Signature Clean</span><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4Z"/></svg>
+      <span>The Deep Reset</span><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4Z"/></svg>
+      <span>Moving Days</span><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4Z"/></svg>
+      <span>Guest-Ready Turns</span><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4Z"/></svg>
+      <span>Est. 2014 · Nashville, Tennessee</span><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4Z"/></svg>
+    </div>
+  </div>
+</div>
+
+<!-- ============ STUDIO ============ -->
+<section id="studio">
+  <div class="wrap studio-grid">
+    <div class="studio-media reveal">
+      <svg class="studio-sprig draw" viewBox="0 0 140 320" aria-hidden="true">
+        <path pathLength="1" d="M70 4 C88 56 52 94 74 146 C90 184 56 218 76 266 C82 284 78 302 70 314"/>
+        <path pathLength="1" d="M80 46 C100 42 112 26 110 8 C90 12 78 26 80 46Z"/>
+        <path pathLength="1" d="M64 102 C44 98 32 82 34 64 C54 68 66 82 64 102Z"/>
+        <path pathLength="1" d="M80 156 C100 152 112 136 110 118 C90 122 78 136 80 156Z"/>
+        <path pathLength="1" d="M64 212 C44 208 32 192 34 174 C54 178 66 192 64 212Z"/>
+        <path pathLength="1" d="M80 266 C100 262 112 246 110 228 C90 232 78 246 80 266Z"/>
+      </svg>
+      <figure class="studio-photo" data-ph>
+        <img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=1100&q=80"
+             alt="A spa-calm bathroom with a freestanding tub, white towels folded on a wooden ladder, and a soft palm"
+             loading="lazy"
+             onerror="this.closest('[data-ph]').classList.add('img-fail')">
+      </figure>
+      <figure class="studio-mini" data-ph>
+        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=700&q=80"
+             alt="A Linen and Pine team member in gloves carefully wiping white window shutters"
+             loading="lazy"
+             onerror="this.closest('[data-ph]').classList.add('img-fail')">
+      </figure>
+    </div>
+    <div class="studio-copy reveal">
+      <span class="eyebrow">The studio</span>
+      <p class="statement">We clean the way a fine hotel turns a room — <em>quietly, precisely,</em> and with a weakness for perfectly folded towels.</p>
+      <p class="body">Founded in 2014, Linen &amp; Pine is a small studio on purpose. You'll see the same two faces at your door each visit — people who know that the fig tree's leaves collect dust, that the guest bath gets forgotten, and exactly how you like your throw pillows.</p>
+      <p class="body">Everything we bring is plant-based and home-safe: cedar and eucalyptus in the bottles, never bleach fumes in the hallway. The scent when you walk in is our signature — most clients say it's the moment they exhale.</p>
+      <div class="studio-marks">
+        <span>Bonded &amp; insured</span>
+        <span>Plant-based products</span>
+        <span>Background-checked team</span>
+        <span>Pet-friendly</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<div class="stats" aria-label="Studio track record">
+  <div class="wrap stats-grid stagger">
+    <div class="stat"><div class="num"><span data-count="12">12</span></div><div class="lbl">Years in Nashville</div></div>
+    <div class="stat"><div class="num"><span data-count="2400">2,400</span><sup>+</sup></div><div class="lbl">Homes cared for</div></div>
+    <div class="stat"><div class="num"><span data-count="96">96</span><sup>%</sup></div><div class="lbl">Clients on repeat visits</div></div>
+    <div class="stat"><div class="num"><span data-count="5.0" data-dec="1">5.0</span><sup>★</sup></div><div class="lbl">Across 178 reviews</div></div>
+  </div>
+</div>
+
+<!-- ============ SERVICES ============ -->
+<section id="services">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">What we offer</span>
+      <h2>Four ways to <em>come home</em></h2>
+      <p class="sub">Every clean ends the same way — with the linen finish, a handwritten note, and a house that smells faintly of cedar.</p>
+    </div>
+    <div class="svc-grid stagger">
+      <article class="svc">
+        <span class="idx">No. 01</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"/><path d="M9.5 20v-5h5v5"/></svg></div>
+        <h3>The Signature Clean</h3>
+        <p>Our weekly or bi-weekly ritual. Kitchens degreased, baths polished, floors done by hand at the edges — and the linen finish in every room.</p>
+        <span class="more" aria-hidden="true">The house, exhaling</span>
+      </article>
+      <article class="svc">
+        <span class="idx">No. 02</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" aria-hidden="true"><path d="M12 3v3M5.6 5.6l2.1 2.1M3 12h3M5.6 18.4l2.1-2.1M12 21v-3M18.4 18.4l-2.1-2.1M21 12h-3M18.4 5.6l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></svg></div>
+        <h3>The Deep Reset</h3>
+        <p>A seasonal top-to-bottom: inside the oven, behind the furniture, baseboards, vents, grout lines. The clean you feel for weeks afterward.</p>
+        <span class="more" aria-hidden="true">Down to the grout</span>
+      </article>
+      <article class="svc">
+        <span class="idx">No. 03</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" aria-hidden="true"><path d="M7 21V7a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14"/><path d="M3 21h18"/><path d="M13.5 12h.01"/><path d="M9 5V3h6v2"/></svg></div>
+        <h3>Moving Days</h3>
+        <p>Move-in or move-out, we take the day off your hands. Hand us the keys and come back to a home that feels — and smells — brand new.</p>
+        <span class="more" aria-hidden="true">Keys in, keys out</span>
+      </article>
+      <article class="svc">
+        <span class="idx">No. 04</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" aria-hidden="true"><path d="M2 17h20"/><path d="M4 17V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9"/><path d="M6 12h12a2 2 0 0 1 2 2v3"/><path d="M4 21v-2M20 21v-2"/></svg></div>
+        <h3>Guest-Ready Turns</h3>
+        <p>For hosts and hosting weekends: crisp beds, staged towels, a styled welcome. Your guests will assume you have staff. You do — us.</p>
+        <span class="more" aria-hidden="true">Hotel corners, home warmth</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROOM EXPLORER (signature) ============ -->
+<section class="rooms" id="rooms">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Room by room</span>
+      <h2>What <span class="uline">exactly<svg viewBox="0 0 120 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 9C25 3 60 3 76 6c14 2.6 30 2 41-2"/></svg></span> gets done</h2>
+      <p class="sub">Choose a room. Hover or tap the dots to see the details our clients notice — then read the checklist we run on every visit.</p>
+    </div>
+
+    <div class="room-tabs reveal" role="tablist" aria-label="Choose a room">
+      <button class="room-tab" id="tab-kitchen" role="tab" aria-selected="true" aria-controls="panel-kitchen">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18M3 9h18M21 3v18"/><path d="M8 3v6M14 3v6"/></svg>
+        Kitchen
+      </button>
+      <button class="room-tab" id="tab-bath" role="tab" aria-selected="false" aria-controls="panel-bath" tabindex="-1">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16a1 1 0 0 1 1 1c0 3-2 6-5 6H8c-3 0-5-3-5-6a1 1 0 0 1 1-1Z"/><path d="M6 12V5a2 2 0 0 1 4 0"/></svg>
+        Bathrooms
+      </button>
+      <button class="room-tab" id="tab-bed" role="tab" aria-selected="false" aria-controls="panel-bed" tabindex="-1">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 18h18M5 10V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"/></svg>
+        Bedrooms
+      </button>
+      <button class="room-tab" id="tab-living" role="tab" aria-selected="false" aria-controls="panel-living" tabindex="-1">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"/><path d="M3 13a2 2 0 0 1 4 0v1h10v-1a2 2 0 0 1 4 0v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M6 18v2M18 18v2"/></svg>
+        Living Spaces
+      </button>
+    </div>
+
+    <!-- Kitchen -->
+    <div class="room-panel in" id="panel-kitchen" role="tabpanel" aria-labelledby="tab-kitchen" tabindex="0">
+      <div class="room-scene">
+        <div class="room-photo" data-ph>
+          <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1100&q=80"
+               alt="A bright white kitchen with a marble island, gleaming cooktop and fresh lemons on the counter"
+               loading="lazy"
+               onerror="this.closest('[data-ph]').classList.add('img-fail')">
+        </div>
+        <button class="spot edge-l" type="button" style="left:22%;top:66%" aria-label="Detail: the cooktop">
+          <span aria-hidden="true">+</span>
+          <span class="tip" role="tooltip">Cooktop degreased down to the burner rings — never just wiped around them.</span>
+        </button>
+        <button class="spot" type="button" style="left:52%;top:44%" aria-label="Detail: the sink and faucet">
+          <span aria-hidden="true">+</span>
+          <span class="tip" role="tooltip">Sink scrubbed, then the chrome is buffed dry so there's not a single water spot.</span>
+        </button>
+        <button class="spot edge-r" type="button" style="left:82%;top:30%" aria-label="Detail: cabinets and shelves">
+          <span aria-hidden="true">+</span>
+          <span class="tip" role="tooltip">Cabinet faces and open shelves hand-wiped, everything set back exactly where it lives.</span>
+        </button>
+        <p class="room-hint" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11.5a3 3 0 1 1 6 0c0 1.5-.7 2.1-1.5 3-.6.7-1 1.2-1 2.5h-1c0-1.3-.4-1.8-1-2.5-.8-.9-1.5-1.5-1.5-3Z"/><path d="M11 20h2"/></svg>
+          Hover or tap the dots for the details
+        </p>
+      </div>
+      <div class="room-copy">
+        <h3>The kitchen, <em>reset to zero</em></h3>
+        <p class="room-count"><span class="n" data-tp="41">41</span> touchpoints every visit</p>
+        <ul class="room-list">
+          <li><span class="chk" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path pathLength="1" d="M20 6 9 17l-5-5"/></svg></span>Counters, backsplash &amp; open shelving hand-wiped</li>
+          <li><span class="chk" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path pathLength="1" d="M20 6 9 17l-5-5"/></svg></span>Cabinet faces &amp; hardware polished</li>
+          <li><span class="chk" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path pathLength="1" d="M20 6 9 17l-5-5"/></svg></span>Sink scrubbed, chrome buffed to a dry shine</li>
+          <li><span class="chk" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path pathLength="1" d="M20 6 9 17l-5-5"/></svg></span>Appliance fronts — fridge, oven, dishwasher — degreased</li>
+          <li><span class="chk" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path pathLength="1" d="M20 6 9 17l-5-5"/></svg></span>Stovetop, hood &amp; control panels detailed</li>
+          <li><span class="chk" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path pathLength="1" d="M20 6 9 17l-5-5"/></svg></span>Floors vacuumed, then mopped by hand at the edges</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bathrooms -->
+    <div class="room-panel" id="panel-bath" role="tabpanel" aria-labelledby="tab-bath" tabindex="0" hidden>
+      <div class="room-scene">
+        <div class="room-photo" data-ph>
+          <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1100&q=80"
+               alt="A bright modern bathroom with a glass shower, double vanity and dried flowers in a white vase"
+               loading="lazy"
+               onerror="this.closest('[data-ph]').classList.add('img-fail')">
+        </div>
+        <button class="spot edge-l" type="button" style="left:20%;top:40%" aria-label="Detail: the shower glass">
+          <span aria-hidden="true">+</span>
+          <span class="tip" role="tooltip">Shower glass descaled and squeegeed until it disappears — no clouding, no streaks.</span>
+        </button>
+        <button class="spot" type="button" style="left:56%;top:62%" aria-label="Detail: the vanity">
+          <span aria-hidden="true">+</span>
+          <span class="tip" role="tooltip">Vanity cleared, wiped and restyled; mirror and faucet finished with dry microfiber.</span>
+        </button>
+        <button class="spot edge-r" type="button" style="left:83%;top:48%" aria-label="Detail: the towels">
+          <span aria-hidden="true">+</span>
+          <span class="tip" role="tooltip">Towels refolded in thirds and hung spa-style — our little signature.</span>
+        </button>
+        <p class="room-hint" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11.5a3 3 0 1 1 6 0c0 1.5-.7 2.1-1.5 3-.6.7-1 1.2-1 2.5h-1c0-1.3-.4-1.8-1-2.5-.8-.9-1.5-1.5-1.5-3Z"/><path d="M11 20h2"/></svg>
+          Hover or tap the dots for the details
+        </p>
+      </div>
+      <div class="room-copy">
+        <h3>Bathrooms, <em>spa-quiet</em></h3>
+        <p class="room-count"><span class="n" data-tp="37">37</span> touchpoints every visit</p>
+        <ul class="room-list">
+          <li><span class="chk" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path pathLength="1" d="M20 6 9 17l-5-5"/></svg></span>Shower glass squeegeed &amp; descaled</li>
+          <li><span class="chk" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path pathLength="1" d="M20 6 9 17l-5-5"/></svg></span>Tile, grout lines &amp; tub scrubbed</li>
+          <li><span class="chk" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path pathLength="1" d="M20 6 9 17l-5-5"/></svg></span>Vanity, mirror &amp; fixtures polished</li>
+          <li><span class="chk" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path pathLength="1" d="M20 6 9 17l-5-5"/></svg></span>Toilet cleaned &amp; disinfected, base to tank</li>
+          <li><span class="chk" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path pathLength="1" d="M20 6 9 17l-5-5"/></svg></span>Towels refolded hotel-style, bath mat squared</li>
+          <li><span class="chk" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path pathLength="1" d="M20 6 9 17l-5-5"/></svg></span>Floors sanitized, corners done by hand</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bedrooms -->
+    <div class="room-panel" id="panel-bed" role="tabpanel" aria-labelledby="tab-bed" tabindex="0" hidden>
+      <div class="room-scene">
+        <div class="room-photo" data-ph>
+          <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=1100&q=80"
+               alt="A serene bedroom with a crisply made white bed, warm accent pillows and soft lamplight"
+               loading="lazy"
+               onerror="this.closest('[data-ph]').classList.add('img-fail')">
+        </div>
+        <button class="spot edge-l" type="button" style="left:24%;top:56%" aria-label="Detail: the bed">
+          <span aria-hidden="true">+</span>
+          <span class="tip" role="tooltip">Duvet squared with hospital corners, pillows plumped and staged.</span>
+        </button>
+        <button class="spot" type="button" style="left:55%;top:34%" aria-label="Detail: surfaces and frames">
+          <span aria-hidden="true">+</span>
+          <span class="tip" role="tooltip">Headboard, frames and sills dusted — every object lifted, never dusted around.</span>
+        </button>
+        <button class="spot edge-r" type="button" style="left:80%;top:64%" aria-label="Detail: under the bed">
+          <span aria-hidden="true">+</span>
+          <span class="tip" role="tooltip">Under-bed vacuumed on every visit — the spot other services skip.</span>
+        </button>
+        <p class="room-hint" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11.5a3 3 0 1 1 6 0c0 1.5-.7 2.1-1.5 3-.6.7-1 1.2-1 2.5h-1c0-1.3-.4-1.8-1-2.5-.8-.9-1.5-1.5-1.5-3Z"/><path d="M11 20h2"/></svg>
+          Hover or tap the dots for the details
+        </p>
+      </div>
+      <div class="room-copy">
+        <h3>Bedrooms, <em>turned down</em></h3>
+        <p class="room-count"><span class="n" data-tp="29">29</span> touchpoints every visit</p>
+        <ul class="room-list">
+          <li><span class="chk" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path pathLength="1" d="M20 6 9 17l-5-5"/></svg></span>Beds made with crisp hospital corners</li>
+          <li><span class="chk" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path pathLength="1" d="M20 6 9 17l-5-5"/></svg></span>Linens changed on request, fresh sets styled</li>
+          <li><span class="chk" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path pathLength="1" d="M20 6 9 17l-5-5"/></svg></span>Surfaces, sills &amp; headboards dusted piece by piece</li>
+          <li><span class="chk" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path pathLength="1" d="M20 6 9 17l-5-5"/></svg></span>Mirrors &amp; glass polished streak-free</li>
+          <li><span class="chk" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path pathLength="1" d="M20 6 9 17l-5-5"/></svg></span>Under-bed vacuumed every single visit</li>
+          <li><span class="chk" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path pathLength="1" d="M20 6 9 17l-5-5"/></svg></span>Lamps, switches &amp; door handles wiped</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Living spaces -->
+    <div class="room-panel" id="panel-living" role="tabpanel" aria-labelledby="tab-living" tabindex="0" hidden>
+      <div class="room-scene">
+        <div class="room-photo" data-ph>
+          <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1100&q=80"
+               alt="A sunlit living room with leather and linen seating, potted plants and a gallery wall"
+               loading="lazy"
+               onerror="this.closest('[data-ph]').classList.add('img-fail')">
+        </div>
+        <button class="spot edge-l" type="button" style="left:25%;top:62%" aria-label="Detail: the sofa">
+          <span aria-hidden="true">+</span>
+          <span class="tip" role="tooltip">Cushions vacuumed, rotated and plumped; throws refolded over the arm.</span>
+        </button>
+        <button class="spot" type="button" style="left:56%;top:36%" aria-label="Detail: shelves and art">
+          <span aria-hidden="true">+</span>
+          <span class="tip" role="tooltip">Shelves and frames dusted object by object — nothing shuffled, nothing skipped.</span>
+        </button>
+        <button class="spot edge-r" type="button" style="left:80%;top:56%" aria-label="Detail: the plants">
+          <span aria-hidden="true">+</span>
+          <span class="tip" role="tooltip">Yes — we dust the plant leaves. Ask our clients; it's the thing they mention.</span>
+        </button>
+        <p class="room-hint" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11.5a3 3 0 1 1 6 0c0 1.5-.7 2.1-1.5 3-.6.7-1 1.2-1 2.5h-1c0-1.3-.4-1.8-1-2.5-.8-.9-1.5-1.5-1.5-3Z"/><path d="M11 20h2"/></svg>
+          Hover or tap the dots for the details
+        </p>
+      </div>
+      <div class="room-copy">
+        <h3>Living spaces, <em>breathing again</em></h3>
+        <p class="room-count"><span class="n" data-tp="33">33</span> touchpoints every visit</p>
+        <ul class="room-list">
+          <li><span class="chk" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path pathLength="1" d="M20 6 9 17l-5-5"/></svg></span>Sofa cushions vacuumed, plumped &amp; squared</li>
+          <li><span class="chk" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path pathLength="1" d="M20 6 9 17l-5-5"/></svg></span>Shelves &amp; décor dusted piece by piece</li>
+          <li><span class="chk" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path pathLength="1" d="M20 6 9 17l-5-5"/></svg></span>Baseboards, door frames &amp; switch plates wiped</li>
+          <li><span class="chk" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path pathLength="1" d="M20 6 9 17l-5-5"/></svg></span>Plants dusted leaf by leaf</li>
+          <li><span class="chk" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path pathLength="1" d="M20 6 9 17l-5-5"/></svg></span>Rugs vacuumed in two directions for even nap</li>
+          <li><span class="chk" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path pathLength="1" d="M20 6 9 17l-5-5"/></svg></span>Throws refolded, pillows karate-chopped &amp; staged</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RITUAL ============ -->
+<section id="ritual">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center">
+      <span class="eyebrow center">The ritual</span>
+      <h2>Three movements, <em>every visit</em></h2>
+      <p class="sub" style="margin-left:auto;margin-right:auto">The same quiet choreography since 2014 — which is why a Linen &amp; Pine home always feels like a Linen &amp; Pine home.</p>
+    </div>
+    <div class="ritual-grid stagger">
+      <div class="rit">
+        <div class="dot">i.</div>
+        <h3>The walk-through</h3>
+        <p>First visit, we walk your home with you — where the dog sleeps, what's precious, which drawer sticks. It all goes in your home's own care notes.</p>
+        <span class="tag">Once, then remembered</span>
+      </div>
+      <div class="rit">
+        <div class="dot">ii.</div>
+        <h3>The clean</h3>
+        <p>Top to bottom, back to front, by hand where it matters. Cedar-and-eucalyptus products, HEPA vacuums, and a checklist we actually follow.</p>
+        <span class="tag">Quiet &amp; thorough</span>
+      </div>
+      <div class="rit">
+        <div class="dot">iii.</div>
+        <h3>The linen finish</h3>
+        <p>The last fifteen minutes are pure hotel: beds squared, towels folded in thirds, pillows staged, and a small handwritten note on the counter.</p>
+        <span class="tag">Our signature</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="quotes" id="kindwords">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center">
+      <span class="eyebrow center">Kind words</span>
+      <h2>What the <em>neighbors</em> say</h2>
+    </div>
+    <div class="stage" id="qStage" aria-roledescription="carousel" aria-label="Client testimonials">
+      <div class="quote-slide active" role="group" aria-roledescription="slide" aria-label="Testimonial 1 of 4">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <blockquote>"It's the closest thing to walking into a boutique hotel — except it's my own kitchen. The <em>towel folding alone</em> is worth it."</blockquote>
+        <p class="who">Margaret C.<span>12 South · Signature Clean, 2 years</span></p>
+      </div>
+      <div class="quote-slide" role="group" aria-roledescription="slide" aria-label="Testimonial 2 of 4">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <blockquote>"They dust the leaves of my fig tree. <em>The leaves.</em> I've never met a cleaning team that notices the way this one notices."</blockquote>
+        <p class="who">Dana W.<span>Sylvan Park · Signature Clean</span></p>
+      </div>
+      <div class="quote-slide" role="group" aria-roledescription="slide" aria-label="Testimonial 3 of 4">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <blockquote>"We handed them the keys on moving day and came back to a house that <em>smelled like cedar</em> and felt brand new."</blockquote>
+        <p class="who">The Harrisons<span>East Nashville · Moving Days</span></p>
+      </div>
+      <div class="quote-slide" role="group" aria-roledescription="slide" aria-label="Testimonial 4 of 4">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <blockquote>"Same two people, every other Thursday, for three years. My house <em>exhales</em> when they leave."</blockquote>
+        <p class="who">Priya N.<span>Green Hills · Signature Clean, 3 years</span></p>
+      </div>
+    </div>
+    <div class="q-dots" role="tablist" aria-label="Choose testimonial">
+      <button class="on" role="tab" aria-selected="true" aria-label="Show testimonial 1"><i aria-hidden="true"></i></button>
+      <button role="tab" aria-selected="false" aria-label="Show testimonial 2"><i aria-hidden="true"></i></button>
+      <button role="tab" aria-selected="false" aria-label="Show testimonial 3"><i aria-hidden="true"></i></button>
+      <button role="tab" aria-selected="false" aria-label="Show testimonial 4"><i aria-hidden="true"></i></button>
+    </div>
+    <p class="q-note"><strong>5.0 ★</strong> average across <strong>178 reviews</strong> — thank you, Nashville.</p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Good questions</span>
+      <h2>Before you <em>call</em></h2>
+    </div>
+    <div class="faq-list reveal">
+      <details class="faq-item">
+        <summary>Do you bring your own supplies and equipment?<span class="cross" aria-hidden="true"></span></summary>
+        <div class="ans">Everything. Plant-based, home-safe products scented with cedar and eucalyptus, HEPA-filter vacuums, and separate cloths for every zone of your home — bathroom cloths never travel to the kitchen. If you prefer a product of your own, we're happy to use it.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Will it be the same team every visit?<span class="cross" aria-hidden="true"></span></summary>
+        <div class="ans">Yes — that's the point of us. You're matched with a two-person team who learns your home and keeps its care notes. If one of them is ever away, the other leads the visit so nothing about your routine changes.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What about our pets?<span class="cross" aria-hidden="true"></span></summary>
+        <div class="ans">We're a pet-loving studio. Your care notes record every animal's name, hiding spot, and door rules. Our products are pet-safe once dry, and we're careful with gates, crates, and escape artists. Expect your pets to be mildly disappointed when we leave.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How do you get in if I'm not home?<span class="cross" aria-hidden="true"></span></summary>
+        <div class="ans">Most clients aren't home — that's normal. We hold keys and codes in a sealed, numbered system with no addresses attached, and we confirm arrival and lock-up by text. Garage codes, lockboxes, and smart locks all work beautifully.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Are you insured?<span class="cross" aria-hidden="true"></span></summary>
+        <div class="ans">Fully bonded and insured, and every team member is background-checked and employed by us directly — no contractors, no strangers. If we ever damage something, we tell you first and make it right.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What if I need to reschedule?<span class="cross" aria-hidden="true"></span></summary>
+        <div class="ans">Life happens — just call or text by noon the day before and we'll move your visit, no fuss and no fees. We'll always offer the next opening with your own team.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="on-dark cta-band" id="consult">
+  <svg class="sprig-r draw" viewBox="0 0 140 320" aria-hidden="true">
+    <path pathLength="1" d="M70 314 C52 262 88 224 66 172 C50 134 84 100 64 52 C58 34 62 16 70 4"/>
+    <path pathLength="1" d="M60 272 C40 268 28 252 30 234 C50 238 62 252 60 272Z"/>
+    <path pathLength="1" d="M76 216 C96 212 108 196 106 178 C86 182 74 196 76 216Z"/>
+    <path pathLength="1" d="M60 162 C40 158 28 142 30 124 C50 128 62 142 60 162Z"/>
+    <path pathLength="1" d="M74 106 C94 102 106 86 104 68 C84 72 72 86 74 106Z"/>
+  </svg>
+  <svg class="sprig-l draw" viewBox="0 0 140 320" aria-hidden="true">
+    <path pathLength="1" d="M70 4 C88 56 52 94 74 146 C90 184 56 218 76 266 C82 284 78 302 70 314"/>
+    <path pathLength="1" d="M80 46 C100 42 112 26 110 8 C90 12 78 26 80 46Z"/>
+    <path pathLength="1" d="M64 102 C44 98 32 82 34 64 C54 68 66 82 64 102Z"/>
+    <path pathLength="1" d="M80 156 C100 152 112 136 110 118 C90 122 78 136 80 156Z"/>
+  </svg>
+  <div class="wrap cta-inner reveal">
+    <span class="eyebrow center">Reserve your first clean</span>
+    <h2>Come home to <em>calm.</em></h2>
+    <p class="sub">One call, a short walk-through, and your home joins the rotation. Weekday mornings book fastest — most new clients start within two weeks.</p>
+    <div class="cta-actions">
+      <a class="btn btn-clay" href="tel:+15550238100">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call (555) 023-8100
+      </a>
+      <a class="btn btn-ghost-light" href="#rooms">See the checklist first</a>
+    </div>
+    <p class="cta-note">Mon–Fri · 8am–5pm · Belmont to The Nations, Germantown to Green Hills</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand foot">
+        <span class="logo-name serif">Linen <em>&amp;</em> Pine<small>Home Cleaning · Nashville</small></span>
+        <p>A boutique home-cleaning studio keeping Nashville houses calm, fresh, and folded in thirds since 2014. Bonded, insured, and faintly cedar-scented.</p>
+      </div>
+      <div class="foot">
+        <h4>The studio</h4>
+        <ul>
+          <li><a href="#studio">About us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#rooms">Room by room</a></li>
+          <li><a href="#ritual">The ritual</a></li>
+          <li><a href="#kindwords">Kind words</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="foot">
+        <h4>Say hello</h4>
+        <ul>
+          <li><a class="foot-tel" href="tel:+15550238100">(555) 023-8100</a></li>
+          <li>Mon–Fri · 8am–5pm</li>
+          <li>Nashville, Tennessee</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Linen &amp; Pine Home Cleaning</span>
+      <span>A concept showcase by MainStreet Web Studio — Linen &amp; Pine Home Cleaning is a demonstration brand.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MOBILE CALL BAR ============ -->
+<div class="callbar">
+  <a href="tel:+15550238100" aria-label="Call Linen and Pine Home Cleaning at (555) 023-8100">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call the studio — (555) 023-8100
+  </a>
+</div>
+
+<noscript><style>.reveal,.stagger>*{opacity:1;transform:none}</style></noscript>
+
+<script>
+(function(){
+'use strict';
+var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- scroll progress + header + gentle hero parallax ---------- */
+var prog = document.getElementById('progress'),
+    hdr = document.getElementById('hdr'),
+    heroImg = document.getElementById('heroImg'),
+    heroSprig = document.getElementById('heroSprig'),
+    ticking = false;
+
+function onScroll(){
+  if(ticking) return;
+  ticking = true;
+  requestAnimationFrame(function(){
+    var d = document.documentElement,
+        y = d.scrollTop,
+        max = d.scrollHeight - d.clientHeight;
+    prog.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+    hdr.classList.toggle('scrolled', y > 12);
+    if(!reduced && y < innerHeight * 1.3){
+      if(heroImg) heroImg.style.transform = 'translate3d(0,' + (-y * .05) + 'px,0)';
+      if(heroSprig) heroSprig.style.transform = 'translate3d(0,' + (y * .08) + 'px,0) rotate(' + (y * .01) + 'deg)';
+    }
+    ticking = false;
+  });
+}
+addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+/* ---------- reveals + self-drawing botanicals ---------- */
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(!e.isIntersecting) return;
+    e.target.classList.add(e.target.classList.contains('draw') ? 'drawn' : 'in');
+    io.unobserve(e.target);
+  });
+},{threshold:.16, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal, .stagger, .draw').forEach(function(el){ io.observe(el); });
+
+/* ---------- count-up stats ---------- */
+function fmt(n, dec){
+  return dec ? n.toFixed(dec) : Math.round(n).toLocaleString('en-US');
+}
+var cio = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(!e.isIntersecting) return;
+    cio.unobserve(e.target);
+    var el = e.target,
+        end = parseFloat(el.dataset.count),
+        dec = +(el.dataset.dec || 0);
+    if(reduced){ el.textContent = fmt(end, dec); return; }
+    var t0 = performance.now();
+    (function tick(t){
+      var p = Math.min((t - t0) / 1600, 1);
+      el.textContent = fmt(end * (1 - Math.pow(1 - p, 4)), dec);
+      if(p < 1) requestAnimationFrame(tick);
+      else el.textContent = fmt(end, dec);
+    })(t0);
+  });
+},{threshold:.6});
+document.querySelectorAll('.stat [data-count]').forEach(function(el){ cio.observe(el); });
+
+/* ---------- room explorer (signature) ---------- */
+var tabs = [].slice.call(document.querySelectorAll('.room-tab')),
+    panels = tabs.map(function(t){ return document.getElementById(t.getAttribute('aria-controls')); }),
+    activeTab = 0;
+
+function countTouch(panel){
+  var n = panel.querySelector('[data-tp]');
+  if(!n) return;
+  var end = parseInt(n.dataset.tp, 10);
+  if(reduced){ n.textContent = end; return; }
+  var t0 = performance.now();
+  (function tick(t){
+    var p = Math.min((t - t0) / 900, 1);
+    n.textContent = Math.round(end * (1 - Math.pow(1 - p, 3)));
+    if(p < 1) requestAnimationFrame(tick);
+    else n.textContent = end;
+  })(t0);
+}
+
+function selectRoom(i, focus){
+  if(i === activeTab) return;
+  tabs[activeTab].setAttribute('aria-selected','false');
+  tabs[activeTab].setAttribute('tabindex','-1');
+  panels[activeTab].hidden = true;
+  panels[activeTab].classList.remove('in','enter');
+  activeTab = i;
+  tabs[i].setAttribute('aria-selected','true');
+  tabs[i].removeAttribute('tabindex');
+  if(focus) tabs[i].focus();
+  var panel = panels[i];
+  panel.hidden = false;
+  panel.classList.add('enter');
+  panel.classList.remove('in');
+  /* force reflow so the stagger transition restarts */
+  void panel.offsetWidth;
+  panel.classList.add('in');
+  countTouch(panel);
+}
+tabs.forEach(function(tab, i){
+  tab.addEventListener('click', function(){ selectRoom(i, false); });
+  tab.addEventListener('keydown', function(ev){
+    var n = null;
+    if(ev.key === 'ArrowRight' || ev.key === 'ArrowDown') n = (i + 1) % tabs.length;
+    else if(ev.key === 'ArrowLeft' || ev.key === 'ArrowUp') n = (i - 1 + tabs.length) % tabs.length;
+    else if(ev.key === 'Home') n = 0;
+    else if(ev.key === 'End') n = tabs.length - 1;
+    if(n !== null){ ev.preventDefault(); selectRoom(n, true); }
+  });
+});
+if(panels[0]) countTouch(panels[0]);
+
+/* hotspot dots: tap toggles, tapping elsewhere closes */
+var spots = [].slice.call(document.querySelectorAll('.spot'));
+spots.forEach(function(s){
+  s.addEventListener('click', function(ev){
+    ev.stopPropagation();
+    var was = s.classList.contains('open');
+    spots.forEach(function(o){ o.classList.remove('open'); });
+    if(!was) s.classList.add('open');
+  });
+});
+document.addEventListener('click', function(){
+  spots.forEach(function(o){ o.classList.remove('open'); });
+});
+document.addEventListener('keydown', function(ev){
+  if(ev.key === 'Escape') spots.forEach(function(o){ o.classList.remove('open'); });
+});
+
+/* ---------- testimonial carousel ---------- */
+var slides = [].slice.call(document.querySelectorAll('.quote-slide')),
+    dots = [].slice.call(document.querySelectorAll('.q-dots button')),
+    stage = document.getElementById('qStage'),
+    cur = 0, timer = null;
+
+function show(i){
+  slides[cur].classList.remove('active');
+  dots[cur].classList.remove('on');
+  dots[cur].setAttribute('aria-selected','false');
+  cur = i;
+  slides[cur].classList.add('active');
+  dots[cur].classList.add('on');
+  dots[cur].setAttribute('aria-selected','true');
+}
+function restart(){
+  if(timer) clearInterval(timer);
+  if(reduced) return;
+  timer = setInterval(function(){ show((cur + 1) % slides.length); }, 6000);
+}
+dots.forEach(function(d, i){
+  d.addEventListener('click', function(){ show(i); restart(); });
+});
+['mouseenter','focusin','touchstart'].forEach(function(ev){
+  stage.addEventListener(ev, function(){ if(timer) clearInterval(timer); }, {passive:true});
+});
+['mouseleave','focusout','touchend'].forEach(function(ev){
+  stage.addEventListener(ev, restart);
+});
+restart();
+
+/* ---------- FAQ: one open at a time ---------- */
+var faqs = [].slice.call(document.querySelectorAll('.faq-item'));
+faqs.forEach(function(d){
+  d.addEventListener('toggle', function(){
+    if(d.open) faqs.forEach(function(o){ if(o !== d) o.open = false; });
+  });
+});
+})();
+</script>
+</body>
+</html>

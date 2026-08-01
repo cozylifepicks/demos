@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Bluewater Plumbing Co. — Plumbing, Practiced Properly. Portland, Oregon</title>
+<meta name="description" content="Bluewater Plumbing Co. is a concept showcase: a Portland plumbing practice for older houses — service, repipes, water heaters, and bathroom renovation.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2312555A'/%3E%3Cpath d='M50 18C38 38 30 50 30 62a20 20 0 0 0 40 0c0-12-8-24-20-44Z' fill='%23FAFAF7'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+/* ==================================================================
+   BLUEWATER PLUMBING CO. — swiss editorial minimal
+   paper · ink · one accent: deep ink-teal · Archivo + IBM Plex Mono
+   ================================================================== */
+:root{
+  --paper:#FAFAF7;
+  --paper-2:#F2F2ED;
+  --ink:#161D1C;
+  --body-c:#39433F;
+  --mute:#5A6462;
+  --teal:#12555A;
+  --teal-deep:#0B3D41;
+  --line:rgba(22,29,28,.16);
+  --line-strong:rgba(22,29,28,.55);
+  --line-ink:#161D1C;
+  --gl:rgba(22,29,28,.09);
+  --pline:rgba(250,250,247,.28);
+  --pmute:#A9C4C1;
+  --ease:cubic-bezier(.19,1,.22,1);
+  --header-h:78px;
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --grot:'Archivo',Helvetica,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{
+  font-family:var(--grot);
+  background:var(--paper);
+  color:var(--body-c);
+  font-size:16.5px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  position:relative;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+::selection{background:var(--teal);color:var(--paper)}
+.shell{max-width:1280px;margin:0 auto;padding:0 24px}
+@media(max-width:480px){.shell{padding:0 20px}}
+
+a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visible{
+  outline:2px solid var(--teal);outline-offset:3px;
+}
+.on-dark a:focus-visible,.on-dark button:focus-visible{outline-color:var(--paper)}
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:400;background:var(--ink);color:var(--paper);
+  padding:14px 22px;font-family:var(--mono);font-size:.85rem;text-decoration:none;
+}
+.skip:focus{left:0}
+
+/* ---------- fixed hairline grid ---------- */
+.gridlines{position:fixed;inset:0;z-index:0;pointer-events:none}
+.gridlines .in{
+  height:100%;max-width:1232px;width:calc(100% - 48px);margin:0 auto;position:relative;
+  border-left:1px solid var(--gl);border-right:1px solid var(--gl);
+}
+.gridlines .c{position:absolute;top:0;bottom:0;width:1px;background:var(--gl)}
+.gridlines .c1{left:25%}.gridlines .c2{left:50%}.gridlines .c3{left:75%}
+@media(max-width:760px){.gridlines .c1,.gridlines .c3{display:none}}
+header,main,footer,.callbar,#progress{position:relative;z-index:1}
+
+/* ---------- type utilities ---------- */
+.mono{font-family:var(--mono)}
+.tag{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--teal);font-weight:500;
+}
+.on-dark .tag{color:var(--pmute)}
+h1,h2,h3,.disp{font-family:var(--grot);color:var(--ink);letter-spacing:-.02em;line-height:1.04;font-weight:600}
+.on-dark h2,.on-dark h3{color:var(--paper)}
+h2{font-size:clamp(2.1rem,5vw,4.2rem);font-stretch:115%;text-transform:uppercase;letter-spacing:-.015em}
+section{padding:clamp(88px,10vw,148px) 0;scroll-margin-top:90px}
+.sub{color:var(--mute);max-width:38rem;margin-top:22px;font-size:1.02rem}
+.on-dark .sub{color:var(--pmute)}
+
+/* section head: 01 ——— LABEL          META */
+.sec-head{
+  display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+  border-top:1px solid var(--line-ink);padding-top:16px;margin-bottom:clamp(34px,5vw,58px);
+}
+.on-dark .sec-head{border-top-color:var(--pline)}
+.sec-no{font-family:var(--mono);font-size:.8rem;color:var(--teal);font-weight:500}
+.on-dark .sec-no{color:var(--pmute)}
+.sec-label{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink)}
+.on-dark .sec-label{color:var(--paper)}
+.sec-meta{margin-left:auto;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.on-dark .sec-meta{color:var(--pmute)}
+@media(max-width:560px){.sec-meta{display:none}}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:14px;
+  font-family:var(--mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;
+  text-decoration:none;min-height:56px;padding:0 26px;border:1px solid var(--teal);
+  transition:background .25s,color .25s,border-color .25s;
+}
+.btn .arr{transition:transform .35s var(--ease)}
+.btn:hover .arr{transform:translateX(6px)}
+.btn-solid{background:var(--teal);color:#fff}
+.btn-solid:hover{background:var(--ink);border-color:var(--ink)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+.btn-ghost:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.on-dark .btn-solid{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.on-dark .btn-solid:hover{background:transparent;color:var(--paper)}
+.on-dark .btn-ghost{color:var(--paper);border-color:var(--pline)}
+.on-dark .btn-ghost:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+
+/* ---------- scroll progress ---------- */
+#progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--teal);z-index:300}
+
+/* ---------- header ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(250,250,247,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+  transition:border-color .3s,background .3s;
+}
+header.scrolled{border-bottom-color:var(--line-strong);background:rgba(250,250,247,.97)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:var(--header-h);transition:height .35s var(--ease)}
+header.scrolled .nav{height:60px}
+.logo{display:flex;align-items:center;gap:14px;text-decoration:none;min-height:44px}
+.logo-mark{width:34px;height:34px;background:var(--teal);display:grid;place-items:center;flex:none;transition:background .3s}
+.logo:hover .logo-mark{background:var(--ink)}
+.logo-word{font-stretch:120%;font-weight:700;font-size:1.14rem;letter-spacing:-.01em;color:var(--ink);line-height:1;text-transform:uppercase}
+.logo-word small{
+  display:block;font-family:var(--mono);font-weight:400;font-size:.56rem;letter-spacing:.3em;
+  color:var(--teal);margin-top:4px;text-transform:uppercase;
+}
+.nav-links{display:none;list-style:none;gap:2px}
+.nav-links a{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;
+  color:var(--body-c);padding:12px 13px;min-height:44px;display:inline-flex;align-items:center;position:relative;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:13px;right:13px;bottom:9px;height:1px;background:var(--teal);
+  transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease);
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{transform:scaleX(1)}
+@media(min-width:1080px){.nav-links{display:flex}}
+.nav-call{
+  display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 20px;text-decoration:none;
+  font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;font-weight:500;
+  background:var(--teal);color:#fff;transition:background .25s;
+}
+.nav-call:hover{background:var(--ink)}
+@media(max-width:420px){.nav-call span{display:none}.nav-call{padding:0 14px}}
+
+/* ---------- hero ---------- */
+.hero{padding:calc(var(--header-h) + clamp(48px,7vw,96px)) 0 0}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:10px 34px;border-top:1px solid var(--line-ink);border-bottom:1px solid var(--line);
+  padding:13px 0;font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);
+}
+.hero-meta strong{color:var(--ink);font-weight:500}
+.hero-meta .stars{color:var(--teal);letter-spacing:.2em}
+.hero-meta .right{margin-left:auto}
+@media(max-width:700px){.hero-meta .right{margin-left:0}}
+.hero h1{
+  margin-top:clamp(36px,5vw,64px);
+  font-size:clamp(2.5rem,11vw,9.4rem);
+  font-stretch:120%;font-weight:650;line-height:.95;letter-spacing:-.03em;
+  text-transform:uppercase;color:var(--ink);
+}
+.hero h1 .accent{color:var(--teal)}
+.h-line{display:block;overflow:hidden;padding-bottom:.07em;margin-bottom:-.07em}
+.h-line>span{display:inline-block}
+.js .h-line>span{transform:translateY(112%);animation:lineUp 1s var(--ease) forwards}
+.js .h-line.l2>span{animation-delay:.14s}
+.js .h-line.l3>span{animation-delay:.28s}
+@keyframes lineUp{to{transform:none}}
+.hero-under{
+  display:grid;gap:28px;align-items:end;margin-top:clamp(34px,5vw,60px);
+}
+@media(min-width:900px){.hero-under{grid-template-columns:1fr 1fr;gap:60px}}
+.hero-lead{color:var(--mute);font-size:clamp(1.02rem,1.5vw,1.18rem);max-width:34rem}
+.hero-lead strong{color:var(--ink);font-weight:600}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px}
+@media(min-width:900px){.hero-ctas{justify-content:flex-end}}
+.js .hero-fade{opacity:0;animation:fadeUp .9s var(--ease) forwards}
+.js .hf1{animation-delay:.4s}.js .hf2{animation-delay:.55s}.js .hf3{animation-delay:.7s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.hero-fig{margin-top:clamp(44px,6vw,76px)}
+.js .hero-fig .ph{clip-path:inset(0 0 100% 0);animation:unveil 1.2s .5s var(--ease) forwards}
+@keyframes unveil{to{clip-path:inset(0 0 0 0)}}
+
+/* ---------- figures & captions ---------- */
+figure{position:relative}
+.ph{position:relative;overflow:hidden;background:var(--paper-2)}
+.ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+figure:hover .ph img{transform:scale(1.035)}
+figcaption{
+  display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  border-top:1px solid var(--line-ink);margin-top:0;padding:10px 2px 0;
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);
+}
+.on-dark figcaption{border-top-color:var(--pline);color:var(--pmute)}
+figcaption b{color:var(--ink);font-weight:500}
+.on-dark figcaption b{color:var(--paper)}
+.ph{margin-bottom:10px}
+.hero-fig .ph{aspect-ratio:16/7}
+@media(max-width:700px){.hero-fig .ph{aspect-ratio:4/3}}
+.img-fail img{display:none !important}
+.img-fail{background:var(--teal-deep) !important}
+.img-fail::after{
+  content:"FIGURE UNAVAILABLE";position:absolute;inset:0;display:grid;place-items:center;
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.3em;color:var(--pmute);
+}
+
+/* ---------- ticker ---------- */
+.ticker{
+  border-top:1px solid var(--line-ink);border-bottom:1px solid var(--line-ink);
+  overflow:hidden;padding:14px 0;margin-top:clamp(60px,8vw,110px);background:var(--paper);
+}
+.ticker-track{display:flex;width:max-content;animation:tick 46s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-seg{display:flex;align-items:center;flex:none}
+.ticker-seg span{
+  font-family:var(--mono);font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--ink);white-space:nowrap;padding:0 18px;
+}
+.ticker-seg i{width:7px;height:7px;background:var(--teal);flex:none}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ---------- 01 practice ---------- */
+.prac-grid{display:grid;gap:48px}
+@media(min-width:960px){.prac-grid{grid-template-columns:7fr 4fr;gap:80px}}
+.statement{
+  font-size:clamp(1.4rem,2.7vw,2.25rem);line-height:1.32;color:var(--ink);font-weight:500;
+  letter-spacing:-.015em;max-width:24em;
+}
+.statement em{font-style:normal;color:var(--teal)}
+.prac-copy p.body{margin-top:24px;color:var(--mute);max-width:33rem}
+.prac-index{
+  margin-top:36px;border-top:1px solid var(--line-ink);
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);
+}
+.prac-index div{display:flex;justify-content:space-between;gap:16px;padding:11px 2px;border-bottom:1px solid var(--line)}
+.prac-index b{color:var(--ink);font-weight:500}
+.prac-fig .ph{aspect-ratio:4/5}
+.prac-wide{margin-top:clamp(44px,6vw,72px)}
+.prac-wide .ph{aspect-ratio:21/9}
+@media(max-width:700px){.prac-wide .ph{aspect-ratio:4/3}}
+
+/* ---------- stats ---------- */
+.stats{border-top:1px solid var(--line-ink);border-bottom:1px solid var(--line-ink);background:var(--paper)}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr}
+@media(min-width:880px){.stats-grid{grid-template-columns:repeat(4,1fr)}}
+.stat{padding:clamp(30px,4vw,52px) 22px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:none}
+@media(max-width:879px){
+  .stat:nth-child(2){border-right:none}
+  .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+}
+.stat .num{
+  font-stretch:120%;font-weight:650;font-size:clamp(2.6rem,5.6vw,4.9rem);line-height:1;
+  color:var(--ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums;
+}
+.stat .num sup{font-size:.4em;color:var(--teal);top:-1em;position:relative}
+.stat .lbl{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);margin-top:14px}
+
+/* ---------- 02 services ---------- */
+.svc-list{border-top:1px solid var(--line-ink)}
+.svc-row{
+  position:relative;display:grid;grid-template-columns:1fr auto;gap:6px 24px;align-items:center;
+  padding:26px 4px;border-bottom:1px solid var(--line-ink);text-decoration:none;overflow:hidden;
+}
+@media(min-width:880px){.svc-row{grid-template-columns:72px 5fr 6fr 56px;padding:30px 8px}}
+.svc-row::before{
+  content:"";position:absolute;inset:0;background:var(--teal);
+  transform:scaleY(0);transform-origin:bottom;transition:transform .4s var(--ease);
+}
+.svc-row>*{position:relative;z-index:1}
+.svc-row .no{font-family:var(--mono);font-size:.75rem;color:var(--teal);transition:color .3s;grid-column:1;grid-row:1}
+.svc-row h3{
+  font-stretch:112%;font-weight:600;font-size:clamp(1.35rem,2.9vw,2.3rem);letter-spacing:-.02em;
+  text-transform:uppercase;line-height:1.05;transition:color .3s,transform .45s var(--ease);
+  grid-column:1;grid-row:2;
+}
+.svc-row p{font-size:.92rem;color:var(--mute);max-width:30rem;transition:color .3s;grid-column:1/-1;grid-row:3;margin-top:4px}
+.svc-row .go{
+  width:44px;height:44px;border:1px solid var(--line-strong);display:grid;place-items:center;color:var(--ink);
+  transition:border-color .3s,color .3s,transform .45s var(--ease);justify-self:end;grid-column:2;grid-row:1/span 2;
+}
+@media(min-width:880px){
+  .svc-row .no{grid-row:1}
+  .svc-row h3{grid-column:2;grid-row:1}
+  .svc-row p{grid-column:3;grid-row:1;margin-top:0}
+  .svc-row .go{grid-column:4;grid-row:1}
+}
+.svc-row:hover::before,.svc-row:focus-visible::before{transform:scaleY(1)}
+.svc-row:hover .no,.svc-row:focus-visible .no{color:var(--pmute)}
+.svc-row:hover h3,.svc-row:focus-visible h3{color:var(--paper);transform:translateX(10px)}
+.svc-row:hover p,.svc-row:focus-visible p{color:var(--pmute)}
+.svc-row:hover .go,.svc-row:focus-visible .go{border-color:var(--paper);color:var(--paper);transform:translateX(4px)}
+.svc-foot{
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:14px 4px 0;
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);
+}
+
+/* ---------- pull-quote ---------- */
+.pull{border-top:1px solid var(--line-ink);border-bottom:1px solid var(--line-ink);background:var(--paper-2)}
+.pull-in{padding:clamp(70px,9vw,120px) 0}
+.pull blockquote{
+  font-stretch:115%;font-weight:600;letter-spacing:-.02em;line-height:1.12;
+  font-size:clamp(1.7rem,4.4vw,3.7rem);color:var(--ink);max-width:22ch;text-transform:uppercase;
+}
+.pull blockquote .accent{color:var(--teal)}
+.pull .who{margin-top:30px;font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.pull .who b{color:var(--ink);font-weight:500}
+
+/* ---------- 03 renovation (dark) ---------- */
+.on-dark{background:var(--teal-deep);color:var(--pmute)}
+.ba-wrap{display:grid;gap:40px}
+@media(min-width:1040px){.ba-wrap{grid-template-columns:8fr 3fr;gap:64px;align-items:end}}
+.ba{
+  position:relative;overflow:hidden;aspect-ratio:16/10;user-select:none;-webkit-user-select:none;
+  touch-action:pan-y;cursor:col-resize;border:1px solid var(--pline);--pos:50%;background:var(--teal-deep);
+}
+@media(max-width:700px){.ba{aspect-ratio:4/5}}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ba .after-clip{position:absolute;inset:0;clip-path:inset(0 0 0 var(--pos))}
+.ba-label{
+  position:absolute;top:0;z-index:5;pointer-events:none;
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.24em;padding:10px 14px;
+}
+.ba-label.before{left:0;background:var(--paper);color:var(--ink)}
+.ba-label.after{right:0;background:var(--teal);color:#fff}
+.ba-divider{
+  position:absolute;top:0;bottom:0;left:var(--pos);width:1px;background:var(--paper);z-index:4;
+  transform:translateX(-.5px);pointer-events:none;
+}
+.ba-handle{
+  position:absolute;top:50%;left:var(--pos);z-index:6;transform:translate(-50%,-50%);
+  width:48px;height:48px;background:var(--paper);color:var(--ink);display:grid;place-items:center;
+  cursor:col-resize;border:1px solid var(--ink);transition:transform .25s var(--ease),background .25s;
+}
+.ba-handle:hover{transform:translate(-50%,-50%) scale(1.08)}
+.ba-hint{
+  position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:5;pointer-events:none;
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;
+  background:rgba(11,61,65,.85);color:var(--paper);padding:9px 16px;border:1px solid var(--pline);
+  animation:hintNudge 2.6s ease-in-out infinite;transition:opacity .5s;
+}
+@keyframes hintNudge{0%,100%{transform:translateX(-50%)}50%{transform:translateX(calc(-50% + 8px))}}
+.ba.used .ba-hint{opacity:0}
+.ba-spec{border-top:1px solid var(--pline);font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase}
+.ba-spec div{display:flex;justify-content:space-between;gap:14px;padding:12px 2px;border-bottom:1px solid rgba(250,250,247,.14)}
+.ba-spec b{color:var(--paper);font-weight:500}
+.ba-note{margin-top:22px;font-size:.92rem;color:var(--pmute);max-width:26rem}
+
+/* ---------- 04 selected work ---------- */
+.work-grid{display:grid;gap:34px}
+@media(min-width:880px){
+  .work-grid{grid-template-columns:repeat(12,1fr);gap:28px;row-gap:56px}
+  .w1{grid-column:1/8}.w2{grid-column:8/13;margin-top:88px}
+  .w3{grid-column:1/6;margin-top:-56px}.w4{grid-column:6/13}
+}
+.w1 .ph{aspect-ratio:4/3}.w2 .ph{aspect-ratio:4/5}.w3 .ph{aspect-ratio:4/5}.w4 .ph{aspect-ratio:16/9}
+.work-fig .idx{
+  position:absolute;top:0;left:0;z-index:2;background:var(--paper);color:var(--ink);
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;padding:9px 13px;
+}
+
+/* ---------- 05 record (testimonials) ---------- */
+#record .stage{display:grid;margin-top:8px}
+.q-slide{
+  grid-area:1/1;opacity:0;visibility:hidden;transform:translateY(16px);pointer-events:none;
+  transition:opacity .6s var(--ease),transform .6s var(--ease),visibility .6s;
+}
+.q-slide.active{pointer-events:auto}
+.q-slide.active{opacity:1;visibility:visible;transform:none}
+.q-slide .q-no{font-family:var(--mono);font-size:.72rem;color:var(--teal);letter-spacing:.18em}
+.q-slide blockquote{
+  margin-top:18px;font-size:clamp(1.35rem,3vw,2.4rem);line-height:1.28;color:var(--ink);
+  font-weight:500;letter-spacing:-.015em;max-width:34ch;
+}
+.q-slide .who{
+  margin-top:26px;font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);
+}
+.q-slide .who b{color:var(--ink);font-weight:500}
+.q-controls{display:flex;align-items:center;gap:22px;margin-top:34px;border-top:1px solid var(--line-ink);padding-top:18px}
+.q-dots{display:flex;gap:4px}
+.q-dots button{width:44px;height:44px;display:grid;place-items:center}
+.q-dots button i{width:26px;height:2px;background:var(--line);display:block;transition:background .3s}
+.q-dots button:hover i{background:var(--mute)}
+.q-dots button[aria-current="true"] i{background:var(--teal)}
+.q-count{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;color:var(--mute);margin-left:auto}
+.q-count b{color:var(--ink);font-weight:500}
+
+/* ---------- 06 faq ---------- */
+.faq-list{border-top:1px solid var(--line-ink);max-width:900px}
+.faq-item{border-bottom:1px solid var(--line-ink)}
+.faq-item summary{
+  list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:22px;padding:24px 4px;min-height:44px;
+  transition:color .25s;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary .fno{font-family:var(--mono);font-size:.72rem;color:var(--teal);flex:none;position:relative;top:-2px}
+.faq-item summary .fq{
+  font-stretch:110%;font-weight:600;font-size:clamp(1.05rem,1.9vw,1.4rem);letter-spacing:-.01em;color:var(--ink);
+}
+.faq-item summary:hover .fq{color:var(--teal)}
+.faq-item summary .plus{
+  margin-left:auto;flex:none;width:34px;height:34px;border:1px solid var(--line-strong);position:relative;
+  transition:transform .4s var(--ease),background .3s,border-color .3s;align-self:center;
+}
+.faq-item summary .plus::before,.faq-item summary .plus::after{
+  content:"";position:absolute;top:50%;left:50%;background:var(--ink);transition:background .3s;
+}
+.faq-item summary .plus::before{width:13px;height:1.5px;transform:translate(-50%,-50%)}
+.faq-item summary .plus::after{width:1.5px;height:13px;transform:translate(-50%,-50%)}
+.faq-item[open] summary .plus{transform:rotate(45deg);background:var(--teal);border-color:var(--teal)}
+.faq-item[open] summary .plus::before,.faq-item[open] summary .plus::after{background:#fff}
+.faq-item .ans{padding:0 4px 28px;color:var(--mute);max-width:42rem}
+.faq-item .ans p+p{margin-top:12px}
+.js .faq-item[open] .ans{animation:ansIn .45s var(--ease)}
+@keyframes ansIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* ---------- 07 contact (dark) ---------- */
+.contact h2{font-size:clamp(2.2rem,6vw,5.2rem);max-width:14ch}
+.contact h2 .accent{color:var(--pmute)}
+.contact-grid{display:grid;gap:44px;margin-top:clamp(40px,6vw,64px)}
+@media(min-width:960px){.contact-grid{grid-template-columns:7fr 4fr;gap:80px}}
+.tel-big{
+  display:inline-flex;align-items:center;gap:18px;text-decoration:none;color:var(--paper);
+  font-stretch:118%;font-weight:650;font-size:clamp(1.6rem,4.6vw,3.6rem);letter-spacing:-.02em;
+  border-bottom:2px solid var(--pmute);padding-bottom:10px;transition:border-color .3s,color .3s;
+  font-variant-numeric:tabular-nums;
+}
+.tel-big:hover{border-color:var(--paper)}
+.tel-big .arr{transition:transform .35s var(--ease)}
+.tel-big:hover .arr{transform:translateX(8px)}
+.contact-note{margin-top:26px;max-width:30rem;color:var(--pmute);font-size:.98rem}
+.hours{border-top:1px solid var(--pline);font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+.hours div{display:flex;justify-content:space-between;gap:14px;padding:13px 2px;border-bottom:1px solid rgba(250,250,247,.14)}
+.hours b{color:var(--paper);font-weight:500}
+.contact-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+
+/* ---------- footer ---------- */
+footer{background:#0F1514;color:#ADB8B5;padding:64px 0 30px;font-size:.9rem}
+.foot-top{
+  display:flex;justify-content:space-between;gap:12px 30px;flex-wrap:wrap;align-items:center;
+  border-bottom:1px solid rgba(250,250,247,.14);padding-bottom:26px;
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:#7E8B88;
+}
+.foot-grid{display:grid;gap:38px;padding:44px 0}
+@media(min-width:880px){.foot-grid{grid-template-columns:1.5fr 1fr 1fr 1fr}}
+.foot-word{font-stretch:120%;font-weight:700;font-size:1.3rem;letter-spacing:-.01em;color:var(--paper);text-transform:uppercase}
+.foot-brand p{margin-top:14px;max-width:24rem;color:#8B9793}
+.foot h4{font-family:var(--mono);font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:#7E8B88;margin-bottom:16px;font-weight:500}
+.foot ul{list-style:none}
+.foot li{margin-bottom:9px}
+.foot a{color:#C9D2CF;text-decoration:none}
+.foot a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.foot-tel{font-family:var(--mono);font-size:1.02rem;color:var(--paper) !important}
+.foot-bottom{
+  border-top:1px solid rgba(250,250,247,.14);padding-top:22px;
+  display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-between;
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;color:#7E8B88;
+}
+
+/* ---------- mobile call bar ---------- */
+.callbar{display:none}
+@media(max-width:720px){
+  .callbar{
+    display:block;position:fixed;bottom:0;left:0;right:0;z-index:210;
+    background:var(--teal);border-top:1px solid rgba(250,250,247,.35);
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  }
+  .callbar a{
+    display:flex;align-items:center;justify-content:center;gap:12px;min-height:50px;
+    color:#fff;text-decoration:none;font-family:var(--mono);font-size:.82rem;
+    letter-spacing:.16em;text-transform:uppercase;font-weight:500;
+  }
+  body{padding-bottom:78px}
+}
+
+/* ---------- scroll reveal ---------- */
+.js .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s var(--ease)}
+.js .reveal.in{opacity:1;transform:none}
+.js .stagger>*{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s var(--ease)}
+.js .stagger.in>*{opacity:1;transform:none}
+.js .stagger.in>*:nth-child(2){transition-delay:.09s}
+.js .stagger.in>*:nth-child(3){transition-delay:.18s}
+.js .stagger.in>*:nth-child(4){transition-delay:.27s}
+.js .stagger.in>*:nth-child(5){transition-delay:.36s}
+.js .stagger.in>*:nth-child(6){transition-delay:.45s}
+
+/* ---------- reduced motion ---------- */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .js .reveal,.js .stagger>*{opacity:1;transform:none}
+  .js .h-line>span{transform:none}
+  .js .hero-fade{opacity:1}
+  .js .hero-fig .ph{clip-path:none}
+  .ticker-track{animation:none !important;width:auto;flex-wrap:wrap}
+  .ticker-seg:nth-child(2){display:none}
+  .ba-hint{animation:none}
+}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<div id="progress" aria-hidden="true"></div>
+<div class="gridlines" aria-hidden="true"><div class="in"><i class="c c1"></i><i class="c c2"></i><i class="c c3"></i></div></div>
+
+<header id="hdr">
+  <div class="shell nav">
+    <a class="logo" href="#top" aria-label="Bluewater Plumbing Co. — back to top">
+      <span class="logo-mark" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FAFAF7" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3C9 8 6.5 11.5 6.5 15a5.5 5.5 0 0 0 11 0C17.5 11.5 15 8 12 3Z"/></svg>
+      </span>
+      <span class="logo-word">Bluewater<small>Plumbing Co. — PDX</small></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links">
+        <li><a href="#practice">Practice</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#renovation">Renovation</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#record">Record</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a class="nav-call" href="tel:+15550214700">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span>(555) 021-4700</span>
+    </a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<div class="hero">
+  <div class="shell">
+    <p class="hero-meta hero-fade hf1">
+      <span><strong>Portland, Oregon</strong> — Est. 2009</span>
+      <span>Licensed · Bonded · Insured</span>
+      <span><span class="stars" aria-hidden="true">★★★★★</span> <strong>4.9</strong> / 231 reviews</span>
+      <span class="right">Vol. 01 — Field Notes</span>
+    </p>
+    <h1 aria-label="Plumbing, practiced properly.">
+      <span aria-hidden="true">
+        <span class="h-line l1"><span>Plumbing,</span></span>
+        <span class="h-line l2"><span>practiced</span></span>
+        <span class="h-line l3"><span class="accent">properly.</span></span>
+      </span>
+    </h1>
+    <div class="hero-under">
+      <p class="hero-lead hero-fade hf2"><strong>Bluewater is a twelve-person plumbing practice</strong> for Portland&rsquo;s older houses — licensed journeymen who treat a hidden supply line with the same care as the finish work that covers it.</p>
+      <div class="hero-ctas hero-fade hf3">
+        <a class="btn btn-solid" href="tel:+15550214700">Call (555) 021-4700 <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#work">View the work</a>
+      </div>
+    </div>
+    <figure class="hero-fig">
+      <div class="ph" data-fig>
+        <img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=1600&q=80"
+             alt="A freestanding white bathtub against a raw concrete wall, with a wooden ladder and dried grasses"
+             fetchpriority="high"
+             onerror="this.closest('[data-fig]').classList.add('img-fail')">
+      </div>
+      <figcaption>
+        <span><b>Fig. 01</b> — Master bath, Irvington. Photographed at handover.</span>
+        <span>Bluewater Plumbing Co. / PDX</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- neighbourhood ticker -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <div class="ticker-seg">
+        <span>Alberta Arts</span><i></i><span>Sellwood</span><i></i><span>St. Johns</span><i></i><span>Laurelhurst</span><i></i><span>Hawthorne</span><i></i><span>Irvington</span><i></i><span>Mississippi</span><i></i><span>Montavilla</span><i></i>
+      </div>
+      <div class="ticker-seg">
+        <span>Alberta Arts</span><i></i><span>Sellwood</span><i></i><span>St. Johns</span><i></i><span>Laurelhurst</span><i></i><span>Hawthorne</span><i></i><span>Irvington</span><i></i><span>Mississippi</span><i></i><span>Montavilla</span><i></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= 01 PRACTICE ================= -->
+<section id="practice">
+  <div class="shell">
+    <div class="sec-head reveal">
+      <span class="sec-no">01</span>
+      <span class="sec-label">The practice</span>
+      <span class="sec-meta">Est. 2009 — Portland, OR</span>
+    </div>
+    <div class="prac-grid">
+      <div class="prac-copy reveal">
+        <p class="statement">Most plumbing is invisible. You live with ours for decades — so we build it <em>as if it will be seen.</em></p>
+        <p class="body">Bluewater was founded in 2009 by Ward Ellison, a second-generation journeyman who kept a simple rule from his father&rsquo;s shop: the work behind the wall should survive its own warranty by thirty years. We are a small company on purpose — twelve people, four vans, one standard.</p>
+        <p class="body">Portland&rsquo;s housing stock is old and opinionated. Galvanized lines from the twenties, cast iron stacks, plaster that deserves respect. That is the work we like best: careful surgery in houses that were built to last.</p>
+        <div class="prac-index" aria-label="Practice facts">
+          <div><span>Crew</span><b>12 — all licensed journeymen</b></div>
+          <div><span>Fleet</span><b>4 stocked vans, inner PDX</b></div>
+          <div><span>Specialty</span><b>Pre-war housing, 1900–1945</b></div>
+          <div><span>Guarantee</span><b>Workmanship, in writing</b></div>
+        </div>
+      </div>
+      <figure class="prac-fig reveal">
+        <div class="ph" data-fig>
+          <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1200&q=80"
+               alt="Close-up of a vintage chrome bathtub mixer tap with cross handles and a hand shower"
+               loading="lazy"
+               onerror="this.closest('[data-fig]').classList.add('img-fail')">
+        </div>
+        <figcaption>
+          <span><b>Fig. 02</b> — Restored 1931 mixer, Sellwood.</span>
+          <span>35&nbsp;mm</span>
+        </figcaption>
+      </figure>
+    </div>
+    <figure class="prac-wide reveal">
+      <div class="ph" data-fig>
+        <img src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=1600&q=80"
+             alt="Grey supply pipework, valves and a pump mounted in neat lines against a red brick wall"
+             loading="lazy"
+             onerror="this.closest('[data-fig]').classList.add('img-fail')">
+      </div>
+      <figcaption>
+        <span><b>Fig. 03</b> — Manifold study, St. Johns workshop. Straight runs, labelled valves.</span>
+        <span>Documentation, 2025</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<div class="stats" aria-label="Company record in numbers">
+  <div class="shell stats-grid stagger">
+    <div class="stat"><div class="num"><span data-count="17">17</span></div><div class="lbl">Years in Portland</div></div>
+    <div class="stat"><div class="num"><span data-count="4306">4,306</span></div><div class="lbl">Jobs completed</div></div>
+    <div class="stat"><div class="num"><span data-count="4.9" data-dec="1">4.9</span><sup>★</sup></div><div class="lbl">Average rating</div></div>
+    <div class="stat"><div class="num"><span data-count="231">231</span></div><div class="lbl">Written reviews</div></div>
+  </div>
+</div>
+
+<!-- ================= 02 SERVICES ================= -->
+<section id="services">
+  <div class="shell">
+    <div class="sec-head reveal">
+      <span class="sec-no">02</span>
+      <span class="sec-label">Services</span>
+      <span class="sec-meta">Index of trades</span>
+    </div>
+    <h2 class="reveal" style="margin-bottom:clamp(30px,4vw,50px)">Six trades.<br>One standard.</h2>
+    <div class="svc-list stagger">
+      <a class="svc-row" href="#contact">
+        <span class="no">01</span>
+        <h3>Service &amp; Repair</h3>
+        <p>Dripping taps, running toilets, seized valves — diagnosed honestly and mended the same week you call.</p>
+        <span class="go" aria-hidden="true">→</span>
+      </a>
+      <a class="svc-row" href="#contact">
+        <span class="no">02</span>
+        <h3>Drain &amp; Sewer</h3>
+        <p>Camera-first diagnosis, then hydro-jetting or spot repair — evidence before excavation, always.</p>
+        <span class="go" aria-hidden="true">→</span>
+      </a>
+      <a class="svc-row" href="#contact">
+        <span class="no">03</span>
+        <h3>Water Heaters</h3>
+        <p>Tank and tankless, sized to the house and the household, installed to manufacturer specification.</p>
+        <span class="go" aria-hidden="true">→</span>
+      </a>
+      <a class="svc-row" href="#contact">
+        <span class="no">04</span>
+        <h3>Repipe &amp; Replacement</h3>
+        <p>Galvanized out, PEX or copper in — with walls closed, patched, and left ready for paint.</p>
+        <span class="go" aria-hidden="true">→</span>
+      </a>
+      <a class="svc-row" href="#renovation">
+        <span class="no">05</span>
+        <h3>Bathroom Renovation</h3>
+        <p>Rough-in to final fixture, coordinated with tile and electrical under a single schedule.</p>
+        <span class="go" aria-hidden="true">→</span>
+      </a>
+      <a class="svc-row" href="#contact">
+        <span class="no">06</span>
+        <h3>Leak Detection</h3>
+        <p>Acoustic and thermal tracing that finds water where it hides — without opening walls on a hunch.</p>
+        <span class="go" aria-hidden="true">→</span>
+      </a>
+    </div>
+    <p class="svc-foot reveal"><span>Emergency line answered 24/7</span><span><a href="tel:+15550214700" style="color:var(--ink)">(555) 021-4700</a></span></p>
+  </div>
+</section>
+
+<!-- ================= PULL QUOTE ================= -->
+<div class="pull">
+  <div class="shell pull-in reveal">
+    <span class="tag">Pull — 01</span>
+    <blockquote style="margin-top:26px">&ldquo;A shut-off valve should turn with two fingers, <span class="accent">twenty years</span> after we leave.&rdquo;</blockquote>
+    <p class="who"><b>Ward Ellison</b> — Founder &amp; master plumber</p>
+  </div>
+</div>
+
+<!-- ================= 03 RENOVATION (before/after) ================= -->
+<section class="on-dark" id="renovation">
+  <div class="shell">
+    <div class="sec-head reveal">
+      <span class="sec-no">03</span>
+      <span class="sec-label">The renovation</span>
+      <span class="sec-meta">Drag study — Fig. 04</span>
+    </div>
+    <h2 class="reveal">Same room.<br>Six days.</h2>
+    <p class="sub reveal">An Alberta Arts bungalow bath, taken from 1962 fixtures to finished stone. Drag the divider — the line moves, the room changes.</p>
+    <div class="ba-wrap" style="margin-top:clamp(36px,5vw,56px)">
+      <figure class="reveal">
+        <div class="ba" id="ba" data-fig>
+          <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1400&q=80"
+               alt="Before: a dated white bathroom with pedestal sink, wall cabinets and checkerboard floor"
+               loading="lazy"
+               onerror="this.closest('[data-fig]').classList.add('img-fail')">
+          <div class="after-clip" data-fig>
+            <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?w=1400&q=80"
+                 alt="After: the renovated bathroom with freestanding tub, stone vessel sink and new brass fittings"
+                 loading="lazy"
+                 onerror="this.closest('[data-fig]').classList.add('img-fail')">
+          </div>
+          <span class="ba-label before" aria-hidden="true">Before — 1962</span>
+          <span class="ba-label after" aria-hidden="true">After — Day 6</span>
+          <div class="ba-divider" aria-hidden="true"></div>
+          <button class="ba-handle" id="baHandle" type="button"
+                  role="slider" aria-label="Compare before and after renovation"
+                  aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50 percent renovated view">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l-5 6 5 6"/><path d="M15 6l5 6-5 6"/></svg>
+          </button>
+          <span class="ba-hint" id="baHint" aria-hidden="true">Drag to compare</span>
+        </div>
+        <figcaption>
+          <span><b>Fig. 04</b> — Bath renovation, Alberta Arts bungalow.</span>
+          <span>Keyboard: arrow keys</span>
+        </figcaption>
+      </figure>
+      <div class="reveal">
+        <div class="ba-spec" aria-label="Project specification">
+          <div><span>Scope</span><b>Full gut, to studs</b></div>
+          <div><span>Duration</span><b>Six working days</b></div>
+          <div><span>Rough-in</span><b>New PEX + copper stub-outs</b></div>
+          <div><span>Waste</span><b>Cast iron → ABS</b></div>
+          <div><span>Inspection</span><b>Passed, first visit</b></div>
+        </div>
+        <p class="ba-note">Plumbing, tile, and electrical ran on one Bluewater schedule — one call sheet, no idle days, and the homeowners brushed their teeth in their own sink on night six.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 04 SELECTED WORK ================= -->
+<section id="work">
+  <div class="shell">
+    <div class="sec-head reveal">
+      <span class="sec-no">04</span>
+      <span class="sec-label">Selected work</span>
+      <span class="sec-meta">Figs. 05 — 08</span>
+    </div>
+    <h2 class="reveal" style="margin-bottom:clamp(30px,4vw,54px)">Recent<br>commissions.</h2>
+    <div class="work-grid stagger">
+      <figure class="work-fig w1">
+        <div class="ph" data-fig>
+          <span class="idx" aria-hidden="true">Fig. 05</span>
+          <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=1200&q=80"
+               alt="A narrow charcoal-tiled bathroom with a white freestanding tub and black floor-mounted filler"
+               loading="lazy"
+               onerror="this.closest('[data-fig]').classList.add('img-fail')">
+        </div>
+        <figcaption><span><b>Laurelhurst</b> — Primary bath, full renovation</span><span>2026</span></figcaption>
+      </figure>
+      <figure class="work-fig w2">
+        <div class="ph" data-fig>
+          <span class="idx" aria-hidden="true">Fig. 06</span>
+          <img src="https://images.unsplash.com/photo-1604709177225-055f99402ea3?w=1200&q=80"
+               alt="Concrete-walled bathroom with twin round mirrors, black basin and freestanding tub"
+               loading="lazy"
+               onerror="this.closest('[data-fig]').classList.add('img-fail')">
+        </div>
+        <figcaption><span><b>Mississippi</b> — Guest bath &amp; fixtures</span><span>2025</span></figcaption>
+      </figure>
+      <figure class="work-fig w3">
+        <div class="ph" data-fig>
+          <span class="idx" aria-hidden="true">Fig. 07</span>
+          <img src="https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?w=1200&q=80"
+               alt="Floating oak vanity with a charcoal basin and wall-mounted black tap against sage walls"
+               loading="lazy"
+               onerror="this.closest('[data-fig]').classList.add('img-fail')">
+        </div>
+        <figcaption><span><b>Montavilla</b> — Powder room, wall-hung rough-in</span><span>2025</span></figcaption>
+      </figure>
+      <figure class="work-fig w4">
+        <div class="ph" data-fig>
+          <span class="idx" aria-hidden="true">Fig. 08</span>
+          <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1400&q=80"
+               alt="Bright renovated bathroom with frameless glass shower, navy vanity and white counters"
+               loading="lazy"
+               onerror="this.closest('[data-fig]').classList.add('img-fail')">
+        </div>
+        <figcaption><span><b>Hawthorne</b> — Four-square, second-floor addition</span><span>2026</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 RECORD (testimonials) ================= -->
+<section id="record">
+  <div class="shell">
+    <div class="sec-head reveal">
+      <span class="sec-no">05</span>
+      <span class="sec-label">The record</span>
+      <span class="sec-meta">4.9 across 231 reviews</span>
+    </div>
+    <div class="reveal" id="quotes" aria-roledescription="carousel" aria-label="Client testimonials">
+      <div class="stage">
+        <div class="q-slide active" role="group" aria-label="Testimonial 1 of 4">
+          <span class="q-no">Entry 01 / 04</span>
+          <blockquote>&ldquo;They repiped our 1926 four-square in three days and you cannot find a single scar in the plaster. The cleanest trade work this house has ever seen.&rdquo;</blockquote>
+          <p class="who"><b>Margaret &amp; Tom H.</b> — Laurelhurst · Whole-house repipe</p>
+        </div>
+        <div class="q-slide" role="group" aria-label="Testimonial 2 of 4" aria-hidden="true">
+          <span class="q-no">Entry 02 / 04</span>
+          <blockquote>&ldquo;Our water heater failed on a Friday night. A human answered at eleven, and Ward himself was in the basement by eight the next morning.&rdquo;</blockquote>
+          <p class="who"><b>Daniel O.</b> — St. Johns · Water heater</p>
+        </div>
+        <div class="q-slide" role="group" aria-label="Testimonial 3 of 4" aria-hidden="true">
+          <span class="q-no">Entry 03 / 04</span>
+          <blockquote>&ldquo;The bathroom came back better than the drawings. Every line level, every joint deliberate — it reads like the house was built around it.&rdquo;</blockquote>
+          <p class="who"><b>Priya N.</b> — Alberta Arts · Bath renovation</p>
+        </div>
+        <div class="q-slide" role="group" aria-label="Testimonial 4 of 4" aria-hidden="true">
+          <span class="q-no">Entry 04 / 04</span>
+          <blockquote>&ldquo;Three plumbers told us to open the wall. Bluewater found the leak with a camera and a gauge in forty minutes, through a two-inch hole.&rdquo;</blockquote>
+          <p class="who"><b>Chris &amp; Amal B.</b> — Sellwood · Leak detection</p>
+        </div>
+      </div>
+      <div class="q-controls">
+        <div class="q-dots" role="tablist" aria-label="Choose testimonial">
+          <button type="button" role="tab" aria-current="true" aria-label="Show testimonial 1"><i></i></button>
+          <button type="button" role="tab" aria-current="false" aria-label="Show testimonial 2"><i></i></button>
+          <button type="button" role="tab" aria-current="false" aria-label="Show testimonial 3"><i></i></button>
+          <button type="button" role="tab" aria-current="false" aria-label="Show testimonial 4"><i></i></button>
+        </div>
+        <span class="q-count"><b id="qNow">01</b> / 04</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06 QUESTIONS ================= -->
+<section id="faq">
+  <div class="shell">
+    <div class="sec-head reveal">
+      <span class="sec-no">06</span>
+      <span class="sec-label">Questions</span>
+      <span class="sec-meta">Answered plainly</span>
+    </div>
+    <h2 class="reveal" style="margin-bottom:clamp(30px,4vw,50px)">Asked &amp;<br>answered.</h2>
+    <div class="faq-list reveal">
+      <details class="faq-item">
+        <summary><span class="fno">Q.01</span><span class="fq">Do you handle after-hours emergencies?</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="ans"><p>Yes. The emergency line is answered around the clock by a Bluewater plumber — not an answering service. Burst pipes, failed water heaters, and active leaks are dispatched first; everything else gets the next open slot with an honest arrival window.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="fno">Q.02</span><span class="fq">Are you licensed, bonded, and insured?</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="ans"><p>Fully. Every person who touches your plumbing is an Oregon-licensed journeyman or a registered apprentice working under one. Work that requires a permit gets a permit, and we schedule the inspection ourselves.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="fno">Q.03</span><span class="fq">Which parts of Portland do you serve?</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="ans"><p>The inner east and west sides — Alberta Arts, Irvington, Laurelhurst, Hawthorne, Sellwood, St. Johns, Mississippi, Montavilla, and the neighborhoods between. Just outside that ring? Call anyway; if we can&rsquo;t come, we&rsquo;ll name someone good who can.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="fno">Q.04</span><span class="fq">Is any job too small?</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="ans"><p>No. A washer, a wax ring, a slow drain — small work is how most of our longest clients found us. The van that comes is stocked for it, and the plumber who comes treats it like the repipe we may do for you in ten years.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="fno">Q.05</span><span class="fq">How do estimates work?</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="ans"><p>We walk the job with you, explain what we found in plain language, and put the full scope in writing before a wrench is lifted. You approve the written scope first — no surprises on the invoice, ever.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="fno">Q.06</span><span class="fq">Can you work on very old houses?</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="ans"><p>It&rsquo;s our specialty. Pre-war Portland homes — galvanized supply, cast iron stacks, plaster walls — are most of what we do. We open the smallest hole that does the job, protect original finishes, and leave surfaces ready for a painter, not a rebuild.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 07 CONTACT ================= -->
+<section class="on-dark contact" id="contact">
+  <div class="shell">
+    <div class="sec-head reveal">
+      <span class="sec-no">07</span>
+      <span class="sec-label">Contact</span>
+      <span class="sec-meta">Dispatch — PDX</span>
+    </div>
+    <h2 class="reveal">Talk to a plumber, <span class="accent">not a call center.</span></h2>
+    <div class="contact-grid">
+      <div class="reveal">
+        <a class="tel-big" href="tel:+15550214700">(555) 021-4700 <span class="arr" aria-hidden="true">→</span></a>
+        <p class="contact-note">Weekdays, the phone is answered by whoever is running dispatch that day — a plumber, on rotation. Describe the problem; you&rsquo;ll get a straight answer and a real arrival window.</p>
+        <div class="contact-ctas">
+          <a class="btn btn-solid" href="tel:+15550214700">Call the shop <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost" href="#faq">Read the FAQ first</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="hours" aria-label="Opening hours">
+          <div><span>Mon — Fri</span><b>07:00 — 19:00</b></div>
+          <div><span>Saturday</span><b>08:00 — 17:00</b></div>
+          <div><span>Sunday</span><b>Emergencies only</b></div>
+          <div><span>Emergency line</span><b>24 / 7</b></div>
+          <div><span>Workshop</span><b>St. Johns, Portland</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="shell">
+    <div class="foot-top">
+      <span>Bluewater Plumbing Co. — Field Notes, Vol. 01</span>
+      <span>Portland — <span id="pdxTime">--:--</span> PT</span>
+    </div>
+    <div class="foot-grid">
+      <div class="foot-brand foot">
+        <span class="foot-word">Bluewater</span>
+        <p>A twelve-person plumbing practice for Portland&rsquo;s older houses. Careful surgery, straight answers, and work built to outlive its warranty.</p>
+      </div>
+      <div class="foot">
+        <h4>Index</h4>
+        <ul>
+          <li><a href="#practice">01 — The practice</a></li>
+          <li><a href="#services">02 — Services</a></li>
+          <li><a href="#renovation">03 — The renovation</a></li>
+          <li><a href="#work">04 — Selected work</a></li>
+        </ul>
+      </div>
+      <div class="foot">
+        <h4>More</h4>
+        <ul>
+          <li><a href="#record">05 — The record</a></li>
+          <li><a href="#faq">06 — Questions</a></li>
+          <li><a href="#contact">07 — Contact</a></li>
+          <li><a href="#top">↑ Back to top</a></li>
+        </ul>
+      </div>
+      <div class="foot">
+        <h4>Dispatch</h4>
+        <ul>
+          <li><a class="foot-tel" href="tel:+15550214700">(555) 021-4700</a></li>
+          <li>Mon–Fri 07:00–19:00</li>
+          <li>Sat 08:00–17:00</li>
+          <li>Emergency line 24/7</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Bluewater Plumbing Co. — a fictional company</span>
+      <span>A concept showcase by MainStreet Web Studio — Bluewater Plumbing Co. is a demonstration brand.</span>
+      <span>Set in Archivo &amp; IBM Plex Mono · Photography via Unsplash</span>
+    </div>
+  </div>
+</footer>
+
+<!-- sticky mobile call bar -->
+<div class="callbar">
+  <a href="tel:+15550214700">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call (555) 021-4700
+  </a>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- scroll progress + shrinking header ---------- */
+  var progress = document.getElementById("progress");
+  var header = document.getElementById("hdr");
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(function () {
+      var doc = document.documentElement;
+      var max = doc.scrollHeight - window.innerHeight;
+      var pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+      progress.style.width = Math.min(100, Math.max(0, pct)) + "%";
+      header.classList.toggle("scrolled", window.scrollY > 10);
+      ticking = false;
+    });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- scroll reveals ---------- */
+  var revealEls = document.querySelectorAll(".reveal, .stagger");
+  if ("IntersectionObserver" in window && !reduceMotion) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add("in"); });
+  }
+
+  /* ---------- count-up stats ---------- */
+  var counters = document.querySelectorAll("[data-count]");
+  function renderCount(el, value, dec) {
+    el.textContent = dec > 0
+      ? value.toFixed(dec)
+      : Math.round(value).toLocaleString("en-US");
+  }
+  function runCount(el) {
+    var target = parseFloat(el.getAttribute("data-count"));
+    var dec = parseInt(el.getAttribute("data-dec") || "0", 10);
+    if (reduceMotion) { renderCount(el, target, dec); return; }
+    var start = null, dur = 1500;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min(1, (ts - start) / dur);
+      var eased = 1 - Math.pow(1 - p, 3);
+      renderCount(el, target * eased, dec);
+      if (p < 1) window.requestAnimationFrame(step);
+    }
+    window.requestAnimationFrame(step);
+  }
+  if ("IntersectionObserver" in window) {
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          runCount(e.target);
+          cio.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function (el) { cio.observe(el); });
+  } else {
+    counters.forEach(function (el) {
+      renderCount(el, parseFloat(el.getAttribute("data-count")), parseInt(el.getAttribute("data-dec") || "0", 10));
+    });
+  }
+
+  /* ---------- testimonial carousel ---------- */
+  var quotes = document.getElementById("quotes");
+  if (quotes) {
+    var slides = quotes.querySelectorAll(".q-slide");
+    var dots = quotes.querySelectorAll(".q-dots button");
+    var qNow = document.getElementById("qNow");
+    var qi = 0, qTimer = null;
+    function goTo(i) {
+      qi = (i + slides.length) % slides.length;
+      slides.forEach(function (s, k) {
+        s.classList.toggle("active", k === qi);
+        if (k === qi) { s.removeAttribute("aria-hidden"); }
+        else { s.setAttribute("aria-hidden", "true"); }
+      });
+      dots.forEach(function (d, k) {
+        d.setAttribute("aria-current", k === qi ? "true" : "false");
+      });
+      if (qNow) qNow.textContent = ("0" + (qi + 1)).slice(-2);
+    }
+    function startAuto() {
+      if (reduceMotion || qTimer) return;
+      qTimer = window.setInterval(function () { goTo(qi + 1); }, 6000);
+    }
+    function stopAuto() {
+      if (qTimer) { window.clearInterval(qTimer); qTimer = null; }
+    }
+    dots.forEach(function (d, k) {
+      d.addEventListener("click", function () {
+        goTo(k);
+        stopAuto();
+        startAuto();
+      });
+    });
+    quotes.addEventListener("mouseenter", stopAuto);
+    quotes.addEventListener("mouseleave", startAuto);
+    quotes.addEventListener("focusin", stopAuto);
+    quotes.addEventListener("focusout", startAuto);
+    startAuto();
+  }
+
+  /* ---------- before / after slider ---------- */
+  var ba = document.getElementById("ba");
+  var handle = document.getElementById("baHandle");
+  if (ba && handle) {
+    var dragging = false;
+    function setPos(p) {
+      p = Math.max(2, Math.min(98, p));
+      ba.style.setProperty("--pos", p + "%");
+      var r = Math.round(p);
+      handle.setAttribute("aria-valuenow", String(r));
+      handle.setAttribute("aria-valuetext", r + " percent renovated view");
+      ba.classList.add("used");
+    }
+    function posFromEvent(e) {
+      var rect = ba.getBoundingClientRect();
+      return ((e.clientX - rect.left) / rect.width) * 100;
+    }
+    ba.addEventListener("pointerdown", function (e) {
+      dragging = true;
+      if (ba.setPointerCapture) { ba.setPointerCapture(e.pointerId); }
+      setPos(posFromEvent(e));
+    });
+    ba.addEventListener("pointermove", function (e) {
+      if (dragging) setPos(posFromEvent(e));
+    });
+    ba.addEventListener("pointerup", function () { dragging = false; });
+    ba.addEventListener("pointercancel", function () { dragging = false; });
+    handle.addEventListener("keydown", function (e) {
+      var cur = parseFloat(handle.getAttribute("aria-valuenow")) || 50;
+      var next = null;
+      if (e.key === "ArrowLeft" || e.key === "ArrowDown") next = cur - 4;
+      else if (e.key === "ArrowRight" || e.key === "ArrowUp") next = cur + 4;
+      else if (e.key === "Home") next = 2;
+      else if (e.key === "End") next = 98;
+      if (next !== null) {
+        e.preventDefault();
+        setPos(next);
+      }
+    });
+  }
+
+  /* ---------- FAQ: one open at a time ---------- */
+  var faqs = document.querySelectorAll(".faq-item");
+  faqs.forEach(function (d) {
+    d.addEventListener("toggle", function () {
+      if (d.open) {
+        faqs.forEach(function (other) {
+          if (other !== d && other.open) other.open = false;
+        });
+      }
+    });
+  });
+
+  /* ---------- Portland clock ---------- */
+  var clock = document.getElementById("pdxTime");
+  function tickClock() {
+    if (!clock) return;
+    try {
+      clock.textContent = new Date().toLocaleTimeString("en-US", {
+        hour: "2-digit", minute: "2-digit", hour12: false,
+        timeZone: "America/Los_Angeles"
+      });
+    } catch (err) {
+      clock.textContent = "";
+    }
+  }
+  tickClock();
+  window.setInterval(tickClock, 30000);
+})();
+</script>
+</body>
+</html>
