@@ -10,110 +10,225 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* ============ TOKENS ============ */
 :root{
   --slate:#1E2A38; --slate-2:#16202B; --slate-3:#0F1720;
   --paper:#FFFFFF; --ice:#F2F5F9; --line:#DBE2EB; --muted:#56646F; --ink:#1B2733;
   --orange:#E8590C; --orange-deep:#BF450A; --steel:#4A83B8; --gold:#F2B138;
   --radius:10px; --shadow:0 18px 42px rgba(30,42,56,.15);
+  --glow-orange:0 12px 30px rgba(232,89,12,.4);
+  --noteH:0px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Karla',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.63;font-size:16.5px}
+body{font-family:'Karla',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.63;font-size:16.5px;overflow-x:hidden}
 h1,h2,h3,.num{font-family:'Outfit',sans-serif;font-weight:800;line-height:1.06;letter-spacing:-.02em}
 img{max-width:100%;display:block}
 a{color:inherit}
+::selection{background:var(--orange);color:#fff}
 .wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--gold);color:#2B1F03;font-weight:700;padding:14px 22px;border-radius:0 0 12px 0;z-index:200}
+.skip:focus{left:0}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--orange-deep);outline-offset:3px}
 .dark :focus-visible,header :focus-visible,footer :focus-visible,.callbar :focus-visible{outline-color:var(--gold)}
 
+/* ============ BUTTONS ============ */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:1.02rem;
   border-radius:var(--radius);padding:15px 28px;min-height:54px;text-decoration:none;cursor:pointer;border:0;
-  transition:transform .16s ease,background .16s ease,box-shadow .16s ease}
+  position:relative;overflow:hidden;transition:transform .2s ease,background .2s ease,box-shadow .2s ease}
 .btn svg{flex:none}
-.btn-call{background:var(--orange);color:#fff;box-shadow:0 12px 26px rgba(232,89,12,.36)}
-.btn-call:hover{background:var(--orange-deep);transform:translateY(-2px)}
+.btn-call{background:linear-gradient(180deg,#F4671B,var(--orange));color:#fff;box-shadow:var(--glow-orange)}
+.btn-call::after{content:"";position:absolute;top:-15%;left:-75%;width:45%;height:130%;transform:skewX(-22deg);pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);opacity:0}
+.btn-call:hover,.btn-call:focus-visible{background:linear-gradient(180deg,var(--orange),var(--orange-deep));transform:translateY(-3px);box-shadow:0 16px 38px rgba(232,89,12,.5)}
+.btn-call:hover::after,.btn-call:focus-visible::after{opacity:1;animation:sweep .6s ease-out}
+@keyframes sweep{0%{left:-75%;opacity:1}60%{opacity:1}100%{left:135%;opacity:0}}
 .btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.42)}
-.btn-ghost:hover{border-color:#fff;transform:translateY(-2px)}
+.btn-ghost:hover{border-color:#fff;transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,.35)}
 
+/* ============ SCROLL PROGRESS ============ */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--orange),var(--gold));box-shadow:0 0 10px rgba(232,89,12,.65)}
+
+/* ============ DEMO NOTE ============ */
 .demo-note{position:sticky;top:0;z-index:60;background:var(--gold);color:#2B1F03;font-size:.84rem;font-weight:600;text-align:center;padding:9px 52px}
 .demo-note button{position:absolute;right:4px;top:50%;transform:translateY(-50%);background:none;border:none;color:#2B1F03;font-size:1.05rem;cursor:pointer;padding:12px 16px;min-width:44px;min-height:44px}
 
-header{position:sticky;top:0;z-index:50;background:rgba(22,32,43,.95);backdrop-filter:blur(10px);border-bottom:3px solid var(--orange)}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:12px}
+/* ============ HEADER ============ */
+header{position:sticky;top:var(--noteH,0px);z-index:50;background:rgba(22,32,43,.92);backdrop-filter:blur(10px);
+  border-bottom:3px solid var(--orange);transition:box-shadow .3s ease,background .3s ease}
+header.scrolled{box-shadow:0 12px 32px rgba(15,23,32,.5);background:rgba(15,23,32,.97)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:12px;transition:padding .3s ease}
+header.scrolled .nav{padding:7px 0}
 .logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:#fff;font-family:'Outfit',sans-serif;font-weight:800;font-size:1.14rem;min-height:44px}
-.logo .mark{width:40px;height:40px;background:var(--orange);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;color:#fff;flex:none}
+.logo .mark{width:40px;height:40px;background:var(--orange);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;color:#fff;flex:none;transition:transform .25s ease}
+.logo:hover .mark{transform:rotate(-10deg) scale(1.06)}
 .logo small{display:block;font-family:'Karla',sans-serif;font-weight:500;font-size:.68rem;letter-spacing:.15em;color:#9AAAB8;text-transform:uppercase;line-height:1.4}
+.nav-links{display:none;gap:24px;font-weight:600;font-size:.93rem;color:#B4C2CE}
+.nav-links a{text-decoration:none;padding:10px 2px;position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:5px;height:2px;background:var(--gold);transition:right .25s ease}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{right:0}
+@media(min-width:960px){.nav-links{display:flex}}
 .nav-call{display:inline-flex;align-items:center;gap:9px;text-decoration:none;background:var(--orange);color:#fff;
-  font-weight:700;font-size:1rem;padding:11px 20px;min-height:46px;border-radius:var(--radius);transition:background .16s}
-.nav-call:hover{background:var(--orange-deep)}
+  font-weight:700;font-size:1rem;padding:11px 20px;min-height:46px;border-radius:var(--radius);transition:background .16s,transform .2s,box-shadow .2s}
+.nav-call:hover{background:var(--orange-deep);transform:translateY(-2px);box-shadow:var(--glow-orange)}
 
+/* ============ HERO ============ */
 .hero{background:var(--slate-2);color:#fff;position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:
-  radial-gradient(720px 420px at 88% 6%,rgba(74,131,184,.32),transparent 62%),
-  radial-gradient(480px 300px at 4% 94%,rgba(232,89,12,.16),transparent 60%)}
-.hero-in{position:relative;z-index:1;display:grid;gap:46px;padding:66px 0 80px;align-items:center}
+.atmos{position:absolute;inset:-18%;pointer-events:none;will-change:transform;background:
+  radial-gradient(720px 420px at 85% 8%,rgba(74,131,184,.34),transparent 62%),
+  radial-gradient(560px 340px at 6% 92%,rgba(232,89,12,.2),transparent 60%),
+  radial-gradient(420px 300px at 48% 45%,rgba(242,177,56,.07),transparent 65%);
+  animation:atmos 17s ease-in-out infinite alternate}
+@keyframes atmos{from{transform:translate3d(-1.8%,-1.2%,0) scale(1)}to{transform:translate3d(1.8%,1.6%,0) scale(1.07)}}
+.gridlines{position:absolute;inset:-30% 0 0;pointer-events:none;opacity:.55;will-change:transform;
+  background-image:linear-gradient(rgba(74,131,184,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(74,131,184,.1) 1px,transparent 1px);
+  background-size:46px 46px;
+  -webkit-mask-image:radial-gradient(85% 85% at 62% 30%,#000 28%,transparent 78%);
+  mask-image:radial-gradient(85% 85% at 62% 30%,#000 28%,transparent 78%)}
+.silhouette{position:absolute;left:0;right:0;bottom:-2px;pointer-events:none;will-change:transform}
+.silhouette svg{display:block;width:100%;height:auto}
+.win{animation:winGlow 4.6s ease-in-out infinite}
+.win:nth-child(odd){animation-delay:2.1s}
+@keyframes winGlow{0%,100%{opacity:.9}50%{opacity:.3}}
+.hero-in{position:relative;z-index:1;display:grid;gap:46px;padding:70px 0 150px;align-items:center}
 .flag{display:inline-flex;align-items:center;gap:8px;background:rgba(232,89,12,.15);border:1px solid rgba(232,89,12,.5);
-  color:#FFC59B;font-size:.83rem;font-weight:600;letter-spacing:.05em;padding:8px 15px;border-radius:999px}
+  color:#FFC59B;font-size:.83rem;font-weight:600;letter-spacing:.05em;padding:8px 15px;border-radius:999px;
+  opacity:0;animation:rise .7s .05s cubic-bezier(.2,.7,.2,1) forwards}
+.flag .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 9px var(--gold);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.45);opacity:.55}}
 .hero h1{font-size:clamp(2.4rem,6.4vw,4rem);margin-top:20px}
-.hero h1 .or{color:var(--orange)}
-.hero p.lead{margin-top:18px;font-size:1.14rem;color:#B4C2CE;max-width:33rem}
-.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
-.trust{display:flex;flex-wrap:wrap;align-items:center;gap:10px 26px;margin-top:32px;color:#B4C2CE;font-size:.95rem}
-.trust .stars{color:var(--gold);letter-spacing:2px;font-size:1.05rem}
+.hero h1 .line{display:block;opacity:0;transform:translateY(30px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
+.hero h1 .line:nth-child(1){animation-delay:.12s}
+.hero h1 .line:nth-child(2){animation-delay:.26s}
+.hero h1 .or{background:linear-gradient(92deg,var(--orange) 8%,#FF8A3D 48%,var(--gold) 96%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+@keyframes rise{to{opacity:1;transform:none}}
+.hero p.lead{margin-top:18px;font-size:1.14rem;color:#B4C2CE;max-width:33rem;opacity:0;animation:rise .8s .42s cubic-bezier(.2,.7,.2,1) forwards}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;opacity:0;animation:rise .8s .56s cubic-bezier(.2,.7,.2,1) forwards}
+.trust{display:flex;flex-wrap:wrap;align-items:center;gap:10px 26px;margin-top:32px;color:#B4C2CE;font-size:.95rem;opacity:0;animation:rise .8s .7s cubic-bezier(.2,.7,.2,1) forwards}
+.trust .stars{color:var(--gold);letter-spacing:2px;font-size:1.05rem;text-shadow:0 0 12px rgba(242,177,56,.55)}
 .trust strong{color:#fff}
-.hero-media{position:relative;max-width:440px}
-.hero-media .photo{border-radius:var(--radius);box-shadow:0 26px 54px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.1)}
+.hero-media{position:relative;max-width:440px;opacity:0;animation:rise .9s .5s cubic-bezier(.2,.7,.2,1) forwards}
+.ph-float{animation:floatY 6.5s ease-in-out infinite}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
+.ph-card{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:0 26px 54px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.12)}
+.ph-card .photo{transition:transform .6s ease}
+.ph-card:hover .photo{transform:scale(1.05)}
+.ph-card .shine{position:absolute;top:-20%;left:-85%;width:45%;height:140%;transform:skewX(-20deg);pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.32),transparent);
+  animation:shine 7.5s ease-in-out 1.4s infinite}
+@keyframes shine{0%{left:-85%}14%{left:135%}100%{left:135%}}
 .hero-media .tag{position:absolute;left:-12px;bottom:-18px;background:#fff;color:var(--ink);border-radius:var(--radius);
   box-shadow:var(--shadow);padding:12px 16px;display:flex;align-items:center;gap:10px;font-weight:600;font-size:.87rem}
 .hero-media .tag .stars{color:var(--gold);letter-spacing:1px}
 @media(min-width:900px){.hero-in{grid-template-columns:1.14fr .86fr}}
 
+/* ============ MARQUEE ============ */
+.marq-tilt{overflow:hidden;position:relative;z-index:3;margin-top:-46px;padding:20px 0}
+.marq{background:linear-gradient(90deg,#F4671B,var(--orange-deep));transform:rotate(-1.2deg);width:112%;margin-left:-6%;
+  box-shadow:0 18px 44px rgba(15,23,32,.35);border-top:2px solid rgba(255,255,255,.3);border-bottom:2px solid rgba(0,0,0,.22)}
+.marq-track{display:flex;width:max-content;animation:marq 30s linear infinite}
+.marq ul{display:flex;list-style:none;padding:13px 0}
+.marq li{font-family:'Outfit',sans-serif;font-weight:800;text-transform:uppercase;font-size:1rem;letter-spacing:.08em;
+  color:#fff;white-space:nowrap;display:flex;align-items:center}
+.marq li::after{content:"◆";margin:0 22px;font-size:.55rem;color:var(--gold)}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ============ STATS BAND ============ */
 .band{background:var(--slate)}
 .band-in{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2px;background:rgba(255,255,255,.09)}
-.band-in div{background:var(--slate);padding:26px 20px;text-align:center;color:#fff}
+.band-in .cell{background:var(--slate);padding:26px 20px;text-align:center;color:#fff;transition:background .25s ease}
+.band-in .cell:hover{background:#243342}
 .band-in .n{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.8rem;color:var(--gold);line-height:1}
 .band-in .l{font-size:.85rem;color:#9AAAB8;margin-top:7px}
 
-section{padding:74px 0}
+/* ============ SECTIONS ============ */
+section{padding:74px 0;position:relative;overflow:hidden}
 .kicker{display:inline-flex;align-items:center;gap:9px;font-weight:700;letter-spacing:.16em;font-size:.78rem;text-transform:uppercase;color:var(--orange-deep)}
 .kicker::before{content:"";width:26px;height:3px;background:var(--orange);border-radius:2px}
 h2{font-size:clamp(1.8rem,4.3vw,2.6rem);margin-top:14px}
 .sub{color:var(--muted);margin-top:13px;max-width:40rem}
 .dark .sub{color:#B4C2CE}
+.ghost-word{position:absolute;top:22px;right:-8px;font-family:'Outfit',sans-serif;font-weight:800;text-transform:uppercase;line-height:1;
+  font-size:clamp(4rem,13vw,9rem);color:transparent;-webkit-text-stroke:1px rgba(30,42,56,.08);pointer-events:none;user-select:none}
 
-.grid-services{display:grid;gap:18px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(245px,1fr))}
+/* ============ SERVICES ============ */
+.grid-services{display:grid;gap:18px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));perspective:1000px}
 .svc{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--steel);border-radius:var(--radius);padding:28px;
-  transition:transform .18s ease,box-shadow .18s ease,border-left-color .18s ease}
-.svc:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-left-color:var(--orange)}
-.svc .ico{width:50px;height:50px;border-radius:var(--radius);background:var(--ice);display:flex;align-items:center;justify-content:center;color:var(--steel);margin-bottom:16px}
+  position:relative;overflow:hidden;transform-style:preserve-3d;transition:transform .22s ease,box-shadow .22s ease,border-left-color .22s ease}
+.svc:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-left-color:var(--orange)}
+.svc::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .3s;pointer-events:none;
+  background:radial-gradient(300px 210px at var(--gx,70%) var(--gy,20%),rgba(74,131,184,.13),transparent 70%)}
+.svc:hover::before{opacity:1}
+.svc::after{content:"";position:absolute;top:-20%;left:-85%;width:40%;height:140%;transform:skewX(-20deg);pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(74,131,184,.1),transparent);opacity:0}
+.svc:hover::after{opacity:1;animation:sweep .7s ease-out}
+.svc .ico{width:50px;height:50px;border-radius:var(--radius);background:var(--ice);display:flex;align-items:center;justify-content:center;color:var(--steel);margin-bottom:16px;
+  transition:transform .25s ease,background .25s ease,color .25s ease}
+.svc:hover .ico{transform:rotate(-8deg) scale(1.1);background:var(--orange);color:#fff}
 .svc h3{font-size:1.2rem;font-weight:700}
 .svc p{color:var(--muted);font-size:.95rem;margin-top:8px}
 
+/* ============ DRAW DIVIDER ============ */
+.draw-wrap{display:flex;justify-content:flex-start;margin-bottom:14px}
+.draw-svg{width:58px;height:58px;overflow:visible}
+.draw-path{fill:none;stroke:var(--orange);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;
+  filter:drop-shadow(0 0 7px rgba(232,89,12,.55));stroke-dasharray:1;stroke-dashoffset:1}
+.drawn .draw-path{transition:stroke-dashoffset 1.4s ease .2s;stroke-dashoffset:0}
+
+/* ============ STEPS ============ */
 .steps{background:var(--ice)}
 .grid-steps{display:grid;gap:18px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-.step{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:30px}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:30px;
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+.step:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:rgba(232,89,12,.4)}
 .step .num{font-size:2.2rem;color:var(--orange);line-height:1}
 .step h3{margin-top:10px;font-size:1.18rem;font-weight:700}
 .step p{color:var(--muted);font-size:.95rem;margin-top:8px}
 
+/* ============ REVIEWS ============ */
 .rev-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px}
 .score{display:flex;align-items:center;gap:16px;background:var(--slate-2);color:#fff;border-radius:var(--radius);padding:18px 24px}
 .score .big{font-family:'Outfit',sans-serif;font-weight:800;font-size:2.5rem;line-height:1;color:var(--gold)}
 .score .stars{color:var(--gold);letter-spacing:2px}
 .score small{display:block;color:#B4C2CE;font-size:.83rem}
-.grid-reviews{display:grid;gap:18px;margin-top:36px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
-.rev{background:var(--ice);border:1px solid var(--line);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;gap:14px}
+.carousel{position:relative;margin-top:36px;max-width:760px}
+.rev{background:var(--ice);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:var(--radius);
+  padding:30px 28px;display:none;flex-direction:column;gap:14px}
+.rev.active{display:flex;animation:fadeSlide .5s ease}
+@keyframes fadeSlide{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
 .rev .stars{color:var(--gold);letter-spacing:2px}
-.rev p{font-size:.95rem}
+.rev p{font-size:1.02rem}
 .rev .who{font-weight:700;font-size:.9rem}
 .rev .who span{display:block;font-weight:500;color:var(--muted);font-size:.81rem}
-.all-reviews{margin-top:28px}
+.dots{display:flex;gap:2px;margin-top:10px}
+.dots button{width:44px;height:44px;border:none;background:none;cursor:pointer;display:grid;place-items:center;padding:0}
+.dots button .d{width:11px;height:11px;border-radius:50%;background:var(--line);transition:background .2s,transform .2s,box-shadow .2s}
+.dots button.on .d{background:var(--orange);transform:scale(1.35);box-shadow:0 0 9px rgba(232,89,12,.7)}
+.all-reviews{margin-top:26px}
 .all-reviews a{display:inline-flex;align-items:center;min-height:44px;color:var(--orange-deep);font-weight:700;text-decoration-thickness:2px}
 
+/* ============ AREA ============ */
 .area{background:var(--ice)}
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-.chip{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:10px 19px;font-size:.92rem;font-weight:600}
+.chip{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:10px 19px;font-size:.92rem;font-weight:600;
+  transition:transform .2s ease,background .2s ease,color .2s ease,border-color .2s ease;cursor:default}
+.chip:hover{transform:translateY(-3px);background:var(--orange);border-color:var(--orange);color:#fff}
 
+/* ============ FAQ ============ */
+.qa{background:var(--paper);border:1px solid var(--line);border-radius:12px;margin-top:14px;overflow:hidden;transition:border-color .25s,box-shadow .25s}
+.qa.open{border-color:rgba(232,89,12,.45);box-shadow:0 10px 28px rgba(30,42,56,.08)}
+.qa .q{width:100%;text-align:left;background:none;border:none;font:inherit;color:var(--ink);font-weight:700;
+  padding:20px 22px;min-height:44px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:1rem}
+.qa .chev{transition:transform .3s;color:var(--orange);flex:none}
+.qa.open .chev{transform:rotate(180deg)}
+.qa .a{max-height:0;overflow:hidden;transition:max-height .4s ease;color:var(--muted);font-size:.95rem}
+.qa.open .a{max-height:300px}
+.qa .a p{padding:0 22px 20px}
+
+/* ============ QUOTE / FORM ============ */
 .quote{background:var(--slate-2);color:#fff;position:relative;overflow:hidden}
 .quote::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(620px 340px at 90% 10%,rgba(74,131,184,.3),transparent 62%)}
 .quote .wrap{position:relative;z-index:1}
@@ -121,46 +236,88 @@ h2{font-size:clamp(1.8rem,4.3vw,2.6rem);margin-top:14px}
 .form{margin-top:32px;display:grid;gap:16px;max-width:560px}
 .form label{font-weight:600;font-size:.92rem;display:block;margin-bottom:6px}
 .form input,.form textarea{width:100%;border:1.5px solid rgba(255,255,255,.24);background:rgba(255,255,255,.06);color:#fff;
-  border-radius:9px;padding:14px;font:inherit;font-size:1rem;min-height:48px}
+  border-radius:9px;padding:14px;font:inherit;font-size:1rem;min-height:48px;transition:border-color .2s,background .2s}
 .form input::placeholder,.form textarea::placeholder{color:#8EA0AE}
-.form input:focus,.form textarea:focus{outline:3px solid var(--gold);outline-offset:2px;border-color:transparent}
+.form input:hover,.form textarea:hover{border-color:rgba(255,255,255,.44)}
+.form input:focus,.form textarea:focus{outline:3px solid var(--gold);outline-offset:2px;border-color:transparent;background:rgba(255,255,255,.09)}
 .form-note{font-size:.86rem;color:#B4C2CE}
 .form .btn-call{justify-self:start}
+.form .mag-zone{justify-self:start;display:inline-block;padding:14px;margin:-14px}
 
+/* ============ FOOTER ============ */
 footer{background:var(--slate-3);color:#98A8B6;padding:46px 0;font-size:.91rem}
 .foot{display:flex;flex-wrap:wrap;gap:18px 40px;justify-content:space-between;align-items:center}
 .foot .fname{font-family:'Outfit',sans-serif;font-weight:800;color:#fff;font-size:1.2rem}
 .foot a{display:inline-flex;align-items:center;min-height:44px;color:#fff;font-weight:700;text-decoration:none}
+.foot a:hover{color:var(--gold)}
 .disclaimer{margin-top:24px;padding-top:18px;border-top:1px solid #1E2B38;font-size:.79rem;color:#73838F}
 
-.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+/* ============ REVEALS ============ */
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
 .js .reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .reveal{opacity:1;transform:none;transition:none}.btn,.svc{transition:none}}
+.js .stagger>*{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.js .stagger.in>*{opacity:1;transform:none}
+.js .stagger.in>*:nth-child(2){transition-delay:.09s}
+.js .stagger.in>*:nth-child(3){transition-delay:.18s}
+.js .stagger.in>*:nth-child(4){transition-delay:.27s}
+.js .stagger.in>*:nth-child(5){transition-delay:.35s}
+.js .stagger.in>*:nth-child(6){transition-delay:.43s}
+.js .stagger.in>*:nth-child(7){transition-delay:.5s}
+.js .stagger.in>*:nth-child(8){transition-delay:.57s}
+.js .stagger.in>*:nth-child(9){transition-delay:.63s}
+.js .stagger.in>*:nth-child(10){transition-delay:.69s}
 
+/* ============ MOBILE CALL BAR ============ */
 .callbar{display:none}
 @media(max-width:720px){
-  .callbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--orange);justify-content:center;border-top:3px solid var(--orange-deep)}
+  .callbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--orange);justify-content:center;border-top:3px solid var(--orange-deep);box-shadow:0 -8px 26px rgba(15,23,32,.35)}
   .callbar a{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:700;font-size:1.08rem;padding:16px;width:100%;justify-content:center;min-height:58px}
   body{padding-bottom:66px}
   .hero-media{margin:0 auto}
   .hero-media .tag{left:6px}
+  .hero-in{padding-bottom:118px}
+  .marq-tilt{margin-top:-36px}
+}
+
+/* ============ REDUCED MOTION ============ */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .js .reveal,.js .stagger>*{opacity:1;transform:none}
+  .flag,.hero h1 .line,.hero p.lead,.cta-row,.trust,.hero-media{opacity:1;transform:none}
+  .ph-card .shine{display:none}
+  .atmos,.gridlines,.silhouette{transform:none !important}
+  .marq-track{animation:none !important}
+  .draw-path{stroke-dashoffset:0}
+  .svc{transform:none !important}
 }
 </style>
+<noscript><style>
+.reveal,.stagger>*{opacity:1;transform:none}
+.qa .a{max-height:none}
+.rev{display:flex}
+.dots{display:none}
+.draw-path{stroke-dashoffset:0}
+.flag,.hero h1 .line,.hero p.lead,.cta-row,.trust,.hero-media{opacity:1;transform:none;animation:none}
+</style></noscript>
 <script>document.documentElement.className+=" js"</script>
 </head>
 <body>
+<a class="skip" href="#top">Skip to content</a>
+<div id="progress" aria-hidden="true"></div>
 
-<div class="demo-note" id="demoNote">
-  Demo preview built for O'Neal's Handyman Services — not their official site.
-  <button aria-label="Dismiss notice" onclick="document.getElementById('demoNote').style.display='none'">&times;</button>
-</div>
-
-<header>
+<header id="hdr">
   <div class="wrap nav">
     <a class="logo" href="#top" aria-label="O'Neal's Handyman Services — home">
       <span class="mark" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
       <span>O'Neal's Handyman<small>Tulsa · Oklahoma</small></span>
     </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#services">Services</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+      <a href="#quote">Estimate</a>
+    </nav>
     <a class="nav-call" href="tel:+19185006985">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       (918) 500-6985
@@ -170,10 +327,15 @@ footer{background:var(--slate-3);color:#98A8B6;padding:46px 0;font-size:.91rem}
 
 <main id="top">
 <div class="hero dark">
+  <div class="atmos" aria-hidden="true"></div>
+  <div class="gridlines" data-speed="0.12" aria-hidden="true"></div>
   <div class="wrap hero-in">
     <div>
-      <span class="flag">Home &amp; commercial repair · Tulsa, Oklahoma</span>
-      <h1>Homes, shops,<br><span class="or">whatever's broken.</span></h1>
+      <span class="flag"><span class="dot" aria-hidden="true"></span> Home &amp; commercial repair · Tulsa, Oklahoma</span>
+      <h1>
+        <span class="line">Homes, shops,</span>
+        <span class="line or">whatever's broken.</span>
+      </h1>
       <p class="lead">Doug O'Neal is widely skilled across home and commercial repair — remodeling, fences, leak damage, plumbing. On time, priced fairly, and insured. Property managers keep his number saved.</p>
       <div class="cta-row">
         <a class="btn btn-call" href="tel:+19185006985">
@@ -189,54 +351,91 @@ footer{background:var(--slate-3);color:#98A8B6;padding:46px 0;font-size:.91rem}
         <span>Residential &amp; commercial</span>
       </div>
     </div>
-    <div class="hero-media reveal">
-      <img class="photo" src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlqkxJ1QRzS0IFFEWJKJcboGvmSWBKWNORe5xXKMGayul3H4PqgCIQ7CFEQASqDvqsJtV2VrLyf1MlSTa_W2vHQN_QXzB62FCE2cWq0V4Zi2z8dp0FHAVsXOxP5A_83Edkj475JC_qfa3A=w408-h306-k-no" alt="Work by O'Neal's Handyman Services — photo from their Google Business listing" width="408" height="306" onerror="this.parentElement.style.display='none'">
-      <div class="tag"><span class="stars" aria-hidden="true">★★★★★</span> "Great job for a fair price"</div>
+    <div class="hero-media">
+      <div class="ph-float">
+        <div class="ph-card">
+          <img class="photo" src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlqkxJ1QRzS0IFFEWJKJcboGvmSWBKWNORe5xXKMGayul3H4PqgCIQ7CFEQASqDvqsJtV2VrLyf1MlSTa_W2vHQN_QXzB62FCE2cWq0V4Zi2z8dp0FHAVsXOxP5A_83Edkj475JC_qfa3A=w408-h306-k-no" alt="Work by O'Neal's Handyman Services — photo from their Google Business listing" width="408" height="306" onerror="this.closest('.hero-media').style.display='none'">
+          <span class="shine" aria-hidden="true"></span>
+        </div>
+        <div class="tag"><span class="stars" aria-hidden="true">★★★★★</span> "Great job for a fair price"</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="silhouette" data-speed="0.06" aria-hidden="true">
+    <svg viewBox="0 0 1440 150" preserveAspectRatio="none">
+      <path fill="#0F1720" d="M0,150 L0,118 L60,118 L60,84 L96,60 L132,84 L132,118 L210,118 L210,96 L268,64 L326,96 L326,118 L420,118 L420,74 L470,44 L520,74 L520,118 L600,118 L600,100 L660,70 L720,100 L720,118 L820,118 L820,80 L870,52 L920,80 L920,118 L1010,118 L1010,96 L1070,66 L1130,96 L1130,118 L1230,118 L1230,78 L1285,48 L1340,78 L1340,118 L1440,118 L1440,150 Z"/>
+      <g fill="#F2B138">
+        <rect class="win" x="90" y="92" width="8" height="10" rx="1"/>
+        <rect class="win" x="262" y="100" width="8" height="9" rx="1"/>
+        <rect class="win" x="464" y="86" width="8" height="10" rx="1"/>
+        <rect class="win" x="655" y="104" width="7" height="8" rx="1"/>
+        <rect class="win" x="864" y="90" width="8" height="10" rx="1"/>
+        <rect class="win" x="1064" y="100" width="8" height="9" rx="1"/>
+        <rect class="win" x="1280" y="88" width="8" height="10" rx="1"/>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<div class="marq-tilt" aria-hidden="true">
+  <div class="marq">
+    <div class="marq-track">
+      <ul>
+        <li>Interior remodeling</li><li>Fences &amp; privacy screens</li><li>Leak &amp; water damage</li><li>Plumbing fixes</li><li>Commercial repairs</li><li>General handyman work</li>
+      </ul>
+      <ul>
+        <li>Interior remodeling</li><li>Fences &amp; privacy screens</li><li>Leak &amp; water damage</li><li>Plumbing fixes</li><li>Commercial repairs</li><li>General handyman work</li>
+      </ul>
     </div>
   </div>
 </div>
 
-<div class="band">
-  <div class="wrap band-in">
-    <div><div class="n">4.7★</div><div class="l">Google rating</div></div>
-    <div><div class="n">Insured</div><div class="l">Home &amp; commercial</div></div>
-    <div><div class="n">On time</div><div class="l">Every review says so</div></div>
-    <div><div class="n">Tulsa</div><div class="l">Locally owned</div></div>
+<div class="band" aria-label="Track record">
+  <div class="wrap band-in stagger">
+    <div class="cell"><div class="n"><span class="cnt" data-count="4.7" data-dec="1">4.7</span>★</div><div class="l">Google rating</div></div>
+    <div class="cell"><div class="n"><span class="cnt" data-count="13">13</span></div><div class="l">Google reviews</div></div>
+    <div class="cell"><div class="n">Insured</div><div class="l">Home &amp; commercial</div></div>
+    <div class="cell"><div class="n">On time</div><div class="l">Every review says so</div></div>
   </div>
 </div>
 
 <section id="services">
+  <span class="ghost-word" aria-hidden="true">Fixed</span>
   <div class="wrap">
+    <div class="reveal draw-wrap" aria-hidden="true">
+      <svg class="draw-svg" viewBox="0 0 24 24"><path class="draw-path" pathLength="1" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+    </div>
     <span class="kicker">What we handle</span>
-    <h2>Widely skilled, so you only make one call</h2>
-    <p class="sub">Houses, rentals and commercial properties across Tulsa — repairs, remodels and the things that can't wait until Monday.</p>
-    <div class="grid-services">
-      <div class="svc reveal">
+    <h2 class="reveal">Widely skilled, so you only make one call</h2>
+    <p class="sub reveal">Houses, rentals and commercial properties across Tulsa — repairs, remodels and the things that can't wait until Monday.</p>
+    <div class="grid-services stagger">
+      <div class="svc">
         <div class="ico"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
         <h3>Interior Remodeling</h3>
         <p>Rooms brought up to date — surfaces, fixtures, trim and finishes, done to a standard people photograph afterwards.</p>
       </div>
-      <div class="svc reveal">
+      <div class="svc">
         <div class="ico"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V8"/><path d="M10 21V8"/><path d="M16 21V8"/><path d="M22 21V8"/><path d="M2 12h20"/><path d="M2 17h20"/><path d="m2 8 10-5 10 5"/></svg></div>
         <h3>Fences &amp; Privacy Screens</h3>
         <p>New privacy fencing, gate rebuilds and storm-damaged panels replaced — straight lines and posts set properly.</p>
       </div>
-      <div class="svc reveal">
+      <div class="svc">
         <div class="ico"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22a7 7 0 0 0 7-7c0-4-7-12-7-12S5 11 5 15a7 7 0 0 0 7 7z"/></svg></div>
         <h3>Leak &amp; Water Damage Repair</h3>
         <p>Find the source, fix the cause, then repair the damage — the sequence most people skip the middle of.</p>
       </div>
-      <div class="svc reveal">
+      <div class="svc">
         <div class="ico"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6v4H9z"/><path d="M7 7h10l-1 12a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2z"/></svg></div>
         <h3>Plumbing Fixes</h3>
         <p>Toilet rings, running fills, dripping traps and supply lines — replaced carefully, quickly, and for a reasonable price.</p>
       </div>
-      <div class="svc reveal">
+      <div class="svc">
         <div class="ico"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
         <h3>Commercial Property Repairs</h3>
         <p>Business owners and landlords: one insured contact for the recurring list, scheduled around your opening hours.</p>
       </div>
-      <div class="svc reveal">
+      <div class="svc">
         <div class="ico"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 12-8.4 8.4a1.5 1.5 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="M21.5 11.5 19.6 9.6A2 2 0 0 1 19 8.2V7l-2.3-2.3a6 6 0 0 0-4.2-1.7L9 3l.9.8A6.2 6.2 0 0 1 12 8.4V10l2 2h1.2a2 2 0 0 1 1.4.6l1.9 1.9"/></svg></div>
         <h3>General Handyman Work</h3>
         <p>Carpentry, doors, mounts, hardware and the punch list — knocked out in one visit wherever possible.</p>
@@ -248,42 +447,48 @@ footer{background:var(--slate-3);color:#98A8B6;padding:46px 0;font-size:.91rem}
 <section class="steps">
   <div class="wrap">
     <span class="kicker">How it works</span>
-    <h2>Straightforward, start to finish</h2>
-    <div class="grid-steps">
-      <div class="step reveal"><div class="num">01</div><h3>Tell Doug what happened</h3><p>Residential or commercial, one job or a list — you get an honest answer about what it takes.</p></div>
-      <div class="step reveal"><div class="num">02</div><h3>A fair price, agreed first</h3><p>Reviewers use the same two words over and over: fair and reasonable. That's the whole pricing policy.</p></div>
-      <div class="step reveal"><div class="num">03</div><h3>On time, done right</h3><p>He shows up when he said he would, works carefully, and leaves the place ready to use.</p></div>
+    <h2 class="reveal">Straightforward, start to finish</h2>
+    <div class="grid-steps stagger">
+      <div class="step"><div class="num">01</div><h3>Tell Doug what happened</h3><p>Residential or commercial, one job or a list — you get an honest answer about what it takes.</p></div>
+      <div class="step"><div class="num">02</div><h3>A fair price, agreed first</h3><p>Reviewers use the same two words over and over: fair and reasonable. That's the whole pricing policy.</p></div>
+      <div class="step"><div class="num">03</div><h3>On time, done right</h3><p>He shows up when he said he would, works carefully, and leaves the place ready to use.</p></div>
     </div>
   </div>
 </section>
 
 <section id="reviews">
+  <span class="ghost-word" aria-hidden="true">4.7★</span>
   <div class="wrap">
     <div class="rev-head">
       <div>
         <span class="kicker">Real Google reviews</span>
-        <h2>Homeowners and business owners both</h2>
+        <h2 class="reveal">Homeowners and business owners both</h2>
       </div>
       <div class="score reveal" role="img" aria-label="Rated 4.7 out of 5 stars across 13 Google reviews">
         <span class="big" aria-hidden="true">4.7</span>
         <span aria-hidden="true"><span class="stars">★★★★★</span><small>13 Google reviews</small></span>
       </div>
     </div>
-    <div class="grid-reviews">
-      <div class="rev reveal">
+    <div class="carousel reveal" id="carousel" aria-label="Customer reviews">
+      <div class="rev active">
         <span class="stars" aria-hidden="true">★★★★★</span>
         <p>"He helped repair leak damages at one of our commercial properties and he did a great job for a fair price. Highly recommend!"</p>
         <div class="who">Hannah Briggs <span>Google review</span></div>
       </div>
-      <div class="rev reveal">
+      <div class="rev">
         <span class="stars" aria-hidden="true">★★★★★</span>
         <p>"Doug was on time and professional. He performed a toilet ring replacement very carefully and quickly, and the price was very reasonable. I plan to use his services in the future."</p>
         <div class="who">Joe Perz <span>Google review</span></div>
       </div>
-      <div class="rev reveal">
+      <div class="rev">
         <span class="stars" aria-hidden="true">★★★★★</span>
         <p>"We just love our new interior and the awesome new privacy fence. Thanks again. Would definitely recommend to anyone looking for remodeling assistance. 👍👍"</p>
         <div class="who">James Mark <span>Google review</span></div>
+      </div>
+      <div class="dots" role="group" aria-label="Choose review">
+        <button class="on" aria-label="Show review 1"><span class="d" aria-hidden="true"></span></button>
+        <button aria-label="Show review 2"><span class="d" aria-hidden="true"></span></button>
+        <button aria-label="Show review 3"><span class="d" aria-hidden="true"></span></button>
       </div>
     </div>
     <p class="all-reviews"><a href="https://www.google.com/maps/search/O%27Neal%27s+Handyman+Services+Tulsa+OK" rel="noopener">Read all 13 reviews on Google Maps →</a></p>
@@ -291,11 +496,12 @@ footer{background:var(--slate-3);color:#98A8B6;padding:46px 0;font-size:.91rem}
 </section>
 
 <section class="area" id="area">
+  <span class="ghost-word" aria-hidden="true">Tulsa</span>
   <div class="wrap">
     <span class="kicker">Service area</span>
-    <h2>Tulsa and the surrounding communities</h2>
-    <p class="sub">Based in Tulsa, Oklahoma — covering homes and commercial properties across the metro.</p>
-    <div class="chips">
+    <h2 class="reveal">Tulsa and the surrounding communities</h2>
+    <p class="sub reveal">Based in Tulsa, Oklahoma — covering homes and commercial properties across the metro.</p>
+    <div class="chips stagger">
       <span class="chip">Tulsa</span><span class="chip">Owasso</span><span class="chip">Catoosa</span>
       <span class="chip">Broken Arrow</span><span class="chip">Sand Springs</span><span class="chip">Jenks</span>
       <span class="chip">Bixby</span><span class="chip">Collinsville</span>
@@ -303,17 +509,42 @@ footer{background:var(--slate-3);color:#98A8B6;padding:46px 0;font-size:.91rem}
   </div>
 </section>
 
+<section id="faq">
+  <div class="wrap">
+    <span class="kicker">Good to know</span>
+    <h2 class="reveal">Questions people ask first</h2>
+    <div class="reveal" style="max-width:760px">
+      <div class="qa open">
+        <button class="q" aria-expanded="true" onclick="toggleQA(this)">Can one call cover a whole list of repairs?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>That's the point. Doug is widely skilled across home and commercial repair — remodeling, fences, leak and water damage, plumbing fixes, carpentry and the general punch list — so one visit can knock out several jobs. Property managers keep his number saved for exactly that reason.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">How does pricing work?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>The price is agreed before the work starts. Reviewers keep using the same two words — "fair" and "reasonable" — and that's the whole pricing policy. Tell Doug what happened and you get an honest answer about what it takes.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">Do you work on commercial properties or just homes?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>Both. Recent Google reviews cover leak damage repaired at a commercial property as well as home remodels and a new privacy fence. Doug is insured for home and commercial work, and jobs at businesses can be scheduled around your opening hours.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">Which areas around Tulsa do you cover?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>Based in Tulsa and covering the surrounding metro — including Owasso, Catoosa, Broken Arrow, Sand Springs, Jenks, Bixby and Collinsville. Fastest way to check your address: call (918) 500-6985.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="quote dark" id="quote">
   <div class="wrap">
     <span class="kicker">Free estimate</span>
-    <h2>What needs repairing?</h2>
-    <p class="sub">Fastest answer: call <a href="tel:+19185006985" style="color:#fff;font-weight:700">(918) 500-6985</a>. Or leave your details and Doug will get back to you:</p>
-    <form class="form" onsubmit="event.preventDefault();this.querySelector('.form-note').textContent='This form is activated on your live website — for now, please call (918) 500-6985.';">
+    <h2 class="reveal">What needs repairing?</h2>
+    <p class="sub reveal">Fastest answer: call <a href="tel:+19185006985" style="color:#fff;font-weight:700">(918) 500-6985</a>. Or leave your details and Doug will get back to you:</p>
+    <form class="form reveal" onsubmit="event.preventDefault();this.querySelector('.form-note').textContent='This form is activated on your live website — for now, please call (918) 500-6985.';">
       <div><label for="fname">Your name</label><input id="fname" name="name" placeholder="Jane Smith" autocomplete="name"></div>
       <div><label for="fphone">Phone number</label><input id="fphone" name="phone" type="tel" placeholder="(918) 555-0100" autocomplete="tel"></div>
       <div><label for="fjob">What needs doing?</label><textarea id="fjob" name="job" rows="3" placeholder="e.g. Replace about 40 feet of privacy fence, and a slow leak under the shop's back sink"></textarea></div>
-      <button class="btn btn-call" type="submit">Send my request</button>
-      <p class="form-note">Demo preview — the form activates on the live site.</p>
+      <span class="mag-zone" id="magZone"><button class="btn btn-call" id="magBtn" type="submit">Send my request</button></span>
+      <p class="form-note">The contact form activates on the live version — for now, call directly.</p>
     </form>
   </div>
 </section>
@@ -331,7 +562,7 @@ footer{background:var(--slate-3);color:#98A8B6;padding:46px 0;font-size:.91rem}
         Tulsa, Oklahoma
       </div>
     </div>
-    <p class="disclaimer">This is a demo website preview created for O'Neal's Handyman Services and is not their official website. Business details (phone, rating, reviews) come from their public Google Maps listing. Want this site live, or want it removed? Reply to the email that brought you here.</p>
+    <p class="disclaimer">Concept preview for O&#x27;Neal&#x27;s Handyman Services · MainStreet Web Studio</p>
   </div>
 </footer>
 
@@ -341,9 +572,157 @@ footer{background:var(--slate-3);color:#98A8B6;padding:46px 0;font-size:.91rem}
 </div>
 
 <script>
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-setTimeout(()=>document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.classList.add('in')),2500);
+(function(){
+"use strict";
+var REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+/* ---- demo-note height feeds the sticky header offset ---- */
+var note = document.getElementById('demoNote');
+function setNoteH(){
+  var h = (note && note.style.display !== 'none') ? note.offsetHeight : 0;
+  document.documentElement.style.setProperty('--noteH', h + 'px');
+}
+setNoteH();
+addEventListener('resize', setNoteH);
+
+/* ---- scroll progress + header shrink + gentle parallax ---- */
+var prog = document.getElementById('progress'),
+    hdr = document.getElementById('hdr'),
+    plxEls = [].slice.call(document.querySelectorAll('[data-speed]')),
+    ticking = false;
+function onScroll(){
+  if(ticking) return;
+  ticking = true;
+  requestAnimationFrame(function(){
+    var h = document.documentElement, top = h.scrollTop,
+        max = h.scrollHeight - h.clientHeight;
+    prog.style.width = (max > 0 ? top / max * 100 : 0) + '%';
+    hdr.classList.toggle('scrolled', top > 8);
+    if(!REDUCED){
+      for(var i = 0; i < plxEls.length; i++){
+        var s = parseFloat(plxEls[i].getAttribute('data-speed')) || 0;
+        plxEls[i].style.transform = 'translate3d(0,' + (top * s) + 'px,0)';
+      }
+    }
+    ticking = false;
+  });
+}
+addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+/* ---- staggered scroll reveals (+ wrench draw) ---- */
+var revealEls = [].slice.call(document.querySelectorAll('.reveal,.stagger'));
+function revealNow(el){
+  el.classList.add('in');
+  if(el.classList.contains('draw-wrap')) el.classList.add('drawn');
+}
+if('IntersectionObserver' in window){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){ revealNow(e.target); io.unobserve(e.target); }
+    });
+  },{threshold:.15});
+  revealEls.forEach(function(el){ io.observe(el); });
+}else{
+  revealEls.forEach(revealNow);
+}
+
+/* ---- count-up stats ---- */
+var counters = document.querySelectorAll('.cnt');
+if(!REDUCED && 'IntersectionObserver' in window){
+  var cio = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      cio.unobserve(e.target);
+      var el = e.target,
+          end = parseFloat(el.getAttribute('data-count')),
+          dec = parseInt(el.getAttribute('data-dec') || '0', 10),
+          t0 = performance.now();
+      (function tick(t){
+        var p = Math.min((t - t0) / 1400, 1),
+            v = end * (1 - Math.pow(1 - p, 3));
+        el.textContent = dec ? v.toFixed(dec) : Math.round(v).toString();
+        if(p < 1) requestAnimationFrame(tick);
+      })(t0);
+    });
+  },{threshold:.5});
+  counters.forEach(function(el){ cio.observe(el); });
+}
+
+/* ---- review carousel ---- */
+var car = document.getElementById('carousel');
+if(car){
+  var revs = [].slice.call(car.querySelectorAll('.rev')),
+      dotBtns = [].slice.call(car.querySelectorAll('.dots button')),
+      cur = 0, timer = null;
+  function showRev(i){
+    revs[cur].classList.remove('active');
+    dotBtns[cur].classList.remove('on');
+    cur = i;
+    revs[cur].classList.add('active');
+    dotBtns[cur].classList.add('on');
+  }
+  function startAuto(){
+    if(REDUCED || timer) return;
+    timer = setInterval(function(){ showRev((cur + 1) % revs.length); }, 6000);
+  }
+  function stopAuto(){ clearInterval(timer); timer = null; }
+  dotBtns.forEach(function(b, i){
+    b.addEventListener('click', function(){ showRev(i); stopAuto(); startAuto(); });
+  });
+  car.addEventListener('mouseenter', stopAuto);
+  car.addEventListener('mouseleave', startAuto);
+  car.addEventListener('focusin', stopAuto);
+  car.addEventListener('focusout', startAuto);
+  startAuto();
+}
+
+/* ---- FAQ accordion ---- */
+window.toggleQA = function(btn){
+  var qa = btn.closest('.qa'),
+      open = qa.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+};
+
+/* ---- cursor spotlight + tilt on service cards (fine pointers only) ---- */
+if(FINE && !REDUCED){
+  [].slice.call(document.querySelectorAll('.svc')).forEach(function(card){
+    card.addEventListener('pointerenter', function(){
+      card.style.transition = 'transform .18s ease, box-shadow .22s ease, border-left-color .22s ease';
+    });
+    card.addEventListener('pointermove', function(e){
+      var r = card.getBoundingClientRect(),
+          x = (e.clientX - r.left) / r.width,
+          y = (e.clientY - r.top) / r.height;
+      card.style.setProperty('--gx', (x * 100).toFixed(1) + '%');
+      card.style.setProperty('--gy', (y * 100).toFixed(1) + '%');
+      card.style.transform = 'translateY(-6px) rotateX(' + ((.5 - y) * 4).toFixed(2) + 'deg) rotateY(' + ((x - .5) * 4).toFixed(2) + 'deg)';
+    });
+    card.addEventListener('pointerleave', function(){
+      card.style.transform = '';
+      card.style.removeProperty('--gx');
+      card.style.removeProperty('--gy');
+      setTimeout(function(){ card.style.transition = ''; }, 250);
+    });
+  });
+}
+
+/* ---- magnetic submit button ---- */
+var magZone = document.getElementById('magZone'),
+    magBtn = document.getElementById('magBtn');
+if(magZone && magBtn && FINE && !REDUCED){
+  magZone.addEventListener('pointermove', function(e){
+    var r = magZone.getBoundingClientRect(),
+        dx = (e.clientX - (r.left + r.width / 2)) * .26,
+        dy = (e.clientY - (r.top + r.height / 2)) * .3;
+    dx = Math.max(-14, Math.min(14, dx));
+    dy = Math.max(-10, Math.min(10, dy));
+    magBtn.style.transform = 'translate(' + dx.toFixed(1) + 'px,' + dy.toFixed(1) + 'px)';
+  });
+  magZone.addEventListener('pointerleave', function(){ magBtn.style.transform = ''; });
+}
+})();
 </script>
 </body>
 </html>

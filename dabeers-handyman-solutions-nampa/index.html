@@ -6,145 +6,256 @@
 <title>Dabeers Handyman Solutions — Handyman Service in Nampa, ID</title>
 <meta name="description" content="Dabeers Handyman Solutions — 4.4-star handyman service in Nampa, Idaho. Home repairs, installations, carpentry and punch lists. Call (208) 805-9475.">
 <meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700;800;900&family=Karla:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+/* ============ TOKENS ============ */
 :root{
   --paper:#F7F3EC; --card:#FFFFFF; --ink:#1B2A3A; --muted:#54606E;
   --navy:#16293F; --navy-deep:#0E1C2C; --navy-soft:#E7ECF1;
   --amber:#F2A31B; --amber-deep:#8A5A00; --tan:#E9DFCC; --line:#E0D9CB;
   --radius:8px; --shadow:0 12px 32px rgba(14,28,44,.12);
+  --shadow-lift:0 22px 48px rgba(14,28,44,.18);
+  --glow-amber:0 10px 28px rgba(242,163,27,.4);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Karla',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.65;font-size:16.5px}
+body{font-family:'Karla',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.65;font-size:16.5px;overflow-x:hidden}
 h1,h2,h3{font-family:'Bitter',Georgia,serif;line-height:1.15;letter-spacing:-.01em}
 img{max-width:100%;display:block}
 a{color:inherit}
+::selection{background:var(--amber);color:var(--navy-deep)}
 .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--amber);color:var(--navy-deep);font-weight:800;padding:14px 22px;border-radius:0 0 10px 0;z-index:200;text-decoration:none}
+.skip:focus{left:0}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:800;font-family:'Karla',sans-serif;
   letter-spacing:.01em;border-radius:var(--radius);padding:15px 26px;min-height:52px;text-decoration:none;font-size:1.04rem;
-  cursor:pointer;border:0;transition:transform .18s ease, box-shadow .18s ease, background .18s ease}
+  cursor:pointer;border:0;position:relative;overflow:hidden;transition:transform .18s ease, box-shadow .18s ease, background .18s ease}
 .btn:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
 .btn-call{background:var(--amber);color:var(--navy-deep);box-shadow:0 8px 20px rgba(242,163,27,.35)}
-.btn-call:hover{background:#FFB330;transform:translateY(-2px)}
+.btn-call::after{content:"";position:absolute;top:-15%;left:-75%;width:42%;height:130%;transform:skewX(-20deg);pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);opacity:0}
+.btn-call:hover{background:#FFB330;transform:translateY(-2px);box-shadow:var(--glow-amber)}
+.btn-call:hover::after,.btn-call:focus-visible::after{opacity:1;animation:sweep .6s ease-out}
 .btn-line{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5)}
-.btn-line:hover{border-color:var(--amber);color:var(--amber);transform:translateY(-2px)}
+.btn-line:hover{border-color:var(--amber);color:var(--amber);transform:translateY(-2px);box-shadow:0 0 22px rgba(242,163,27,.25)}
 .btn svg{flex:none}
+@keyframes sweep{0%{left:-75%;opacity:1}60%{opacity:1}100%{left:130%;opacity:0}}
 
-/* demo banner */
+/* ============ SCROLL PROGRESS ============ */
+#progress{position:fixed;top:0;left:0;height:4px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--amber),#FFD98A,var(--amber));box-shadow:0 0 10px rgba(242,163,27,.7)}
+
+/* ============ demo banner ============ */
 .demo-note{position:sticky;top:0;z-index:60;background:var(--amber);color:var(--navy-deep);font-weight:700;
   font-size:.83rem;text-align:center;padding:9px 44px;position:relative}
 .demo-note button{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:none;
   color:var(--navy-deep);font-size:1.15rem;cursor:pointer;padding:8px 12px;min-width:44px;min-height:44px}
 
-/* header */
+/* ============ header ============ */
 header{position:sticky;top:0;z-index:50;background:rgba(22,41,63,.97);backdrop-filter:blur(8px);
-  border-bottom:3px solid var(--amber);color:#fff}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:13px 0;gap:12px}
+  border-bottom:3px solid var(--amber);color:#fff;transition:background .3s ease, box-shadow .3s ease}
+header.scrolled{background:rgba(14,28,44,.98);box-shadow:0 12px 30px rgba(14,28,44,.35)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:13px 0;gap:12px;transition:padding .3s ease}
+header.scrolled .nav{padding:7px 0}
 .logo{display:flex;align-items:center;gap:11px;text-decoration:none;font-family:'Bitter',serif;font-weight:800;font-size:1.06rem;color:#fff}
-.logo .mark{width:38px;height:38px;flex:none;background:var(--amber);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--navy-deep)}
+.logo .mark{width:38px;height:38px;flex:none;background:var(--amber);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--navy-deep);transition:transform .25s ease}
+.logo:hover .mark{transform:rotate(-12deg)}
 .logo small{display:block;font-family:'Karla',sans-serif;font-weight:600;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#F2C875}
+.nav-links{display:none;gap:24px;font-weight:700;font-size:.92rem;color:#C9D3DE}
+.nav-links a{text-decoration:none;padding:10px 2px;position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:5px;height:2px;background:var(--amber);transition:right .25s ease}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{right:0}
+@media(min-width:940px){.nav-links{display:flex}}
 .nav-call{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:800;
-  color:var(--navy-deep);background:var(--amber);padding:11px 18px;min-height:44px;border-radius:var(--radius);font-size:.95rem;transition:background .18s}
-.nav-call:hover{background:#FFB330}
+  color:var(--navy-deep);background:var(--amber);padding:11px 18px;min-height:44px;border-radius:var(--radius);font-size:.95rem;
+  transition:background .18s, transform .18s, box-shadow .18s}
+.nav-call:hover{background:#FFB330;transform:translateY(-2px);box-shadow:var(--glow-amber)}
 
-/* hero */
-.hero{background:
-  repeating-linear-gradient(-45deg,rgba(255,255,255,.022) 0 2px,transparent 2px 14px),
-  linear-gradient(165deg,var(--navy-deep) 0%,var(--navy) 60%,#1F3A57 100%);
+/* ============ hero ============ */
+.hero{background:linear-gradient(165deg,var(--navy-deep) 0%,var(--navy) 60%,#1F3A57 100%);
   color:#fff;position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;
-  background:repeating-linear-gradient(90deg,var(--amber) 0 34px,transparent 34px 48px);opacity:.85}
-.hero-in{position:relative;z-index:1;display:grid;gap:44px;padding:66px 0 76px;align-items:center}
+.hero .stripes{position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(-45deg,rgba(255,255,255,.025) 0 2px,transparent 2px 14px);
+  background-size:200% 200%;animation:stripePan 70s linear infinite}
+@keyframes stripePan{from{background-position:0 0}to{background-position:560px 560px}}
+.hero::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;z-index:2;
+  background:repeating-linear-gradient(90deg,var(--amber) 0 34px,transparent 34px 48px);opacity:.85;
+  animation:hazardPan 5s linear infinite}
+@keyframes hazardPan{from{background-position-x:0}to{background-position-x:48px}}
+.plx{position:absolute;pointer-events:none;will-change:transform}
+.plx-a{top:-140px;right:-140px}
+.plx-b{bottom:-160px;left:-160px}
+.glow{border-radius:50%;filter:blur(70px)}
+.glow-a{width:520px;height:520px;background:radial-gradient(circle,rgba(242,163,27,.17),transparent 68%);animation:breathe 9s ease-in-out infinite}
+.glow-b{width:460px;height:460px;background:radial-gradient(circle,rgba(96,150,210,.15),transparent 68%);animation:breathe 12s ease-in-out infinite alternate}
+@keyframes breathe{0%,100%{opacity:.65;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+.hero-in{position:relative;z-index:1;display:grid;gap:44px;padding:66px 0 96px;align-items:center}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:.8rem;letter-spacing:.16em;
-  text-transform:uppercase;color:#F2C875}
+  text-transform:uppercase;color:#F2C875;opacity:0;animation:rise .7s .05s cubic-bezier(.2,.7,.2,1) forwards}
 .eyebrow::before{content:"";width:34px;height:2px;background:var(--amber)}
-.hero h1{font-size:clamp(2.3rem,6vw,3.7rem);font-weight:900;margin-top:14px}
+.hero h1{font-size:clamp(2.25rem,6vw,3.7rem);font-weight:900;margin-top:14px}
+.hero h1 .line{display:block;opacity:0;transform:translateY(30px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
+.hero h1 .line:nth-child(1){animation-delay:.12s}
+.hero h1 .line:nth-child(2){animation-delay:.26s}
+.hero h1 .line:nth-child(3){animation-delay:.4s}
 .hero h1 em{font-style:normal;color:var(--amber)}
-.hero p.lead{margin-top:18px;font-size:1.16rem;color:#C9D3DE;max-width:33rem}
-.hero .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
-.trust{display:flex;flex-wrap:wrap;align-items:center;gap:10px 24px;margin-top:32px;color:#C9D3DE;font-size:.95rem}
-.trust .stars{color:var(--amber);letter-spacing:2px;font-size:1.05rem}
+@keyframes rise{to{opacity:1;transform:none}}
+.hero p.lead{margin-top:18px;font-size:1.16rem;color:#C9D3DE;max-width:33rem;opacity:0;animation:rise .8s .55s cubic-bezier(.2,.7,.2,1) forwards}
+.hero .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;opacity:0;animation:rise .8s .7s cubic-bezier(.2,.7,.2,1) forwards}
+.trust{display:flex;flex-wrap:wrap;align-items:center;gap:10px 24px;margin-top:32px;color:#C9D3DE;font-size:.95rem;opacity:0;animation:rise .8s .85s cubic-bezier(.2,.7,.2,1) forwards}
+.trust .stars{color:var(--amber);letter-spacing:2px;font-size:1.05rem;text-shadow:0 0 12px rgba(242,163,27,.55)}
 .trust strong{color:#fff}
-.hero-media{position:relative}
+.hero-media{position:relative;opacity:0;animation:rise .9s .5s cubic-bezier(.2,.7,.2,1) forwards}
 .hero-media .frame{border-radius:var(--radius);overflow:hidden;box-shadow:0 26px 60px rgba(0,0,0,.4);
-  border:4px solid rgba(242,163,27,.35);transform:rotate(1.2deg)}
+  border:4px solid rgba(242,163,27,.35);position:relative;transform:rotate(1.2deg);animation:floaty 7s ease-in-out 1.4s infinite}
+@keyframes floaty{0%,100%{transform:rotate(1.2deg) translateY(0)}50%{transform:rotate(1.2deg) translateY(-10px)}}
+.hero-media .frame::after{content:"";position:absolute;top:-15%;left:-75%;width:42%;height:130%;transform:skewX(-20deg);pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.32),transparent);opacity:0;animation:autoShine 7.5s ease-in-out 2s infinite}
+@keyframes autoShine{0%{left:-75%;opacity:0}6%{opacity:.95}16%{left:130%;opacity:0}100%{left:130%;opacity:0}}
 .hero-media .badge{position:absolute;left:-8px;bottom:-20px;background:#fff;color:var(--ink);border-radius:var(--radius);
-  box-shadow:var(--shadow);padding:14px 18px;transform:rotate(-1.5deg)}
+  box-shadow:var(--shadow);padding:14px 18px;transform:rotate(-1.5deg);opacity:0;animation:pop .55s 1.15s cubic-bezier(.2,.9,.3,1.4) forwards;
+  transition:transform .25s ease, box-shadow .25s ease}
+.hero-media .badge:hover{transform:rotate(0deg) scale(1.05);box-shadow:var(--shadow-lift)}
+@keyframes pop{from{opacity:0;transform:scale(.6) rotate(-1.5deg)}to{opacity:1;transform:scale(1) rotate(-1.5deg)}}
 .hero-media .badge .big{font-family:'Bitter',serif;font-weight:900;font-size:1.5rem;line-height:1}
 .hero-media .badge .stars{color:var(--amber);letter-spacing:1px;font-size:.95rem}
 .hero-media .badge small{display:block;color:var(--muted);font-weight:600;font-size:.78rem;margin-top:3px}
 @media(min-width:900px){.hero-in{grid-template-columns:1.12fr .88fr}}
 
-/* sections */
-section{padding:76px 0}
+/* ============ tape-measure marquee ============ */
+.marq-tilt{overflow:hidden;position:relative;z-index:3;margin-top:-30px;padding:18px 0 8px}
+.marq{transform:rotate(-1.2deg);width:112%;margin-left:-6%;box-shadow:0 16px 40px rgba(14,28,44,.28);
+  border-top:2px solid rgba(255,255,255,.5);border-bottom:2px solid rgba(138,90,0,.45);
+  background:
+    repeating-linear-gradient(90deg,rgba(14,28,44,.28) 0 2px,transparent 2px 26px) top/100% 9px no-repeat,
+    linear-gradient(180deg,#FFBE47,var(--amber))}
+.marq-track{display:flex;width:max-content;animation:marq 30s linear infinite}
+.marq ul{display:flex;list-style:none;padding:15px 0 12px}
+.marq li{font-family:'Bitter',serif;font-weight:800;text-transform:uppercase;font-size:1.02rem;letter-spacing:.07em;
+  color:var(--navy-deep);white-space:nowrap;display:flex;align-items:center}
+.marq li::after{content:"•";margin:0 20px;color:var(--amber-deep)}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ============ stats ============ */
+.stats{padding:52px 0 6px}
+.stats .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;text-align:center}
+.stat{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--tan);border-radius:var(--radius);
+  padding:26px 12px 22px;transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease}
+.stat:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-top-color:var(--amber)}
+.stat .num{font-family:'Bitter',serif;font-weight:900;font-size:clamp(2.1rem,4.5vw,2.9rem);line-height:1;color:var(--navy)}
+.stat .num .u{color:var(--amber)}
+.stat .lbl{font-size:.86rem;color:var(--muted);font-weight:700;margin-top:8px}
+
+/* ============ sections ============ */
+section{padding:76px 0;position:relative;overflow:hidden}
 .kicker{display:inline-flex;align-items:center;gap:10px;font-weight:800;text-transform:uppercase;
   letter-spacing:.16em;font-size:.78rem;color:var(--amber-deep)}
 .kicker::before{content:"";width:30px;height:2px;background:var(--amber)}
 h2{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:800;margin-top:12px}
 .sub{color:var(--muted);margin-top:14px;max-width:40rem;font-size:1.05rem}
+.ghost-word{position:absolute;top:18px;right:-10px;font-family:'Bitter',serif;font-weight:900;text-transform:uppercase;line-height:1;
+  font-size:clamp(4rem,13vw,9rem);color:transparent;-webkit-text-stroke:1px rgba(22,41,63,.08);pointer-events:none;user-select:none}
+.ghost-dark{-webkit-text-stroke:1px rgba(255,255,255,.06)}
 
-/* services */
+/* ============ services ============ */
 .grid-services{display:grid;gap:18px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
 .svc{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--tan);border-radius:var(--radius);
-  padding:28px 26px;transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease}
-.svc:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-top-color:var(--amber)}
-.svc .ico{width:54px;height:54px;border-radius:var(--radius);background:var(--navy);display:flex;align-items:center;justify-content:center;color:var(--amber);margin-bottom:18px}
+  padding:28px 26px;position:relative;overflow:hidden;transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease}
+.svc:hover{transform:translateY(-6px);box-shadow:var(--shadow-lift);border-top-color:var(--amber)}
+.svc::after{content:"";position:absolute;top:-20%;left:-80%;width:40%;height:140%;transform:skewX(-20deg);pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(242,163,27,.12),transparent);opacity:0}
+.svc:hover::after{opacity:1;animation:sweep .7s ease-out}
+.svc .ico{width:54px;height:54px;border-radius:var(--radius);background:var(--navy);display:flex;align-items:center;justify-content:center;
+  color:var(--amber);margin-bottom:18px;transition:transform .25s ease, background .25s ease, color .25s ease}
+.svc:hover .ico{transform:rotate(-8deg) scale(1.12);background:var(--amber);color:var(--navy-deep)}
 .svc h3{font-size:1.16rem;font-weight:800}
 .svc p{color:var(--muted);font-size:.96rem;margin-top:9px}
 
-/* steps */
+/* ============ steps ============ */
 .steps{background:var(--tan)}
 .grid-steps{display:grid;gap:18px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-.step{background:var(--card);border-radius:var(--radius);padding:30px 26px;border:1px solid var(--line);position:relative}
+.step{background:var(--card);border-radius:var(--radius);padding:30px 26px;border:1px solid var(--line);position:relative;
+  transition:transform .22s ease, box-shadow .22s ease}
+.step:hover{transform:translateY(-6px);box-shadow:var(--shadow-lift)}
 .step .num{position:absolute;top:-16px;left:22px;width:40px;height:40px;background:var(--navy);color:var(--amber);
-  font-family:'Bitter',serif;font-weight:900;font-size:1.15rem;border-radius:8px;display:flex;align-items:center;justify-content:center}
+  font-family:'Bitter',serif;font-weight:900;font-size:1.15rem;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  transition:transform .25s ease, background .25s ease}
+.step:hover .num{transform:rotate(-8deg) scale(1.12)}
 .step h3{margin-top:8px;font-size:1.12rem}
 .step p{color:var(--muted);font-size:.96rem;margin-top:9px}
 
-/* rating spotlight (no quote cards — rating featured instead) */
+/* ============ rating showcase ============ */
 .reviews{background:var(--navy);color:#fff}
 .reviews .sub{color:#C9D3DE}
 .rating-board{display:grid;gap:24px;margin-top:42px;align-items:center}
 @media(min-width:820px){.rating-board{grid-template-columns:auto 1fr}}
 .rating-card{background:#fff;color:var(--ink);border-radius:var(--radius);padding:36px 44px;text-align:center;
-  box-shadow:0 20px 50px rgba(0,0,0,.35);border-bottom:6px solid var(--amber)}
+  box-shadow:0 20px 50px rgba(0,0,0,.35);border-bottom:6px solid var(--amber);transition:transform .3s ease, box-shadow .3s ease}
+.rating-card:hover{transform:translateY(-6px) rotate(-.5deg);box-shadow:0 30px 64px rgba(0,0,0,.45)}
 .rating-card .score{font-family:'Bitter',serif;font-weight:900;font-size:4.2rem;line-height:1;color:var(--navy)}
-.rating-card .stars-line{margin-top:8px;font-size:1.5rem;letter-spacing:4px;
-  background:linear-gradient(90deg,var(--amber) 88%,#CBD2D9 88%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.starwrap{position:relative;display:inline-block;margin-top:8px;font-size:1.5rem;letter-spacing:4px;line-height:1;white-space:nowrap}
+.starwrap .base{color:#CBD2D9}
+.starwrap .fillrow{position:absolute;left:0;top:0;width:0;overflow:hidden;white-space:nowrap;color:var(--amber);
+  text-shadow:0 0 10px rgba(242,163,27,.5);transition:width 1.5s cubic-bezier(.2,.7,.2,1) .35s}
+.rating-card.fill .fillrow{width:88%}
 .rating-card .count{margin-top:10px;color:var(--muted);font-weight:700;font-size:.95rem}
 .rating-points{display:grid;gap:16px}
 .rpoint{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
-  border-radius:var(--radius);padding:18px 20px}
-.rpoint svg{flex:none;color:var(--amber);margin-top:2px}
+  border-radius:var(--radius);padding:18px 20px;transition:transform .22s ease, border-color .22s ease, background .22s ease}
+.rpoint:hover{transform:translateX(6px);border-color:rgba(242,163,27,.55);background:rgba(255,255,255,.09)}
+.rpoint svg{flex:none;color:var(--amber);margin-top:2px;transition:transform .25s ease}
+.rpoint:hover svg{transform:scale(1.2) rotate(-8deg)}
 .rpoint p{font-size:.98rem;color:#DDE4EB}
 .rpoint p strong{color:#fff}
 .all-reviews{margin-top:32px}
 .all-reviews a{display:inline-flex;align-items:center;min-height:44px;color:var(--amber);font-weight:800;text-decoration:underline;text-underline-offset:3px}
+.all-reviews a:hover{color:#FFD98A}
 
-/* area */
+/* ============ area ============ */
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
 .chip{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:6px;
-  padding:10px 18px;font-size:.93rem;font-weight:700;color:var(--navy)}
+  padding:10px 18px;font-size:.93rem;font-weight:700;color:var(--navy);transition:transform .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease}
+.chip:hover{transform:translateY(-4px);background:var(--navy);color:#fff;box-shadow:var(--shadow)}
 
-/* quote form */
+/* ============ FAQ ============ */
+.faq-sec{background:var(--tan)}
+.faq-list{max-width:780px;margin-top:36px}
+.qa{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--tan);border-radius:var(--radius);
+  margin-top:14px;overflow:hidden;transition:border-color .25s ease, box-shadow .25s ease}
+.qa:hover{box-shadow:var(--shadow)}
+.qa.open{border-left-color:var(--amber)}
+.qa .q{width:100%;text-align:left;background:none;border:none;font:inherit;color:var(--ink);font-weight:800;
+  font-family:'Karla',sans-serif;padding:20px 22px;min-height:44px;cursor:pointer;display:flex;justify-content:space-between;
+  align-items:center;gap:16px;font-size:1.02rem}
+.qa .chev{transition:transform .3s ease;color:var(--amber-deep);flex:none}
+.qa.open .chev{transform:rotate(180deg)}
+.qa .a{max-height:0;overflow:hidden;transition:max-height .4s ease;color:var(--muted);font-size:.96rem}
+.qa.open .a{max-height:320px}
+.qa .a p{padding:0 22px 20px}
+.qa .a a{color:var(--amber-deep);font-weight:800}
+
+/* ============ quote form ============ */
 .quote{background:var(--navy-deep);color:#fff;position:relative}
 .quote::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;
-  background:repeating-linear-gradient(90deg,var(--amber) 0 34px,transparent 34px 48px);opacity:.85}
+  background:repeating-linear-gradient(90deg,var(--amber) 0 34px,transparent 34px 48px);opacity:.85;
+  animation:hazardPan 5s linear infinite}
 .quote .sub{color:#C9D3DE}
 .quote .sub a{color:var(--amber);font-weight:800}
 .form{margin-top:36px;display:grid;gap:18px;max-width:580px}
 .form label{font-weight:700;font-size:.93rem;display:block;margin-bottom:7px}
 .form input,.form textarea{width:100%;border:1.5px solid rgba(255,255,255,.28);background:rgba(255,255,255,.07);color:#fff;
-  border-radius:var(--radius);padding:14px;font:inherit;font-size:1rem}
+  border-radius:var(--radius);padding:14px;font:inherit;font-size:1rem;transition:border-color .2s ease, background .2s ease}
+.form input:hover,.form textarea:hover{border-color:rgba(255,255,255,.5)}
 .form input::placeholder,.form textarea::placeholder{color:#8C99A8}
-.form input:focus,.form textarea:focus{outline:3px solid var(--amber);outline-offset:2px;border-color:transparent}
+.form input:focus,.form textarea:focus{outline:3px solid var(--amber);outline-offset:2px;border-color:transparent;background:rgba(255,255,255,.1)}
 .form-note{font-size:.87rem;color:#C9D3DE}
 .form .btn-call{justify-self:start}
 
-/* footer */
+/* ============ footer ============ */
 footer{background:#0A1420;color:#9FACBA;padding:46px 0;font-size:.9rem}
 .foot{display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:space-between;align-items:center}
 .foot .fname{font-family:'Bitter',serif;font-weight:800;color:#fff;font-size:1.08rem}
@@ -152,15 +263,21 @@ footer{background:#0A1420;color:#9FACBA;padding:46px 0;font-size:.9rem}
 .foot a:hover{text-decoration:underline}
 .disclaimer{margin-top:24px;padding-top:20px;border-top:1px solid #1E2E40;font-size:.8rem;color:#7E8B99}
 
-/* reveal animation */
-.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+/* ============ reveals ============ */
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.2,1)}
 .js .reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .js .reveal{opacity:1;transform:none;transition:none}
-  .btn,.svc{transition:none}
-}
-/* mobile call bar */
+.js .stagger>*{opacity:0;transform:translateY(26px);transition:opacity .55s ease,transform .55s cubic-bezier(.2,.7,.2,1)}
+.js .stagger.in>*{opacity:1;transform:none}
+.js .stagger.in>*:nth-child(2){transition-delay:.09s}
+.js .stagger.in>*:nth-child(3){transition-delay:.18s}
+.js .stagger.in>*:nth-child(4){transition-delay:.27s}
+.js .stagger.in>*:nth-child(5){transition-delay:.34s}
+.js .stagger.in>*:nth-child(6){transition-delay:.41s}
+.js .stagger.in>*:nth-child(7){transition-delay:.48s}
+.js .stagger.in>*:nth-child(8){transition-delay:.55s}
+.js .stagger.in>*:nth-child(9){transition-delay:.62s}
+
+/* ============ mobile call bar ============ */
 .callbar{display:none}
 @media(max-width:720px){
   .callbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--amber);justify-content:center;
@@ -168,18 +285,32 @@ footer{background:#0A1420;color:#9FACBA;padding:46px 0;font-size:.9rem}
   .callbar a{display:flex;align-items:center;gap:10px;color:var(--navy-deep);text-decoration:none;
     font-weight:800;font-size:1.1rem;padding:16px;width:100%;justify-content:center;min-height:56px}
   body{padding-bottom:64px}
+  .hero-in{padding-bottom:80px}
+}
+
+/* ============ reduced motion ============ */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .js .reveal,.js .stagger>*{opacity:1;transform:none}
+  .eyebrow,.hero h1 .line,.hero p.lead,.hero .cta-row,.trust,.hero-media,.hero-media .badge{opacity:1;transform:none}
+  .starwrap .fillrow{width:88%}
+  .plx{transform:none !important}
 }
 </style>
+<noscript><style>
+.reveal,.stagger>*{opacity:1;transform:none}
+.qa .a{max-height:none}
+.eyebrow,.hero h1 .line,.hero p.lead,.hero .cta-row,.trust,.hero-media,.hero-media .badge{opacity:1;transform:none}
+.starwrap .fillrow{width:88%}
+</style></noscript>
 <script>document.documentElement.className+=" js"</script>
 </head>
 <body>
+<a class="skip" href="#top">Skip to content</a>
+<div id="progress" aria-hidden="true"></div>
 
-<div class="demo-note" id="demoNote">
-  Demo preview built for Dabeers Handyman Solutions — not their official site.
-  <button aria-label="Dismiss notice" onclick="document.getElementById('demoNote').style.display='none'">&times;</button>
-</div>
-
-<header>
+<header id="hdr">
   <div class="wrap nav">
     <a class="logo" href="#top" aria-label="Dabeers Handyman Solutions — home">
       <span class="mark" aria-hidden="true">
@@ -187,6 +318,12 @@ footer{background:#0A1420;color:#9FACBA;padding:46px 0;font-size:.9rem}
       </span>
       <span>Dabeers<small>Handyman Solutions</small></span>
     </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#services">Services</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+      <a href="#quote">Get a quote</a>
+    </nav>
     <a class="nav-call" href="tel:+12088059475">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       (208) 805-9475
@@ -196,10 +333,17 @@ footer{background:#0A1420;color:#9FACBA;padding:46px 0;font-size:.9rem}
 
 <main id="top">
 <div class="hero">
+  <div class="stripes" aria-hidden="true"></div>
+  <div class="plx plx-a" data-speed="0.18" aria-hidden="true"><div class="glow glow-a"></div></div>
+  <div class="plx plx-b" data-speed="0.1" aria-hidden="true"><div class="glow glow-b"></div></div>
   <div class="wrap hero-in">
     <div>
       <span class="eyebrow">Nampa, Idaho</span>
-      <h1>Every home has a to-do list.<br><em>We finish it.</em></h1>
+      <h1>
+        <span class="line">Every home has</span>
+        <span class="line">a to-do list.</span>
+        <span class="line"><em>We finish it.</em></span>
+      </h1>
       <p class="lead">Dabeers Handyman Solutions handles the repairs, installs and odd jobs around your house — done properly, by someone who shows up when they say they will.</p>
       <div class="cta-row">
         <a class="btn btn-call" href="tel:+12088059475">
@@ -214,7 +358,7 @@ footer{background:#0A1420;color:#9FACBA;padding:46px 0;font-size:.9rem}
         <span>Serving Nampa &amp; the Treasure Valley</span>
       </div>
     </div>
-    <div class="hero-media reveal">
+    <div class="hero-media">
       <div class="frame">
         <img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlx4wBsjkVTHnu9J9az9jnWiqpDNM94XC1bhSFIvf76Hhhj-cH_mGR4vU2xX7L2gTYD_EUnHNcpgjRhDq_4RY1nGhbSEd85VCI9LZeUaNuteg_aZ3o8JLu57EhHvNAwhC_8mDVyXw=w408-h306-k-no" alt="Work by Dabeers Handyman Solutions in Nampa" width="408" height="306" onerror="this.closest('.hero-media').style.display='none'">
       </div>
@@ -226,28 +370,51 @@ footer{background:#0A1420;color:#9FACBA;padding:46px 0;font-size:.9rem}
   </div>
 </div>
 
+<div class="marq-tilt" aria-hidden="true">
+  <div class="marq">
+    <div class="marq-track">
+      <ul>
+        <li>Drywall patches</li><li>Ceiling fans</li><li>TV mounts</li><li>Sticking doors</li><li>Leaky faucets</li><li>Shelving &amp; blinds</li><li>Baseboards &amp; trim</li><li>Fence &amp; gate repairs</li><li>Punch lists</li>
+      </ul>
+      <ul>
+        <li>Drywall patches</li><li>Ceiling fans</li><li>TV mounts</li><li>Sticking doors</li><li>Leaky faucets</li><li>Shelving &amp; blinds</li><li>Baseboards &amp; trim</li><li>Fence &amp; gate repairs</li><li>Punch lists</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="stats" aria-label="Track record">
+  <div class="wrap stagger">
+    <div class="stat"><div class="num"><span class="cnt" data-count="4.4" data-dec="1">4.4</span><span class="u">★</span></div><div class="lbl">Google rating</div></div>
+    <div class="stat"><div class="num"><span class="cnt" data-count="21">21</span></div><div class="lbl">Public Google reviews</div></div>
+    <div class="stat"><div class="num"><span class="cnt" data-count="8">8</span></div><div class="lbl">Treasure Valley cities served</div></div>
+    <div class="stat"><div class="num"><span class="cnt" data-count="1">1</span></div><div class="lbl">Call for the whole list</div></div>
+  </div>
+</div>
+
 <section id="services">
+  <span class="ghost-word" aria-hidden="true">FIX</span>
   <div class="wrap">
     <span class="kicker">What we do</span>
-    <h2>One handyman. The whole list.</h2>
-    <p class="sub">Skip juggling three different contractors for three small jobs. Call once, and the repairs, installs and fixes around your home get done in one go.</p>
-    <div class="grid-services">
-      <div class="svc reveal">
+    <h2 class="reveal">One handyman. The whole list.</h2>
+    <p class="sub reveal">Skip juggling three different contractors for three small jobs. Call once, and the repairs, installs and fixes around your home get done in one go.</p>
+    <div class="grid-services stagger">
+      <div class="svc">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
         <h3>Home Repairs</h3>
         <p>Drywall patches, sticking doors, leaky faucets, loose trim, squeaks and rattles — the small stuff that adds up, fixed right.</p>
       </div>
-      <div class="svc reveal">
+      <div class="svc">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
         <h3>Installs &amp; Mounting</h3>
         <p>Ceiling fans, light fixtures, TV mounts, shelving, blinds, door hardware — installed level, solid and safe.</p>
       </div>
-      <div class="svc reveal">
+      <div class="svc">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l3.75-1L20 6.75a2.12 2.12 0 0 0-3-3L3.75 17z"/><path d="M14 5l5 5"/><path d="M3 21l1-3.75"/></svg></div>
         <h3>Carpentry &amp; Trim</h3>
         <p>Baseboards, door and window casing, custom shelves, fence and gate repairs, deck boards — clean joinery, tidy finish.</p>
       </div>
-      <div class="svc reveal">
+      <div class="svc">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
         <h3>Punch Lists &amp; Honey-Do Lists</h3>
         <p>Hand over the whole list — move-in fixes, rental turnovers, pre-sale touch-ups. We work through it top to bottom.</p>
@@ -257,52 +424,55 @@ footer{background:#0A1420;color:#9FACBA;padding:46px 0;font-size:.9rem}
 </section>
 
 <section class="steps">
+  <span class="ghost-word" aria-hidden="true">PLAN</span>
   <div class="wrap">
     <span class="kicker">How it works</span>
-    <h2>From "it's broken" to "it's done" in three steps</h2>
-    <div class="grid-steps">
-      <div class="step reveal"><div class="num" aria-hidden="true">1</div><h3>Call or send your list</h3><p>Tell us what needs fixing — one job or twenty. You'll get a straight answer on what it takes.</p></div>
-      <div class="step reveal"><div class="num" aria-hidden="true">2</div><h3>We show up ready</h3><p>Tools, materials and a plan. We arrive when we said we would and get straight to work.</p></div>
-      <div class="step reveal"><div class="num" aria-hidden="true">3</div><h3>Done and dusted</h3><p>Work checked, mess cleaned up, and your list a whole lot shorter. That's the job.</p></div>
+    <h2 class="reveal">From "it's broken" to "it's done" in three steps</h2>
+    <div class="grid-steps stagger">
+      <div class="step"><div class="num" aria-hidden="true">1</div><h3>Call or send your list</h3><p>Tell us what needs fixing — one job or twenty. You'll get a straight answer on what it takes.</p></div>
+      <div class="step"><div class="num" aria-hidden="true">2</div><h3>We show up ready</h3><p>Tools, materials and a plan. We arrive when we said we would and get straight to work.</p></div>
+      <div class="step"><div class="num" aria-hidden="true">3</div><h3>Done and dusted</h3><p>Work checked, mess cleaned up, and your list a whole lot shorter. That's the job.</p></div>
     </div>
   </div>
 </section>
 
 <section class="reviews" id="reviews">
+  <span class="ghost-word ghost-dark" aria-hidden="true">4.4★</span>
   <div class="wrap">
     <span class="kicker" style="color:#F2C875">On Google Maps</span>
-    <h2>Rated 4.4 stars by Nampa homeowners</h2>
-    <p class="sub">Don't take our word for it — the rating comes from 21 real customers who left a public review on Google.</p>
+    <h2 class="reveal">Rated 4.4 stars by Nampa homeowners</h2>
+    <p class="sub reveal">Don't take our word for it — the rating comes from 21 real customers who left a public review on Google.</p>
     <div class="rating-board">
-      <div class="rating-card reveal">
-        <div class="score">4.4</div>
-        <div class="stars-line" aria-hidden="true">★★★★★</div>
+      <div class="rating-card reveal" id="ratingCard">
+        <div class="score"><span class="cnt" data-count="4.4" data-dec="1">4.4</span></div>
+        <div class="starwrap" aria-hidden="true"><span class="base">★★★★★</span><span class="fillrow">★★★★★</span></div>
         <div class="count">21 Google reviews</div>
       </div>
-      <div class="rating-points">
-        <div class="rpoint reveal">
+      <div class="rating-points stagger">
+        <div class="rpoint">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
           <p><strong>A public track record.</strong> Every review is out in the open on our Google Maps listing — read them before you call.</p>
         </div>
-        <div class="rpoint reveal">
+        <div class="rpoint">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
           <p><strong>Local and accountable.</strong> We're a Nampa business working in our own community — our name is on every job.</p>
         </div>
-        <div class="rpoint reveal">
+        <div class="rpoint">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
           <p><strong>Talk to a person.</strong> Call <a href="tel:+12088059475" style="color:var(--amber);font-weight:800">(208) 805-9475</a> and you reach the people doing the work — not a call center.</p>
         </div>
       </div>
     </div>
-    <p class="all-reviews"><a href="https://www.google.com/maps/search/Dabeers+Handyman+Solutions+Nampa+ID" rel="noopener">Read all 21 reviews on Google Maps →</a></p>
+    <p class="all-reviews reveal"><a href="https://www.google.com/maps/search/Dabeers+Handyman+Solutions+Nampa+ID" rel="noopener">Read all 21 reviews on Google Maps →</a></p>
   </div>
 </section>
 
 <section id="area">
+  <span class="ghost-word" aria-hidden="true">NAMPA</span>
   <div class="wrap">
     <span class="kicker">Service area</span>
-    <h2>Based in Nampa, serving the Treasure Valley</h2>
-    <div class="chips">
+    <h2 class="reveal">Based in Nampa, serving the Treasure Valley</h2>
+    <div class="chips stagger">
       <span class="chip">Nampa</span><span class="chip">Caldwell</span><span class="chip">Meridian</span>
       <span class="chip">Kuna</span><span class="chip">Middleton</span><span class="chip">Star</span>
       <span class="chip">Boise</span><span class="chip">Eagle</span>
@@ -310,17 +480,43 @@ footer{background:#0A1420;color:#9FACBA;padding:46px 0;font-size:.9rem}
   </div>
 </section>
 
+<section class="faq-sec" id="faq">
+  <span class="ghost-word" aria-hidden="true">ASK</span>
+  <div class="wrap">
+    <span class="kicker">Good to know</span>
+    <h2 class="reveal">Questions we hear a lot</h2>
+    <div class="faq-list reveal">
+      <div class="qa open">
+        <button class="q" aria-expanded="true" onclick="toggleQA(this)">What kind of jobs do you take on?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>The everyday stuff around a house: home repairs like drywall patches, sticking doors and leaky faucets; installs and mounting such as ceiling fans, TV mounts and shelving; carpentry and trim work; and whole punch lists — one job or twenty.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">Can you handle a whole list in one visit?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>That's the whole idea. Hand over your list — move-in fixes, rental turnovers, pre-sale touch-ups — and we work through it top to bottom instead of you juggling three different contractors for three small jobs.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">Where do you work?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>We're based in Nampa and serve the Treasure Valley — including Caldwell, Meridian, Kuna, Middleton, Star, Boise and Eagle.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">How do I get a quote?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>Fastest way: call or text <a href="tel:+12088059475">(208) 805-9475</a> and tell us what needs fixing. You'll get a straight answer on what it takes. You can also send your list through the form below.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="quote" id="quote">
   <div class="wrap">
     <span class="kicker" style="color:#F2C875">Get started</span>
-    <h2>Send us your fix-it list</h2>
-    <p class="sub">Fastest answer: call or text <a href="tel:+12088059475">(208) 805-9475</a>. Or leave your details below:</p>
-    <form class="form" onsubmit="event.preventDefault();this.querySelector('.form-note').textContent='This form is activated on your live website — for now, please call (208) 805-9475.';">
+    <h2 class="reveal">Send us your fix-it list</h2>
+    <p class="sub reveal">Fastest answer: call or text <a href="tel:+12088059475">(208) 805-9475</a>. Or leave your details below:</p>
+    <form class="form reveal" onsubmit="event.preventDefault();this.querySelector('.form-note').textContent='This form is activated on your live website — for now, please call (208) 805-9475.';">
       <div><label for="fname">Your name</label><input id="fname" name="name" placeholder="Jane Smith" autocomplete="name"></div>
       <div><label for="fphone">Phone number</label><input id="fphone" name="phone" type="tel" placeholder="(208) 555-0100" autocomplete="tel"></div>
       <div><label for="fjob">What needs fixing?</label><textarea id="fjob" name="job" rows="3" placeholder="e.g. Two doors that won't close, a ceiling fan to install, and some drywall patches"></textarea></div>
       <button class="btn btn-call" type="submit">Request my quote</button>
-      <p class="form-note">Demo preview — the form activates on the live site.</p>
+      <p class="form-note">The contact form activates on the live version — for now, call directly.</p>
     </form>
   </div>
 </section>
@@ -338,7 +534,7 @@ footer{background:#0A1420;color:#9FACBA;padding:46px 0;font-size:.9rem}
         Nampa, Idaho &amp; the Treasure Valley
       </div>
     </div>
-    <p class="disclaimer">This is a demo website preview created for Dabeers Handyman Solutions and is not their official website. Business details (phone, rating, reviews) are from their public Google Maps listing. Want this site live, or want it removed? Reply to the email that brought you here.</p>
+    <p class="disclaimer">Concept preview for Dabeers Handyman Solutions · MainStreet Web Studio</p>
   </div>
 </footer>
 
@@ -348,9 +544,94 @@ footer{background:#0A1420;color:#9FACBA;padding:46px 0;font-size:.9rem}
 </div>
 
 <script>
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-setTimeout(()=>document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.classList.add('in')),2500);
+(function(){
+"use strict";
+var REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---- scroll progress + shrinking header + hero parallax ---- */
+var prog = document.getElementById('progress'),
+    hdr = document.getElementById('hdr'),
+    plxEls = [].slice.call(document.querySelectorAll('.plx')),
+    ticking = false;
+function onScroll(){
+  if(ticking) return;
+  ticking = true;
+  requestAnimationFrame(function(){
+    var h = document.documentElement, top = h.scrollTop,
+        max = h.scrollHeight - h.clientHeight;
+    if(prog) prog.style.width = (max > 0 ? (top / max * 100) : 0) + '%';
+    if(hdr) hdr.classList.toggle('scrolled', top > 8);
+    if(!REDUCED){
+      for(var i = 0; i < plxEls.length; i++){
+        var s = parseFloat(plxEls[i].getAttribute('data-speed')) || 0;
+        plxEls[i].style.transform = 'translate3d(0,' + (top * s) + 'px,0)';
+      }
+    }
+    ticking = false;
+  });
+}
+addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+/* ---- staggered scroll reveals ---- */
+if('IntersectionObserver' in window){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{threshold:.15});
+  document.querySelectorAll('.reveal,.stagger').forEach(function(el){ io.observe(el); });
+}else{
+  document.querySelectorAll('.reveal,.stagger').forEach(function(el){ el.classList.add('in'); });
+}
+setTimeout(function(){
+  document.querySelectorAll('.reveal:not(.in),.stagger:not(.in)').forEach(function(el){ el.classList.add('in'); });
+}, 2500);
+
+/* ---- count-up numbers ---- */
+var counters = document.querySelectorAll('.cnt');
+if(!REDUCED && 'IntersectionObserver' in window){
+  var cio = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      cio.unobserve(e.target);
+      var el = e.target,
+          end = parseFloat(el.getAttribute('data-count')),
+          dec = parseInt(el.getAttribute('data-dec') || '0', 10),
+          t0 = performance.now();
+      (function tick(t){
+        var p = Math.min((t - t0) / 1400, 1),
+            v = end * (1 - Math.pow(1 - p, 3));
+        el.textContent = dec ? v.toFixed(dec) : Math.round(v).toLocaleString('en-US');
+        if(p < 1) requestAnimationFrame(tick);
+      })(t0);
+    });
+  },{threshold:.5});
+  counters.forEach(function(el){ cio.observe(el); });
+}
+
+/* ---- animated star fill on the rating card ---- */
+var rc = document.getElementById('ratingCard');
+if(rc){
+  if(REDUCED || !('IntersectionObserver' in window)){
+    rc.classList.add('fill');
+  }else{
+    var rio = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){ rc.classList.add('fill'); rio.unobserve(rc); }
+      });
+    },{threshold:.5});
+    rio.observe(rc);
+  }
+}
+
+/* ---- FAQ accordion ---- */
+window.toggleQA = function(btn){
+  var qa = btn.closest('.qa'),
+      open = qa.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+};
+})();
 </script>
 </body>
 </html>

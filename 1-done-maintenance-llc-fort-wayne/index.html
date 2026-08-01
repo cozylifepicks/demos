@@ -6,120 +6,252 @@
 <title>1&amp;Done Maintenance LLC — Handyman, Drywall &amp; Roof Repair in Fort Wayne, IN</title>
 <meta name="description" content="Fort Wayne's 4.9-star handyman and home maintenance crew. Drywall and texture repair, roofing fixes, carpentry and honest pricing. Call (260) 372-8388.">
 <meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* ============ TOKENS ============ */
 :root{
-  --navy:#0E1B2E; --navy-2:#0A1524; --navy-3:#060E19;
+  --navy:#0E1B2E; --navy-2:#0A1524; --navy-3:#060E19; --navy-4:#13233C;
   --paper:#FFFFFF; --mist:#F1F4F8; --line:#DCE3EC; --muted:#5A6779; --ink:#16233A;
-  --amber:#F5A524; --amber-deep:#D08508; --sky:#2E7DD1;
+  --amber:#F5A524; --amber-deep:#D08508; --amber-ink:#2A1B02; --sky:#2E7DD1;
   --radius:12px; --shadow:0 18px 42px rgba(14,27,46,.14);
+  --glow-amber:0 12px 30px rgba(245,165,36,.38);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.62;font-size:16.5px}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.62;font-size:16.5px;overflow-x:hidden}
 h1,h2,h3,.num{font-family:'Sora',sans-serif;letter-spacing:-.025em;line-height:1.08}
 img{max-width:100%;display:block}
 a{color:inherit}
+::selection{background:var(--amber);color:var(--amber-ink)}
 .wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+[id]{scroll-margin-top:120px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--amber);color:var(--amber-ink);font-weight:700;padding:14px 22px;border-radius:0 0 12px 0;z-index:200}
+.skip:focus{left:0}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
 .dark :focus-visible,header :focus-visible,footer :focus-visible,.callbar :focus-visible{outline-color:var(--amber)}
 
+/* ============ BUTTONS ============ */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:1.02rem;
   border-radius:var(--radius);padding:15px 28px;min-height:54px;text-decoration:none;cursor:pointer;border:0;
-  transition:transform .16s ease,background .16s ease,box-shadow .16s ease}
+  position:relative;overflow:hidden;transition:transform .2s ease,background .2s ease,box-shadow .2s ease}
 .btn svg{flex:none}
-.btn-call{background:var(--amber);color:#2A1B02;box-shadow:0 12px 26px rgba(245,165,36,.36)}
-.btn-call:hover{background:#FFB93F;transform:translateY(-2px)}
-.btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.42)}
-.btn-ghost:hover{border-color:#fff;transform:translateY(-2px)}
+.btn::after{content:"";position:absolute;top:-14%;left:-75%;width:42%;height:130%;transform:skewX(-22deg);pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);opacity:0}
+.btn:hover::after,.btn:focus-visible::after{opacity:1;animation:sweep .6s ease-out}
+@keyframes sweep{0%{left:-75%;opacity:1}100%{left:135%;opacity:0}}
+.btn-call{background:linear-gradient(180deg,#FFB93F,var(--amber));color:var(--amber-ink);box-shadow:var(--glow-amber)}
+.btn-call:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(245,165,36,.5)}
+.btn-ghost{background:rgba(255,255,255,.04);color:#fff;border:2px solid rgba(255,255,255,.42)}
+.btn-ghost:hover{border-color:#fff;transform:translateY(-3px);box-shadow:0 12px 30px rgba(6,14,25,.4)}
 
-.demo-note{position:sticky;top:0;z-index:60;background:var(--amber);color:#2A1B02;font-size:.84rem;font-weight:600;text-align:center;padding:9px 52px}
-.demo-note button{position:absolute;right:4px;top:50%;transform:translateY(-50%);background:none;border:none;color:#2A1B02;font-size:1.05rem;cursor:pointer;padding:12px 16px;min-width:44px;min-height:44px}
+/* ============ SCROLL PROGRESS ============ */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--amber),var(--sky));box-shadow:0 0 10px rgba(245,165,36,.6)}
 
-header{position:sticky;top:0;z-index:50;background:rgba(10,21,36,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:13px 0;gap:12px}
+/* ============ TOP BAR (demo note + header) ============ */
+.topbar{position:sticky;top:0;z-index:80}
+.demo-note{position:relative;background:var(--amber);color:var(--amber-ink);font-size:.84rem;font-weight:600;text-align:center;padding:9px 52px}
+.demo-note button{position:absolute;right:4px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--amber-ink);font-size:1.05rem;cursor:pointer;padding:12px 16px;min-width:44px;min-height:44px}
+
+header{background:rgba(10,21,36,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);
+  transition:box-shadow .3s,background .3s}
+header.scrolled{box-shadow:0 12px 34px rgba(6,14,25,.55);background:rgba(6,14,25,.97)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:13px 0;gap:12px;transition:padding .3s}
+header.scrolled .nav{padding:7px 0}
 .logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:#fff;font-family:'Sora',sans-serif;font-weight:800;font-size:1.1rem;min-height:44px}
-.logo .mark{width:40px;height:40px;background:var(--amber);border-radius:11px;display:flex;align-items:center;justify-content:center;color:#2A1B02;flex:none;font-weight:800;font-size:.95rem}
+.logo .mark{width:40px;height:40px;background:var(--amber);border-radius:11px;display:flex;align-items:center;justify-content:center;color:var(--amber-ink);flex:none;font-weight:800;font-size:.95rem;transition:transform .25s}
+.logo:hover .mark{transform:rotate(-6deg) scale(1.06)}
 .logo small{display:block;font-family:'Inter',sans-serif;font-weight:500;font-size:.69rem;letter-spacing:.13em;color:#93A3B8;text-transform:uppercase;line-height:1.3}
-.nav-call{display:inline-flex;align-items:center;gap:9px;text-decoration:none;background:var(--amber);color:#2A1B02;
-  font-weight:700;font-size:1rem;padding:11px 20px;min-height:46px;border-radius:var(--radius);transition:background .16s}
-.nav-call:hover{background:#FFB93F}
+.nav-links{display:none;gap:24px;font-weight:600;font-size:.92rem;color:#B3C1D3}
+.nav-links a{text-decoration:none;padding:10px 2px;position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:4px;height:2px;background:var(--amber);transition:right .25s ease}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{right:0}
+@media(min-width:960px){.nav-links{display:flex}}
+.nav-call{display:inline-flex;align-items:center;gap:9px;text-decoration:none;background:linear-gradient(180deg,#FFB93F,var(--amber));color:var(--amber-ink);
+  font-weight:700;font-size:1rem;padding:11px 20px;min-height:46px;border-radius:var(--radius);transition:transform .2s,box-shadow .2s}
+.nav-call:hover{transform:translateY(-2px);box-shadow:var(--glow-amber)}
 
-.hero{background:var(--navy-2);color:#fff;position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:
-  radial-gradient(760px 420px at 84% 4%,rgba(46,125,209,.32),transparent 62%),
-  radial-gradient(460px 300px at 8% 96%,rgba(245,165,36,.13),transparent 60%)}
-.hero-in{position:relative;z-index:1;display:grid;gap:46px;padding:66px 0 80px;align-items:center}
+/* ============ HERO ============ */
+.hero{background:linear-gradient(180deg,#0A1524 0%,#0E1B2E 55%,#0A1524 100%);color:#fff;position:relative;overflow:hidden}
+.atmo{position:absolute;inset:0;pointer-events:none;will-change:transform}
+.atmo .g{position:absolute;border-radius:50%}
+.atmo .g1{width:min(680px,90vw);height:460px;top:-10%;right:-12%;
+  background:radial-gradient(closest-side,rgba(46,125,209,.38),transparent 70%);animation:drift1 16s ease-in-out infinite alternate}
+.atmo .g2{width:min(540px,80vw);height:420px;bottom:-16%;left:-12%;
+  background:radial-gradient(closest-side,rgba(245,165,36,.17),transparent 70%);animation:drift2 21s ease-in-out infinite alternate}
+@keyframes drift1{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(-56px,42px,0) scale(1.14)}}
+@keyframes drift2{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(48px,-30px,0) scale(1.1)}}
+.gridlines{position:absolute;inset:0;pointer-events:none;opacity:.55;
+  background-image:linear-gradient(rgba(148,178,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(148,178,255,.06) 1px,transparent 1px);
+  background-size:44px 44px;animation:gridDrift 70s linear infinite;
+  -webkit-mask-image:radial-gradient(75% 70% at 55% 35%,#000 30%,transparent 100%);
+  mask-image:radial-gradient(75% 70% at 55% 35%,#000 30%,transparent 100%)}
+@keyframes gridDrift{from{background-position:0 0}to{background-position:88px 44px}}
+.hero-in{position:relative;z-index:2;display:grid;gap:46px;padding:72px 0 150px;align-items:center}
 .flag{display:inline-flex;align-items:center;gap:8px;background:rgba(245,165,36,.13);border:1px solid rgba(245,165,36,.4);
-  color:#FFD98F;font-size:.83rem;font-weight:600;letter-spacing:.04em;padding:8px 15px;border-radius:999px}
-.hero h1{font-size:clamp(2.4rem,6.2vw,3.9rem);font-weight:800;margin-top:20px}
-.hero h1 .am{color:var(--amber)}
-.hero p.lead{margin-top:18px;font-size:1.14rem;color:#B3C1D3;max-width:33rem}
-.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
-.trust{display:flex;flex-wrap:wrap;align-items:center;gap:10px 26px;margin-top:32px;color:#B3C1D3;font-size:.95rem}
-.trust .stars{color:var(--amber);letter-spacing:2px;font-size:1.05rem}
+  color:#FFD98F;font-size:.83rem;font-weight:600;letter-spacing:.04em;padding:8px 15px;border-radius:999px;
+  opacity:0;animation:rise .6s ease .05s forwards}
+.hero h1{font-size:clamp(2.5rem,6.6vw,4.1rem);font-weight:800;margin-top:20px}
+.hero h1 .line{display:block;opacity:0;transform:translateY(32px);animation:rise .75s cubic-bezier(.2,.7,.2,1) forwards}
+.hero h1 .line:nth-child(2){animation-delay:.13s}
+.hero h1 .line:nth-child(3){animation-delay:.26s}
+.hero h1 .am{background:linear-gradient(92deg,var(--amber) 25%,#FFD98F 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+@keyframes rise{to{opacity:1;transform:none}}
+.hero p.lead{margin-top:18px;font-size:1.14rem;color:#B3C1D3;max-width:33rem;opacity:0;animation:rise .75s ease .42s forwards}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;opacity:0;animation:rise .75s ease .56s forwards}
+.trust{display:flex;flex-wrap:wrap;align-items:center;gap:10px 26px;margin-top:32px;color:#B3C1D3;font-size:.95rem;opacity:0;animation:rise .75s ease .7s forwards}
+.trust .stars{color:var(--amber);letter-spacing:2px;font-size:1.05rem;text-shadow:0 0 12px rgba(245,165,36,.55)}
 .trust strong{color:#fff}
-.hero-media{position:relative;max-width:420px}
-.hero-media .photo{border-radius:var(--radius);box-shadow:0 26px 54px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.1)}
+.hero-media{position:relative;max-width:420px;opacity:0;animation:rise .85s cubic-bezier(.2,.7,.2,1) .48s forwards}
+.float{animation:float 7s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-10px) rotate(.4deg)}}
+.photo-wrap{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:0 26px 54px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.12)}
+.photo-wrap::after{content:"";position:absolute;top:-20%;left:-85%;width:45%;height:140%;transform:skewX(-20deg);pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.38),transparent);opacity:0;animation:shine 1.2s ease 1.9s 1}
+.photo-wrap:hover::after{animation:shine .9s ease .05s 1}
+@keyframes shine{0%{left:-85%;opacity:1}100%{left:140%;opacity:0}}
 .hero-media .tag{position:absolute;left:-12px;bottom:-18px;background:#fff;color:var(--ink);border-radius:11px;
-  box-shadow:var(--shadow);padding:12px 16px;display:flex;align-items:center;gap:10px;font-weight:600;font-size:.87rem}
+  box-shadow:var(--shadow);padding:12px 16px;display:flex;align-items:center;gap:10px;font-weight:600;font-size:.87rem;
+  opacity:0;animation:rise .6s ease 1.15s forwards}
 .hero-media .tag .stars{color:var(--amber);letter-spacing:1px}
 @media(min-width:900px){.hero-in{grid-template-columns:1.14fr .86fr}}
 
-/* proof band */
-.band{background:var(--navy);color:#fff;padding:0}
-.band-in{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2px;background:rgba(255,255,255,.09)}
-.band-in div{background:var(--navy);padding:26px 20px;text-align:center}
-.band-in .n{font-family:'Sora',sans-serif;font-weight:800;font-size:1.9rem;color:var(--amber);line-height:1}
-.band-in .l{font-size:.85rem;color:#93A3B8;margin-top:7px}
+/* ============ MARQUEE ============ */
+.marq-belt{background:var(--navy-2);padding:30px 0 24px;overflow:hidden}
+.marq{background:linear-gradient(90deg,#FFB93F,var(--amber) 55%,#E89A0C);transform:rotate(-1.2deg);width:112%;margin-left:-6%;
+  box-shadow:0 18px 42px rgba(6,14,25,.5);border-top:2px solid rgba(255,255,255,.35);border-bottom:2px solid rgba(0,0,0,.2)}
+.marq-track{display:flex;width:max-content;animation:marq 30s linear infinite}
+.marq ul{display:flex;list-style:none;padding:13px 0;margin:0}
+.marq li{font-family:'Sora',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.93rem;
+  color:var(--amber-ink);white-space:nowrap;display:flex;align-items:center}
+.marq li::after{content:"✦";margin:0 20px;color:#8A5B06;font-size:.78rem}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marq:hover .marq-track{animation-play-state:paused}
 
-section{padding:74px 0}
+/* ============ HERO SILHOUETTE ============ */
+.silhouette{position:absolute;left:0;right:0;bottom:-2px;pointer-events:none;will-change:transform;z-index:1}
+.silhouette svg{display:block;width:100%;height:clamp(70px,10vw,150px)}
+.win{animation:winGlow 5s ease-in-out infinite}
+.win:nth-child(odd){animation-delay:2.3s}
+@keyframes winGlow{0%,100%{opacity:.95}50%{opacity:.35}}
+
+/* ============ HEADLINE UNDERLINE DRAW ============ */
+.uword{position:relative;display:inline-block}
+.uline-svg{position:absolute;left:-2%;bottom:-.1em;width:104%;height:.3em;overflow:visible}
+.uline-path{fill:none;stroke:var(--amber);stroke-width:9;stroke-linecap:round;opacity:.95;
+  filter:drop-shadow(0 3px 10px rgba(245,165,36,.5));stroke-dasharray:1;stroke-dashoffset:1;
+  animation:drawU .8s cubic-bezier(.5,0,.3,1) 1.05s forwards}
+@keyframes drawU{to{stroke-dashoffset:0}}
+
+/* ============ TOOL DIVIDER (stroke draw) ============ */
+.tool-wrap{display:flex;justify-content:center;padding-bottom:12px}
+.tool-svg{width:56px;height:56px;overflow:visible;transform:rotate(-14deg)}
+.tool-path{fill:none;stroke:var(--amber);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round;
+  filter:drop-shadow(0 0 7px rgba(245,165,36,.7));stroke-dasharray:1;stroke-dashoffset:1}
+.drawn .tool-path{transition:stroke-dashoffset 1.4s ease .1s;stroke-dashoffset:0}
+
+/* ============ STATS BAND ============ */
+.band{background:var(--navy);color:#fff}
+.band-in{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2px;background:rgba(255,255,255,.09)}
+.band-in .cell{background:var(--navy);padding:32px 20px;text-align:center;transition:background .25s}
+.band-in .cell:hover{background:var(--navy-4)}
+.band .n{font-family:'Sora',sans-serif;font-weight:800;font-size:2.1rem;color:var(--amber);line-height:1}
+.band .n .u{color:#FFD98F}
+.band .l{font-size:.85rem;color:#93A3B8;margin-top:8px}
+
+/* ============ SECTIONS ============ */
+section{padding:80px 0;position:relative;overflow:hidden}
+.ghost-word{position:absolute;top:24px;right:-10px;font-family:'Sora',sans-serif;font-weight:800;text-transform:uppercase;line-height:1;
+  font-size:clamp(4rem,13vw,9.5rem);letter-spacing:-.02em;color:transparent;
+  -webkit-text-stroke:1.2px rgba(14,27,46,.08);pointer-events:none;user-select:none}
+.quote .ghost-word{-webkit-text-stroke-color:rgba(255,255,255,.055)}
 .kicker{display:inline-flex;align-items:center;gap:9px;font-weight:700;letter-spacing:.15em;font-size:.78rem;text-transform:uppercase;color:var(--sky)}
 .kicker::before{content:"";width:26px;height:3px;background:var(--amber);border-radius:2px}
 h2{font-size:clamp(1.8rem,4.3vw,2.55rem);font-weight:800;margin-top:14px}
 .sub{color:var(--muted);margin-top:13px;max-width:40rem}
 .dark .sub{color:#B3C1D3}
 
+/* ============ SERVICES ============ */
 .grid-services{display:grid;gap:18px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(245px,1fr))}
 .svc{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px;
-  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
-.svc:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--sky)}
-.svc .ico{width:52px;height:52px;border-radius:12px;background:var(--mist);display:flex;align-items:center;justify-content:center;color:var(--sky);margin-bottom:16px}
+  position:relative;overflow:hidden;transform-style:preserve-3d;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.svc:hover{border-color:rgba(46,125,209,.55);box-shadow:0 24px 50px rgba(14,27,46,.16)}
+.svc::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .3s;pointer-events:none;
+  background:radial-gradient(300px 200px at var(--gx,70%) var(--gy,20%),rgba(46,125,209,.12),transparent 70%)}
+.svc:hover::before{opacity:1}
+.svc .ico{width:52px;height:52px;border-radius:12px;background:var(--mist);display:flex;align-items:center;justify-content:center;color:var(--sky);margin-bottom:16px;
+  transition:transform .25s,background .25s,color .25s}
+.svc:hover .ico{transform:rotate(-7deg) scale(1.12);background:var(--sky);color:#fff}
 .svc h3{font-size:1.2rem;font-weight:700}
 .svc p{color:var(--muted);font-size:.95rem;margin-top:8px}
 
+/* ============ STEPS ============ */
 .steps{background:var(--mist)}
 .grid-steps{display:grid;gap:18px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-.step{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:30px}
-.step .num{font-weight:800;font-size:2.2rem;color:var(--amber-deep);line-height:1}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:30px;position:relative;overflow:hidden;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.step::before{content:"";position:absolute;left:0;top:0;right:100%;height:4px;background:linear-gradient(90deg,var(--amber),var(--sky));transition:right .35s ease}
+.step:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:rgba(245,165,36,.5)}
+.step:hover::before{right:0}
+.step .num{font-weight:800;font-size:2.2rem;color:var(--amber-deep);line-height:1;transition:transform .25s}
+.step:hover .num{transform:scale(1.08)}
 .step h3{margin-top:10px;font-size:1.18rem;font-weight:700}
 .step p{color:var(--muted);font-size:.95rem;margin-top:8px}
 
+/* ============ REVIEWS ============ */
 .rev-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px}
-.score{display:flex;align-items:center;gap:16px;background:var(--navy-2);color:#fff;border-radius:var(--radius);padding:18px 24px}
+.score{display:flex;align-items:center;gap:16px;background:var(--navy-2);color:#fff;border-radius:var(--radius);padding:18px 24px;box-shadow:0 16px 36px rgba(14,27,46,.25)}
 .score .big{font-family:'Sora',sans-serif;font-weight:800;font-size:2.5rem;line-height:1;color:var(--amber)}
-.score .stars{color:var(--amber);letter-spacing:2px}
+.score .stars{color:var(--amber);letter-spacing:2px;text-shadow:0 0 10px rgba(245,165,36,.55)}
 .score small{display:block;color:#B3C1D3;font-size:.83rem}
-.grid-reviews{display:grid;gap:18px;margin-top:36px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
-.rev{background:var(--paper);border:1px solid var(--line);border-top:4px solid var(--amber);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;gap:14px}
+.carousel{position:relative;margin-top:36px;max-width:780px}
+.rev{background:var(--paper);border:1px solid var(--line);border-top:4px solid var(--amber);border-radius:var(--radius);
+  padding:30px;display:none;flex-direction:column;gap:14px;box-shadow:0 14px 34px rgba(14,27,46,.08)}
+.rev.active{display:flex;animation:fadeSlide .5s ease}
+@keyframes fadeSlide{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
 .rev .stars{color:var(--amber);letter-spacing:2px}
-.rev p{font-size:.95rem}
+.rev p{font-size:1rem}
 .rev .who{font-weight:700;font-size:.9rem}
 .rev .who span{display:block;font-weight:500;color:var(--muted);font-size:.81rem}
-.all-reviews{margin-top:28px}
+.dots{display:flex;gap:2px;margin-top:8px}
+.dots button{width:44px;height:44px;border:none;background:none;cursor:pointer;display:grid;place-items:center;padding:0}
+.dots button .d{width:11px;height:11px;border-radius:50%;background:var(--line);transition:background .2s,transform .2s,box-shadow .2s}
+.dots button:hover .d{background:var(--muted)}
+.dots button.on .d{background:var(--amber-deep);transform:scale(1.35);box-shadow:0 0 8px rgba(245,165,36,.7)}
+.all-reviews{margin-top:24px}
 .all-reviews a{display:inline-flex;align-items:center;min-height:44px;color:var(--sky);font-weight:700;text-decoration-thickness:2px}
 
+/* ============ AREA ============ */
 .area{background:var(--mist)}
 .area-grid{display:grid;gap:28px;margin-top:32px}
 @media(min-width:860px){.area-grid{grid-template-columns:1fr 1fr;align-items:start}}
 .map{border:0;width:100%;height:320px;border-radius:var(--radius);box-shadow:var(--shadow);background:#dfe5ec}
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-.chip{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:10px 19px;font-size:.92rem;font-weight:600}
+.chip{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:10px 19px;font-size:.92rem;font-weight:600;
+  transition:transform .2s,background .2s,color .2s,border-color .2s;cursor:default}
+.chip:hover{transform:translateY(-3px);background:var(--amber);border-color:var(--amber);color:var(--amber-ink)}
 .addr{margin-top:18px;font-size:1rem;color:var(--muted)}
 .addr strong{display:block;color:var(--ink);font-weight:700}
 
+/* ============ FAQ ============ */
+.faq-wrap{max-width:780px;margin-top:30px}
+.qa{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-top:14px;overflow:hidden;
+  transition:border-color .25s,box-shadow .25s}
+.qa.open{border-color:rgba(46,125,209,.6);box-shadow:0 12px 30px rgba(14,27,46,.08)}
+.qa .q{width:100%;text-align:left;background:none;border:none;font:inherit;color:var(--ink);font-weight:700;
+  padding:20px 22px;min-height:44px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:1.02rem}
+.qa .chev{transition:transform .3s;color:var(--amber-deep);flex:none}
+.qa.open .chev{transform:rotate(180deg)}
+.qa .a{max-height:0;overflow:hidden;transition:max-height .4s ease;color:var(--muted);font-size:.96rem}
+.qa.open .a{max-height:340px}
+.qa .a p{padding:0 22px 20px}
+
+/* ============ QUOTE ============ */
 .quote{background:var(--navy-2);color:#fff;position:relative;overflow:hidden}
 .quote::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(640px 340px at 90% 10%,rgba(46,125,209,.3),transparent 62%)}
 .quote .wrap{position:relative;z-index:1}
@@ -127,62 +259,106 @@ h2{font-size:clamp(1.8rem,4.3vw,2.55rem);font-weight:800;margin-top:14px}
 .form{margin-top:32px;display:grid;gap:16px;max-width:560px}
 .form label{font-weight:600;font-size:.92rem;display:block;margin-bottom:6px}
 .form input,.form textarea{width:100%;border:1.5px solid rgba(255,255,255,.24);background:rgba(255,255,255,.06);color:#fff;
-  border-radius:10px;padding:14px;font:inherit;font-size:1rem;min-height:48px}
+  border-radius:10px;padding:14px;font:inherit;font-size:1rem;min-height:48px;transition:border-color .2s,background .2s}
 .form input::placeholder,.form textarea::placeholder{color:#8B9BB0}
-.form input:focus,.form textarea:focus{outline:3px solid var(--amber);outline-offset:2px;border-color:transparent}
+.form input:hover,.form textarea:hover{border-color:rgba(255,255,255,.45)}
+.form input:focus,.form textarea:focus{outline:3px solid var(--amber);outline-offset:2px;border-color:transparent;background:rgba(255,255,255,.1)}
 .form-note{font-size:.86rem;color:#B3C1D3}
 .form .btn-call{justify-self:start}
 
+/* ============ FOOTER ============ */
 footer{background:var(--navy-3);color:#96A5B8;padding:46px 0;font-size:.91rem}
 .foot{display:flex;flex-wrap:wrap;gap:18px 40px;justify-content:space-between;align-items:center}
 .foot .fname{font-family:'Sora',sans-serif;font-weight:800;color:#fff;font-size:1.2rem}
 .foot a{display:inline-flex;align-items:center;min-height:44px;color:#fff;font-weight:700;text-decoration:none}
+.foot a:hover{color:#FFD98F}
 .disclaimer{margin-top:24px;padding-top:18px;border-top:1px solid #1B2A3E;font-size:.79rem;color:#71829A}
 
-.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+/* ============ REVEALS ============ */
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
 .js .reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .reveal{opacity:1;transform:none;transition:none}.btn,.svc{transition:none}}
+.js .stagger>*{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.js .stagger.in>*{opacity:1;transform:none}
+.js .stagger.in>*:nth-child(2){transition-delay:.08s}
+.js .stagger.in>*:nth-child(3){transition-delay:.16s}
+.js .stagger.in>*:nth-child(4){transition-delay:.24s}
+.js .stagger.in>*:nth-child(5){transition-delay:.32s}
+.js .stagger.in>*:nth-child(6){transition-delay:.4s}
+.js .stagger.in>*:nth-child(7){transition-delay:.46s}
+.js .stagger.in>*:nth-child(8){transition-delay:.52s}
 
+/* ============ MOBILE CALL BAR ============ */
 .callbar{display:none}
 @media(max-width:720px){
-  .callbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--amber);justify-content:center}
-  .callbar a{display:flex;align-items:center;gap:10px;color:#2A1B02;text-decoration:none;font-weight:700;font-size:1.08rem;padding:16px;width:100%;justify-content:center;min-height:58px}
+  .callbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:100;background:linear-gradient(180deg,#FFB93F,var(--amber));
+    justify-content:center;box-shadow:0 -8px 26px rgba(6,14,25,.4)}
+  .callbar a{display:flex;align-items:center;gap:10px;color:var(--amber-ink);text-decoration:none;font-weight:700;font-size:1.08rem;padding:16px;width:100%;justify-content:center;min-height:58px}
   body{padding-bottom:66px}
   .hero-media{margin:0 auto}
   .hero-media .tag{left:6px}
 }
+
+/* ============ REDUCED MOTION ============ */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .js .reveal,.js .stagger>*{opacity:1;transform:none}
+  .flag,.hero h1 .line,.hero p.lead,.cta-row,.trust,.hero-media,.hero-media .tag{opacity:1;transform:none}
+  .marq-track{animation:none !important}
+  [data-speed]{transform:none !important}
+  .tool-path,.uline-path{stroke-dashoffset:0}
+}
 </style>
+<noscript><style>
+.reveal,.stagger>*{opacity:1;transform:none}
+.qa .a{max-height:none}
+.tool-path{stroke-dashoffset:0}
+</style></noscript>
 <script>document.documentElement.className+=" js"</script>
 </head>
 <body>
+<a class="skip" href="#top">Skip to content</a>
+<div id="progress" aria-hidden="true"></div>
 
-<div class="demo-note" id="demoNote">
-  Demo preview built for 1&amp;Done Maintenance LLC — not their official site.
-  <button aria-label="Dismiss notice" onclick="document.getElementById('demoNote').style.display='none'">&times;</button>
+<div class="topbar">
+  <header id="hdr">
+    <div class="wrap nav">
+      <a class="logo" href="#top" aria-label="1&amp;Done Maintenance LLC — home">
+        <span class="mark" aria-hidden="true">1&amp;D</span>
+        <span>1&amp;Done Maintenance<small>Fort Wayne · Indiana</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#services">Services</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+        <a href="#quote">Get a quote</a>
+      </nav>
+      <a class="nav-call" href="tel:+12603728388">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (260) 372-8388
+      </a>
+    </div>
+  </header>
 </div>
-
-<header>
-  <div class="wrap nav">
-    <a class="logo" href="#top" aria-label="1&amp;Done Maintenance LLC — home">
-      <span class="mark" aria-hidden="true">1&amp;D</span>
-      <span>1&amp;Done Maintenance<small>Fort Wayne · Indiana</small></span>
-    </a>
-    <a class="nav-call" href="tel:+12603728388">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      (260) 372-8388
-    </a>
-  </div>
-</header>
 
 <main id="top">
 <div class="hero dark">
+  <div class="atmo" data-speed="0.16" aria-hidden="true">
+    <div class="g g1"></div>
+    <div class="g g2"></div>
+  </div>
+  <div class="gridlines" data-speed="0.07" aria-hidden="true"></div>
   <div class="wrap hero-in">
     <div>
       <span class="flag">Handyman &amp; home maintenance · Fort Wayne, IN</span>
-      <h1>One call.<br><span class="am">One visit. Done.</span></h1>
+      <h1>
+        <span class="line">One call.</span>
+        <span class="line">One visit.</span>
+        <span class="line am"><span class="uword">Done.<svg class="uline-svg" viewBox="0 0 210 22" preserveAspectRatio="none" aria-hidden="true"><path class="uline-path" pathLength="1" d="M6 15 C 55 6, 150 4, 204 12"/></svg></span></span>
+      </h1>
       <p class="lead">Drywall that disappears into the wall, roof repairs you can't spot afterwards, and the whole punch list handled by people who answer the phone. 154 Fort Wayne neighbours, 4.9 stars.</p>
       <div class="cta-row">
-        <a class="btn btn-call" href="tel:+12603728388">
+        <a class="btn btn-call magnet" href="tel:+12603728388">
           <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           Call (260) 372-8388
         </a>
@@ -195,54 +371,85 @@ footer{background:var(--navy-3);color:#96A5B8;padding:46px 0;font-size:.91rem}
         <span>Weekend calls answered</span>
       </div>
     </div>
-    <div class="hero-media reveal">
-      <img class="photo" src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmm-R8qaeudYBd-XHcs9ddx6yTnCjqnVQMP1gF2_kpPRkJQ4zE-IPM0OM9bnmCc9X1Gf9OP-UrBjF9V2HdbMZzj55a6swVBVbGQ-qXYrZQDdR8ImgYizZ8eqirQfZ8iYz2aXGU9RA=w408-h544-k-no" alt="Work by 1&amp;Done Maintenance LLC — photo from their Google Business listing" width="408" height="544" onerror="this.parentElement.style.display='none'">
-      <div class="tag"><span class="stars" aria-hidden="true">★★★★★</span> "The finish is impeccable"</div>
+    <div class="hero-media">
+      <div class="float">
+        <div class="photo-wrap">
+          <img class="photo" src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmm-R8qaeudYBd-XHcs9ddx6yTnCjqnVQMP1gF2_kpPRkJQ4zE-IPM0OM9bnmCc9X1Gf9OP-UrBjF9V2HdbMZzj55a6swVBVbGQ-qXYrZQDdR8ImgYizZ8eqirQfZ8iYz2aXGU9RA=w408-h544-k-no" alt="Work by 1&amp;Done Maintenance LLC — photo from their Google Business listing" width="408" height="544" onerror="this.closest('.hero-media').style.display='none'">
+        </div>
+        <div class="tag"><span class="stars" aria-hidden="true">★★★★★</span> "The finish is impeccable"</div>
+      </div>
+    </div>
+  </div>
+  <div class="silhouette" data-speed="0.05" aria-hidden="true">
+    <svg viewBox="0 0 1440 160" preserveAspectRatio="none">
+      <path fill="#0E1D33" opacity=".7" d="M0,160 L0,100 L120,60 L260,110 L420,55 L600,115 L760,70 L940,115 L1120,65 L1290,110 L1440,80 L1440,160 Z"/>
+      <path fill="#060E19" d="M0,160 L0,120 L60,120 L110,78 L160,120 L240,120 L240,104 L250,104 L250,86 L262,86 L262,104 L300,64 L380,104 L380,120 L470,120 L515,88 L560,120 L640,120 L640,96 L720,52 L800,96 L800,120 L910,120 L955,90 L1000,120 L1090,120 L1090,100 L1160,60 L1230,100 L1230,120 L1330,120 L1370,95 L1410,120 L1440,120 L1440,160 Z"/>
+      <g fill="#F5A524">
+        <rect class="win" x="104" y="96" width="6" height="8" rx="1"/>
+        <rect class="win" x="296" y="84" width="7" height="9" rx="1"/>
+        <rect class="win" x="712" y="72" width="8" height="10" rx="1"/>
+        <rect class="win" x="952" y="102" width="6" height="8" rx="1"/>
+        <rect class="win" x="1152" y="80" width="7" height="9" rx="1"/>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<div class="marq-belt" aria-hidden="true">
+  <div class="marq">
+    <div class="marq-track">
+      <ul>
+        <li>Drywall &amp; ceiling repair</li><li>Roof &amp; storm repairs</li><li>General handyman work</li><li>Garage doors &amp; openers</li><li>Carpentry &amp; finish work</li><li>Landlord &amp; turnover repairs</li>
+      </ul>
+      <ul>
+        <li>Drywall &amp; ceiling repair</li><li>Roof &amp; storm repairs</li><li>General handyman work</li><li>Garage doors &amp; openers</li><li>Carpentry &amp; finish work</li><li>Landlord &amp; turnover repairs</li>
+      </ul>
     </div>
   </div>
 </div>
 
-<div class="band">
-  <div class="wrap band-in">
-    <div><div class="n">4.9★</div><div class="l">Google rating</div></div>
-    <div><div class="n">154</div><div class="l">Google reviews</div></div>
-    <div><div class="n">Same week</div><div class="l">Typical turnaround</div></div>
-    <div><div class="n">Fort Wayne</div><div class="l">Locally owned</div></div>
+<div class="band" aria-label="Track record">
+  <div class="wrap band-in stagger">
+    <div class="cell"><div class="n"><span class="cnt" data-count="4.9" data-dec="1">4.9</span><span class="u">★</span></div><div class="l">Google rating</div></div>
+    <div class="cell"><div class="n"><span class="cnt" data-count="154">154</span></div><div class="l">Google reviews</div></div>
+    <div class="cell"><div class="n">Same week</div><div class="l">Typical turnaround</div></div>
+    <div class="cell"><div class="n">Fort Wayne</div><div class="l">Locally owned</div></div>
   </div>
 </div>
 
 <section id="services">
+  <span class="ghost-word" aria-hidden="true">REPAIR</span>
   <div class="wrap">
     <span class="kicker">What we do</span>
-    <h2>Repairs that look like nothing ever happened</h2>
-    <p class="sub">Interior, exterior, big or small — the kind of work where the proof is that you can't tell it was done.</p>
-    <div class="grid-services">
-      <div class="svc reveal">
+    <h2 class="reveal">Repairs that look like nothing ever happened</h2>
+    <p class="sub reveal">Interior, exterior, big or small — the kind of work where the proof is that you can't tell it was done.</p>
+    <div class="grid-services stagger">
+      <div class="svc tilt">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
         <h3>Drywall &amp; Ceiling Repair</h3>
         <p>Holes, cracks, water damage — patched and textured to match, including Spanish lace and popcorn ceilings.</p>
       </div>
-      <div class="svc reveal">
+      <div class="svc tilt">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 12 10-8 10 8"/><path d="M4 11v9h16v-9"/><path d="M9 20v-6h6v6"/></svg></div>
         <h3>Roof &amp; Storm Repairs</h3>
         <p>Missing shingles after a windstorm put back seamlessly — often the same weekend you call.</p>
       </div>
-      <div class="svc reveal">
+      <div class="svc tilt">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
         <h3>General Handyman Work</h3>
         <p>Doors, trim, fixtures, mounts and the twenty small jobs that have been waiting since spring.</p>
       </div>
-      <div class="svc reveal">
+      <div class="svc tilt">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 16V9"/><path d="M12 16V5"/><path d="M17 16v-4"/></svg></div>
         <h3>Garage Doors &amp; Openers</h3>
         <p>Doors that stick, springs that have given up, openers that ignore the remote — diagnosed and fixed.</p>
       </div>
-      <div class="svc reveal">
+      <div class="svc tilt">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 12-8.4 8.4a1.5 1.5 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="M21.5 11.5 19.6 9.6A2 2 0 0 1 19 8.2V7l-2.3-2.3a6 6 0 0 0-4.2-1.7L9 3l.9.8A6.2 6.2 0 0 1 12 8.4V10l2 2h1.2a2 2 0 0 1 1.4.6l1.9 1.9"/></svg></div>
         <h3>Carpentry &amp; Finish Work</h3>
         <p>Trim, shelving, framing repairs and rot replacement — square, level, and cleanly finished.</p>
       </div>
-      <div class="svc reveal">
+      <div class="svc tilt">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
         <h3>Landlord &amp; Turnover Repairs</h3>
         <p>Between tenants or before a sale: a single crew for the whole list, invoiced once.</p>
@@ -252,44 +459,54 @@ footer{background:var(--navy-3);color:#96A5B8;padding:46px 0;font-size:.91rem}
 </section>
 
 <section class="steps">
+  <span class="ghost-word" aria-hidden="true">DONE</span>
   <div class="wrap">
     <span class="kicker">How it works</span>
-    <h2>Why it's called 1&amp;Done</h2>
-    <div class="grid-steps">
-      <div class="step reveal"><div class="num">01</div><h3>You get a fast answer</h3><p>Call or message with what's wrong. Reviewers keep mentioning the same thing: they respond fast.</p></div>
-      <div class="step reveal"><div class="num">02</div><h3>A great rate, up front</h3><p>You hear the price before the work starts — no surprise line items at the end.</p></div>
-      <div class="step reveal"><div class="num">03</div><h3>Finished in one trip</h3><p>The job gets done the week you call, and the repair blends in like it was never broken.</p></div>
+    <h2 class="reveal">Why it's called 1&amp;Done</h2>
+    <div class="grid-steps stagger">
+      <div class="step tilt"><div class="num">01</div><h3>You get a fast answer</h3><p>Call or message with what's wrong. Reviewers keep mentioning the same thing: they respond fast.</p></div>
+      <div class="step tilt"><div class="num">02</div><h3>A great rate, up front</h3><p>You hear the price before the work starts — no surprise line items at the end.</p></div>
+      <div class="step tilt"><div class="num">03</div><h3>Finished in one trip</h3><p>The job gets done the week you call, and the repair blends in like it was never broken.</p></div>
     </div>
   </div>
 </section>
 
 <section id="reviews">
+  <span class="ghost-word" aria-hidden="true">4.9★</span>
   <div class="wrap">
+    <div class="tool-wrap reveal" id="toolWrap">
+      <svg class="tool-svg" viewBox="0 0 24 24" aria-hidden="true"><path class="tool-path" pathLength="1" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+    </div>
     <div class="rev-head">
       <div>
         <span class="kicker">Real Google reviews</span>
-        <h2>154 reviews. 4.9 stars.</h2>
+        <h2 class="reveal">154 reviews. 4.9 stars.</h2>
       </div>
       <div class="score reveal" role="img" aria-label="Rated 4.9 out of 5 stars across 154 Google reviews">
         <span class="big" aria-hidden="true">4.9</span>
         <span aria-hidden="true"><span class="stars">★★★★★</span><small>154 Google reviews</small></span>
       </div>
     </div>
-    <div class="grid-reviews">
-      <div class="rev reveal">
+    <div class="carousel reveal" id="carousel" aria-label="Customer reviews">
+      <div class="rev active">
         <span class="stars" aria-hidden="true">★★★★★</span>
         <p>"We needed a couple dry wall repairs with a Spanish lace texture and a popcorn ceiling (husband fell through the ceiling 😱). They were extremely professional. Responded fast and came out the same week we contacted them to do the repair. The finish is impeccable."</p>
         <div class="who">Sara Causer <span>Google review</span></div>
       </div>
-      <div class="rev reveal">
+      <div class="rev">
         <span class="stars" aria-hidden="true">★★★★★</span>
         <p>"We had an insane windstorm yesterday and later in the day noticed some shingles were gone. Reached out and the came out on a Saturday, gave us a great rate and the job looks seamless! Like there wasn't any work that needed done!"</p>
         <div class="who">Andrew and Erin Harris <span>Google review</span></div>
       </div>
-      <div class="rev reveal">
+      <div class="rev">
         <span class="stars" aria-hidden="true">★★★★★</span>
         <p>"I had a great experience with this handyman! He was very professional, friendly, and easy to communicate with from start to finish. He showed up on time, got straight to work, and completed the job quickly without cutting corners."</p>
         <div class="who">Sergio Torino <span>Google review</span></div>
+      </div>
+      <div class="dots" role="group" aria-label="Choose review">
+        <button class="on" aria-label="Show review 1"><span class="d" aria-hidden="true"></span></button>
+        <button aria-label="Show review 2"><span class="d" aria-hidden="true"></span></button>
+        <button aria-label="Show review 3"><span class="d" aria-hidden="true"></span></button>
       </div>
     </div>
     <p class="all-reviews"><a href="https://www.google.com/maps/search/1%26Done+Maintenance+LLC+Fort+Wayne+IN" rel="noopener">Read all 154 reviews on Google Maps →</a></p>
@@ -297,14 +514,15 @@ footer{background:var(--navy-3);color:#96A5B8;padding:46px 0;font-size:.91rem}
 </section>
 
 <section class="area" id="area">
+  <span class="ghost-word" aria-hidden="true">LOCAL</span>
   <div class="wrap">
     <span class="kicker">Where to find us</span>
-    <h2>Based in Fort Wayne, working across Allen County</h2>
+    <h2 class="reveal">Based in Fort Wayne, working across Allen County</h2>
     <div class="area-grid">
-      <div>
+      <div class="reveal">
         <p class="sub">Home base is on 24th Avenue — but most days we're out at a house somewhere across the county.</p>
         <p class="addr"><strong>1&amp;Done Maintenance LLC</strong>2223 24th Ave, Fort Wayne, IN 46802</p>
-        <div class="chips">
+        <div class="chips stagger">
           <span class="chip">Fort Wayne</span><span class="chip">New Haven</span><span class="chip">Huntertown</span>
           <span class="chip">Leo-Cedarville</span><span class="chip">Woodburn</span><span class="chip">Grabill</span>
           <span class="chip">Roanoke</span><span class="chip">Allen County</span>
@@ -315,17 +533,44 @@ footer{background:var(--navy-3);color:#96A5B8;padding:46px 0;font-size:.91rem}
   </div>
 </section>
 
+<section id="faq">
+  <span class="ghost-word" aria-hidden="true">ASK</span>
+  <div class="wrap">
+    <span class="kicker">Good to know</span>
+    <h2 class="reveal">Questions, answered straight</h2>
+    <div class="faq-wrap reveal">
+      <div class="qa open">
+        <button class="q" aria-expanded="true" onclick="toggleQA(this)">What kind of work do you take on?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>Drywall and ceiling texture repair (including Spanish lace and popcorn), roof and shingle fixes after storms, carpentry and finish work, garage doors and openers, and general handyman lists — the same jobs described in the services above.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">How quickly do you respond?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>Fast response is the thing reviewers mention most. One family had their drywall repaired the same week they made contact; another had storm-damaged shingles fixed on a Saturday, the day after they reached out.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">Will I be able to see the repair afterwards?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>The goal is that you can't. Reviewers describe the finish as "impeccable" and roof repairs that look "seamless — like there wasn't any work that needed done." Textures are matched to what's already on your walls and ceilings.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">Do I know the price before work starts?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>Yes — you hear the price up front, before the work begins, with no surprise line items at the end. Reviewers mention being given "a great rate."</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="quote dark" id="quote">
+  <span class="ghost-word" aria-hidden="true">CALL</span>
   <div class="wrap">
     <span class="kicker">Get a quote</span>
-    <h2>Tell us what needs fixing</h2>
-    <p class="sub">Fastest answer: call <a href="tel:+12603728388" style="color:#fff;font-weight:700">(260) 372-8388</a>. Or leave your details and we'll get back to you:</p>
-    <form class="form" onsubmit="event.preventDefault();this.querySelector('.form-note').textContent='This form is activated on your live website — for now, please call (260) 372-8388.';">
+    <h2 class="reveal">Tell us what needs fixing</h2>
+    <p class="sub reveal">Fastest answer: call <a href="tel:+12603728388" style="color:#fff;font-weight:700">(260) 372-8388</a>. Or leave your details and we'll get back to you:</p>
+    <form class="form reveal" onsubmit="event.preventDefault();this.querySelector('.form-note').textContent='This form is activated on your live website — for now, please call (260) 372-8388.';">
       <div><label for="fname">Your name</label><input id="fname" name="name" placeholder="Jane Smith" autocomplete="name"></div>
       <div><label for="fphone">Phone number</label><input id="fphone" name="phone" type="tel" placeholder="(260) 555-0100" autocomplete="tel"></div>
       <div><label for="fjob">What needs doing?</label><textarea id="fjob" name="job" rows="3" placeholder="e.g. Patch and re-texture a ceiling in the back bedroom, plus two loose shingles above the garage"></textarea></div>
-      <button class="btn btn-call" type="submit">Send my request</button>
-      <p class="form-note">Demo preview — the form activates on the live site.</p>
+      <button class="btn btn-call magnet" type="submit">Send my request</button>
+      <p class="form-note">The contact form activates on the live version — for now, call directly.</p>
     </form>
   </div>
 </section>
@@ -343,7 +588,7 @@ footer{background:var(--navy-3);color:#96A5B8;padding:46px 0;font-size:.91rem}
         2223 24th Ave, Fort Wayne, IN 46802
       </div>
     </div>
-    <p class="disclaimer">This is a demo website preview created for 1&amp;Done Maintenance LLC and is not their official website. Business details (phone, address, rating, reviews) come from their public Google Maps listing. Want this site live, or want it removed? Reply to the email that brought you here.</p>
+    <p class="disclaimer">Concept preview for 1&amp;Done Maintenance LLC · MainStreet Web Studio</p>
   </div>
 </footer>
 
@@ -353,9 +598,153 @@ footer{background:var(--navy-3);color:#96A5B8;padding:46px 0;font-size:.91rem}
 </div>
 
 <script>
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-setTimeout(()=>document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.classList.add('in')),2500);
+(function(){
+"use strict";
+var REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+/* ---- scroll progress + header shrink + hero parallax ---- */
+var prog = document.getElementById('progress'),
+    hdr = document.getElementById('hdr'),
+    plx = [].slice.call(document.querySelectorAll('[data-speed]')),
+    ticking = false;
+function onScroll(){
+  if(ticking) return;
+  ticking = true;
+  requestAnimationFrame(function(){
+    var h = document.documentElement,
+        top = h.scrollTop,
+        max = h.scrollHeight - h.clientHeight;
+    if(prog) prog.style.width = (max > 0 ? (top / max * 100) : 0) + '%';
+    if(hdr) hdr.classList.toggle('scrolled', top > 10);
+    if(!REDUCED){
+      for(var i = 0; i < plx.length; i++){
+        var s = parseFloat(plx[i].getAttribute('data-speed')) || 0;
+        plx[i].style.transform = 'translate3d(0,' + (top * s) + 'px,0)';
+      }
+    }
+    ticking = false;
+  });
+}
+addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+/* ---- scroll reveals ---- */
+if('IntersectionObserver' in window){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{threshold:.15});
+  document.querySelectorAll('.reveal,.stagger').forEach(function(el){ io.observe(el); });
+}else{
+  document.querySelectorAll('.reveal,.stagger').forEach(function(el){ el.classList.add('in'); });
+}
+
+/* ---- wrench stroke-draw divider ---- */
+var toolWrap = document.getElementById('toolWrap');
+if(toolWrap){
+  if('IntersectionObserver' in window){
+    var tio = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){ toolWrap.classList.add('drawn'); tio.unobserve(toolWrap); }
+      });
+    },{threshold:.6});
+    tio.observe(toolWrap);
+  }else{
+    toolWrap.classList.add('drawn');
+  }
+}
+
+/* ---- count-up stats ---- */
+var counters = document.querySelectorAll('.cnt');
+if(!REDUCED && 'IntersectionObserver' in window){
+  var cio = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      cio.unobserve(e.target);
+      var el = e.target,
+          end = parseFloat(el.getAttribute('data-count')),
+          dec = parseInt(el.getAttribute('data-dec') || '0', 10),
+          t0 = performance.now();
+      (function tick(t){
+        var p = Math.min((t - t0) / 1400, 1),
+            v = end * (1 - Math.pow(1 - p, 3));
+        el.textContent = dec ? v.toFixed(dec) : Math.round(v).toLocaleString('en-US');
+        if(p < 1) requestAnimationFrame(tick);
+      })(t0);
+    });
+  },{threshold:.5});
+  counters.forEach(function(el){ cio.observe(el); });
+}
+
+/* ---- review carousel ---- */
+var car = document.getElementById('carousel');
+if(car){
+  var revs = [].slice.call(car.querySelectorAll('.rev')),
+      dotBtns = [].slice.call(car.querySelectorAll('.dots button')),
+      cur = 0, timer = null;
+  var showRev = function(i){
+    revs[cur].classList.remove('active');
+    dotBtns[cur].classList.remove('on');
+    cur = i;
+    revs[cur].classList.add('active');
+    dotBtns[cur].classList.add('on');
+  };
+  var startAuto = function(){
+    if(REDUCED || timer) return;
+    timer = setInterval(function(){ showRev((cur + 1) % revs.length); }, 6500);
+  };
+  var stopAuto = function(){ clearInterval(timer); timer = null; };
+  dotBtns.forEach(function(b, i){
+    b.addEventListener('click', function(){ showRev(i); stopAuto(); startAuto(); });
+  });
+  car.addEventListener('mouseenter', stopAuto);
+  car.addEventListener('mouseleave', startAuto);
+  car.addEventListener('focusin', stopAuto);
+  car.addEventListener('focusout', startAuto);
+  car.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowRight'){ showRev((cur + 1) % revs.length); e.preventDefault(); }
+    else if(e.key === 'ArrowLeft'){ showRev((cur - 1 + revs.length) % revs.length); e.preventDefault(); }
+  });
+  startAuto();
+}
+
+/* ---- FAQ accordion ---- */
+window.toggleQA = function(btn){
+  var qa = btn.closest('.qa'),
+      open = qa.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+};
+
+/* ---- tilt cards + cursor glow (hover-capable devices only) ---- */
+if(FINE && !REDUCED){
+  document.querySelectorAll('.tilt').forEach(function(card){
+    card.addEventListener('pointermove', function(e){
+      var r = card.getBoundingClientRect(),
+          px = (e.clientX - r.left) / r.width,
+          py = (e.clientY - r.top) / r.height;
+      card.style.transform = 'perspective(760px) rotateX(' + ((.5 - py) * 6) + 'deg) rotateY(' + ((px - .5) * 8) + 'deg) translateY(-6px)';
+      card.style.setProperty('--gx', (px * 100) + '%');
+      card.style.setProperty('--gy', (py * 100) + '%');
+    });
+    card.addEventListener('pointerleave', function(){ card.style.transform = ''; });
+  });
+}
+
+/* ---- magnetic CTA buttons ---- */
+if(FINE && !REDUCED){
+  document.querySelectorAll('.magnet').forEach(function(btn){
+    btn.addEventListener('pointermove', function(e){
+      var r = btn.getBoundingClientRect(),
+          dx = Math.max(-12, Math.min(12, (e.clientX - (r.left + r.width / 2)) * .2)),
+          dy = Math.max(-7, Math.min(7, (e.clientY - (r.top + r.height / 2)) * .35));
+      btn.style.transform = 'translate(' + dx + 'px,' + (dy - 3) + 'px)';
+    });
+    btn.addEventListener('pointerleave', function(){ btn.style.transform = ''; });
+  });
+}
+})();
 </script>
 </body>
 </html>

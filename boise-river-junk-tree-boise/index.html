@@ -6,152 +6,309 @@
 <title>Boise River Junk &amp; Tree — Junk Removal &amp; Tree Service in Boise, ID</title>
 <meta name="description" content="Boise's 4.9-star junk removal and tree service. Junk hauling, tree removal, trimming and yard cleanup across the Treasure Valley. Call (208) 563-3103 for a free quote.">
 <meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* ============ TOKENS ============ */
 :root{
-  --bg:#FAF9F6; --card:#FFFFFF; --ink:#1C2420; --muted:#5C6660;
-  --green:#234833; --green-deep:#17301F; --green-soft:#EAF0EB;
-  --orange:#EA580C; --orange-deep:#C2410C; --line:#E4E1DA;
-  --radius:14px; --shadow:0 10px 30px rgba(28,36,32,.10);
+  --bg:#FAF9F6; --card:#FFFFFF; --ink:#1C2420; --muted:#5C6660; --faint:#8A938C;
+  --green:#234833; --green-deep:#17301F; --green-soft:#EAF0EB; --green-mid:#2E5A40;
+  --orange:#EA580C; --orange-deep:#C2410C; --orange-soft:#FFF0E6;
+  --line:#E4E1DA; --line-strong:#D5D1C6;
+  --radius:16px;
+  --shadow:0 10px 30px rgba(28,36,32,.10);
+  --shadow-lg:0 24px 60px rgba(28,36,32,.16);
+  --glow-orange:0 10px 32px rgba(234,88,12,.38);
+  --display:'Archivo',sans-serif;
+  --body:'Inter',system-ui,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
-h1,h2,h3{font-family:'Archivo',sans-serif;line-height:1.12;letter-spacing:-.01em}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px;overflow-x:hidden}
+h1,h2,h3{font-family:var(--display);line-height:1.1;letter-spacing:-.01em}
 img{max-width:100%;display:block}
 a{color:inherit}
-.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-family:'Archivo',sans-serif;
-  border-radius:999px;padding:16px 28px;min-height:52px;text-decoration:none;font-size:1.05rem;cursor:pointer;
-  transition:transform .18s ease, box-shadow .18s ease, background .18s ease}
-.btn:focus-visible,a:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
-.btn-call{background:var(--orange);color:#fff;box-shadow:0 8px 22px rgba(234,88,12,.35)}
-.btn-call:hover{background:var(--orange-deep);transform:translateY(-2px)}
-.btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.55)}
-.btn-ghost:hover{border-color:#fff;transform:translateY(-2px)}
-.btn svg{flex:none}
+::selection{background:var(--orange);color:#fff}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--orange);color:#fff;font-weight:800;padding:14px 22px;border-radius:0 0 12px 0;z-index:200}
+.skip:focus{left:0}
+a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:6px}
 
-/* demo banner */
-.demo-note{position:sticky;top:0;z-index:60;background:var(--ink);color:#EDEBE4;font-size:.82rem;text-align:center;padding:8px 40px;position:relative}
+/* ============ BUTTONS ============ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:800;font-family:var(--display);
+  border-radius:999px;padding:16px 30px;min-height:54px;text-decoration:none;font-size:1.05rem;cursor:pointer;border:none;
+  position:relative;overflow:hidden;transition:transform .2s ease, box-shadow .2s ease, background .2s ease}
+.btn svg{flex:none}
+.btn-call{background:linear-gradient(180deg,#F97316,var(--orange-deep));color:#fff;box-shadow:var(--glow-orange)}
+.btn-call::after{content:"";position:absolute;top:-10%;left:-70%;width:45%;height:120%;transform:skewX(-22deg);
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);opacity:0;pointer-events:none}
+.btn-call:hover::after,.btn-call:focus-visible::after{opacity:1;animation:sweep .6s ease-out}
+.btn-call:hover{transform:translateY(-3px);box-shadow:0 16px 42px rgba(234,88,12,.5)}
+@keyframes sweep{0%{left:-70%;opacity:1}55%{opacity:1}100%{left:135%;opacity:0}}
+.btn-ghost{background:rgba(255,255,255,.04);color:#fff;border:2px solid rgba(255,255,255,.55)}
+.btn-ghost:hover{border-color:#fff;transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.28)}
+
+/* ============ SCROLL PROGRESS ============ */
+#progress{position:fixed;top:0;left:0;height:4px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--green),var(--orange));box-shadow:0 1px 8px rgba(234,88,12,.5)}
+
+/* ============ DEMO BANNER ============ */
+.demo-note{position:relative;z-index:60;background:var(--ink);color:#EDEBE4;font-size:.82rem;text-align:center;padding:8px 40px}
 .demo-note button{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:#EDEBE4;font-size:1rem;cursor:pointer;padding:6px 10px}
 
-/* header */
-header{position:sticky;top:0;z-index:50;background:rgba(250,249,246,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:'Archivo',sans-serif;font-weight:800;font-size:1.05rem;color:var(--green-deep)}
-.logo svg{flex:none}
-.nav-call{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-family:'Archivo',sans-serif;
-  color:#fff;background:var(--green);padding:11px 18px;border-radius:999px;font-size:.95rem;transition:background .18s}
-.nav-call:hover{background:var(--green-deep)}
+/* ============ HEADER ============ */
+header{position:sticky;top:0;z-index:90;background:rgba(250,249,246,.9);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);transition:box-shadow .3s, background .3s}
+header.scrolled{box-shadow:0 10px 30px rgba(28,36,32,.12);background:rgba(250,249,246,.97)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-top:15px;padding-bottom:15px;transition:padding .3s}
+header.scrolled .nav{padding-top:8px;padding-bottom:8px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:900;font-size:1.05rem;color:var(--green-deep)}
+.logo .mark{width:38px;height:38px;border-radius:11px;background:var(--green-soft);border:1px solid var(--line);
+  display:grid;place-items:center;color:var(--green);flex:none;transition:transform .25s}
+.logo:hover .mark{transform:rotate(-8deg) scale(1.06)}
+.nav-links{display:none;gap:24px;font-weight:600;font-size:.92rem;color:var(--muted)}
+.nav-links a{text-decoration:none;padding:10px 2px;position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:4px;height:2px;background:var(--orange);transition:right .25s ease}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{right:0}
+@media(min-width:900px){.nav-links{display:flex}}
+.nav-call{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-family:var(--display);
+  color:#fff;background:var(--green);padding:11px 18px;min-height:44px;border-radius:999px;font-size:.95rem;
+  transition:background .2s, transform .2s, box-shadow .2s}
+.nav-call:hover{background:var(--green-deep);transform:translateY(-2px);box-shadow:0 8px 22px rgba(23,48,31,.3)}
 
-/* hero */
-.hero{background:linear-gradient(160deg,var(--green-deep) 0%,var(--green) 55%,#2E5A40 100%);color:#fff;overflow:hidden;position:relative}
-.hero::after{content:"";position:absolute;inset:0;background:
-  radial-gradient(600px 300px at 85% 10%,rgba(255,255,255,.08),transparent 60%),
-  radial-gradient(500px 260px at 10% 90%,rgba(234,88,12,.15),transparent 60%);pointer-events:none}
-.hero-in{position:relative;z-index:1;display:grid;gap:40px;padding:64px 0 72px;align-items:center}
-.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:900}
-.hero p.lead{margin-top:16px;font-size:1.15rem;color:#DCE5DD;max-width:34rem}
-.hero .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
-.trust{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;margin-top:30px;color:#DCE5DD;font-size:.95rem}
-.trust .stars{color:#FFB020;letter-spacing:2px;font-size:1.05rem}
+/* ============ HERO ============ */
+.hero{position:relative;overflow:hidden;color:#fff;
+  background:linear-gradient(160deg,var(--green-deep) 0%,var(--green) 40%,var(--green-mid) 70%,#1C3A28 100%);
+  background-size:220% 220%;animation:heroShift 22s ease-in-out infinite alternate}
+@keyframes heroShift{from{background-position:0% 0%}to{background-position:100% 100%}}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:
+  radial-gradient(620px 320px at 85% 8%,rgba(255,255,255,.09),transparent 60%),
+  radial-gradient(520px 280px at 8% 92%,rgba(234,88,12,.16),transparent 60%)}
+.leaves{position:absolute;inset:0;pointer-events:none;z-index:1}
+.leaf{position:absolute;width:10px;height:10px;border-radius:60% 0 60% 0;background:rgba(255,255,255,.2);
+  left:12%;top:24%;animation:leafFloat 9s ease-in-out infinite}
+.leaf:nth-child(2){left:68%;top:16%;width:8px;height:8px;background:rgba(234,88,12,.45);animation-duration:11s;animation-delay:1.4s}
+.leaf:nth-child(3){left:44%;top:64%;width:7px;height:7px;background:rgba(255,255,255,.14);animation-duration:13s;animation-delay:2.8s}
+.leaf:nth-child(4){left:88%;top:48%;width:9px;height:9px;background:rgba(255,255,255,.17);animation-duration:10s;animation-delay:.7s}
+@keyframes leafFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-28px) rotate(50deg)}}
+.hero-in{position:relative;z-index:2;display:grid;gap:44px;padding:70px 0 150px;align-items:center}
+@media(min-width:880px){.hero-in{grid-template-columns:1.12fr .88fr}}
+.hero-pill{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.28);
+  color:#DCE5DD;border-radius:999px;padding:8px 17px;font-weight:600;font-size:.85rem;letter-spacing:.02em;
+  opacity:0;animation:rise .7s .05s forwards}
+.hero-pill .dot{width:9px;height:9px;border-radius:50%;background:var(--orange);box-shadow:0 0 10px var(--orange);animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.55}}
+.hero h1{margin-top:20px;font-size:clamp(2.4rem,7.2vw,4.3rem);font-weight:900;text-shadow:0 6px 34px rgba(10,22,14,.55)}
+.hero h1 .line{display:block;opacity:0;transform:translateY(32px);animation:rise .75s cubic-bezier(.2,.7,.2,1) forwards}
+.hero h1 .line:nth-child(2){animation-delay:.13s}
+.hero h1 .line:nth-child(3){animation-delay:.26s}
+.hero h1 .hot{background:linear-gradient(92deg,#F97316 10%,#FDBA74 55%,#FFE0C2 95%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+@keyframes rise{to{opacity:1;transform:none}}
+.hero p.lead{margin-top:18px;font-size:1.14rem;color:#DCE5DD;max-width:34rem;opacity:0;animation:rise .75s .4s forwards}
+.hero .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;opacity:0;animation:rise .75s .54s forwards}
+.trust{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;margin-top:28px;color:#DCE5DD;font-size:.95rem;opacity:0;animation:rise .75s .68s forwards}
+.trust .stars{color:#FFB020;letter-spacing:2px;font-size:1.05rem;text-shadow:0 0 14px rgba(255,176,32,.55)}
 .trust strong{color:#fff}
-.hero-media{position:relative}
-.hero-media .photo{border-radius:var(--radius);box-shadow:0 24px 60px rgba(0,0,0,.35);transform:rotate(-1.5deg);border:5px solid rgba(255,255,255,.12)}
-.hero-media .tag{position:absolute;left:18px;bottom:-16px;background:#fff;color:var(--ink);border-radius:12px;box-shadow:var(--shadow);
-  padding:12px 16px;display:flex;align-items:center;gap:10px;font-weight:600;font-size:.9rem;transform:rotate(1deg)}
+.hero-media{position:relative;z-index:2;opacity:0;animation:rise .85s .45s forwards}
+.photo-wrap{position:relative;transform:rotate(-1.5deg);animation:bob 5.5s ease-in-out 1.4s infinite alternate;overflow:hidden;border-radius:var(--radius)}
+@keyframes bob{from{transform:rotate(-1.5deg) translateY(0)}to{transform:rotate(-1.5deg) translateY(-9px)}}
+.photo-wrap .photo{border-radius:var(--radius);box-shadow:0 24px 60px rgba(0,0,0,.35);border:5px solid rgba(255,255,255,.14);width:100%}
+.photo-wrap::after{content:"";position:absolute;top:-20%;left:-80%;width:45%;height:140%;transform:skewX(-20deg);pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.38),transparent);
+  animation:shineAuto 7s ease-in-out 2.2s infinite}
+@keyframes shineAuto{0%{left:-80%;opacity:0}3%{opacity:1}13%{left:130%;opacity:0}100%{left:130%;opacity:0}}
+.hero-media .tag{position:absolute;left:16px;bottom:-16px;background:#fff;color:var(--ink);border-radius:12px;box-shadow:var(--shadow-lg);
+  padding:12px 16px;display:flex;align-items:center;gap:10px;font-weight:600;font-size:.88rem;transform:rotate(1deg);z-index:3;
+  opacity:0;animation:rise .7s 1s forwards}
 .hero-media .tag .stars{color:#FFB020;letter-spacing:1px}
-@media(min-width:880px){.hero-in{grid-template-columns:1.15fr .85fr}}
+.treeline{position:absolute;left:0;right:0;bottom:-2px;pointer-events:none;z-index:1;will-change:transform}
+.treeline svg{display:block;width:100%;height:auto}
 
-/* sections */
-section{padding:72px 0}
-.kicker{font-family:'Archivo',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:.8rem;color:var(--orange-deep)}
-h2{font-size:clamp(1.7rem,4vw,2.4rem);font-weight:800;margin-top:10px}
-.sub{color:var(--muted);margin-top:12px;max-width:38rem}
+/* ============ MARQUEE ============ */
+.marq-tilt{overflow:hidden;position:relative;z-index:3;margin-top:-34px;padding:22px 0}
+.marq{background:linear-gradient(90deg,#F97316,var(--orange-deep));transform:rotate(-1.2deg);width:112%;margin-left:-6%;
+  box-shadow:0 18px 44px rgba(28,36,32,.22);border-top:2px solid rgba(255,255,255,.35);border-bottom:2px solid rgba(0,0,0,.18)}
+.marq-track{display:flex;width:max-content;animation:marq 28s linear infinite}
+.marq ul{display:flex;list-style:none;padding:13px 0}
+.marq li{font-family:var(--display);text-transform:uppercase;font-weight:800;font-size:1.05rem;letter-spacing:.06em;color:#FFF4EA;
+  white-space:nowrap;display:flex;align-items:center}
+.marq li::after{content:"🌲";margin:0 22px;font-size:.9rem}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* services */
-.grid-services{display:grid;gap:18px;margin-top:38px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
-.svc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:transform .2s ease, box-shadow .2s ease}
-.svc:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.svc .ico{width:52px;height:52px;border-radius:13px;background:var(--green-soft);display:flex;align-items:center;justify-content:center;color:var(--green);margin-bottom:16px}
-.svc h3{font-size:1.15rem;font-weight:700}
+/* ============ STATS ============ */
+.stats{padding:56px 0 6px}
+.stats .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;text-align:center}
+.stat{padding:26px 12px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,#fff,rgba(234,240,235,.55));
+  transition:transform .25s, box-shadow .25s, border-color .25s}
+.stat:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:var(--line-strong)}
+.stat .num{font-family:var(--display);font-weight:900;font-size:clamp(2.2rem,4.5vw,3rem);color:var(--green-deep);line-height:1}
+.stat .num .u{color:var(--orange)}
+.stat .lbl{font-size:.87rem;color:var(--muted);margin-top:8px}
+
+/* ============ SECTIONS ============ */
+section{padding:88px 0;position:relative;overflow:hidden}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;text-transform:uppercase;
+  letter-spacing:.16em;font-size:.78rem;color:var(--orange-deep)}
+.kicker::before{content:"";width:32px;height:2px;background:linear-gradient(90deg,var(--orange),transparent)}
+h2{font-size:clamp(1.85rem,4.6vw,2.8rem);font-weight:900;margin-top:12px;color:var(--green-deep)}
+h2 .hot{color:var(--orange)}
+.sub{color:var(--muted);margin-top:14px;max-width:40rem;font-size:1.02rem}
+.ghost-word{position:absolute;top:22px;right:-6px;font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:1;
+  font-size:clamp(4rem,13vw,9.5rem);color:transparent;-webkit-text-stroke:1px rgba(35,72,51,.09);pointer-events:none;user-select:none}
+
+/* ============ SERVICES ============ */
+.grid-services{display:grid;gap:18px;margin-top:42px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;position:relative;overflow:hidden;
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s}
+.svc:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);border-color:rgba(35,72,51,.32)}
+.svc::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--green),var(--orange));
+  transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
+.svc:hover::before{transform:scaleX(1)}
+.svc::after{content:"";position:absolute;top:-20%;left:-80%;width:40%;height:140%;transform:skewX(-20deg);pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(35,72,51,.07),transparent);opacity:0}
+.svc:hover::after{opacity:1;animation:sweep .7s ease-out}
+.svc .ico{width:54px;height:54px;border-radius:14px;background:var(--green-soft);border:1px solid rgba(35,72,51,.14);
+  display:grid;place-items:center;color:var(--green);margin-bottom:16px;transition:transform .25s, background .25s, color .25s}
+.svc:hover .ico{transform:rotate(-7deg) scale(1.1);background:var(--green);color:#fff}
+.svc h3{font-size:1.15rem;font-weight:800}
 .svc p{color:var(--muted);font-size:.95rem;margin-top:8px}
 
-/* steps */
+/* ============ STEPS ============ */
 .steps{background:var(--green-soft)}
-.grid-steps{display:grid;gap:18px;margin-top:38px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-.step{background:var(--card);border-radius:var(--radius);padding:28px;border:1px solid var(--line)}
-.step .num{font-family:'Archivo',sans-serif;font-weight:900;font-size:2.2rem;color:var(--orange)}
-.step h3{margin-top:10px;font-size:1.1rem}
+.grid-steps{display:grid;gap:18px;margin-top:42px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.step{background:var(--card);border-radius:var(--radius);padding:28px 24px;border:1px solid var(--line);position:relative;overflow:hidden;
+  transition:transform .25s, box-shadow .25s, border-color .25s}
+.step:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);border-color:rgba(234,88,12,.4)}
+.step .num{font-family:var(--display);font-weight:900;font-size:3.1rem;line-height:1;color:transparent;-webkit-text-stroke:1.6px var(--orange)}
+.step h3{margin-top:12px;font-size:1.1rem;font-weight:800}
 .step p{color:var(--muted);font-size:.95rem;margin-top:8px}
 
-/* reviews */
-.grid-reviews{display:grid;gap:18px;margin-top:38px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
-.rev{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;gap:14px}
+/* ============ REVIEWS CAROUSEL ============ */
+.carousel{position:relative;margin-top:42px;max-width:760px}
+.rev{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--orange);border-radius:var(--radius);
+  padding:32px 28px;display:none;flex-direction:column;gap:15px;box-shadow:var(--shadow)}
+.rev.active{display:flex;animation:fadeSlide .5s ease}
+@keyframes fadeSlide{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
 .rev .stars{color:#FFB020;letter-spacing:2px}
-.rev p{font-size:.97rem}
+.rev p{font-size:1.06rem}
 .rev .who{font-weight:700;font-size:.9rem;color:var(--green-deep)}
-.rev .who span{display:block;font-weight:500;color:var(--muted);font-size:.82rem}
-.all-reviews{margin-top:26px}
-.all-reviews a{color:var(--orange-deep);font-weight:600}
+.rev .who span{display:block;font-weight:500;color:var(--faint);font-size:.82rem;margin-top:2px}
+.dots{display:flex;gap:2px;margin-top:8px}
+.dots button{width:44px;height:44px;border:none;background:none;cursor:pointer;display:grid;place-items:center;padding:0}
+.dots button .d{width:11px;height:11px;border-radius:50%;background:var(--line-strong);transition:background .2s, transform .2s, box-shadow .2s}
+.dots button.on .d{background:var(--orange);transform:scale(1.35);box-shadow:0 0 10px rgba(234,88,12,.7)}
+.all-reviews{margin-top:24px}
+.all-reviews a{color:var(--orange-deep);font-weight:700}
 
-/* area */
-.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-.chip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:9px 18px;font-size:.92rem;font-weight:600;color:var(--green-deep)}
+/* ============ AREA ============ */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:10px 20px;font-size:.92rem;font-weight:600;
+  color:var(--green-deep);transition:transform .2s, background .2s, color .2s, border-color .2s;cursor:default}
+.chip:hover{transform:translateY(-3px);background:var(--green);border-color:var(--green);color:#fff}
 
-/* quote form */
-.quote{background:var(--green-deep);color:#fff}
+/* ============ FAQ ============ */
+.faq-sec{background:var(--green-soft)}
+.qa{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-top:14px;overflow:hidden;transition:border-color .25s, box-shadow .25s}
+.qa.open{border-color:rgba(234,88,12,.45);box-shadow:var(--shadow)}
+.qa .q{width:100%;text-align:left;background:none;border:none;font:inherit;color:var(--ink);font-weight:700;
+  padding:20px 22px;min-height:44px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:1rem}
+.qa .chev{transition:transform .3s;color:var(--orange);flex:none}
+.qa.open .chev{transform:rotate(180deg)}
+.qa .a{max-height:0;overflow:hidden;transition:max-height .4s ease;color:var(--muted);font-size:.95rem}
+.qa.open .a{max-height:280px}
+.qa .a p{padding:0 22px 20px}
+
+/* ============ QUOTE FORM ============ */
+.quote{background:linear-gradient(165deg,var(--green-deep),#122A1A);color:#fff}
+.quote::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(560px 300px at 88% 12%,rgba(234,88,12,.14),transparent 60%)}
+.quote .wrap{position:relative;z-index:1}
+.quote .kicker{color:#F5A56F}
+.quote .kicker::before{background:linear-gradient(90deg,#F5A56F,transparent)}
+.quote h2{color:#fff}
 .quote .sub{color:#C9D4CB}
-.form{margin-top:34px;display:grid;gap:16px;max-width:560px}
+.form{margin-top:32px;display:grid;gap:16px;max-width:560px}
 .form label{font-weight:600;font-size:.92rem;display:block;margin-bottom:6px}
 .form input,.form textarea{width:100%;border:1.5px solid rgba(255,255,255,.25);background:rgba(255,255,255,.07);color:#fff;
-  border-radius:10px;padding:14px;font:inherit;font-size:1rem}
+  border-radius:12px;padding:14px;font:inherit;font-size:1rem;transition:border-color .2s, background .2s}
 .form input::placeholder,.form textarea::placeholder{color:#9FAFA2}
-.form input:focus,.form textarea:focus{outline:3px solid var(--orange);outline-offset:2px;border-color:transparent}
+.form input:hover,.form textarea:hover{border-color:rgba(255,255,255,.45)}
+.form input:focus,.form textarea:focus{outline:3px solid var(--orange);outline-offset:2px;border-color:transparent;background:rgba(255,255,255,.1)}
 .form-note{font-size:.85rem;color:#C9D4CB}
 .form .btn-call{justify-self:start}
 
-/* footer */
-footer{background:var(--ink);color:#B9BFB9;padding:44px 0;font-size:.9rem}
+/* ============ FOOTER ============ */
+footer{background:var(--ink);color:#B9BFB9;padding:46px 0;font-size:.9rem}
 .foot{display:flex;flex-wrap:wrap;gap:18px 40px;justify-content:space-between;align-items:center}
-.foot .fname{font-family:'Archivo',sans-serif;font-weight:800;color:#fff;font-size:1.05rem}
+.foot .fname{font-family:var(--display);font-weight:800;color:#fff;font-size:1.05rem}
 .foot a{color:#fff;font-weight:600;text-decoration:none}
+.foot a:hover{color:#F5A56F}
 .disclaimer{margin-top:22px;padding-top:18px;border-top:1px solid #333B36;font-size:.8rem;color:#8A938C}
 
-/* reveal animation */
-.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+/* ============ REVEALS ============ */
+.js .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
 .js .reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .js .reveal{opacity:1;transform:none;transition:none}
-  .btn,.svc{transition:none}
-}
-/* mobile call bar */
+.js .stagger>*{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.js .stagger.in>*{opacity:1;transform:none}
+.js .stagger.in>*:nth-child(2){transition-delay:.1s}
+.js .stagger.in>*:nth-child(3){transition-delay:.2s}
+.js .stagger.in>*:nth-child(4){transition-delay:.3s}
+.js .stagger.in>*:nth-child(5){transition-delay:.38s}
+.js .stagger.in>*:nth-child(6){transition-delay:.46s}
+.js .stagger.in>*:nth-child(7){transition-delay:.52s}
+.js .stagger.in>*:nth-child(8){transition-delay:.58s}
+
+/* ============ MOBILE CALL BAR ============ */
 .callbar{display:none}
 @media(max-width:720px){
-  .callbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--orange);justify-content:center}
-  .callbar a{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-family:'Archivo',sans-serif;
+  .callbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--orange);justify-content:center;
+    box-shadow:0 -8px 26px rgba(28,36,32,.28)}
+  .callbar a{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-family:var(--display);
     font-weight:800;font-size:1.1rem;padding:16px;width:100%;justify-content:center}
   body{padding-bottom:64px}
+  .hero-in{padding:56px 0 130px}
+}
+
+/* ============ REDUCED MOTION ============ */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .js .reveal,.js .stagger>*{opacity:1;transform:none}
+  .hero-pill,.hero h1 .line,.hero p.lead,.hero .cta-row,.trust,.hero-media,.hero-media .tag{opacity:1;transform:none}
+  .marq-track{animation:none !important}
+  .treeline{transform:none !important}
 }
 </style>
+<noscript><style>
+.reveal,.stagger>*{opacity:1;transform:none}
+.qa .a{max-height:none}
+.hero-pill,.hero h1 .line,.hero p.lead,.hero .cta-row,.trust,.hero-media,.hero-media .tag{opacity:1;transform:none}
+.rev{display:flex}
+</style></noscript>
 <script>document.documentElement.className+=" js"</script>
 </head>
 <body>
+<a class="skip" href="#top">Skip to content</a>
+<div id="progress" aria-hidden="true"></div>
 
-<div class="demo-note" id="demoNote">
-  Demo preview built for Boise River Junk &amp; Tree — not their official site.
-  <button aria-label="Dismiss notice" onclick="document.getElementById('demoNote').style.display='none'">&times;</button>
-</div>
-
-<header>
+<header id="hdr">
   <div class="wrap nav">
     <a class="logo" href="#top" aria-label="Boise River Junk and Tree — home">
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22v-7"/><path d="M9 8l3-6 3 6h-2l3 5h-3l3 5H8l3-5H8l3-5H9z" fill="currentColor" stroke="none"/></svg>
+      <span class="mark" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-7"/><path d="M9 8l3-6 3 6h-2l3 5h-3l3 5H8l3-5H8l3-5H9z" fill="currentColor" stroke="none"/></svg>
+      </span>
       Boise River Junk &amp; Tree
     </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#services">Services</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+      <a href="#quote">Free quote</a>
+    </nav>
     <a class="nav-call" href="tel:+12085633103">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       (208) 563-3103
@@ -161,9 +318,15 @@ footer{background:var(--ink);color:#B9BFB9;padding:44px 0;font-size:.9rem}
 
 <main id="top">
 <div class="hero">
+  <div class="leaves" aria-hidden="true"><span class="leaf"></span><span class="leaf"></span><span class="leaf"></span><span class="leaf"></span></div>
   <div class="wrap hero-in">
     <div>
-      <h1>Junk gone. Trees down.<br>Yard spotless.</h1>
+      <span class="hero-pill"><span class="dot" aria-hidden="true"></span> Serving Boise &amp; the Treasure Valley</span>
+      <h1>
+        <span class="line">Junk gone.</span>
+        <span class="line">Trees down.</span>
+        <span class="line hot">Yard spotless.</span>
+      </h1>
       <p class="lead">Boise's highest-rated junk removal &amp; tree service. Fast free quotes, on-time crews, and we always leave your place cleaner than we found it.</p>
       <div class="cta-row">
         <a class="btn btn-call" href="tel:+12085633103">
@@ -178,36 +341,67 @@ footer{background:var(--ink);color:#B9BFB9;padding:44px 0;font-size:.9rem}
         <span>Serving the Treasure Valley</span>
       </div>
     </div>
-    <div class="hero-media reveal">
-      <img class="photo" src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkzIOOJPu18rAI6meRlyTrBe7UA6391rEBIEgkpiYPS_L6AvlqerztsVafY92aaJ8UMBZLNqwsM4JUpHAnwR0rHTocyTKiXz78Lcqw_SAkncj_rFoTf-Kg-kllhLunrl5OuzSOy=w426-h240-k-no" alt="Before and after: yard cleared by Boise River Junk and Tree" width="426" height="240" onerror="this.parentElement.style.display='none'">
+    <div class="hero-media">
+      <div class="photo-wrap">
+        <img class="photo" src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkzIOOJPu18rAI6meRlyTrBe7UA6391rEBIEgkpiYPS_L6AvlqerztsVafY92aaJ8UMBZLNqwsM4JUpHAnwR0rHTocyTKiXz78Lcqw_SAkncj_rFoTf-Kg-kllhLunrl5OuzSOy=w426-h240-k-no" alt="Before and after: yard cleared by Boise River Junk and Tree" width="426" height="240" onerror="this.closest('.hero-media').style.display='none'">
+      </div>
       <div class="tag"><span class="stars" aria-hidden="true">★★★★★</span> "Left my place better than when they started"</div>
+    </div>
+  </div>
+  <div class="treeline" data-speed="0.06" aria-hidden="true">
+    <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+      <path fill="#1E3D2B" d="M0,200 L0,120 Q60,72 130,110 Q200,60 280,105 Q360,55 440,100 Q520,66 600,105 Q680,50 760,100 Q840,62 920,105 Q1000,55 1080,100 Q1160,66 1240,105 Q1320,55 1400,100 L1440,110 L1440,200 Z"/>
+      <path fill="#0F2417" d="M0,200 L0,150 L30,150 L55,85 L80,150 L95,150 L120,60 L145,150 L170,150 L190,100 L210,150 L245,150 L270,75 L295,150 L320,150 L345,110 L370,150 L400,150 L425,70 L450,150 L470,150 L495,105 L520,150 L560,150 L585,80 L610,150 L630,150 L655,115 L680,150 L715,150 L740,65 L765,150 L785,150 L810,100 L835,150 L870,150 L895,85 L920,150 L940,150 L965,110 L990,150 L1025,150 L1050,70 L1075,150 L1095,150 L1120,105 L1145,150 L1180,150 L1205,80 L1230,150 L1250,150 L1275,115 L1300,150 L1335,150 L1360,90 L1385,150 L1410,150 L1440,120 L1440,200 Z"/>
+    </svg>
+  </div>
+</div>
+
+<div class="marq-tilt" aria-hidden="true">
+  <div class="marq">
+    <div class="marq-track">
+      <ul>
+        <li>Junk removal</li><li>Tree removal &amp; trimming</li><li>Yard cleanup</li><li>Hauling &amp; debris</li><li>Free quotes</li><li>Treasure Valley</li>
+      </ul>
+      <ul>
+        <li>Junk removal</li><li>Tree removal &amp; trimming</li><li>Yard cleanup</li><li>Hauling &amp; debris</li><li>Free quotes</li><li>Treasure Valley</li>
+      </ul>
     </div>
   </div>
 </div>
 
+<div class="stats" aria-label="By the numbers">
+  <div class="wrap stagger">
+    <div class="stat"><div class="num"><span class="cnt" data-count="4.9" data-dec="1">4.9</span><span class="u">★</span></div><div class="lbl">Google rating</div></div>
+    <div class="stat"><div class="num"><span class="cnt" data-count="107">107</span></div><div class="lbl">Google reviews</div></div>
+    <div class="stat"><div class="num"><span class="cnt" data-count="8">8</span></div><div class="lbl">Treasure Valley cities served</div></div>
+    <div class="stat"><div class="num"><span class="cnt" data-count="1">1</span></div><div class="lbl">Call clears it all</div></div>
+  </div>
+</div>
+
 <section id="services">
+  <span class="ghost-word" aria-hidden="true">HAULED</span>
   <div class="wrap">
     <span class="kicker">What we do</span>
-    <h2>One call clears it all</h2>
-    <p class="sub">From a single couch to a full property cleanout — from one stubborn stump to a 30-foot tree. One crew, one trip, done.</p>
-    <div class="grid-services">
-      <div class="svc reveal">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2h4l1 3h5v2H4V5h5z"/><path d="M6 7l1 13a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-13"/></svg></div>
+    <h2 class="reveal">One call <span class="hot">clears it all</span></h2>
+    <p class="sub reveal">From a single couch to a full property cleanout — from one stubborn stump to a 30-foot tree. One crew, one trip, done.</p>
+    <div class="grid-services stagger">
+      <div class="svc">
+        <div class="ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4l1 3h5v2H4V5h5z"/><path d="M6 7l1 13a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-13"/></svg></div>
         <h3>Junk Removal</h3>
         <p>Furniture, appliances, garage piles, storage units, full cleanouts. We load it, haul it, and dispose of it responsibly.</p>
       </div>
-      <div class="svc reveal">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22v-7"/><path d="M12 2l4 6h-3l4 5h-3l4 5H6l4-5H7l4-5H8z"/></svg></div>
+      <div class="svc">
+        <div class="ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-7"/><path d="M12 2l4 6h-3l4 5h-3l4 5H6l4-5H7l4-5H8z"/></svg></div>
         <h3>Tree Removal &amp; Trimming</h3>
         <p>Safe removal of trees big and small — full safety gear, careful takedowns, and every branch cleaned up after.</p>
       </div>
-      <div class="svc reveal">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a9 9 0 0 0-9 9c0 4 3 8 9 11 6-3 9-7 9-11a9 9 0 0 0-9-9z"/><path d="M12 8v6"/><path d="M9 11h6"/></svg></div>
+      <div class="svc">
+        <div class="ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a9 9 0 0 0-9 9c0 4 3 8 9 11 6-3 9-7 9-11a9 9 0 0 0-9-9z"/><path d="M12 8v6"/><path d="M9 11h6"/></svg></div>
         <h3>Yard Cleanup</h3>
         <p>Overgrown lots, storm debris, green waste. We bring the muscle and leave the yard spotless.</p>
       </div>
-      <div class="svc reveal">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+      <div class="svc">
+        <div class="ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
         <h3>Hauling &amp; Debris</h3>
         <p>Construction debris, dirt, branches, whatever needs to go — loaded fast and hauled the same day.</p>
       </div>
@@ -218,45 +412,51 @@ footer{background:var(--ink);color:#B9BFB9;padding:44px 0;font-size:.9rem}
 <section class="steps">
   <div class="wrap">
     <span class="kicker">How it works</span>
-    <h2>Three steps to a clean property</h2>
-    <div class="grid-steps">
-      <div class="step reveal"><div class="num">1</div><h3>Call or text for a free quote</h3><p>Tell us what needs to go. Straightforward, competitive pricing — no surprises.</p></div>
-      <div class="step reveal"><div class="num">2</div><h3>We show up on time</h3><p>Our crew arrives in the window that works for you, with all the gear and safety equipment.</p></div>
-      <div class="step reveal"><div class="num">3</div><h3>Gone — and spotless</h3><p>Junk hauled, tree down, mess cleaned up. Most jobs done in hours, not days.</p></div>
+    <h2 class="reveal">Three steps to a <span class="hot">clean property</span></h2>
+    <div class="grid-steps stagger">
+      <div class="step"><div class="num" aria-hidden="true">01</div><h3>Call or text for a free quote</h3><p>Tell us what needs to go. Straightforward, competitive pricing — no surprises.</p></div>
+      <div class="step"><div class="num" aria-hidden="true">02</div><h3>We show up on time</h3><p>Our crew arrives in the window that works for you, with all the gear and safety equipment.</p></div>
+      <div class="step"><div class="num" aria-hidden="true">03</div><h3>Gone — and spotless</h3><p>Junk hauled, tree down, mess cleaned up. Most jobs done in hours, not days.</p></div>
     </div>
   </div>
 </section>
 
 <section id="reviews">
+  <span class="ghost-word" aria-hidden="true">4.9★</span>
   <div class="wrap">
     <span class="kicker">Real Google reviews</span>
-    <h2>4.9 stars across 107 reviews</h2>
-    <div class="grid-reviews">
-      <div class="rev reveal">
+    <h2 class="reveal">4.9 stars across <span class="hot">107 reviews</span></h2>
+    <div class="carousel reveal" id="carousel" aria-label="Customer reviews">
+      <div class="rev active">
         <span class="stars" aria-hidden="true">★★★★★</span>
         <p>"I highly recommend this company for tree removal. They were very professional. They cleaned up all the branches and even left my place better than when they started."</p>
         <div class="who">Craig B. <span>Google review</span></div>
       </div>
-      <div class="rev reveal">
+      <div class="rev">
         <span class="stars" aria-hidden="true">★★★★★</span>
         <p>"They showed up in the time frame that worked for me to cut down a 30-foot tree. Staff was very nice and had all the safety gear needed. A couple of hours and the tree was gone and the mess cleaned up. The price was very competitive."</p>
         <div class="who">Daniel W. <span>Google review</span></div>
       </div>
-      <div class="rev reveal">
+      <div class="rev">
         <span class="stars" aria-hidden="true">★★★★★</span>
         <p>"Mel was amazing! From our first conversation until finish, extremely positive, thorough, and professional. I was shocked how quick and efficient his crew was. Our yard was spotless clean after completion."</p>
         <div class="who">Brad H. <span>Google review</span></div>
       </div>
+      <div class="dots" role="group" aria-label="Choose review">
+        <button class="on" aria-label="Show review 1" aria-pressed="true"><span class="d" aria-hidden="true"></span></button>
+        <button aria-label="Show review 2" aria-pressed="false"><span class="d" aria-hidden="true"></span></button>
+        <button aria-label="Show review 3" aria-pressed="false"><span class="d" aria-hidden="true"></span></button>
+      </div>
     </div>
-    <p class="all-reviews"><a href="https://www.google.com/maps/search/Boise+River+Junk+%26+Tree+Boise+ID" rel="noopener">Read all 107 reviews on Google Maps →</a></p>
+    <p class="all-reviews reveal"><a href="https://www.google.com/maps/search/Boise+River+Junk+%26+Tree+Boise+ID" rel="noopener">Read all 107 reviews on Google Maps →</a></p>
   </div>
 </section>
 
-<section id="area">
+<section id="area" style="padding-top:0">
   <div class="wrap">
     <span class="kicker">Service area</span>
-    <h2>Proudly serving the Treasure Valley</h2>
-    <div class="chips">
+    <h2 class="reveal">Proudly serving the <span class="hot">Treasure Valley</span></h2>
+    <div class="chips stagger">
       <span class="chip">Boise</span><span class="chip">Meridian</span><span class="chip">Eagle</span>
       <span class="chip">Nampa</span><span class="chip">Garden City</span><span class="chip">Kuna</span>
       <span class="chip">Star</span><span class="chip">Caldwell</span>
@@ -264,17 +464,42 @@ footer{background:var(--ink);color:#B9BFB9;padding:44px 0;font-size:.9rem}
   </div>
 </section>
 
+<section class="faq-sec" id="faq">
+  <div class="wrap">
+    <span class="kicker">Good to know</span>
+    <h2 class="reveal">Questions, <span class="hot">straight answers</span></h2>
+    <div class="reveal" style="max-width:760px">
+      <div class="qa open">
+        <button class="q" aria-expanded="true" onclick="toggleQA(this)">Do you clean up when the job's done?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>It's the thing our reviews mention most. "They cleaned up all the branches and even left my place better than when they started" — that's the standard on every job: junk hauled, tree down, mess cleaned up.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">How long does a tree removal take?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>Most jobs are done in hours, not days. One reviewer's 30-foot tree: the crew arrived in the window that worked for him, and a couple of hours later the tree was gone and the mess cleaned up.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">What kinds of junk do you take?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>Furniture, appliances, garage piles, storage units, full property cleanouts, storm debris, green waste and construction debris. We load it, haul it, and dispose of it responsibly.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">How do quotes work?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>Call or text <a href="tel:+12085633103" style="font-weight:700;color:var(--orange-deep)">(208) 563-3103</a> and tell us what needs to go. Quotes are free, and pricing is straightforward and competitive — no surprises.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="quote" id="quote">
   <div class="wrap">
-    <span class="kicker" style="color:#F5A56F">Free quote</span>
-    <h2>Tell us what needs to go</h2>
-    <p class="sub">Fastest answer: call or text <a href="tel:+12085633103" style="color:#fff;font-weight:700">(208) 563-3103</a>. Or leave your details:</p>
-    <form class="form" onsubmit="event.preventDefault();this.querySelector('.form-note').textContent='This form is activated on your live website — for now, please call (208) 563-3103.';">
+    <span class="kicker">Free quote</span>
+    <h2 class="reveal">Tell us what needs to go</h2>
+    <p class="sub reveal">Fastest answer: call or text <a href="tel:+12085633103" style="color:#fff;font-weight:700">(208) 563-3103</a>. Or leave your details:</p>
+    <form class="form reveal" onsubmit="event.preventDefault();this.querySelector('.form-note').textContent='This form is activated on your live website — for now, please call (208) 563-3103.';">
       <div><label for="fname">Your name</label><input id="fname" name="name" placeholder="Jane Smith" autocomplete="name"></div>
       <div><label for="fphone">Phone number</label><input id="fphone" name="phone" type="tel" placeholder="(208) 555-0100" autocomplete="tel"></div>
       <div><label for="fjob">What do you need gone?</label><textarea id="fjob" name="job" rows="3" placeholder="e.g. Old hot tub in the backyard + a dead maple that needs to come down"></textarea></div>
       <button class="btn btn-call" type="submit">Request my free quote</button>
-      <p class="form-note">Demo preview — the form activates on the live site.</p>
+      <p class="form-note">The contact form activates on the live version — for now, call directly.</p>
     </form>
   </div>
 </section>
@@ -292,8 +517,7 @@ footer{background:var(--ink);color:#B9BFB9;padding:44px 0;font-size:.9rem}
         Serving Boise &amp; the Treasure Valley, Idaho
       </div>
     </div>
-    <p class="disclaimer">This is a demo website preview created for Boise River Junk &amp; Tree and is not their official website.
-    Business details (phone, rating, reviews) are from their public Google Maps listing. Want this site live, or want it removed? Reply to the email that brought you here.</p>
+    <p class="disclaimer">Concept preview for Boise River Junk &amp; Tree · MainStreet Web Studio</p>
   </div>
 </footer>
 
@@ -303,9 +527,105 @@ footer{background:var(--ink);color:#B9BFB9;padding:44px 0;font-size:.9rem}
 </div>
 
 <script>
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-setTimeout(()=>document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.classList.add('in')),2500);
+function toggleQA(btn){
+  var qa=btn.parentElement;
+  var open=qa.classList.toggle('open');
+  btn.setAttribute('aria-expanded',open?'true':'false');
+}
+(function(){
+"use strict";
+var REDUCED=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* scroll progress + header shrink + treeline parallax */
+var bar=document.getElementById('progress');
+var hdr=document.getElementById('hdr');
+var plx=[].slice.call(document.querySelectorAll('[data-speed]'));
+var ticking=false;
+function onScroll(){
+  if(ticking)return;
+  ticking=true;
+  requestAnimationFrame(function(){
+    var y=window.scrollY||document.documentElement.scrollTop||0;
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    if(bar)bar.style.width=(h>0?(y/h*100):0)+'%';
+    if(hdr)hdr.classList.toggle('scrolled',y>10);
+    if(!REDUCED){
+      plx.forEach(function(el){
+        el.style.transform='translateY('+(y*parseFloat(el.getAttribute('data-speed'))).toFixed(1)+'px)';
+      });
+    }
+    ticking=false;
+  });
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+
+/* staggered scroll reveals */
+var revealEls=[].slice.call(document.querySelectorAll('.reveal,.stagger'));
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+    });
+  },{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+  revealEls.forEach(function(el){io.observe(el);});
+}else{
+  revealEls.forEach(function(el){el.classList.add('in');});
+}
+setTimeout(function(){
+  revealEls.forEach(function(el){if(!el.classList.contains('in'))el.classList.add('in');});
+},3000);
+
+/* count-up stats */
+var counters=[].slice.call(document.querySelectorAll('.cnt'));
+function runCount(el){
+  var target=parseFloat(el.getAttribute('data-count'));
+  var dec=parseInt(el.getAttribute('data-dec')||'0',10);
+  if(REDUCED||isNaN(target)){el.textContent=isNaN(target)?el.textContent:target.toFixed(dec);return;}
+  var dur=1400,t0=null;
+  function step(ts){
+    if(t0===null)t0=ts;
+    var p=Math.min((ts-t0)/dur,1);
+    var eased=1-Math.pow(1-p,3);
+    var val=target*eased;
+    el.textContent=dec?val.toFixed(dec):String(Math.round(val));
+    if(p<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+if('IntersectionObserver' in window&&counters.length){
+  var cio=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){runCount(e.target);cio.unobserve(e.target);}
+    });
+  },{threshold:.5});
+  counters.forEach(function(el){cio.observe(el);});
+}
+
+/* review carousel: auto-rotate, dots, pause on hover/focus */
+var car=document.getElementById('carousel');
+if(car){
+  var revs=[].slice.call(car.querySelectorAll('.rev'));
+  var dots=[].slice.call(car.querySelectorAll('.dots button'));
+  var idx=0,timer=null;
+  function show(i){
+    idx=(i+revs.length)%revs.length;
+    revs.forEach(function(r,j){r.classList.toggle('active',j===idx);});
+    dots.forEach(function(d,j){
+      d.classList.toggle('on',j===idx);
+      d.setAttribute('aria-pressed',j===idx?'true':'false');
+    });
+  }
+  function stop(){if(timer){clearInterval(timer);timer=null;}}
+  function play(){if(REDUCED)return;stop();timer=setInterval(function(){show(idx+1);},5200);}
+  dots.forEach(function(d,j){d.addEventListener('click',function(){show(j);play();});});
+  car.addEventListener('mouseenter',stop);
+  car.addEventListener('mouseleave',play);
+  car.addEventListener('focusin',stop);
+  car.addEventListener('focusout',play);
+  play();
+}
+})();
 </script>
 </body>
 </html>

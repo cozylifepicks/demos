@@ -16,127 +16,254 @@
   --bg:#F5F7FA; --card:#FFFFFF; --ink:#16222F; --muted:#4E5D6C;
   --line:#DDE3EA; --radius:10px;
   --shadow:0 12px 32px rgba(14,26,40,.12);
+  --shadow-lift:0 22px 48px rgba(14,26,40,.18);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Barlow',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:16.5px}
+body{font-family:'Barlow',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:16.5px;overflow-x:hidden}
 h1,h2,h3,.btn,.nav-call{font-family:'Barlow Condensed',sans-serif}
 h1,h2{text-transform:uppercase;letter-spacing:.015em;line-height:1.05}
 img{max-width:100%;display:block}
 a{color:inherit}
+::selection{background:var(--yellow);color:var(--slate-ink)}
 .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
 .on-light a:focus-visible,.on-light button:focus-visible{outline-color:var(--slate)}
+.skip{position:absolute;left:-9999px;top:0;background:var(--yellow);color:var(--slate-ink);font-weight:700;padding:14px 22px;z-index:200;border-radius:0 0 10px 0}
+.skip:focus{left:0}
 
+/* ============ BUTTONS ============ */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:700;text-transform:uppercase;
   letter-spacing:.05em;border-radius:8px;padding:15px 30px;min-height:54px;text-decoration:none;font-size:1.2rem;
-  border:none;cursor:pointer;transition:transform .18s ease,background .18s ease,box-shadow .18s ease}
+  border:none;cursor:pointer;position:relative;overflow:hidden;
+  transition:transform .2s ease,background .2s ease,box-shadow .2s ease}
 .btn svg{flex:none}
+.btn::after{content:"";position:absolute;top:-12%;left:-75%;width:42%;height:130%;transform:skewX(-22deg);pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);opacity:0}
+.btn:hover::after,.btn:focus-visible::after{opacity:1;animation:shine .6s ease-out}
+@keyframes shine{0%{left:-75%;opacity:1}60%{opacity:1}100%{left:135%;opacity:0}}
 .btn-call{background:var(--yellow);color:var(--slate-ink);box-shadow:0 8px 24px rgba(255,196,0,.30)}
-.btn-call:hover{background:var(--yellow-deep);transform:translateY(-2px)}
+.btn-call:hover{background:var(--yellow-deep);transform:translateY(-3px);box-shadow:0 14px 34px rgba(255,196,0,.45)}
 .btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5)}
-.btn-ghost:hover{border-color:#fff;transform:translateY(-2px)}
+.btn-ghost:hover{border-color:#fff;transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.35)}
 .btn-dark{background:var(--slate-ink);color:var(--yellow);box-shadow:0 8px 24px rgba(14,26,40,.28)}
-.btn-dark:hover{background:var(--slate-deep);transform:translateY(-2px)}
+.btn-dark:hover{background:var(--slate-deep);transform:translateY(-3px);box-shadow:0 14px 34px rgba(14,26,40,.4)}
+.mag-zone{display:inline-block;padding:14px}
+.mag-zone .btn{will-change:transform}
 
-.hazard{height:8px;background:repeating-linear-gradient(-45deg,var(--yellow) 0 14px,var(--slate-ink) 14px 28px)}
+/* ============ HAZARD STRIPES ============ */
+.hazard{height:8px;background:repeating-linear-gradient(-45deg,var(--yellow) 0 14px,var(--slate-ink) 14px 28px);
+  background-size:39.6px 8px;animation:hazardMove 2.6s linear infinite}
+@keyframes hazardMove{from{background-position:0 0}to{background-position:39.6px 0}}
 
-/* demo banner */
+/* ============ SCROLL PROGRESS ============ */
+#progress{position:fixed;top:0;left:0;height:4px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--yellow),var(--yellow-deep));box-shadow:0 0 10px rgba(255,196,0,.65)}
+
+/* ============ DEMO BANNER ============ */
 .demo-note{position:relative;z-index:60;background:var(--yellow);color:var(--slate-ink);font-size:.85rem;font-weight:600;
   text-align:center;padding:9px 46px}
 .demo-note button{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;
   color:var(--slate-ink);font-size:1.15rem;cursor:pointer;padding:8px 14px;line-height:1}
 
-/* header */
-header{position:sticky;top:0;z-index:50;background:rgba(14,26,40,.94);backdrop-filter:blur(10px);
-  border-bottom:1px solid rgba(255,255,255,.08)}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:13px 0;gap:12px}
+/* ============ HEADER ============ */
+header{position:sticky;top:0;z-index:50;background:rgba(14,26,40,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.08);transition:background .3s,box-shadow .3s}
+header.scrolled{background:rgba(11,20,31,.97);box-shadow:0 10px 30px rgba(14,26,40,.45)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px;transition:padding .3s}
+header.scrolled .nav{padding:8px 0}
 .logo{display:flex;align-items:center;gap:11px;text-decoration:none;font-family:'Barlow Condensed',sans-serif;
   font-weight:800;font-size:1.35rem;text-transform:uppercase;letter-spacing:.04em;color:#fff}
 .logo .mark{width:40px;height:40px;border-radius:8px;background:var(--yellow);color:var(--slate-ink);
-  display:flex;align-items:center;justify-content:center;flex:none}
+  display:flex;align-items:center;justify-content:center;flex:none;transition:transform .25s ease}
+.logo:hover .mark{transform:rotate(-6deg) scale(1.06)}
 .logo em{font-style:normal;color:var(--yellow)}
+.nav-links{display:none;gap:24px;font-family:'Barlow',sans-serif;font-weight:600;font-size:.95rem;color:#C6D2DE}
+.nav-links a{text-decoration:none;padding:10px 2px;position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:5px;height:2px;background:var(--yellow);transition:right .25s ease}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{right:0}
+@media(min-width:960px){.nav-links{display:flex}}
 .nav-call{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:700;font-size:1.1rem;
   letter-spacing:.04em;color:var(--slate-ink);background:var(--yellow);padding:11px 20px;min-height:46px;
-  border-radius:8px;transition:background .18s}
-.nav-call:hover{background:var(--yellow-deep)}
+  border-radius:8px;transition:background .18s,transform .18s,box-shadow .18s}
+.nav-call:hover{background:var(--yellow-deep);transform:translateY(-2px);box-shadow:0 8px 22px rgba(255,196,0,.4)}
 
-/* hero */
-.hero{background:linear-gradient(155deg,var(--slate-ink) 0%,var(--slate-deep) 50%,var(--slate) 100%);color:#fff;position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;background:
-  radial-gradient(640px 320px at 88% 8%,rgba(255,196,0,.10),transparent 62%),
-  radial-gradient(520px 300px at 6% 95%,rgba(255,255,255,.05),transparent 60%);pointer-events:none}
-.hero-in{position:relative;z-index:1;display:grid;gap:44px;padding:70px 0 80px;align-items:center}
-.hero h1{font-size:clamp(2.6rem,7vw,4.4rem);font-weight:800}
+/* ============ HERO ============ */
+.hero{background:linear-gradient(155deg,var(--slate-ink) 0%,var(--slate-deep) 50%,var(--slate) 100%);
+  color:#fff;position:relative;overflow:hidden}
+.hero .atmo{position:absolute;inset:-25%;pointer-events:none;background:
+  radial-gradient(640px 340px at 82% 12%,rgba(255,196,0,.12),transparent 62%),
+  radial-gradient(560px 340px at 10% 90%,rgba(120,165,210,.10),transparent 60%);
+  animation:atmoDrift 16s ease-in-out infinite alternate;will-change:transform}
+@keyframes atmoDrift{from{transform:translate3d(-2.5%,-1.5%,0) scale(1)}to{transform:translate3d(2.5%,2%,0) scale(1.07)}}
+.hero .pattern{position:absolute;inset:0;pointer-events:none;opacity:.55;background:
+  repeating-linear-gradient(-45deg,rgba(255,255,255,.028) 0 2px,transparent 2px 30px);
+  background-size:42.4px 42.4px;animation:patternMove 9s linear infinite;will-change:background-position}
+@keyframes patternMove{from{background-position:0 0}to{background-position:42.4px 0}}
+.hero-skyline{position:absolute;left:0;right:0;bottom:-2px;pointer-events:none;will-change:transform}
+.hero-skyline svg{display:block;width:100%;height:auto}
+.truck{position:absolute;bottom:8px;left:0;width:132px;pointer-events:none;opacity:.9;
+  animation:driveBy 34s linear infinite;will-change:transform}
+@keyframes driveBy{from{transform:translateX(-160px)}to{transform:translateX(calc(100vw + 60px))}}
+.truck svg{display:block;width:100%;height:auto;animation:truckBob .55s ease-in-out infinite alternate}
+@keyframes truckBob{from{transform:translateY(0)}to{transform:translateY(-1.6px)}}
+.hero-in{position:relative;z-index:2;display:grid;gap:44px;padding:78px 0 120px;align-items:center}
+.hero-pill{display:inline-flex;align-items:center;gap:10px;background:rgba(255,196,0,.1);border:1px solid rgba(255,196,0,.4);
+  color:#FFD84D;border-radius:999px;padding:8px 18px;font-weight:600;font-size:.88rem;letter-spacing:.02em;
+  opacity:0;animation:rise .7s .05s forwards}
+.hero-pill .dot{width:9px;height:9px;border-radius:50%;background:var(--yellow);box-shadow:0 0 10px var(--yellow);
+  animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.55}}
+.hero h1{margin-top:20px;font-size:clamp(2.6rem,7vw,4.4rem);font-weight:800;text-shadow:0 6px 34px rgba(8,15,24,.6)}
+.hero h1 .line{display:block;opacity:0;transform:translateY(32px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
+.hero h1 .line:nth-child(2){animation-delay:.14s}
+.hero h1 .line:nth-child(3){animation-delay:.28s}
 .hero h1 .yel{color:var(--yellow)}
-.hero p.lead{margin-top:18px;font-size:1.14rem;color:#C6D2DE;max-width:34rem}
-.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
-.trust{display:flex;flex-wrap:wrap;align-items:center;gap:10px 24px;margin-top:32px;color:#C6D2DE;font-size:.97rem}
-.trust .stars{color:var(--yellow);letter-spacing:2px;font-size:1.1rem}
+@keyframes rise{to{opacity:1;transform:none}}
+.hero p.lead{margin-top:18px;font-size:1.14rem;color:#C6D2DE;max-width:34rem;opacity:0;animation:rise .8s .42s forwards}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;opacity:0;animation:rise .8s .56s forwards}
+.trust{display:flex;flex-wrap:wrap;align-items:center;gap:10px 24px;margin-top:32px;color:#C6D2DE;font-size:.97rem;
+  opacity:0;animation:rise .8s .7s forwards}
+.trust .stars{color:var(--yellow);letter-spacing:2px;font-size:1.1rem;text-shadow:0 0 12px rgba(255,196,0,.55)}
 .trust strong{color:#fff}
 .rating-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);
-  padding:36px 32px;text-align:center;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.35)}
-.rating-card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;border-radius:var(--radius) var(--radius) 0 0;
+  padding:36px 32px;text-align:center;position:relative;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.35);
+  opacity:0;animation:cardIn .9s .5s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes cardIn{from{opacity:0;transform:translateY(36px) scale(.96)}to{opacity:1;transform:none}}
+.rating-card .float-in{animation:floaty 6s 1.6s ease-in-out infinite alternate}
+@keyframes floaty{from{transform:translateY(0)}to{transform:translateY(-8px)}}
+.rating-card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;
   background:repeating-linear-gradient(-45deg,var(--yellow) 0 12px,transparent 12px 24px)}
+.rating-card::after{content:"";position:absolute;top:-20%;left:-90%;width:45%;height:140%;transform:skewX(-20deg);pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.16),transparent);opacity:0}
+.rating-card:hover::after{opacity:1;animation:shine .8s ease-out}
 .rating-card .big{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:5rem;line-height:1;color:var(--yellow)}
-.rating-card .stars{color:var(--yellow);font-size:1.6rem;letter-spacing:5px;margin-top:6px}
+.rating-card .stars{color:var(--yellow);font-size:1.6rem;letter-spacing:5px;margin-top:6px;text-shadow:0 0 14px rgba(255,196,0,.5)}
 .rating-card .label{margin-top:12px;font-weight:700;font-size:1.05rem;color:#fff}
 .rating-card .sub-label{margin-top:4px;font-size:.92rem;color:#C6D2DE}
 .rating-card a{display:inline-block;margin-top:18px;color:var(--yellow);font-weight:600;font-size:.95rem;padding:10px 6px}
 @media(min-width:900px){.hero-in{grid-template-columns:1.2fr .8fr}}
 
-/* sections */
-section{padding:76px 0}
+/* ============ MARQUEE ============ */
+.marq-tilt{overflow:hidden;position:relative;z-index:3;margin-top:-34px;padding:20px 0 26px}
+.marq{background:linear-gradient(90deg,#FFD23D,var(--yellow));transform:rotate(-1.2deg);width:112%;margin-left:-6%;
+  box-shadow:0 18px 44px rgba(14,26,40,.3);border-top:2px solid rgba(255,255,255,.5);border-bottom:2px solid rgba(14,26,40,.3)}
+.marq-track{display:flex;width:max-content;animation:marq 26s linear infinite}
+.marq ul{display:flex;list-style:none;padding:13px 0}
+.marq li{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:1.15rem;
+  letter-spacing:.06em;color:var(--slate-ink);white-space:nowrap;display:flex;align-items:center}
+.marq li::after{content:"▲";margin:0 22px;font-size:.7rem;color:#8A6A00}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ============ STATS ============ */
+.stats{padding:50px 0 6px}
+.stats .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;text-align:center}
+.stat{padding:26px 12px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);
+  border-bottom:4px solid var(--yellow);transition:transform .25s ease,box-shadow .25s ease}
+.stat:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.stat .n{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(2.1rem,4.5vw,2.8rem);
+  color:var(--slate-ink);line-height:1}
+.stat .n .u{color:var(--yellow-deep)}
+.stat .t{color:var(--muted);font-size:.9rem;margin-top:8px}
+
+/* ============ SECTIONS ============ */
+section{padding:84px 0;position:relative;overflow:hidden}
 .kicker{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.16em;
   font-size:.95rem;color:var(--slate);display:inline-flex;align-items:center;gap:10px}
 .kicker::before{content:"";width:26px;height:4px;background:var(--yellow)}
 h2{font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:800;margin-top:12px}
 .sub{color:var(--muted);margin-top:12px;max-width:40rem}
+.ghost-word{position:absolute;top:20px;right:-6px;font-family:'Barlow Condensed',sans-serif;font-weight:800;
+  text-transform:uppercase;line-height:1;font-size:clamp(4.5rem,14vw,10rem);color:transparent;
+  -webkit-text-stroke:1px rgba(32,54,77,.09);pointer-events:none;user-select:none}
+.steps .ghost-word{-webkit-text-stroke-color:rgba(255,255,255,.05)}
 
-/* services */
+/* ============ SERVICES ============ */
 .grid-services{display:grid;gap:18px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(235px,1fr))}
 .svc{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--slate);border-radius:var(--radius);
-  padding:28px 24px;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
-.svc:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-top-color:var(--yellow)}
+  padding:28px 24px;position:relative;overflow:hidden;transform-style:preserve-3d;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.svc:hover{box-shadow:var(--shadow-lift);border-top-color:var(--yellow)}
+.svc::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .3s;pointer-events:none;
+  background:radial-gradient(300px 210px at var(--gx,70%) var(--gy,20%),rgba(255,196,0,.10),transparent 70%)}
+.svc:hover::before{opacity:1}
+.svc::after{content:"";position:absolute;top:-20%;left:-85%;width:40%;height:140%;transform:skewX(-20deg);pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(32,54,77,.07),transparent);opacity:0}
+.svc:hover::after{opacity:1;animation:shine .7s ease-out}
 .svc .ico{width:54px;height:54px;border-radius:10px;background:var(--slate-ink);color:var(--yellow);
-  display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  display:flex;align-items:center;justify-content:center;margin-bottom:18px;
+  transition:transform .25s ease,background .25s ease,color .25s ease}
+.svc:hover .ico{transform:rotate(-7deg) scale(1.1);background:var(--yellow);color:var(--slate-ink)}
 .svc h3{font-size:1.35rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em}
 .svc p{color:var(--muted);font-size:.95rem;margin-top:8px}
 
-/* steps */
+/* ============ STEPS ============ */
 .steps{background:var(--slate-deep);color:#fff}
 .steps .kicker{color:var(--yellow)}
 .steps .sub{color:#C6D2DE}
 .grid-steps{display:grid;gap:18px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-.step{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:30px 26px}
-.step .num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:3rem;line-height:1;color:var(--yellow)}
+.step{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);
+  padding:30px 26px;position:relative;overflow:hidden;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.step:hover{transform:translateY(-7px);border-color:rgba(255,196,0,.45);box-shadow:0 20px 48px rgba(0,0,0,.35)}
+.step .num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:3.2rem;line-height:1;
+  color:transparent;-webkit-text-stroke:1.5px var(--yellow);transition:color .25s ease}
+.step:hover .num{color:var(--yellow)}
 .step h3{margin-top:12px;font-size:1.3rem;text-transform:uppercase;letter-spacing:.03em}
 .step p{color:#C6D2DE;font-size:.95rem;margin-top:8px}
 
-/* reviews */
+/* ============ REVIEWS / RATING SHOWCASE ============ */
 .rev-showcase{margin-top:40px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
   box-shadow:var(--shadow);padding:52px 30px;text-align:center;position:relative;overflow:hidden}
 .rev-showcase::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;
-  background:repeating-linear-gradient(-45deg,var(--yellow) 0 13px,var(--slate-ink) 13px 26px)}
+  background:repeating-linear-gradient(-45deg,var(--yellow) 0 13px,var(--slate-ink) 13px 26px);
+  background-size:36.8px 6px;animation:hazardMove 2.6s linear infinite}
 .rev-showcase .giant{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(4.5rem,12vw,7rem);
   line-height:1;color:var(--slate-ink)}
 .rev-showcase .stars{color:var(--yellow);font-size:clamp(1.6rem,5vw,2.2rem);letter-spacing:8px;margin-top:8px;
   text-shadow:0 1px 0 rgba(14,26,40,.15)}
+.js .rev-showcase .stars .st{display:inline-block;opacity:0;transform:scale(.2) rotate(-30deg)}
+.js .rev-showcase.in .stars .st{animation:starPop .5s cubic-bezier(.3,1.6,.4,1) forwards}
+.js .rev-showcase.in .stars .st:nth-child(2){animation-delay:.12s}
+.js .rev-showcase.in .stars .st:nth-child(3){animation-delay:.24s}
+.js .rev-showcase.in .stars .st:nth-child(4){animation-delay:.36s}
+.js .rev-showcase.in .stars .st:nth-child(5){animation-delay:.48s}
+@keyframes starPop{to{opacity:1;transform:none}}
 .rev-showcase .line{margin-top:16px;font-weight:700;font-size:1.15rem}
 .rev-showcase .line-sub{margin-top:6px;color:var(--muted);max-width:32rem;margin-left:auto;margin-right:auto}
-.rev-showcase .btn{margin-top:26px}
-.rev-stats{display:grid;gap:18px;margin-top:22px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;text-align:center}
-.stat .n{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:2rem;color:var(--slate)}
-.stat .t{color:var(--muted);font-size:.92rem;margin-top:2px}
+.rev-showcase .mag-zone{margin-top:14px}
+.bars{max-width:420px;margin:30px auto 0;display:grid;gap:9px;text-align:left}
+.bar-row{display:flex;align-items:center;gap:12px}
+.bar-row .bl{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.02rem;color:var(--slate);
+  width:34px;flex:none;text-align:right}
+.bar-row .track{flex:1;height:10px;border-radius:99px;background:#EAEEF3;overflow:hidden}
+.bar-row .fill{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--yellow-deep),var(--yellow));width:0}
+.js .rev-showcase.in .fill{transition:width 1.2s cubic-bezier(.2,.7,.2,1) .35s;width:var(--w)}
+.bar-row .bc{font-weight:700;font-size:.95rem;color:var(--muted);width:26px;flex:none}
 
-/* area */
+/* ============ AREA ============ */
 .area{background:#EAEEF3}
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
 .chip{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--yellow);border-radius:8px;
-  padding:10px 18px;font-size:.95rem;font-weight:600;color:var(--slate-ink)}
+  padding:10px 18px;font-size:.95rem;font-weight:600;color:var(--slate-ink);cursor:default;
+  transition:transform .2s ease,background .2s ease,box-shadow .2s ease}
+.chip:hover{transform:translateY(-4px);background:var(--yellow);box-shadow:0 10px 22px rgba(255,196,0,.35)}
 
-/* quote */
+/* ============ FAQ ============ */
+.qa{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:var(--radius);
+  margin-top:14px;overflow:hidden;transition:border-color .25s,box-shadow .25s}
+.qa.open{border-left-color:var(--yellow);box-shadow:var(--shadow)}
+.qa .q{width:100%;text-align:left;background:none;border:none;font:inherit;font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:1.2rem;color:var(--ink);
+  padding:20px 22px;min-height:44px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.qa .chev{transition:transform .3s ease;color:var(--yellow-deep);flex:none}
+.qa.open .chev{transform:rotate(180deg)}
+.qa .a{max-height:0;overflow:hidden;transition:max-height .4s ease;color:var(--muted);font-size:.97rem}
+.qa.open .a{max-height:300px}
+.qa .a p{padding:0 22px 20px}
+.qa .a a{color:var(--slate);font-weight:700}
+
+/* ============ QUOTE ============ */
 .quote{background:var(--yellow);color:var(--slate-ink)}
 .quote .kicker{color:var(--slate-ink)}
 .quote .kicker::before{background:var(--slate-ink)}
@@ -145,51 +272,74 @@ h2{font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:800;margin-top:12px}
 .form{margin-top:36px;display:grid;gap:16px;max-width:560px}
 .form label{font-weight:700;font-size:.95rem;display:block;margin-bottom:6px}
 .form input,.form textarea{width:100%;border:2px solid rgba(14,26,40,.35);background:#FFFDF5;color:var(--ink);
-  border-radius:8px;padding:14px;font:inherit;font-size:1rem}
+  border-radius:8px;padding:14px;font:inherit;font-size:1rem;transition:border-color .2s,transform .2s}
 .form input::placeholder,.form textarea::placeholder{color:#6E7987}
 .form input:focus,.form textarea:focus{outline:3px solid var(--slate-ink);outline-offset:2px;border-color:transparent}
 .form-note{font-size:.9rem;font-weight:600;color:#33404D}
 .form .btn-dark{justify-self:start}
 
-/* footer */
+/* ============ FOOTER ============ */
 footer{background:var(--slate-ink);color:#9FB0C0;padding:46px 0;font-size:.92rem}
 .foot{display:flex;flex-wrap:wrap;gap:20px 44px;justify-content:space-between;align-items:center}
 .foot .fname{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;
   letter-spacing:.04em;color:#fff;font-size:1.3rem}
 .foot .fname em{font-style:normal;color:var(--yellow)}
 .foot a{color:#fff;font-weight:600;text-decoration:none;display:inline-block;padding:6px 0}
+.foot a:hover{color:var(--yellow)}
 .disclaimer{margin-top:24px;padding-top:18px;border-top:1px solid #243446;font-size:.82rem;color:#7C8DA0}
 
-/* reveal animation */
-.js .reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+/* ============ REVEALS ============ */
+.js .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
 .js .reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .js .reveal{opacity:1;transform:none;transition:none}
-  .btn,.svc{transition:none}
-}
+.js .stagger>*{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.js .stagger.in>*{opacity:1;transform:none}
+.js .stagger.in>*:nth-child(2){transition-delay:.1s}
+.js .stagger.in>*:nth-child(3){transition-delay:.2s}
+.js .stagger.in>*:nth-child(4){transition-delay:.3s}
+.js .stagger.in>*:nth-child(5){transition-delay:.38s}
+.js .stagger.in>*:nth-child(6){transition-delay:.46s}
+.js .stagger.in>*:nth-child(7){transition-delay:.52s}
+.js .stagger.in>*:nth-child(8){transition-delay:.58s}
 
-/* mobile call bar */
+/* ============ MOBILE CALL BAR ============ */
 .callbar{display:none}
 @media(max-width:720px){
   .callbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--yellow);
-    justify-content:center;border-top:3px solid var(--slate-ink)}
+    justify-content:center;border-top:3px solid var(--slate-ink);box-shadow:0 -8px 26px rgba(14,26,40,.35)}
   .callbar a{display:flex;align-items:center;gap:10px;color:var(--slate-ink);text-decoration:none;
     font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
     font-size:1.25rem;padding:15px;width:100%;justify-content:center}
   body{padding-bottom:64px}
+  .hero-in{padding:60px 0 110px}
+}
+
+/* ============ REDUCED MOTION ============ */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .js .reveal,.js .stagger>*{opacity:1;transform:none}
+  .hero-pill,.hero h1 .line,.hero p.lead,.cta-row,.trust,.rating-card{opacity:1;transform:none}
+  .js .rev-showcase .stars .st{opacity:1;transform:none}
+  .js .rev-showcase .fill,.js .rev-showcase.in .fill{width:var(--w)}
+  .marq-track{animation:none !important}
+  .truck{display:none}
+  .hero-skyline,.pattern{transform:none !important}
 }
 </style>
+<noscript><style>
+.reveal,.stagger>*{opacity:1;transform:none}
+.qa .a{max-height:none}
+.rev-showcase .stars .st{opacity:1;transform:none}
+.fill{width:var(--w)}
+.hero-pill,.hero h1 .line,.hero p.lead,.cta-row,.trust,.rating-card{opacity:1;transform:none}
+</style></noscript>
 <script>document.documentElement.className+=" js"</script>
 </head>
 <body>
+<a class="skip" href="#top">Skip to content</a>
+<div id="progress" aria-hidden="true"></div>
 
-<div class="demo-note" id="demoNote">
-  Demo preview built for Gem State Hauling — not their official site.
-  <button aria-label="Dismiss notice" onclick="document.getElementById('demoNote').style.display='none'">&times;</button>
-</div>
-
-<header>
+<header id="hdr">
   <div class="wrap nav">
     <a class="logo" href="#top" aria-label="Gem State Hauling — home">
       <span class="mark" aria-hidden="true">
@@ -197,6 +347,12 @@ footer{background:var(--slate-ink);color:#9FB0C0;padding:46px 0;font-size:.92rem
       </span>
       Gem State <em>Hauling</em>
     </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#services">Services</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+      <a href="#quote">Free quote</a>
+    </nav>
     <a class="nav-call" href="tel:+12089172088">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       (208) 917-2088
@@ -206,9 +362,43 @@ footer{background:var(--slate-ink);color:#9FB0C0;padding:46px 0;font-size:.92rem
 
 <main id="top">
 <div class="hero">
+  <div class="atmo" aria-hidden="true"></div>
+  <div class="pattern" data-speed="0.05" aria-hidden="true"></div>
+
+  <div class="hero-skyline" data-speed="0.1" aria-hidden="true">
+    <svg viewBox="0 0 1440 170" preserveAspectRatio="none">
+      <path fill="#111F30" d="M0,170 L0,96 L150,58 L300,104 L470,44 L640,110 L820,60 L990,112 L1160,66 L1320,108 L1440,80 L1440,170 Z" opacity=".7"/>
+      <path fill="#0B1521" d="M0,170 L0,132 L64,132 L104,102 L144,132 L214,132 L214,116 L224,116 L224,100 L238,100 L238,116 L280,84 L346,124 L346,140 L462,140 L502,112 L542,140 L642,140 L642,120 L716,74 L790,120 L790,140 L920,140 L960,114 L1000,140 L1110,140 L1110,122 L1180,86 L1250,122 L1250,140 L1440,140 L1440,170 Z"/>
+      <g fill="#FFC400" opacity=".85">
+        <rect x="276" y="106" width="7" height="9" rx="1"/>
+        <rect x="712" y="98" width="8" height="10" rx="1"/>
+        <rect x="1176" y="104" width="7" height="9" rx="1"/>
+        <rect x="498" y="122" width="6" height="8" rx="1"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="truck" aria-hidden="true">
+    <svg viewBox="0 0 132 62" fill="none">
+      <rect x="2" y="6" width="78" height="38" rx="4" fill="#1C2F44"/>
+      <path d="M80 18h26l16 14v12H80V18z" fill="#1C2F44"/>
+      <path d="M86 22h17l10 9H86v-9z" fill="#FFC400" opacity=".85"/>
+      <rect x="2" y="40" width="120" height="6" fill="#16283B"/>
+      <circle cx="24" cy="50" r="9" fill="#0A1420"/><circle cx="24" cy="50" r="3.5" fill="#3A4E63"/>
+      <circle cx="62" cy="50" r="9" fill="#0A1420"/><circle cx="62" cy="50" r="3.5" fill="#3A4E63"/>
+      <circle cx="104" cy="50" r="9" fill="#0A1420"/><circle cx="104" cy="50" r="3.5" fill="#3A4E63"/>
+      <rect x="118" y="34" width="5" height="4" rx="1" fill="#FFC400"/>
+    </svg>
+  </div>
+
   <div class="wrap hero-in">
     <div>
-      <h1>You point.<br>We haul.<br><span class="yel">It's gone.</span></h1>
+      <span class="hero-pill"><span class="dot" aria-hidden="true"></span> Boise &amp; the Treasure Valley — free quotes</span>
+      <h1>
+        <span class="line">You point.</span>
+        <span class="line">We haul.</span>
+        <span class="line yel">It's gone.</span>
+      </h1>
       <p class="lead">Boise's five-star junk removal crew. Furniture, appliances, garage piles, construction debris — we do all the lifting, load the truck, and haul it off. You never touch a thing.</p>
       <div class="cta-row">
         <a class="btn btn-call" href="tel:+12089172088">
@@ -223,39 +413,63 @@ footer{background:var(--slate-ink);color:#9FB0C0;padding:46px 0;font-size:.92rem
         <span>Boise &amp; the Treasure Valley</span>
       </div>
     </div>
-    <div class="rating-card reveal">
-      <div class="big">5.0</div>
-      <div class="stars" aria-hidden="true">★★★★★</div>
-      <div class="label">Perfect rating on Google</div>
-      <div class="sub-label">16 reviews — every single one is five stars</div>
-      <a href="https://www.google.com/maps/search/Gem+State+Hauling+Boise+ID" rel="noopener">See our reviews on Google Maps →</a>
+    <div class="rating-card">
+      <div class="float-in">
+        <div class="big">5.0</div>
+        <div class="stars" aria-hidden="true">★★★★★</div>
+        <div class="label">Perfect rating on Google</div>
+        <div class="sub-label">16 reviews — every single one is five stars</div>
+        <a href="https://www.google.com/maps/search/Gem+State+Hauling+Boise+ID" rel="noopener">See our reviews on Google Maps →</a>
+      </div>
     </div>
   </div>
 </div>
-<div class="hazard" aria-hidden="true"></div>
+
+<div class="marq-tilt" aria-hidden="true">
+  <div class="marq">
+    <div class="marq-track">
+      <ul>
+        <li>Junk removal</li><li>Furniture &amp; appliances</li><li>Full cleanouts</li><li>Construction &amp; yard debris</li><li>Free quotes</li><li>Boise &amp; the Treasure Valley</li>
+      </ul>
+      <ul>
+        <li>Junk removal</li><li>Furniture &amp; appliances</li><li>Full cleanouts</li><li>Construction &amp; yard debris</li><li>Free quotes</li><li>Boise &amp; the Treasure Valley</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="stats" aria-label="Our Google record">
+  <div class="wrap stagger">
+    <div class="stat"><div class="n"><span class="cnt" data-count="5.0" data-dec="1">5.0</span><span class="u">★</span></div><div class="t">Google rating</div></div>
+    <div class="stat"><div class="n"><span class="cnt" data-count="16">16</span></div><div class="t">Google reviews</div></div>
+    <div class="stat"><div class="n"><span class="cnt" data-count="16">16</span><span class="u">/16</span></div><div class="t">Five-star reviews</div></div>
+    <div class="stat"><div class="n"><span class="cnt" data-count="8">8</span></div><div class="t">Treasure Valley cities served</div></div>
+  </div>
+</div>
 
 <section id="services" class="on-light">
+  <span class="ghost-word" aria-hidden="true">HAUL</span>
   <div class="wrap">
     <span class="kicker">What we haul</span>
-    <h2>If it needs to go, it goes</h2>
-    <p class="sub">One couch or a whole houseful — our crew shows up, loads it, and hauls it away. One call handles the entire job.</p>
-    <div class="grid-services">
-      <div class="svc reveal">
+    <h2 class="reveal">If it needs to go, it goes</h2>
+    <p class="sub reveal">One couch or a whole houseful — our crew shows up, loads it, and hauls it away. One call handles the entire job.</p>
+    <div class="grid-services stagger">
+      <div class="svc tilt">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2h4l1 3h5v2H4V5h5z"/><path d="M6 7l1 13a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-13"/></svg></div>
         <h3>Junk Removal</h3>
         <p>Household junk, garage piles, yard clutter, old electronics — we load it all and haul it off, with responsible disposal every time.</p>
       </div>
-      <div class="svc reveal">
+      <div class="svc tilt">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"/><path d="M3 16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H7v-2a2 2 0 0 0-4 0Z"/><path d="M5 18v2"/><path d="M19 18v2"/></svg></div>
         <h3>Furniture &amp; Appliances</h3>
         <p>Couches, mattresses, fridges, washers, hot tubs — the big, heavy stuff you can't move on your own. We carry it out without dinging your walls.</p>
       </div>
-      <div class="svc reveal">
+      <div class="svc tilt">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></div>
         <h3>Full Cleanouts</h3>
         <p>Garages, basements, storage units, estates and rentals — cleared wall to wall and swept out, ready for whatever comes next.</p>
       </div>
-      <div class="svc reveal">
+      <div class="svc tilt">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1z"/><path d="M10 10V5a2 2 0 0 1 4 0v5"/><path d="M4 15v-3a8 8 0 0 1 16 0v3"/></svg></div>
         <h3>Construction &amp; Yard Debris</h3>
         <p>Renovation scrap, fencing, branches, dirt and storm debris — loaded fast so your project keeps moving and your yard stays clean.</p>
@@ -265,41 +479,48 @@ footer{background:var(--slate-ink);color:#9FB0C0;padding:46px 0;font-size:.92rem
 </section>
 
 <section class="steps">
+  <span class="ghost-word" aria-hidden="true">GONE</span>
   <div class="wrap">
     <span class="kicker">How it works</span>
-    <h2>Three steps. Zero lifting.</h2>
-    <div class="grid-steps">
-      <div class="step reveal"><div class="num">1</div><h3>Call or text</h3><p>Tell us what needs to go. You get a fast, free, no-obligation quote — no surprises.</p></div>
-      <div class="step reveal"><div class="num">2</div><h3>We load it</h3><p>Our crew arrives on schedule, does every bit of the lifting, and sweeps the space clean behind us.</p></div>
-      <div class="step reveal"><div class="num">3</div><h3>It's hauled</h3><p>Everything goes on the truck and off your property — donated or disposed of responsibly.</p></div>
+    <h2 class="reveal">Three steps. Zero lifting.</h2>
+    <div class="grid-steps stagger">
+      <div class="step"><div class="num" aria-hidden="true">01</div><h3>Call or text</h3><p>Tell us what needs to go. You get a fast, free, no-obligation quote — no surprises.</p></div>
+      <div class="step"><div class="num" aria-hidden="true">02</div><h3>We load it</h3><p>Our crew arrives on schedule, does every bit of the lifting, and sweeps the space clean behind us.</p></div>
+      <div class="step"><div class="num" aria-hidden="true">03</div><h3>It's hauled</h3><p>Everything goes on the truck and off your property — donated or disposed of responsibly.</p></div>
     </div>
   </div>
 </section>
 
 <section id="reviews" class="on-light">
+  <span class="ghost-word" aria-hidden="true">5.0★</span>
   <div class="wrap">
     <span class="kicker">Real Google rating</span>
-    <h2>A perfect 5.0 on Google</h2>
+    <h2 class="reveal">A perfect 5.0 on Google</h2>
     <div class="rev-showcase reveal">
-      <div class="giant">5.0</div>
-      <div class="stars" aria-hidden="true">★★★★★</div>
+      <div class="giant"><span class="cnt" data-count="5.0" data-dec="1">5.0</span></div>
+      <div class="stars" aria-hidden="true"><span class="st">★</span><span class="st">★</span><span class="st">★</span><span class="st">★</span><span class="st">★</span></div>
       <p class="line">16 Google reviews — all five stars</p>
       <p class="line-sub">Not an average that rounds up. Every customer who has reviewed Gem State Hauling on Google gave them the full five stars.</p>
-      <a class="btn btn-dark" href="https://www.google.com/maps/search/Gem+State+Hauling+Boise+ID" rel="noopener">Read our reviews on Google Maps</a>
-    </div>
-    <div class="rev-stats">
-      <div class="stat reveal"><div class="n">5.0 ★</div><div class="t">Google rating</div></div>
-      <div class="stat reveal"><div class="n">16 / 16</div><div class="t">Five-star reviews</div></div>
-      <div class="stat reveal"><div class="n">Boise, ID</div><div class="t">Local crew</div></div>
+      <div class="bars" aria-label="Review breakdown: all 16 Google reviews are five stars">
+        <div class="bar-row"><span class="bl">5★</span><span class="track"><span class="fill" style="--w:100%"></span></span><span class="bc">16</span></div>
+        <div class="bar-row"><span class="bl">4★</span><span class="track"><span class="fill" style="--w:0%"></span></span><span class="bc">0</span></div>
+        <div class="bar-row"><span class="bl">3★</span><span class="track"><span class="fill" style="--w:0%"></span></span><span class="bc">0</span></div>
+        <div class="bar-row"><span class="bl">2★</span><span class="track"><span class="fill" style="--w:0%"></span></span><span class="bc">0</span></div>
+        <div class="bar-row"><span class="bl">1★</span><span class="track"><span class="fill" style="--w:0%"></span></span><span class="bc">0</span></div>
+      </div>
+      <span class="mag-zone" id="magZone">
+        <a class="btn btn-dark" id="magBtn" href="https://www.google.com/maps/search/Gem+State+Hauling+Boise+ID" rel="noopener">Read our reviews on Google Maps</a>
+      </span>
     </div>
   </div>
 </section>
 
 <section id="area" class="area on-light">
+  <span class="ghost-word" aria-hidden="true">BOISE</span>
   <div class="wrap">
     <span class="kicker">Service area</span>
-    <h2>Hauling across the Treasure Valley</h2>
-    <div class="chips">
+    <h2 class="reveal">Hauling across the Treasure Valley</h2>
+    <div class="chips stagger">
       <span class="chip">Boise</span><span class="chip">Meridian</span><span class="chip">Eagle</span>
       <span class="chip">Garden City</span><span class="chip">Nampa</span><span class="chip">Kuna</span>
       <span class="chip">Star</span><span class="chip">Caldwell</span>
@@ -307,17 +528,43 @@ footer{background:var(--slate-ink);color:#9FB0C0;padding:46px 0;font-size:.92rem
   </div>
 </section>
 
+<section id="faq" class="on-light">
+  <span class="ghost-word" aria-hidden="true">ASK</span>
+  <div class="wrap">
+    <span class="kicker">Quick answers</span>
+    <h2 class="reveal">Before you call</h2>
+    <div class="reveal" style="max-width:780px">
+      <div class="qa open">
+        <button class="q" aria-expanded="true" onclick="toggleQA(this)">What will you haul away?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>One couch or a whole houseful. Household junk, garage piles, yard clutter, old electronics, furniture, appliances, hot tubs, renovation scrap, fencing, branches and storm debris — if it needs to go, it goes.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">Do I have to lift or move anything?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>No. You point — we haul. The crew does every bit of the lifting, loads the truck, and sweeps the space clean behind us. You never touch a thing.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">How do I get a quote?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>Call or text <a href="tel:+12089172088">(208) 917-2088</a> and tell us what needs to go. You get a fast, free, no-obligation quote — no surprises.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">Where does it all end up?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>Everything goes on the truck and off your property — donated or disposed of responsibly, every time.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="quote on-light" id="quote">
   <div class="wrap">
     <span class="kicker">Free quote</span>
-    <h2>What needs to go?</h2>
-    <p class="sub">Fastest answer: call or text <a class="phone-link" href="tel:+12089172088">(208) 917-2088</a>. Or leave your details below:</p>
-    <form class="form" onsubmit="event.preventDefault();this.querySelector('.form-note').textContent='This form is activated on your live website — for now, please call (208) 917-2088.';">
+    <h2 class="reveal">What needs to go?</h2>
+    <p class="sub reveal">Fastest answer: call or text <a class="phone-link" href="tel:+12089172088">(208) 917-2088</a>. Or leave your details below:</p>
+    <form class="form reveal" onsubmit="event.preventDefault();this.querySelector('.form-note').textContent='This form is activated on your live website — for now, please call (208) 917-2088.';">
       <div><label for="fname">Your name</label><input id="fname" name="name" placeholder="Jane Smith" autocomplete="name"></div>
       <div><label for="fphone">Phone number</label><input id="fphone" name="phone" type="tel" placeholder="(208) 555-0100" autocomplete="tel"></div>
       <div><label for="fjob">What needs hauling?</label><textarea id="fjob" name="job" rows="3" placeholder="e.g. Old sectional and a fridge in the garage, plus a pile of fence boards"></textarea></div>
       <button class="btn btn-dark" type="submit">Request my free quote</button>
-      <p class="form-note">Demo preview — the form activates on the live site.</p>
+      <p class="form-note">The contact form activates on the live version — for now, call directly.</p>
     </form>
   </div>
 </section>
@@ -336,7 +583,7 @@ footer{background:var(--slate-ink);color:#9FB0C0;padding:46px 0;font-size:.92rem
         Serving Boise &amp; the Treasure Valley, Idaho
       </div>
     </div>
-    <p class="disclaimer">This is a demo website preview created for Gem State Hauling and is not their official website. Business details (phone, rating, reviews) are from their public Google Maps listing. Want this site live, or want it removed? Reply to the email that brought you here.</p>
+    <p class="disclaimer">Concept preview for Gem State Hauling · MainStreet Web Studio</p>
   </div>
 </footer>
 
@@ -346,9 +593,105 @@ footer{background:var(--slate-ink);color:#9FB0C0;padding:46px 0;font-size:.92rem
 </div>
 
 <script>
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-setTimeout(()=>document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.classList.add('in')),2500);
+(function(){
+"use strict";
+var REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+/* ---- scroll progress + shrinking header + hero parallax ---- */
+var prog = document.getElementById('progress'),
+    hdr = document.getElementById('hdr'),
+    plxEls = [].slice.call(document.querySelectorAll('[data-speed]')),
+    ticking = false;
+function onScroll(){
+  if(ticking) return;
+  ticking = true;
+  requestAnimationFrame(function(){
+    var h = document.documentElement, top = h.scrollTop;
+    var max = h.scrollHeight - h.clientHeight;
+    prog.style.width = (max > 0 ? (top / max * 100) : 0) + '%';
+    hdr.classList.toggle('scrolled', top > 8);
+    if(!REDUCED){
+      for(var i = 0; i < plxEls.length; i++){
+        var s = parseFloat(plxEls[i].getAttribute('data-speed')) || 0;
+        plxEls[i].style.transform = 'translate3d(0,' + (top * s) + 'px,0)';
+      }
+    }
+    ticking = false;
+  });
+}
+addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+/* ---- scroll reveals (staggered) ---- */
+var io = new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+},{threshold:.15});
+document.querySelectorAll('.reveal,.stagger').forEach(function(el){ io.observe(el); });
+setTimeout(function(){
+  document.querySelectorAll('.reveal:not(.in),.stagger:not(.in)').forEach(function(el){ el.classList.add('in'); });
+}, 2500);
+
+/* ---- count-up numbers ---- */
+var counters = document.querySelectorAll('.cnt');
+if(!REDUCED && 'IntersectionObserver' in window){
+  var cio = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      cio.unobserve(e.target);
+      var el = e.target,
+          end = parseFloat(el.getAttribute('data-count')),
+          dec = parseInt(el.getAttribute('data-dec') || '0', 10),
+          t0 = performance.now();
+      (function tick(t){
+        var p = Math.min((t - t0) / 1400, 1),
+            v = end * (1 - Math.pow(1 - p, 3));
+        el.textContent = dec ? v.toFixed(dec) : Math.round(v).toString();
+        if(p < 1) requestAnimationFrame(tick);
+      })(t0);
+    });
+  },{threshold:.5});
+  counters.forEach(function(el){ cio.observe(el); });
+}
+
+/* ---- FAQ accordion ---- */
+window.toggleQA = function(btn){
+  var qa = btn.closest('.qa'),
+      open = qa.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+};
+
+/* ---- tilt + glow-follow cards (hover-capable devices only) ---- */
+if(FINE && !REDUCED){
+  document.querySelectorAll('.tilt').forEach(function(card){
+    card.addEventListener('pointermove', function(e){
+      var r = card.getBoundingClientRect(),
+          px = (e.clientX - r.left) / r.width,
+          py = (e.clientY - r.top) / r.height;
+      card.style.transform = 'perspective(750px) rotateX(' + ((.5 - py) * 6) + 'deg) rotateY(' + ((px - .5) * 8) + 'deg) translateY(-6px)';
+      card.style.setProperty('--gx', (px * 100) + '%');
+      card.style.setProperty('--gy', (py * 100) + '%');
+    });
+    card.addEventListener('pointerleave', function(){ card.style.transform = ''; });
+  });
+}
+
+/* ---- magnetic CTA ---- */
+var magZone = document.getElementById('magZone'), magBtn = document.getElementById('magBtn');
+if(magZone && magBtn && FINE && !REDUCED){
+  magZone.addEventListener('pointermove', function(e){
+    var r = magZone.getBoundingClientRect(),
+        dx = (e.clientX - (r.left + r.width / 2)) * .25,
+        dy = (e.clientY - (r.top + r.height / 2)) * .25;
+    dx = Math.max(-14, Math.min(14, dx));
+    dy = Math.max(-10, Math.min(10, dy));
+    magBtn.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+  });
+  magZone.addEventListener('pointerleave', function(){ magBtn.style.transform = ''; });
+}
+})();
 </script>
 </body>
 </html>

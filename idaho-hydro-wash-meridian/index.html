@@ -10,158 +10,303 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+/* ============ TOKENS ============ */
 :root{
   --bg:#F4FAFB; --card:#FFFFFF; --ink:#0A2E38; --body:#1E3E48; --muted:#44606B;
   --aqua:#0E7490; --aqua-deep:#0B5A70; --aqua-ink:#062A33; --aqua-soft:#E3F4F8;
   --splash:#3FD3F2; --splash-deep:#20C3E6; --line:#D8EAEF;
   --star:#FFC53D; --radius:16px;
   --shadow:0 14px 34px rgba(10,46,56,.10);
+  --shadow-lift:0 22px 48px rgba(10,46,56,.16);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--body);line-height:1.65;font-size:16.5px}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--body);line-height:1.65;font-size:16.5px;overflow-x:hidden}
 h1,h2,h3{font-family:'Sora',sans-serif;color:var(--ink);line-height:1.15;letter-spacing:-.015em}
 img{max-width:100%;display:block}
 a{color:inherit}
+::selection{background:var(--splash);color:var(--aqua-ink)}
 .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--aqua);color:#fff;font-weight:800;padding:14px 22px;border-radius:0 0 12px 0;z-index:200;text-decoration:none}
+.skip:focus{left:0}
 
+/* ============ BUTTONS ============ */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:800;font-family:'Sora',sans-serif;
   border:none;border-radius:14px;padding:15px 28px;min-height:52px;text-decoration:none;font-size:1.02rem;cursor:pointer;
-  transition:transform .18s ease, box-shadow .18s ease, background .18s ease}
+  position:relative;overflow:hidden;transition:transform .18s ease, box-shadow .18s ease, background .18s ease}
+.btn::after{content:"";position:absolute;top:-12%;left:-75%;width:50%;height:124%;transform:skewX(-20deg);pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.8) 50%,transparent);opacity:0}
+.btn:hover::after,.btn:focus-visible::after{opacity:1;animation:shineSweep .6s ease-out}
+@keyframes shineSweep{0%{left:-75%;opacity:1}60%{opacity:1}100%{left:135%;opacity:0}}
 .btn:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #FF8A3D;outline-offset:3px;border-radius:8px}
 .btn:focus-visible{border-radius:14px}
 .btn-splash{background:var(--splash);color:var(--aqua-ink);box-shadow:0 10px 26px rgba(32,195,230,.38)}
-.btn-splash:hover{background:var(--splash-deep);transform:translateY(-2px)}
+.btn-splash:hover{background:var(--splash-deep);transform:translateY(-3px);box-shadow:0 16px 36px rgba(32,195,230,.5)}
 .btn-deep{background:var(--aqua);color:#fff}
-.btn-deep:hover{background:var(--aqua-deep);transform:translateY(-2px)}
+.btn-deep:hover{background:var(--aqua-deep);transform:translateY(-3px);box-shadow:0 14px 30px rgba(14,116,144,.35)}
 .btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.55)}
-.btn-ghost:hover{border-color:#fff;transform:translateY(-2px)}
+.btn-ghost:hover{border-color:#fff;transform:translateY(-3px);box-shadow:0 12px 28px rgba(6,42,51,.35)}
 .btn svg{flex:none}
 
-/* demo banner */
-.demo-note{position:sticky;top:0;z-index:60;background:var(--aqua-ink);color:#CFEDF5;font-size:.83rem;text-align:center;padding:9px 46px}
+/* ============ SCROLL PROGRESS ============ */
+#progress{position:fixed;top:0;left:0;height:4px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--splash),var(--aqua));box-shadow:0 0 10px rgba(63,211,242,.7)}
+
+/* ============ DEMO BANNER ============ */
+.demo-note{position:relative;z-index:60;background:var(--aqua-ink);color:#CFEDF5;font-size:.83rem;text-align:center;padding:9px 46px}
 .demo-note button{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:none;color:#CFEDF5;font-size:1.05rem;cursor:pointer;padding:10px 14px;min-width:44px;min-height:40px}
 
-/* header */
-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:2px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:13px 0;gap:12px}
+/* ============ HEADER ============ */
+header{position:sticky;top:0;z-index:90;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);
+  border-bottom:2px solid var(--line);transition:box-shadow .3s, background .3s}
+header.scrolled{box-shadow:0 10px 30px rgba(10,46,56,.14);background:rgba(255,255,255,.98)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px;transition:padding .3s}
+header.scrolled .nav{padding:8px 0}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:'Sora',sans-serif;font-weight:800;font-size:1.06rem;color:var(--aqua-ink);min-height:44px}
-.logo .drop{width:38px;height:38px;border-radius:12px;background:linear-gradient(150deg,var(--splash),var(--aqua));display:flex;align-items:center;justify-content:center;color:#fff;flex:none}
+.logo .drop{width:38px;height:38px;border-radius:12px;background:linear-gradient(150deg,var(--splash),var(--aqua));display:flex;align-items:center;justify-content:center;color:#fff;flex:none;transition:transform .25s}
+.logo:hover .drop{transform:rotate(-8deg) scale(1.08)}
+.nav-links{display:none;gap:24px;font-weight:700;font-size:.93rem;color:var(--muted)}
+.nav-links a{text-decoration:none;padding:10px 2px;position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:6px;height:2px;background:var(--splash);transition:right .25s ease}
+.nav-links a:hover{color:var(--aqua-deep)}
+.nav-links a:hover::after{right:0}
+@media(min-width:900px){.nav-links{display:flex}}
 .nav-call{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:800;font-family:'Sora',sans-serif;
-  color:#fff;background:var(--aqua);padding:12px 20px;min-height:46px;border-radius:12px;font-size:.94rem;transition:background .18s}
-.nav-call:hover{background:var(--aqua-deep)}
+  color:#fff;background:var(--aqua);padding:12px 20px;min-height:46px;border-radius:12px;font-size:.94rem;transition:background .18s, transform .18s, box-shadow .18s}
+.nav-call:hover{background:var(--aqua-deep);transform:translateY(-2px);box-shadow:0 10px 24px rgba(14,116,144,.35)}
 .nav-call .call-txt{display:none}
 
-/* hero */
-.hero{background:linear-gradient(155deg,#052730 0%,#0A4254 48%,#0E7490 100%);color:#fff;position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:
-  radial-gradient(720px 340px at 88% 8%,rgba(63,211,242,.20),transparent 62%),
-  radial-gradient(420px 420px at 6% 100%,rgba(63,211,242,.12),transparent 60%)}
-.hero-in{position:relative;z-index:1;max-width:820px;margin:0 auto;text-align:center;padding:78px 22px 118px}
+/* ============ HERO ============ */
+.hero{position:relative;overflow:hidden;color:#fff;
+  background:linear-gradient(155deg,#052730 0%,#0A4254 38%,#0E7490 72%,#0B5A70 100%);
+  background-size:170% 170%;animation:seaShift 16s ease-in-out infinite alternate}
+@keyframes seaShift{from{background-position:0% 0%}to{background-position:100% 100%}}
+.glow{position:absolute;border-radius:50%;pointer-events:none;will-change:transform}
+.glow-a{top:-90px;right:-70px;width:540px;height:400px;background:radial-gradient(closest-side,rgba(63,211,242,.22),transparent 70%)}
+.glow-b{bottom:20px;left:-140px;width:480px;height:480px;background:radial-gradient(closest-side,rgba(63,211,242,.14),transparent 70%)}
+.bubbles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.bubble{position:absolute;bottom:-40px;border-radius:50%;opacity:0;
+  background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.55),rgba(63,211,242,.16) 60%,transparent 75%);
+  border:1px solid rgba(191,239,250,.4);animation:bubbleUp linear infinite}
+@keyframes bubbleUp{
+  0%{transform:translateY(0) translateX(0) scale(.6);opacity:0}
+  12%{opacity:.75}
+  85%{opacity:.4}
+  100%{transform:translateY(-108vh) translateX(34px) scale(1.1);opacity:0}
+}
+.hero-in{position:relative;z-index:2;max-width:820px;margin:0 auto;text-align:center;padding:80px 22px 176px}
 .hero .badge{display:inline-flex;align-items:center;gap:9px;background:rgba(63,211,242,.14);border:1px solid rgba(63,211,242,.4);
-  color:#BDEFFA;border-radius:999px;padding:8px 18px;font-size:.86rem;font-weight:700}
+  color:#BDEFFA;border-radius:999px;padding:8px 18px;font-size:.86rem;font-weight:700;
+  opacity:0;animation:rise .7s .05s forwards}
+.hero .badge svg{animation:dropBob 3.4s ease-in-out infinite}
+@keyframes dropBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
 .hero h1{color:#fff;font-size:clamp(2.3rem,6.4vw,3.8rem);font-weight:800;margin-top:22px}
-.hero h1 .shine{color:var(--splash)}
-.hero p.lead{margin:18px auto 0;font-size:1.16rem;color:#C8E7F0;max-width:36rem}
-.hero .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;justify-content:center}
-.trust{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 24px;margin-top:34px;color:#C8E7F0;font-size:.96rem}
-.trust .stars{color:var(--star);letter-spacing:2px;font-size:1.08rem}
+.hero h1 .line{display:block;opacity:0;transform:translateY(32px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
+.hero h1 .line:nth-child(2){animation-delay:.14s}
+.hero h1 .line:nth-child(3){animation-delay:.28s}
+@keyframes rise{to{opacity:1;transform:none}}
+.hero h1 .shine{background:linear-gradient(92deg,var(--splash) 15%,#CFF3FC 50%,var(--splash) 85%);
+  background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shimmer 3.6s ease-in-out infinite}
+@keyframes shimmer{0%,100%{background-position:0% 0}50%{background-position:100% 0}}
+.hero p.lead{margin:18px auto 0;font-size:1.16rem;color:#C8E7F0;max-width:36rem;opacity:0;animation:rise .8s .42s forwards}
+.hero .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;justify-content:center;opacity:0;animation:rise .8s .56s forwards}
+.trust{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 24px;margin-top:34px;color:#C8E7F0;font-size:.96rem;opacity:0;animation:rise .8s .7s forwards}
+.trust .stars{color:var(--star);letter-spacing:2px;font-size:1.08rem;text-shadow:0 0 14px rgba(255,197,61,.55)}
 .trust strong{color:#fff}
-.wave{display:block;width:100%;height:auto;margin-top:-1px}
+.sea{position:absolute;left:0;right:0;bottom:-1px;height:110px;overflow:hidden;pointer-events:none}
+.sea .band{position:absolute;bottom:0;left:0;width:200%;height:100%}
+.sea .band svg{display:block;width:100%;height:100%}
+.band-back{bottom:16px;animation:waveSlide 22s linear infinite}
+.band-front{animation:waveSlide 13s linear infinite reverse}
+@keyframes waveSlide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* sections */
-section{padding:76px 0}
-.kicker{font-family:'Sora',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;color:var(--aqua-deep)}
+/* ============ MARQUEE ============ */
+.marq-tilt{overflow:hidden;position:relative;z-index:3;margin-top:-42px;padding:22px 0 10px}
+.marq{background:linear-gradient(90deg,var(--splash),var(--splash-deep));transform:rotate(-1.2deg);width:112%;margin-left:-6%;
+  box-shadow:0 16px 38px rgba(10,46,56,.18);border-top:2px solid rgba(255,255,255,.45);border-bottom:2px solid rgba(6,42,51,.15)}
+.marq-track{display:flex;width:max-content;animation:marq 26s linear infinite}
+.marq ul{display:flex;list-style:none;gap:0;padding:13px 0}
+.marq li{font-family:'Sora',sans-serif;font-weight:800;text-transform:uppercase;font-size:.95rem;letter-spacing:.07em;
+  color:var(--aqua-ink);white-space:nowrap;display:flex;align-items:center}
+.marq li::after{content:"💧";margin:0 20px;font-size:.8rem}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ============ STATS ============ */
+.stats{padding:54px 0 0}
+.stats .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;text-align:center}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 12px;
+  border-top:4px solid var(--splash);transition:transform .25s ease, box-shadow .25s ease}
+.stat:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.stat .num{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(2rem,4.5vw,2.9rem);color:var(--ink);line-height:1}
+.stat .num .u{color:var(--aqua);font-size:.6em}
+.stat .num .u.star-u{color:var(--star)}
+.stat .lbl{font-size:.87rem;color:var(--muted);margin-top:8px;font-weight:600}
+
+/* ============ SECTIONS ============ */
+section{padding:84px 0;position:relative;overflow:hidden}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;color:var(--aqua-deep)}
+.kicker::before{content:"";width:34px;height:2px;background:linear-gradient(90deg,var(--splash),transparent)}
 h2{font-size:clamp(1.75rem,4vw,2.45rem);font-weight:800;margin-top:10px}
 .sub{color:var(--muted);margin-top:12px;max-width:40rem}
+.ghost-word{position:absolute;top:18px;right:-8px;font-family:'Sora',sans-serif;font-weight:800;text-transform:uppercase;line-height:1;
+  font-size:clamp(4rem,13vw,9.5rem);color:transparent;-webkit-text-stroke:1px rgba(14,116,144,.10);pointer-events:none;user-select:none}
 
-/* services */
+/* ============ SERVICES ============ */
 .grid-services{display:grid;gap:20px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
 .svc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;border-top:4px solid var(--splash);
-  transition:transform .2s ease, box-shadow .2s ease}
-.svc:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-.svc .ico{width:54px;height:54px;border-radius:50%;background:var(--aqua-soft);display:flex;align-items:center;justify-content:center;color:var(--aqua-deep);margin-bottom:16px}
+  position:relative;overflow:hidden;transform-style:preserve-3d;
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s}
+.svc:hover{transform:translateY(-6px);box-shadow:var(--shadow-lift);border-color:rgba(63,211,242,.6)}
+.svc::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .3s;pointer-events:none;
+  background:radial-gradient(300px 210px at var(--gx,70%) var(--gy,20%),rgba(63,211,242,.16),transparent 70%)}
+.svc:hover::before{opacity:1}
+.svc::after{content:"";position:absolute;top:-20%;left:-80%;width:40%;height:140%;transform:skewX(-20deg);pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);opacity:0}
+.svc:hover::after{opacity:1;animation:shineSweep .7s ease-out}
+.svc .ico{width:54px;height:54px;border-radius:50%;background:var(--aqua-soft);display:flex;align-items:center;justify-content:center;
+  color:var(--aqua-deep);margin-bottom:16px;transition:transform .25s, background .25s, color .25s}
+.svc:hover .ico{transform:rotate(-8deg) scale(1.12);background:linear-gradient(150deg,var(--splash),var(--aqua));color:#fff}
 .svc h3{font-size:1.14rem;font-weight:700}
 .svc p{color:var(--muted);font-size:.95rem;margin-top:9px}
 
-/* steps */
+/* ============ STEPS ============ */
 .steps{background:linear-gradient(180deg,var(--aqua-soft),#F0F9FB)}
 .grid-steps{display:grid;gap:20px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-.step{background:var(--card);border-radius:var(--radius);padding:30px;border:1px solid var(--line);position:relative}
+.step{background:var(--card);border-radius:var(--radius);padding:30px;border:1px solid var(--line);position:relative;overflow:hidden;
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s}
+.step:hover{transform:translateY(-6px);box-shadow:var(--shadow-lift);border-color:rgba(63,211,242,.55)}
 .step .num{width:46px;height:46px;border-radius:50%;background:linear-gradient(150deg,var(--splash),var(--aqua));color:#fff;
-  display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:800;font-size:1.25rem}
+  display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:800;font-size:1.25rem;
+  transition:transform .25s}
+.step:hover .num{transform:scale(1.12) rotate(-6deg)}
 .step h3{margin-top:16px;font-size:1.1rem}
 .step p{color:var(--muted);font-size:.95rem;margin-top:8px}
 
-/* rating showcase */
+/* ============ RATING SHOWCASE ============ */
 .rating-panel{margin-top:40px;background:linear-gradient(150deg,#052730,#0B5A70);border-radius:22px;color:#fff;
-  padding:52px 30px;text-align:center;position:relative;overflow:hidden}
+  padding:56px 30px;text-align:center;position:relative;overflow:hidden}
 .rating-panel::before{content:"";position:absolute;inset:0;pointer-events:none;background:
   radial-gradient(480px 240px at 12% 0%,rgba(63,211,242,.18),transparent 60%),
   radial-gradient(480px 240px at 90% 100%,rgba(63,211,242,.14),transparent 60%)}
 .rating-panel>*{position:relative}
-.rating-big{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(3.6rem,10vw,5.4rem);line-height:1;color:#fff}
-.rating-big span{color:var(--splash);font-size:.45em;vertical-align:super}
-.rating-stars{color:var(--star);font-size:1.7rem;letter-spacing:6px;margin-top:10px}
+.rating-hero{position:relative;display:inline-block;padding:8px 34px}
+.pulse-ring{position:absolute;left:50%;top:50%;width:130px;height:130px;margin:-65px 0 0 -65px;border-radius:50%;
+  border:2px solid rgba(63,211,242,.5);opacity:0;animation:ringGrow 3.3s ease-out infinite;pointer-events:none}
+.pulse-ring:nth-child(2){animation-delay:1.1s}
+.pulse-ring:nth-child(3){animation-delay:2.2s}
+@keyframes ringGrow{0%{transform:scale(.45);opacity:0}18%{opacity:.55}100%{transform:scale(2.4);opacity:0}}
+.rating-big{position:relative;z-index:1;font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(3.6rem,10vw,5.4rem);line-height:1;color:#fff;
+  text-shadow:0 6px 30px rgba(6,42,51,.6)}
+.rating-stars{color:var(--star);font-size:1.7rem;letter-spacing:6px;margin-top:12px;text-shadow:0 0 16px rgba(255,197,61,.55)}
+.rating-stars .star{display:inline-block}
+.js .rating-panel.in .rating-stars .star{animation:starPop .55s cubic-bezier(.2,.8,.3,1.35) both}
+.js .rating-panel.in .rating-stars .star:nth-child(1){animation-delay:.15s}
+.js .rating-panel.in .rating-stars .star:nth-child(2){animation-delay:.27s}
+.js .rating-panel.in .rating-stars .star:nth-child(3){animation-delay:.39s}
+.js .rating-panel.in .rating-stars .star:nth-child(4){animation-delay:.51s}
+.js .rating-panel.in .rating-stars .star:nth-child(5){animation-delay:.63s}
+@keyframes starPop{from{transform:scale(0) rotate(-25deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
 .rating-line{margin-top:14px;font-size:1.12rem;color:#C8E7F0;max-width:32rem;margin-left:auto;margin-right:auto}
 .rating-line strong{color:#fff}
-.rating-panel .btn{margin-top:28px}
+.mag-zone{display:inline-block;margin-top:24px;padding:14px}
+.mag-zone .btn{margin:0}
 
-/* area */
+/* ============ AREA ============ */
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-.chip{background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:10px 20px;font-size:.93rem;font-weight:700;color:var(--aqua-deep)}
+.chip{background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:10px 20px;font-size:.93rem;font-weight:700;
+  color:var(--aqua-deep);transition:transform .2s, background .2s, color .2s, border-color .2s;cursor:default}
+.chip:hover{transform:translateY(-3px);background:var(--aqua);border-color:var(--aqua);color:#fff;box-shadow:0 10px 22px rgba(14,116,144,.25)}
 
-/* quote form */
+/* ============ FAQ ============ */
+.faq-sec{background:linear-gradient(180deg,#F0F9FB,var(--aqua-soft))}
+.faq-list{max-width:780px}
+.qa{background:var(--card);border:1.5px solid var(--line);border-radius:14px;margin-top:14px;overflow:hidden;
+  transition:border-color .25s, box-shadow .25s}
+.qa.open{border-color:var(--splash);box-shadow:0 12px 28px rgba(10,46,56,.10)}
+.qa .q{width:100%;text-align:left;background:none;border:none;font:inherit;color:var(--ink);font-weight:700;
+  padding:20px 22px;min-height:44px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:1.02rem}
+.qa .chev{transition:transform .3s;color:var(--aqua);flex:none}
+.qa.open .chev{transform:rotate(180deg)}
+.qa .a{max-height:0;overflow:hidden;transition:max-height .4s ease;color:var(--muted);font-size:.96rem}
+.qa.open .a{max-height:320px}
+.qa .a p{padding:0 22px 20px}
+.qa .a a{color:var(--aqua-deep);font-weight:800}
+
+/* ============ QUOTE FORM ============ */
 .quote{background:var(--aqua-soft)}
 .quote-card{margin-top:36px;background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);
   padding:38px 30px;max-width:620px}
 .form{display:grid;gap:18px}
 .form label{font-weight:700;font-size:.92rem;display:block;margin-bottom:6px;color:var(--ink)}
 .form input,.form textarea{width:100%;border:1.5px solid #BFDCE4;background:#FBFEFF;color:var(--ink);
-  border-radius:12px;padding:14px;font:inherit;font-size:1rem;min-height:48px}
+  border-radius:12px;padding:14px;font:inherit;font-size:1rem;min-height:48px;transition:border-color .2s, box-shadow .2s}
 .form input::placeholder,.form textarea::placeholder{color:#6E8893}
 .form input:focus,.form textarea:focus{outline:3px solid var(--splash);outline-offset:1px;border-color:var(--aqua)}
+.form input:hover,.form textarea:hover{border-color:var(--aqua)}
 .form-note{font-size:.86rem;color:var(--muted)}
 .form .btn{justify-self:start}
 .quote .phone-line a{color:var(--aqua-deep);font-weight:800;text-decoration:underline;text-underline-offset:3px;display:inline-block;padding:8px 0}
 
-/* footer */
+/* ============ FOOTER ============ */
 footer{background:var(--aqua-ink);color:#9FC2CC;padding:46px 0;font-size:.9rem}
 .foot{display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:space-between;align-items:center}
 .foot .fname{font-family:'Sora',sans-serif;font-weight:800;color:#fff;font-size:1.06rem}
 .foot a{color:#fff;font-weight:700;text-decoration:none;display:inline-block;padding:10px 0}
+.foot a:hover{color:#BDEFFA}
 .disclaimer{margin-top:24px;padding-top:20px;border-top:1px solid #123B47;font-size:.8rem;color:#7FA6B1}
 
-/* reveal animation */
-.js .reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+/* ============ REVEALS ============ */
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.2,1)}
 .js .reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .js .reveal{opacity:1;transform:none;transition:none}
-  .btn,.svc,.nav-call{transition:none}
-}
+.js .stagger>*{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.js .stagger.in>*{opacity:1;transform:none}
+.js .stagger.in>*:nth-child(2){transition-delay:.1s}
+.js .stagger.in>*:nth-child(3){transition-delay:.2s}
+.js .stagger.in>*:nth-child(4){transition-delay:.3s}
+.js .stagger.in>*:nth-child(5){transition-delay:.38s}
+.js .stagger.in>*:nth-child(6){transition-delay:.46s}
+.js .stagger.in>*:nth-child(7){transition-delay:.52s}
+.js .stagger.in>*:nth-child(8){transition-delay:.58s}
+.js .stagger.in>*:nth-child(9){transition-delay:.64s}
 
-/* mobile call bar */
+/* ============ MOBILE CALL BAR ============ */
 .callbar{display:none}
 @media(max-width:720px){
-  .callbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--splash);justify-content:center;box-shadow:0 -6px 20px rgba(10,46,56,.18)}
+  .callbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--splash);justify-content:center;box-shadow:0 -6px 20px rgba(10,46,56,.18)}
   .callbar a{display:flex;align-items:center;gap:10px;color:var(--aqua-ink);text-decoration:none;font-family:'Sora',sans-serif;
     font-weight:800;font-size:1.08rem;padding:17px;width:100%;justify-content:center}
   body{padding-bottom:66px}
   .nav-call .num-txt{display:none}
   .nav-call .call-txt{display:inline}
+  .hero-in{padding-top:64px;padding-bottom:150px}
+}
+
+/* ============ REDUCED MOTION ============ */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .js .reveal,.js .stagger>*{opacity:1;transform:none}
+  .hero .badge,.hero h1 .line,.hero p.lead,.hero .cta-row,.trust{opacity:1;transform:none}
+  .hero h1 .shine{background:none;color:var(--splash);-webkit-text-fill-color:var(--splash)}
+  .bubble,.pulse-ring{display:none}
+  .marq-track{animation:none !important}
+  [data-speed]{transform:none !important}
+  .rating-stars .star{opacity:1;transform:none}
 }
 </style>
+<noscript><style>
+.reveal,.stagger>*{opacity:1;transform:none}
+.qa .a{max-height:none}
+.hero .badge,.hero h1 .line,.hero p.lead,.hero .cta-row,.trust{opacity:1;transform:none}
+</style></noscript>
 <script>document.documentElement.className+=" js"</script>
 </head>
 <body>
+<a class="skip" href="#top">Skip to content</a>
+<div id="progress" aria-hidden="true"></div>
 
-<div class="demo-note" id="demoNote">
-  Demo preview built for Idaho Hydro Wash — not their official site.
-  <button aria-label="Dismiss notice" onclick="document.getElementById('demoNote').style.display='none'">&times;</button>
-</div>
-
-<header>
+<header id="hdr">
   <div class="wrap nav">
     <a class="logo" href="#top" aria-label="Idaho Hydro Wash — home">
       <span class="drop" aria-hidden="true">
@@ -169,6 +314,12 @@ footer{background:var(--aqua-ink);color:#9FC2CC;padding:46px 0;font-size:.9rem}
       </span>
       Idaho Hydro Wash
     </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#services">Services</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+      <a href="#quote">Free quote</a>
+    </nav>
     <a class="nav-call" href="tel:+12088305980" aria-label="Call Idaho Hydro Wash at (208) 830-5980">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       <span class="num-txt" aria-hidden="true">(208) 830-5980</span><span class="call-txt" aria-hidden="true">Call</span>
@@ -178,12 +329,30 @@ footer{background:var(--aqua-ink);color:#9FC2CC;padding:46px 0;font-size:.9rem}
 
 <main id="top">
 <div class="hero">
+  <div class="glow glow-a" data-speed="0.18" aria-hidden="true"></div>
+  <div class="glow glow-b" data-speed="0.32" aria-hidden="true"></div>
+  <div class="bubbles" aria-hidden="true">
+    <span class="bubble" style="left:6%;width:14px;height:14px;animation-duration:11s;animation-delay:0s"></span>
+    <span class="bubble" style="left:16%;width:9px;height:9px;animation-duration:9s;animation-delay:2.4s"></span>
+    <span class="bubble" style="left:26%;width:18px;height:18px;animation-duration:13s;animation-delay:1.1s"></span>
+    <span class="bubble" style="left:38%;width:8px;height:8px;animation-duration:8.5s;animation-delay:3.6s"></span>
+    <span class="bubble" style="left:52%;width:12px;height:12px;animation-duration:10s;animation-delay:.6s"></span>
+    <span class="bubble" style="left:63%;width:20px;height:20px;animation-duration:14s;animation-delay:2s"></span>
+    <span class="bubble" style="left:74%;width:10px;height:10px;animation-duration:9.5s;animation-delay:4.2s"></span>
+    <span class="bubble" style="left:85%;width:15px;height:15px;animation-duration:12s;animation-delay:1.6s"></span>
+    <span class="bubble" style="left:93%;width:8px;height:8px;animation-duration:8s;animation-delay:3s"></span>
+  </div>
+
   <div class="hero-in">
     <span class="badge">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2s7 8.1 7 13a7 7 0 0 1-14 0c0-4.9 7-13 7-13z"/></svg>
       Pressure washing · Meridian, Idaho
     </span>
-    <h1>Years of grime, gone.<br>Nothing left but <span class="shine">shine.</span></h1>
+    <h1>
+      <span class="line">Years of grime, gone.</span>
+      <span class="line">Nothing left but</span>
+      <span class="line"><span class="shine">shine.</span></span>
+    </h1>
     <p class="lead">Idaho Hydro Wash brings siding, driveways, roofs and decks across the Treasure Valley back to life — washed carefully, rinsed clean, and looking new again.</p>
     <div class="cta-row">
       <a class="btn btn-splash" href="tel:+12088305980">
@@ -198,31 +367,62 @@ footer{background:var(--aqua-ink);color:#9FC2CC;padding:46px 0;font-size:.9rem}
       <span>Serving Meridian &amp; the Treasure Valley</span>
     </div>
   </div>
-  <svg class="wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0,48 C240,88 480,88 720,58 C960,28 1200,28 1440,58 L1440,90 L0,90 Z" fill="#F4FAFB"/></svg>
+
+  <div class="sea" aria-hidden="true">
+    <div class="band band-back">
+      <svg viewBox="0 0 2880 100" preserveAspectRatio="none"><path fill="rgba(63,211,242,.28)" d="M0,52 C240,16 480,88 720,52 C960,16 1200,88 1440,52 C1680,16 1920,88 2160,52 C2400,16 2640,88 2880,52 L2880,100 L0,100 Z"/></svg>
+    </div>
+    <div class="band band-front">
+      <svg viewBox="0 0 2880 100" preserveAspectRatio="none"><path fill="#F4FAFB" d="M0,52 C240,88 480,16 720,52 C960,88 1200,16 1440,52 C1680,88 1920,16 2160,52 C2400,88 2640,16 2880,52 L2880,100 L0,100 Z"/></svg>
+    </div>
+  </div>
+</div>
+
+<div class="marq-tilt" aria-hidden="true">
+  <div class="marq">
+    <div class="marq-track">
+      <ul>
+        <li>House &amp; siding wash</li><li>Driveways &amp; concrete</li><li>Roof &amp; gutter cleaning</li><li>Decks, fences &amp; patios</li><li>Free quotes</li><li>Meridian &amp; the Treasure Valley</li>
+      </ul>
+      <ul>
+        <li>House &amp; siding wash</li><li>Driveways &amp; concrete</li><li>Roof &amp; gutter cleaning</li><li>Decks, fences &amp; patios</li><li>Free quotes</li><li>Meridian &amp; the Treasure Valley</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="stats" aria-label="Track record">
+  <div class="wrap stagger">
+    <div class="stat"><div class="num"><span class="cnt" data-count="5.0" data-dec="1">5.0</span><span class="u star-u">★</span></div><div class="lbl">Google rating</div></div>
+    <div class="stat"><div class="num"><span class="cnt" data-count="13">13</span></div><div class="lbl">Google reviews</div></div>
+    <div class="stat"><div class="num"><span class="cnt" data-count="100">100</span><span class="u">%</span></div><div class="lbl">Five-star reviews</div></div>
+    <div class="stat"><div class="num"><span class="cnt" data-count="8">8</span></div><div class="lbl">Treasure Valley cities</div></div>
+  </div>
 </div>
 
 <section id="services">
+  <span class="ghost-word" aria-hidden="true">SHINE</span>
   <div class="wrap">
     <span class="kicker">What we wash</span>
-    <h2>Every surface, the right pressure</h2>
-    <p class="sub">Soft wash where your home needs gentle care, real pressure where the concrete needs muscle. One visit and the whole property looks fresh again.</p>
-    <div class="grid-services">
-      <div class="svc reveal">
+    <h2 class="reveal">Every surface, the right pressure</h2>
+    <p class="sub reveal">Soft wash where your home needs gentle care, real pressure where the concrete needs muscle. One visit and the whole property looks fresh again.</p>
+    <div class="grid-services stagger">
+      <div class="svc tilt">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg></div>
         <h3>House &amp; Siding Wash</h3>
         <p>Low-pressure soft washing for siding, stucco and brick — dirt, dust and cobwebs gone without harming paint or plants.</p>
       </div>
-      <div class="svc reveal">
+      <div class="svc tilt">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20L20 4"/><path d="M4 4h6v6"/><path d="M20 20h-6v-6"/></svg></div>
         <h3>Driveways &amp; Concrete</h3>
         <p>Driveways, sidewalks and patios surface-cleaned in even passes — tire marks, oil spots and years of buildup lifted away.</p>
       </div>
-      <div class="svc reveal">
+      <div class="svc tilt">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 13l10-9 10 9"/><path d="M6 13v5a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-5"/><path d="M2 17c1.5 1 3 1 4.5 0"/></svg></div>
         <h3>Roof &amp; Gutter Cleaning</h3>
         <p>Moss and black streaks soft-washed off the roof, gutters cleared and their faces brightened — curb appeal from top to bottom.</p>
       </div>
-      <div class="svc reveal">
+      <div class="svc tilt">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V9"/><path d="M9 21V9"/><path d="M15 21V9"/><path d="M21 21V9"/><path d="M1 9l11-6 11 6"/><path d="M1 15h22"/></svg></div>
         <h3>Decks, Fences &amp; Patios</h3>
         <p>Gray, weathered wood and dingy vinyl washed back to their real color — ready for summer evenings, or a fresh coat of stain.</p>
@@ -232,37 +432,47 @@ footer{background:var(--aqua-ink);color:#9FC2CC;padding:46px 0;font-size:.9rem}
 </section>
 
 <section class="steps">
+  <span class="ghost-word" aria-hidden="true">FRESH</span>
   <div class="wrap">
     <span class="kicker">How it works</span>
-    <h2>From dull to done in three steps</h2>
-    <div class="grid-steps">
-      <div class="step reveal"><div class="num" aria-hidden="true">1</div><h3>Call or text us</h3><p>Tell us what's looking tired — house, driveway, roof or deck. You'll get a fast, free quote with zero pressure (on you, anyway).</p></div>
-      <div class="step reveal"><div class="num" aria-hidden="true">2</div><h3>We wash it right</h3><p>Professional equipment, the correct pressure for each surface, and care around your windows, plants and trim.</p></div>
-      <div class="step reveal"><div class="num" aria-hidden="true">3</div><h3>Step back and see it shine</h3><p>Most homes are transformed in a single visit. We rinse everything down and leave nothing behind but clean.</p></div>
+    <h2 class="reveal">From dull to done in three steps</h2>
+    <div class="grid-steps stagger">
+      <div class="step"><div class="num" aria-hidden="true">1</div><h3>Call or text us</h3><p>Tell us what's looking tired — house, driveway, roof or deck. You'll get a fast, free quote with zero pressure (on you, anyway).</p></div>
+      <div class="step"><div class="num" aria-hidden="true">2</div><h3>We wash it right</h3><p>Professional equipment, the correct pressure for each surface, and care around your windows, plants and trim.</p></div>
+      <div class="step"><div class="num" aria-hidden="true">3</div><h3>Step back and see it shine</h3><p>Most homes are transformed in a single visit. We rinse everything down and leave nothing behind but clean.</p></div>
     </div>
   </div>
 </section>
 
 <section id="reviews">
+  <span class="ghost-word" aria-hidden="true">5.0★</span>
   <div class="wrap">
     <span class="kicker">What Meridian says</span>
-    <h2>A perfect score on Google</h2>
-    <div class="rating-panel reveal">
-      <div class="rating-big">5<span>.0</span></div>
-      <div class="rating-stars" aria-hidden="true">★★★★★</div>
+    <h2 class="reveal">A perfect score on Google</h2>
+    <div class="rating-panel reveal" id="ratingPanel">
+      <div class="rating-hero">
+        <span class="pulse-ring" aria-hidden="true"></span>
+        <span class="pulse-ring" aria-hidden="true"></span>
+        <span class="pulse-ring" aria-hidden="true"></span>
+        <div class="rating-big"><span class="cnt" data-count="5.0" data-dec="1">5.0</span></div>
+      </div>
+      <div class="rating-stars" aria-hidden="true"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
       <p class="rating-line"><strong>13 Google reviews. Every single one — five stars.</strong><br>Not an average that rounds up. A perfect record, earned one clean driveway at a time.</p>
-      <a class="btn btn-splash" href="https://www.google.com/maps/search/Idaho+Hydro+Wash+Meridian+ID" rel="noopener">
-        Read our reviews on Google Maps
-      </a>
+      <span class="mag-zone" id="magZone">
+        <a class="btn btn-splash" id="magBtn" href="https://www.google.com/maps/search/Idaho+Hydro+Wash+Meridian+ID" rel="noopener">
+          Read our reviews on Google Maps
+        </a>
+      </span>
     </div>
   </div>
 </section>
 
 <section id="area">
+  <span class="ghost-word" aria-hidden="true">VALLEY</span>
   <div class="wrap">
     <span class="kicker">Service area</span>
-    <h2>Based in Meridian, washing the whole valley</h2>
-    <div class="chips">
+    <h2 class="reveal">Based in Meridian, washing the whole valley</h2>
+    <div class="chips stagger">
       <span class="chip">Meridian</span><span class="chip">Boise</span><span class="chip">Eagle</span>
       <span class="chip">Nampa</span><span class="chip">Kuna</span><span class="chip">Star</span>
       <span class="chip">Garden City</span><span class="chip">Caldwell</span>
@@ -270,18 +480,44 @@ footer{background:var(--aqua-ink);color:#9FC2CC;padding:46px 0;font-size:.9rem}
   </div>
 </section>
 
+<section class="faq-sec" id="faq">
+  <span class="ghost-word" aria-hidden="true">ASK</span>
+  <div class="wrap">
+    <span class="kicker">Good to know</span>
+    <h2 class="reveal">Quick questions, clear answers</h2>
+    <div class="faq-list reveal">
+      <div class="qa open">
+        <button class="q" aria-expanded="true" onclick="toggleQA(this)">Do you blast everything with high pressure?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>No — we match the pressure to the surface. Siding, stucco, brick and roofs get a gentle low-pressure soft wash that won't harm paint or plants, while concrete driveways, sidewalks and patios get real pressure to lift tire marks, oil spots and years of buildup.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">What can you wash?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>Houses and siding, driveways and concrete, roofs and gutters, plus decks, fences and patios. Most homes are transformed in a single visit — one trip and the whole property looks fresh again.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">Which areas do you cover?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>We're based in Meridian and serve the whole Treasure Valley — including Boise, Eagle, Nampa, Kuna, Star, Garden City and Caldwell.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">How do I get a quote?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>Fastest answer: call or text <a href="tel:+12088305980">(208) 830-5980</a>. Quotes are fast, free, and come with zero pressure — or leave your details in the form below and we'll get right back to you.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="quote" id="quote">
   <div class="wrap">
     <span class="kicker">Free quote</span>
-    <h2>What can we make shine?</h2>
-    <p class="sub phone-line">Fastest answer: call or text <a href="tel:+12088305980">(208) 830-5980</a>. Or leave your details and we'll get right back to you:</p>
+    <h2 class="reveal">What can we make shine?</h2>
+    <p class="sub phone-line reveal">Fastest answer: call or text <a href="tel:+12088305980">(208) 830-5980</a>. Or leave your details and we'll get right back to you:</p>
     <div class="quote-card reveal">
       <form class="form" onsubmit="event.preventDefault();this.querySelector('.form-note').textContent='This form is activated on your live website — for now, please call (208) 830-5980.';">
         <div><label for="fname">Your name</label><input id="fname" name="name" placeholder="Jane Smith" autocomplete="name"></div>
         <div><label for="fphone">Phone number</label><input id="fphone" name="phone" type="tel" placeholder="(208) 555-0100" autocomplete="tel"></div>
         <div><label for="fjob">What needs washing?</label><textarea id="fjob" name="job" rows="3" placeholder="e.g. Two-story house wash plus the driveway and back patio"></textarea></div>
         <button class="btn btn-deep" type="submit">Request my free quote</button>
-        <p class="form-note">Demo preview — the form activates on the live site.</p>
+        <p class="form-note">The contact form activates on the live version — for now, call directly.</p>
       </form>
     </div>
   </div>
@@ -300,7 +536,7 @@ footer{background:var(--aqua-ink);color:#9FC2CC;padding:46px 0;font-size:.9rem}
         Meridian, Idaho — serving the Treasure Valley
       </div>
     </div>
-    <p class="disclaimer">This is a demo website preview created for Idaho Hydro Wash and is not their official website. Business details (phone, rating, reviews) are from their public Google Maps listing. Want this site live, or want it removed? Reply to the email that brought you here.</p>
+    <p class="disclaimer">Concept preview for Idaho Hydro Wash · MainStreet Web Studio</p>
   </div>
 </footer>
 
@@ -310,9 +546,108 @@ footer{background:var(--aqua-ink);color:#9FC2CC;padding:46px 0;font-size:.9rem}
 </div>
 
 <script>
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-setTimeout(()=>document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.classList.add('in')),2500);
+(function(){
+"use strict";
+var REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+/* ---- scroll progress + shrinking header + parallax glows ---- */
+var prog = document.getElementById('progress'),
+    hdr = document.getElementById('hdr'),
+    plx = [].slice.call(document.querySelectorAll('[data-speed]')),
+    ticking = false;
+function onScroll(){
+  if(ticking) return;
+  ticking = true;
+  requestAnimationFrame(function(){
+    var h = document.documentElement, top = h.scrollTop, max = h.scrollHeight - h.clientHeight;
+    prog.style.width = (max > 0 ? (top / max * 100) : 0) + '%';
+    hdr.classList.toggle('scrolled', top > 8);
+    if(!REDUCED){
+      for(var i = 0; i < plx.length; i++){
+        var s = parseFloat(plx[i].getAttribute('data-speed')) || 0;
+        plx[i].style.transform = 'translate3d(0,' + (top * s) + 'px,0)';
+      }
+    }
+    ticking = false;
+  });
+}
+addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+/* ---- staggered scroll reveals ---- */
+if('IntersectionObserver' in window){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{threshold:.15});
+  document.querySelectorAll('.reveal,.stagger').forEach(function(el){ io.observe(el); });
+  setTimeout(function(){
+    document.querySelectorAll('.reveal:not(.in),.stagger:not(.in)').forEach(function(el){ el.classList.add('in'); });
+  }, 3000);
+}else{
+  document.querySelectorAll('.reveal,.stagger').forEach(function(el){ el.classList.add('in'); });
+}
+
+/* ---- count-up numbers ---- */
+var counters = document.querySelectorAll('.cnt');
+if(!REDUCED && 'IntersectionObserver' in window){
+  var cio = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      cio.unobserve(e.target);
+      var el = e.target,
+          end = parseFloat(el.getAttribute('data-count')),
+          dec = parseInt(el.getAttribute('data-dec') || '0', 10),
+          t0 = performance.now();
+      (function tick(t){
+        var p = Math.min((t - t0) / 1400, 1),
+            v = end * (1 - Math.pow(1 - p, 3));
+        el.textContent = dec ? v.toFixed(dec) : Math.round(v).toLocaleString('en-US');
+        if(p < 1) requestAnimationFrame(tick);
+      })(t0);
+    });
+  },{threshold:.5});
+  counters.forEach(function(el){ cio.observe(el); });
+}
+
+/* ---- FAQ accordion ---- */
+window.toggleQA = function(btn){
+  var qa = btn.closest('.qa'),
+      open = qa.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+};
+
+/* ---- tilt + glow-follow on service cards ---- */
+if(FINE && !REDUCED){
+  document.querySelectorAll('.tilt').forEach(function(card){
+    card.addEventListener('pointermove', function(e){
+      var r = card.getBoundingClientRect(),
+          px = (e.clientX - r.left) / r.width,
+          py = (e.clientY - r.top) / r.height;
+      card.style.transform = 'perspective(750px) rotateX(' + ((.5 - py) * 6) + 'deg) rotateY(' + ((px - .5) * 8) + 'deg) translateY(-5px)';
+      card.style.setProperty('--gx', (px * 100) + '%');
+      card.style.setProperty('--gy', (py * 100) + '%');
+    });
+    card.addEventListener('pointerleave', function(){ card.style.transform = ''; });
+  });
+}
+
+/* ---- magnetic CTA in rating panel ---- */
+var magZone = document.getElementById('magZone'), magBtn = document.getElementById('magBtn');
+if(magZone && magBtn && FINE && !REDUCED){
+  magZone.addEventListener('pointermove', function(e){
+    var r = magZone.getBoundingClientRect(),
+        dx = (e.clientX - (r.left + r.width / 2)) * .28,
+        dy = (e.clientY - (r.top + r.height / 2)) * .28;
+    dx = Math.max(-14, Math.min(14, dx));
+    dy = Math.max(-10, Math.min(10, dy));
+    magBtn.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+  });
+  magZone.addEventListener('pointerleave', function(){ magBtn.style.transform = ''; });
+}
+})();
 </script>
 </body>
 </html>
