@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Handyman Yev — Carpentry &amp; Home Repair, Spokane WA</title>
+<meta name="description" content="Handyman Yev in Spokane: stair treads, carpentry, trim, doors and repairs done right the first time. A perfect 5.0 on Google. Call (509) 218-9377.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --ink:#1B211E; --ink-2:#141915; --ink-3:#0D110E;
+  --cream:#F2F1EC; --paper:#FFFFFF; --line:#DEDCD3; --muted:#65706A;
+  --accent:#3E6B52; --accent-deep:#2B4E3D; --warm:#9E5B3A; --warm-deep:#82492E; --gold:#C89A3C;
+  --radius:3px; --shadow:0 16px 40px rgba(27,33,30,.14);
+  --shadow-lift:0 26px 60px rgba(27,33,30,.2);
+  --glow:0 12px 30px rgba(62,107,82,.38);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;font-size:16.5px;overflow-x:hidden}
+h1,h2,h3{font-family:'Instrument Serif',Georgia,serif;font-weight:400;line-height:1.08;letter-spacing:-.01em}
+img{max-width:100%;display:block}
+a{color:inherit}
+::selection{background:var(--gold);color:var(--ink-3)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--gold);color:#241B05;font-weight:700;padding:14px 22px;z-index:300;border-radius:0 0 8px 0}
+.skip:focus{left:0}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--accent-deep);outline-offset:3px}
+.dark :focus-visible,header :focus-visible,footer :focus-visible,.callbar :focus-visible{outline-color:var(--gold)}
+
+/* ============ BUTTONS ============ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:600;font-size:1.02rem;
+  border-radius:var(--radius);padding:15px 28px;min-height:54px;text-decoration:none;cursor:pointer;border:0;
+  position:relative;overflow:hidden;transition:transform .2s ease,background .2s ease,box-shadow .2s ease}
+.btn svg{flex:none}
+.btn-call{background:linear-gradient(180deg,#4A7C60,var(--accent));color:#fff;box-shadow:var(--glow)}
+.btn-call::after{content:"";position:absolute;top:-15%;left:-70%;width:42%;height:130%;transform:skewX(-22deg);pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.5) 50%,transparent);opacity:0}
+.btn-call:hover{background:linear-gradient(180deg,var(--accent),var(--accent-deep));transform:translateY(-3px);box-shadow:0 18px 40px rgba(62,107,82,.48)}
+.btn-call:hover::after,.btn-call:focus-visible::after{opacity:1;animation:sweep .6s ease-out}
+@keyframes sweep{0%{left:-70%;opacity:1}60%{opacity:1}100%{left:135%;opacity:0}}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.42)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,.32)}
+
+/* ============ SCROLL PROGRESS ============ */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:130;
+  background:linear-gradient(90deg,var(--accent),var(--gold),var(--warm));box-shadow:0 0 10px rgba(200,154,60,.55)}
+
+/* ============ HEADER ============ */
+header{position:sticky;top:0;z-index:50;background:rgba(20,25,21,.96);backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.07);transition:box-shadow .3s ease,background .3s ease}
+header.scrolled{box-shadow:0 12px 34px rgba(13,17,14,.5);background:rgba(16,20,17,.98)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:13px 0;gap:12px;transition:padding .3s ease}
+header.scrolled .nav{padding:8px 0}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;font-family:'Instrument Serif',serif;font-size:1.3rem;min-height:44px}
+.logo .mark{width:40px;height:40px;background:var(--accent);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;color:#fff;flex:none;transition:transform .25s ease,background .25s ease}
+.logo:hover .mark{transform:rotate(-8deg) scale(1.06);background:var(--accent-deep)}
+.logo small{display:block;font-family:'Inter',sans-serif;font-weight:500;font-size:.66rem;letter-spacing:.18em;color:#9AA69E;text-transform:uppercase;line-height:1.5}
+.nav-links{display:none;gap:24px;font-weight:500;font-size:.93rem;color:#B4BEB7}
+.nav-links a{text-decoration:none;padding:10px 2px;position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:6px;height:2px;background:var(--gold);transition:right .25s ease}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{right:0}
+@media(min-width:920px){.nav-links{display:flex}}
+.nav-call{display:inline-flex;align-items:center;gap:9px;text-decoration:none;background:var(--accent);color:#fff;
+  font-weight:600;font-size:1rem;padding:11px 20px;min-height:46px;border-radius:var(--radius);transition:background .2s ease,transform .2s ease,box-shadow .2s ease}
+.nav-call:hover{background:var(--accent-deep);transform:translateY(-2px);box-shadow:var(--glow)}
+.nav-call .num-short{display:none}
+
+/* ============ HERO ============ */
+.hero{background:var(--ink-2);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background:
+  repeating-linear-gradient(90deg,rgba(255,255,255,.016) 0 1px,transparent 1px 52px)}
+.hero-grid{position:absolute;inset:-30% -12%;pointer-events:none;z-index:0;opacity:.55;
+  background:repeating-linear-gradient(-38deg,rgba(200,154,60,.028) 0 2px,transparent 2px 104px);
+  animation:gridPan 78s linear infinite alternate;will-change:transform}
+@keyframes gridPan{from{transform:translate3d(-2%,-1.5%,0)}to{transform:translate3d(2%,1.5%,0)}}
+.blob{position:absolute;pointer-events:none;z-index:0;will-change:transform}
+.blob .b{border-radius:50%;filter:blur(66px)}
+.blob-1{top:-170px;right:-130px}
+.blob-1 .b{width:560px;height:470px;background:rgba(62,107,82,.42);animation:blobDrift 19s ease-in-out infinite alternate}
+.blob-2{bottom:-190px;left:-150px}
+.blob-2 .b{width:490px;height:420px;background:rgba(158,91,58,.2);animation:blobDrift 24s ease-in-out infinite alternate-reverse}
+@keyframes blobDrift{from{transform:translate3d(-3%,-2%,0) scale(1)}to{transform:translate3d(3%,3%,0) scale(1.12)}}
+.hero-in{position:relative;z-index:2;display:grid;gap:46px;padding:74px 0 120px;align-items:center}
+.flag{display:inline-flex;align-items:center;gap:8px;background:rgba(62,107,82,.2);border:1px solid rgba(62,107,82,.55);
+  color:#9BD3B4;font-size:.83rem;font-weight:500;letter-spacing:.05em;padding:8px 15px;border-radius:var(--radius);
+  opacity:0;animation:rise .7s .05s cubic-bezier(.2,.7,.2,1) forwards}
+.flag .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 9px var(--gold);animation:pulse 2s ease-in-out infinite;flex:none}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.5}}
+.hero h1{font-size:clamp(2.6rem,7vw,4.5rem);margin-top:22px}
+.hero h1 .line{display:block;opacity:0;transform:translateY(30px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
+.hero h1 .line:nth-child(1){animation-delay:.12s}
+.hero h1 .line:nth-child(2){animation-delay:.26s}
+.hero h1 .line:nth-child(3){animation-delay:.4s}
+@keyframes rise{to{opacity:1;transform:none}}
+.hero h1 em{font-style:italic;color:var(--gold);position:relative;display:inline-block}
+.hero h1 em::after{content:"";position:absolute;left:1%;bottom:.02em;height:.07em;width:0;border-radius:3px;
+  background:linear-gradient(90deg,var(--accent),var(--gold));animation:draw .7s 1.15s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes draw{to{width:97%}}
+.hero p.lead{margin-top:18px;font-size:1.13rem;color:#B4BEB7;max-width:33rem;opacity:0;animation:rise .8s .55s cubic-bezier(.2,.7,.2,1) forwards}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;opacity:0;animation:rise .8s .7s cubic-bezier(.2,.7,.2,1) forwards}
+.trust{display:flex;flex-wrap:wrap;align-items:center;gap:10px 26px;margin-top:32px;color:#B4BEB7;font-size:.95rem;
+  opacity:0;animation:rise .8s .85s cubic-bezier(.2,.7,.2,1) forwards}
+.trust .stars{color:var(--gold);letter-spacing:2px;font-size:1.05rem;text-shadow:0 0 14px rgba(200,154,60,.5)}
+.trust strong{color:#fff}
+.hero-media{position:relative;max-width:430px;opacity:0;animation:rise .9s .5s cubic-bezier(.2,.7,.2,1) forwards}
+.hero-media .float{animation:bob 7s ease-in-out 1.8s infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hero-media .frame{position:relative;overflow:hidden;border-radius:var(--radius);box-shadow:0 24px 52px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.12)}
+.hero-media .frame::after{content:"";position:absolute;top:-15%;left:-70%;width:40%;height:130%;transform:skewX(-20deg);pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.32) 50%,transparent);opacity:0;animation:sweep 1.2s ease 2s 1}
+.hero-media .frame:hover::before{content:"";position:absolute;top:-15%;left:-70%;width:40%;height:130%;transform:skewX(-20deg);pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.32) 50%,transparent);animation:sweep .8s ease-out both;z-index:1}
+.hero-media .photo{width:100%}
+.hero-media .tag{position:absolute;left:-12px;bottom:-18px;background:var(--paper);color:var(--ink);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:13px 17px;display:flex;align-items:center;gap:10px;font-weight:500;font-size:.87rem;
+  opacity:0;transform:scale(.8);animation:pop .5s 1.5s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes pop{to{opacity:1;transform:scale(1)}}
+.hero-media .tag .stars{color:var(--gold);letter-spacing:1px}
+@media(min-width:900px){.hero-in{grid-template-columns:1.14fr .86fr}}
+
+/* ============ MARQUEE ============ */
+.marq-tilt{overflow:hidden;position:relative;z-index:3;margin-top:-58px;padding:24px 0}
+.marq{background:linear-gradient(90deg,#4A7C60,var(--accent) 55%,var(--accent-deep));transform:rotate(-1.1deg);width:112%;margin-left:-6%;
+  box-shadow:0 18px 44px rgba(27,33,30,.34);border-top:1px solid rgba(255,255,255,.22);border-bottom:1px solid rgba(0,0,0,.18)}
+.marq-track{display:flex;width:max-content;animation:marq 32s linear infinite}
+.marq ul{display:flex;list-style:none;gap:0;padding:13px 0}
+.marq li{font-family:'Instrument Serif',serif;font-size:1.22rem;letter-spacing:.02em;color:#F1F7F2;white-space:nowrap;display:flex;align-items:center}
+.marq li::after{content:"◆";margin:0 22px;font-size:.55rem;color:rgba(241,247,242,.5)}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marq:hover .marq-track{animation-play-state:paused}
+
+/* ============ STATS ============ */
+.stats{padding:58px 0 6px}
+.stats .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;text-align:center}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:26px 12px;position:relative;overflow:hidden;
+  transition:transform .25s ease,box-shadow .25s ease}
+.stat::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold))}
+.stat:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.stat .num{font-family:'Instrument Serif',serif;font-size:clamp(2.3rem,4.6vw,3.1rem);line-height:1;color:var(--ink)}
+.stat .num .u{color:var(--warm)}
+.stat .lbl{font-size:.86rem;color:var(--muted);margin-top:9px}
+
+/* ============ SECTIONS ============ */
+section{padding:76px 0;position:relative;overflow:hidden}
+.kicker{display:inline-flex;align-items:center;gap:9px;font-weight:600;letter-spacing:.18em;font-size:.74rem;text-transform:uppercase;color:var(--accent)}
+.kicker::before{content:"";width:24px;height:1px;background:var(--warm)}
+h2{font-size:clamp(2rem,4.8vw,3rem);margin-top:14px}
+.sub{color:var(--muted);margin-top:13px;max-width:40rem}
+.dark .sub{color:#B4BEB7}
+.ghost{position:absolute;top:16px;right:-10px;font-family:'Instrument Serif',serif;font-style:italic;line-height:1;
+  font-size:clamp(4rem,13vw,9.5rem);color:transparent;-webkit-text-stroke:1px rgba(27,33,30,.08);pointer-events:none;user-select:none;z-index:0}
+.dark .ghost{-webkit-text-stroke:1px rgba(255,255,255,.06)}
+section .wrap{position:relative;z-index:1}
+
+/* ============ SERVICES ============ */
+.grid-services{display:grid;gap:16px;margin-top:42px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.svc{background:radial-gradient(320px 220px at var(--gx,50%) var(--gy,0%),rgba(62,107,82,var(--ga,0)),transparent 70%),var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:30px;position:relative;overflow:hidden;
+  transform-style:preserve-3d;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.svc::before{content:"";position:absolute;top:0;left:0;right:100%;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold));transition:right .35s ease}
+.svc:hover{border-color:rgba(62,107,82,.45);box-shadow:var(--shadow-lift)}
+.svc:hover::before{right:0}
+.svc::after{content:"";position:absolute;top:-20%;left:-80%;width:40%;height:140%;transform:skewX(-20deg);pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(200,154,60,.1),transparent);opacity:0}
+.svc:hover::after{opacity:1;animation:sweep .7s ease-out}
+.svc .ico{width:48px;height:48px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;color:var(--accent);
+  margin-bottom:16px;transition:transform .25s ease,background .25s ease,color .25s ease}
+.svc:hover .ico{transform:rotate(-8deg) scale(1.12);background:var(--accent);color:#fff}
+.svc h3{font-size:1.42rem}
+.svc p{color:var(--muted);font-size:.95rem;margin-top:8px}
+
+/* ============ STEPS ============ */
+.steps{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.grid-steps{display:grid;gap:26px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.step{position:relative;padding-left:60px;transition:transform .25s ease}
+.step:hover{transform:translateY(-4px)}
+.step .num{position:absolute;left:0;top:0;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-size:1.3rem;
+  transition:transform .25s ease,background .25s ease;box-shadow:0 8px 18px rgba(62,107,82,.3)}
+.step:hover .num{transform:rotate(-10deg) scale(1.1);background:var(--warm)}
+.step h3{font-size:1.36rem}
+.step p{color:var(--muted);font-size:.95rem;margin-top:8px}
+
+/* ============ DRAWN DIVIDER ============ */
+.tool-wrap{display:flex;justify-content:center;margin-bottom:14px}
+.tool-svg{width:58px;height:58px;overflow:visible;transform:rotate(-6deg)}
+.tool-path{fill:none;stroke:var(--warm);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;
+  filter:drop-shadow(0 0 6px rgba(158,91,58,.42));stroke-dasharray:1;stroke-dashoffset:1}
+.drawn .tool-path{transition:stroke-dashoffset 1s ease;stroke-dashoffset:0}
+.drawn .tool-path:nth-child(2){transition-delay:.3s}
+.drawn .tool-path:nth-child(3){transition-delay:.55s}
+
+/* ============ REVIEWS ============ */
+.rev-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px}
+.score{display:flex;align-items:center;gap:16px;background:var(--ink-2);color:#fff;border-radius:var(--radius);padding:18px 24px;
+  position:relative;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease}
+.score:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift)}
+.score::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(220px 120px at 85% 15%,rgba(62,107,82,.38),transparent 70%)}
+.score .big{font-family:'Instrument Serif',serif;font-size:2.8rem;line-height:1;color:var(--gold);position:relative}
+.score .stars{color:var(--gold);letter-spacing:2px;text-shadow:0 0 12px rgba(200,154,60,.45)}
+.score .stars .st{display:inline-block}
+.js .score.in .stars .st{animation:starPop .5s cubic-bezier(.2,.7,.2,1) backwards}
+.js .score.in .stars .st:nth-child(1){animation-delay:.25s}
+.js .score.in .stars .st:nth-child(2){animation-delay:.35s}
+.js .score.in .stars .st:nth-child(3){animation-delay:.45s}
+.js .score.in .stars .st:nth-child(4){animation-delay:.55s}
+.js .score.in .stars .st:nth-child(5){animation-delay:.65s}
+@keyframes starPop{from{opacity:0;transform:scale(.2) rotate(-30deg)}to{opacity:1;transform:none}}
+.js .score.in .big{animation:scoreGlow 2.4s ease-in-out .8s 2}
+@keyframes scoreGlow{0%,100%{text-shadow:0 0 0 rgba(200,154,60,0)}50%{text-shadow:0 0 24px rgba(200,154,60,.8)}}
+.score small{display:block;color:#B4BEB7;font-size:.83rem}
+.carousel{position:relative;margin-top:36px;max-width:760px;touch-action:pan-y}
+.rev{background:var(--paper);border:1px solid var(--line);border-left:2px solid var(--gold);border-radius:var(--radius);
+  padding:32px 30px;display:none;flex-direction:column;gap:14px;box-shadow:0 10px 30px rgba(27,33,30,.06)}
+.rev.active{display:flex;animation:fadeSlide .5s ease}
+@keyframes fadeSlide{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
+.rev .stars{color:var(--gold);letter-spacing:2px}
+.rev p{font-size:1.08rem;font-family:'Instrument Serif',serif;line-height:1.45}
+.rev .who{font-weight:600;font-size:.9rem}
+.rev .who span{display:block;font-weight:400;color:var(--muted);font-size:.81rem}
+.dots{display:flex;gap:2px;margin-top:8px}
+.dots button{width:44px;height:44px;border:none;background:none;cursor:pointer;display:grid;place-items:center;padding:0}
+.dots button .d{width:11px;height:11px;border-radius:50%;background:var(--line);transition:background .2s ease,transform .2s ease,box-shadow .2s ease}
+.dots button:hover .d{background:var(--muted)}
+.dots button.on .d{background:var(--accent);transform:scale(1.35);box-shadow:0 0 8px rgba(62,107,82,.55)}
+.all-reviews{margin-top:24px}
+.all-reviews a{display:inline-flex;align-items:center;min-height:44px;color:var(--accent-deep);font-weight:600;text-decoration-thickness:2px;transition:transform .2s ease}
+.all-reviews a:hover{transform:translateX(4px)}
+
+/* ============ AREA ============ */
+.area{background:var(--paper);border-top:1px solid var(--line)}
+.area-grid{display:grid;gap:28px;margin-top:32px}
+@media(min-width:860px){.area-grid{grid-template-columns:1fr 1fr;align-items:start}}
+.map{border:0;width:100%;height:320px;border-radius:var(--radius);box-shadow:var(--shadow);background:#e6e8e3}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.chip{background:var(--cream);border:1px solid var(--line);border-radius:var(--radius);padding:10px 18px;font-size:.92rem;font-weight:500;
+  transition:transform .2s ease,background .2s ease,color .2s ease,border-color .2s ease;cursor:default}
+.chip:hover{transform:translateY(-3px);background:var(--accent);border-color:var(--accent);color:#fff}
+.addr{margin-top:18px;font-size:1rem;color:var(--muted)}
+.addr strong{display:block;color:var(--ink);font-weight:600}
+
+/* ============ FAQ ============ */
+.faq-sec{background:var(--cream)}
+.faq-list{max-width:780px;margin-top:28px}
+.qa{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);margin-top:14px;overflow:hidden;transition:border-color .25s ease,box-shadow .25s ease}
+.qa:hover{box-shadow:0 10px 26px rgba(27,33,30,.08)}
+.qa.open{border-color:rgba(62,107,82,.5)}
+.qa .q{width:100%;text-align:left;background:none;border:none;font:inherit;color:var(--ink);font-weight:600;
+  padding:20px 22px;min-height:44px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:1.01rem}
+.qa .chev{transition:transform .3s ease;color:var(--warm);flex:none}
+.qa.open .chev{transform:rotate(180deg)}
+.qa .a{max-height:0;overflow:hidden;transition:max-height .4s ease;color:var(--muted);font-size:.95rem}
+.qa.open .a{max-height:320px}
+.qa .a p{padding:0 22px 20px}
+
+/* ============ QUOTE ============ */
+.quote{background:var(--ink-2);color:#fff;position:relative;overflow:hidden}
+.quote::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(600px 340px at 90% 10%,rgba(62,107,82,.32),transparent 62%)}
+.quote .wrap{position:relative;z-index:1}
+.quote .kicker{color:var(--gold)}
+.quote .kicker::before{background:var(--gold)}
+.form{margin-top:32px;display:grid;gap:16px;max-width:560px}
+.form label{font-weight:500;font-size:.92rem;display:block;margin-bottom:6px}
+.form input,.form textarea{width:100%;border:1px solid rgba(255,255,255,.24);background:rgba(255,255,255,.06);color:#fff;
+  border-radius:var(--radius);padding:14px;font:inherit;font-size:1rem;min-height:48px;transition:border-color .2s ease,background .2s ease}
+.form input:hover,.form textarea:hover{border-color:rgba(255,255,255,.4)}
+.form input::placeholder,.form textarea::placeholder{color:#8E998F}
+.form input:focus,.form textarea:focus{outline:3px solid var(--gold);outline-offset:2px;border-color:transparent;background:rgba(255,255,255,.09)}
+.form-note{font-size:.86rem;color:#B4BEB7}
+.form .btn-call{justify-self:start}
+
+/* ============ FOOTER ============ */
+footer{background:var(--ink-3);color:#9AA69E;padding:46px 0;font-size:.91rem}
+.foot{display:flex;flex-wrap:wrap;gap:18px 40px;justify-content:space-between;align-items:center}
+.foot .fname{font-family:'Instrument Serif',serif;color:#fff;font-size:1.42rem}
+.foot a{display:inline-flex;align-items:center;min-height:44px;color:#fff;font-weight:600;text-decoration:none}
+.foot a:hover{color:var(--gold)}
+.disclaimer{margin-top:24px;padding-top:18px;border-top:1px solid #242A25;font-size:.79rem;color:#77827A}
+
+/* ============ REVEALS ============ */
+.js .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .reveal.in{opacity:1;transform:none}
+.js .stagger>*{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.js .stagger.in>*{opacity:1;transform:none}
+.js .stagger.in>*:nth-child(2){transition-delay:.09s}
+.js .stagger.in>*:nth-child(3){transition-delay:.18s}
+.js .stagger.in>*:nth-child(4){transition-delay:.27s}
+.js .stagger.in>*:nth-child(5){transition-delay:.34s}
+.js .stagger.in>*:nth-child(6){transition-delay:.41s}
+.js .stagger.in>*:nth-child(7){transition-delay:.47s}
+.js .stagger.in>*:nth-child(8){transition-delay:.53s}
+
+/* ============ MOBILE CALL BAR ============ */
+.callbar{display:none}
+@media(max-width:720px){
+  .callbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--accent);justify-content:center;box-shadow:0 -8px 26px rgba(27,33,30,.35)}
+  .callbar a{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:600;font-size:1.08rem;padding:16px;width:100%;justify-content:center;min-height:58px}
+  body{padding-bottom:66px}
+  .hero-media{margin:0 auto}
+  .hero-media .tag{left:6px}
+  .hero-in{padding:56px 0 100px}
+  .nav-call .num-txt{display:none}
+  .nav-call .num-short{display:inline}
+}
+
+/* ============ REDUCED MOTION ============ */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .js .reveal,.js .stagger>*{opacity:1;transform:none}
+  .flag,.hero h1 .line,.hero p.lead,.cta-row,.trust,.hero-media,.hero-media .tag{opacity:1;transform:none}
+  .hero h1 em::after{width:97%}
+  .marq-track{animation:none !important}
+  .blob,.hero-grid{display:none}
+  .tool-path{stroke-dashoffset:0}
+}
+</style>
+<noscript><style>
+.reveal,.stagger>*{opacity:1;transform:none}
+.qa .a{max-height:none}
+.tool-path{stroke-dashoffset:0}
+</style></noscript>
+<script>document.documentElement.className+=" js"</script>
+</head>
+<body>
+<a class="skip" href="#top">Skip to content</a>
+<div id="progress" aria-hidden="true"></div>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="Handyman Yev — home">
+      <span class="mark" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M4 20V9l5-4 5 4"/><path d="M14 20v-6h6v6"/><path d="M9 20v-5"/></svg></span>
+      <span>Handyman Yev<small>Spokane, WA</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#services">Services</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#area">Service area</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="nav-call" href="tel:+15092189377">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="num-txt">(509) 218-9377</span><span class="num-short" aria-hidden="true">Call</span>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero dark">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="blob blob-1" data-speed="0.18" aria-hidden="true"><div class="b"></div></div>
+  <div class="blob blob-2" data-speed="0.08" aria-hidden="true"><div class="b"></div></div>
+  <div class="wrap hero-in">
+    <div>
+      <span class="flag"><span class="dot" aria-hidden="true"></span>Handyman &amp; finish carpentry · Spokane, Washington</span>
+      <h1>
+        <span class="line">The one who gets</span>
+        <span class="line">every angle right</span>
+        <span class="line"><em>in an old house.</em></span>
+      </h1>
+      <p class="lead">Yev does the careful work — stair treads in a 90-year-old house, trim that meets cleanly, repairs on things you were told had to be replaced. Fourteen Spokane customers, fourteen five-star reviews.</p>
+      <div class="cta-row">
+        <a class="btn btn-call" id="heroCall" href="tel:+15092189377">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call (509) 218-9377
+        </a>
+        <a class="btn btn-ghost" href="#quote">Describe your project</a>
+      </div>
+      <div class="trust">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <span><strong>5.0</strong> · 14 Google reviews</span>
+        <span>On time, every review</span>
+        <span>Repair before replace</span>
+      </div>
+    </div>
+    <div class="hero-media">
+      <div class="float">
+        <div class="frame">
+          <img class="photo" src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWl4pg67c0YLbpE5ROeNyoN6-6MTR13jxleeg1FblU-h0zhKmqsl-eRolmJ-zwfetFLNgRczNmhJwRd28PsJfa9eU51SsTySzWRnRvav2cILHf5cSYUz5hNIcLlJK0vof86c2d3eidHnGUc_=w408-h544-k-no" alt="Handyman Yev — photo from their Google Business listing" width="408" height="544" onerror="this.closest('.hero-media').style.display='none'">
+        </div>
+        <div class="tag"><span class="stars" aria-hidden="true">★★★★★</span> Every review: 5 stars</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="marq-tilt" aria-hidden="true">
+  <div class="marq">
+    <div class="marq-track">
+      <ul>
+        <li>Stairs &amp; tread install</li><li>Finish carpentry</li><li>Trim &amp; millwork</li><li>Doors &amp; hardware</li><li>General home repair</li><li>Older-home specialists</li>
+      </ul>
+      <ul>
+        <li>Stairs &amp; tread install</li><li>Finish carpentry</li><li>Trim &amp; millwork</li><li>Doors &amp; hardware</li><li>General home repair</li><li>Older-home specialists</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="stats" aria-label="Track record">
+  <div class="wrap stagger">
+    <div class="stat"><div class="num"><span class="cnt" data-count="14">14</span></div><div class="lbl">Google reviews</div></div>
+    <div class="stat"><div class="num"><span class="cnt" data-count="5.0" data-dec="1">5.0</span><span class="u">★</span></div><div class="lbl">Average rating</div></div>
+    <div class="stat"><div class="num"><span class="cnt" data-count="100">100</span><span class="u">%</span></div><div class="lbl">Five-star reviews</div></div>
+    <div class="stat"><div class="num"><span class="cnt" data-count="8">8</span></div><div class="lbl">Spokane-area communities</div></div>
+  </div>
+</div>
+
+<section id="services">
+  <span class="ghost" aria-hidden="true">Craft.</span>
+  <div class="wrap">
+    <span class="kicker">What Yev does</span>
+    <h2 class="reveal">Careful work, measured twice</h2>
+    <p class="sub reveal">The jobs where the angles are awkward, the house isn't square, and it has to look right when it's finished.</p>
+    <div class="grid-services stagger">
+      <div class="svc">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M3 21v-4h4v-4h4V9h4V5h4"/></svg></div>
+        <h3>Stairs &amp; Tread Install</h3>
+        <p>Old houses rarely give you two identical steps. Each tread is measured, cut and fitted on its own.</p>
+      </div>
+      <div class="svc">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 12-8.4 8.4a1.5 1.5 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="M21.5 11.5 19.6 9.6A2 2 0 0 1 19 8.2V7l-2.3-2.3a6 6 0 0 0-4.2-1.7L9 3l.9.8A6.2 6.2 0 0 1 12 8.4V10l2 2h1.2a2 2 0 0 1 1.4.6l1.9 1.9"/></svg></div>
+        <h3>Finish Carpentry</h3>
+        <p>Built-ins, shelving, framing repairs and the joints that decide whether a room looks finished or nearly finished.</p>
+      </div>
+      <div class="svc">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M7 7h10v10H7z"/></svg></div>
+        <h3>Trim &amp; Millwork</h3>
+        <p>Baseboards, casing, crown and thresholds cut to the wall you actually have, not the wall the plans assumed.</p>
+      </div>
+      <div class="svc">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17"/><path d="M2 21h18"/><circle cx="12.5" cy="12" r="1"/></svg></div>
+        <h3>Doors &amp; Hardware</h3>
+        <p>Doors that stick, latches that miss, hinges that sag — planed, shimmed and hung so they close with one hand.</p>
+      </div>
+      <div class="svc">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3>General Home Repair</h3>
+        <p>Drywall, rot, fixtures and the list you've been adding to since spring — handled in one visit where possible.</p>
+      </div>
+      <div class="svc">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.2-8.56"/><path d="M22 4 12 14.01l-3-3"/></svg></div>
+        <h3>Repair Before Replace</h3>
+        <p>More than one customer was told a thing needed replacing. Ask Yev first — often it can simply be fixed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="wrap">
+    <span class="kicker">How it goes</span>
+    <h2 class="reveal">Straightforward from the first call</h2>
+    <div class="grid-steps stagger">
+      <div class="step"><div class="num">1</div><h3>Call and describe it</h3><p>Tell Yev what's wrong. Clear communication from the first call is the thing his reviews mention most.</p></div>
+      <div class="step"><div class="num">2</div><h3>He looks and prices it</h3><p>He comes out, measures properly, and tells you what the job actually needs — including when it doesn't need replacing.</p></div>
+      <div class="step"><div class="num">3</div><h3>Done on time, done right</h3><p>Arrives when he said, respects the house, and doesn't leave a tread or a joint that isn't right.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <span class="ghost" aria-hidden="true">5.0★</span>
+  <div class="wrap">
+    <div class="tool-wrap reveal" id="toolWrap" aria-hidden="true">
+      <svg class="tool-svg" viewBox="0 0 24 24">
+        <path class="tool-path" pathLength="1" d="M3 21h18"/>
+        <path class="tool-path" pathLength="1" d="M3 21v-4h4v-4h4V9h4V5h4"/>
+        <path class="tool-path" pathLength="1" d="M20 5v16"/>
+      </svg>
+    </div>
+    <div class="rev-head">
+      <div>
+        <span class="kicker">Real Google reviews</span>
+        <h2 class="reveal">Fourteen reviews. Not one below five stars.</h2>
+      </div>
+      <div class="score reveal" role="img" aria-label="Rated 5.0 out of 5 stars across 14 Google reviews">
+        <span class="big" aria-hidden="true">5.0</span>
+        <span aria-hidden="true"><span class="stars"><span class="st">★</span><span class="st">★</span><span class="st">★</span><span class="st">★</span><span class="st">★</span></span><small>14 Google reviews</small></span>
+      </div>
+    </div>
+    <div class="carousel reveal" id="carousel" aria-label="Customer reviews">
+      <div class="rev active">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <p>"Yev was wonderful! Our staircase tread install could not have been more complicated with a 90 year old house that had many difficult angles and cuts. He took great pride in his work and made sure to get each one right."</p>
+        <div class="who">Katie Damon <span>Google review</span></div>
+      </div>
+      <div class="rev">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <p>"I had an excellent experience with Handyman Yev. From the first call to the final fix, everything was handled with professionalism, clear communication, and top-notch workmanship. He arrived on time, was respectful of my home, and completed the job quickly and efficiently."</p>
+        <div class="who">Margarita Topov <span>Google review</span></div>
+      </div>
+      <div class="rev">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <p>"Within a few hours I went from a call to him at my house repairing something that I had been told would need to be completely replaced."</p>
+        <div class="who">Timothy Myles <span>Google review</span></div>
+      </div>
+      <div class="dots" role="group" aria-label="Choose review">
+        <button class="on" aria-label="Show review 1"><span class="d" aria-hidden="true"></span></button>
+        <button aria-label="Show review 2"><span class="d" aria-hidden="true"></span></button>
+        <button aria-label="Show review 3"><span class="d" aria-hidden="true"></span></button>
+      </div>
+    </div>
+    <p class="all-reviews"><a href="https://www.google.com/maps/search/Handyman+Yev+Spokane" rel="noopener">Read all 14 reviews on Google Maps →</a></p>
+  </div>
+</section>
+
+<section class="area" id="area">
+  <span class="ghost" aria-hidden="true">Spokane</span>
+  <div class="wrap">
+    <span class="kicker">Service area</span>
+    <h2 class="reveal">Spokane and the valley around it</h2>
+    <div class="area-grid">
+      <div class="reveal">
+        <p class="sub">Based in Spokane, working across the city and the surrounding towns.</p>
+        <p class="addr"><strong>Handyman Yev</strong>Spokane, Washington</p>
+        <div class="chips stagger">
+          <span class="chip">Spokane</span><span class="chip">South Hill</span><span class="chip">Spokane Valley</span>
+          <span class="chip">Liberty Lake</span><span class="chip">Mead</span><span class="chip">Cheney</span>
+          <span class="chip">Airway Heights</span><span class="chip">Deer Park</span>
+        </div>
+      </div>
+      <iframe class="map reveal" title="Map showing the Spokane, Washington service area" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Spokane%2C%20WA&t=&z=11&ie=UTF8&iwloc=&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="faq-sec" id="faq">
+  <div class="wrap">
+    <span class="kicker">Good to know</span>
+    <h2 class="reveal">Questions people call with</h2>
+    <div class="faq-list reveal">
+      <div class="qa open">
+        <button class="q" aria-expanded="true" onclick="toggleQA(this)">What kinds of jobs does Yev take on?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>Stair treads and staircases, finish carpentry, trim and millwork, doors and hardware, and general home repairs. His reviews cover everything from a complicated tread install in a 90-year-old house to fixing something in a couple of hours.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">Does he work on older homes?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>That's where he stands out. One customer's 90-year-old house had "many difficult angles and cuts" on the staircase — every tread was measured and cut on its own until each one was right.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">Does it always need replacing?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>Not always. One reviewer had been told something would have to be completely replaced — Yev repaired it the same afternoon. It's worth a call before you commit to a replacement.</p></div>
+      </div>
+      <div class="qa">
+        <button class="q" aria-expanded="false" onclick="toggleQA(this)">Which areas does he cover?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>Spokane and the surrounding area — South Hill, Spokane Valley, Liberty Lake, Mead, Cheney, Airway Heights and Deer Park. If you're a little further out, call and ask.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote dark" id="quote">
+  <div class="wrap">
+    <span class="kicker">Get in touch</span>
+    <h2 class="reveal">What needs doing?</h2>
+    <p class="sub reveal">Fastest answer: call <a href="tel:+15092189377" style="color:#fff;font-weight:600">(509) 218-9377</a>. Or leave your details and Yev will get back to you:</p>
+    <form class="form reveal" onsubmit="event.preventDefault();this.querySelector('.form-note').textContent='This form is activated on your live website — for now, please call (509) 218-9377.';">
+      <div><label for="fname">Your name</label><input id="fname" name="name" placeholder="Jane Smith" autocomplete="name"></div>
+      <div><label for="fphone">Phone number</label><input id="fphone" name="phone" type="tel" placeholder="(509) 555-0100" autocomplete="tel"></div>
+      <div><label for="fjob">What's the project?</label><textarea id="fjob" name="job" rows="3" placeholder="e.g. Replace the treads on a staircase in a 1920s house, and rehang a back door that sticks"></textarea></div>
+      <button class="btn btn-call" type="submit">Send my request</button>
+      <p class="form-note">The contact form activates on the live version — for now, call directly.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="fname">Handyman Yev</div>
+        <div>Handyman · Finish carpentry · Stairs · Trim · Repairs</div>
+      </div>
+      <div>
+        <a href="tel:+15092189377">(509) 218-9377</a><br>
+        Spokane, Washington
+      </div>
+    </div>
+    <p class="disclaimer">Concept preview for Handyman Yev · MainStreet Web Studio</p>
+  </div>
+</footer>
+
+<div class="callbar"><a href="tel:+15092189377">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  Tap to call — (509) 218-9377</a>
+</div>
+
+<script>
+(function(){
+"use strict";
+var REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+/* ---- scroll progress + header shrink + hero parallax ---- */
+var prog = document.getElementById('progress'),
+    hdr = document.getElementById('hdr'),
+    plxEls = [].slice.call(document.querySelectorAll('.blob[data-speed]')),
+    lastTop = 0, mx = 0, my = 0, ticking = false;
+function applyPlx(){
+  if(REDUCED) return;
+  for(var i = 0; i < plxEls.length; i++){
+    var s = parseFloat(plxEls[i].getAttribute('data-speed')) || 0;
+    plxEls[i].style.transform = 'translate3d(' + (mx * s * 130) + 'px,' + (lastTop * s + my * s * 90) + 'px,0)';
+  }
+}
+function onScroll(){
+  if(ticking) return;
+  ticking = true;
+  requestAnimationFrame(function(){
+    var h = document.documentElement, top = h.scrollTop;
+    var max = h.scrollHeight - h.clientHeight;
+    prog.style.width = (max > 0 ? (top / max * 100) : 0) + '%';
+    hdr.classList.toggle('scrolled', top > 8);
+    lastTop = top;
+    applyPlx();
+    ticking = false;
+  });
+}
+addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+/* ---- cursor drift on the hero atmosphere (fine pointers only) ---- */
+var hero = document.querySelector('.hero');
+if(hero && FINE && !REDUCED){
+  hero.addEventListener('pointermove', function(e){
+    var r = hero.getBoundingClientRect();
+    mx = e.clientX / Math.max(r.width, 1) - .5;
+    my = (e.clientY - r.top) / Math.max(r.height, 1) - .5;
+    applyPlx();
+  });
+  hero.addEventListener('pointerleave', function(){ mx = 0; my = 0; applyPlx(); });
+}
+
+/* ---- staggered scroll reveals + drawn divider ---- */
+var toolWrap = document.getElementById('toolWrap');
+if('IntersectionObserver' in window){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{threshold:.15});
+  document.querySelectorAll('.reveal,.stagger').forEach(function(el){ io.observe(el); });
+  if(toolWrap){
+    var tio = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){ toolWrap.classList.add('drawn'); tio.unobserve(toolWrap); }
+      });
+    },{threshold:.6});
+    tio.observe(toolWrap);
+  }
+}else{
+  document.querySelectorAll('.reveal,.stagger').forEach(function(el){ el.classList.add('in'); });
+  if(toolWrap) toolWrap.classList.add('drawn');
+}
+
+/* ---- count-up stats ---- */
+var counters = document.querySelectorAll('.cnt');
+if(!REDUCED && 'IntersectionObserver' in window){
+  var cio = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      cio.unobserve(e.target);
+      var el = e.target,
+          end = parseFloat(el.getAttribute('data-count')),
+          dec = parseInt(el.getAttribute('data-dec') || '0', 10),
+          t0 = performance.now();
+      (function tick(t){
+        var p = Math.min((t - t0) / 1400, 1),
+            v = end * (1 - Math.pow(1 - p, 3));
+        el.textContent = dec ? v.toFixed(dec) : Math.round(v).toString();
+        if(p < 1) requestAnimationFrame(tick);
+      })(t0);
+    });
+  },{threshold:.5});
+  counters.forEach(function(el){ cio.observe(el); });
+}
+
+/* ---- review carousel ---- */
+var car = document.getElementById('carousel');
+if(car){
+  var revs = [].slice.call(car.querySelectorAll('.rev')),
+      dotBtns = [].slice.call(car.querySelectorAll('.dots button')),
+      cur = 0, timer = null;
+  function showRev(i){
+    revs[cur].classList.remove('active');
+    dotBtns[cur].classList.remove('on');
+    cur = i;
+    revs[cur].classList.add('active');
+    dotBtns[cur].classList.add('on');
+  }
+  function startAuto(){
+    if(REDUCED || timer) return;
+    timer = setInterval(function(){ showRev((cur + 1) % revs.length); }, 6500);
+  }
+  function stopAuto(){ clearInterval(timer); timer = null; }
+  dotBtns.forEach(function(b, i){
+    b.addEventListener('click', function(){ showRev(i); stopAuto(); startAuto(); });
+  });
+  car.addEventListener('mouseenter', stopAuto);
+  car.addEventListener('mouseleave', startAuto);
+  car.addEventListener('focusin', stopAuto);
+  car.addEventListener('focusout', startAuto);
+  var swipeX = null;
+  car.addEventListener('pointerdown', function(e){ if(e.pointerType === 'touch') swipeX = e.clientX; });
+  car.addEventListener('pointerup', function(e){
+    if(swipeX === null) return;
+    var dx = e.clientX - swipeX; swipeX = null;
+    if(Math.abs(dx) > 44){
+      showRev((cur + (dx < 0 ? 1 : revs.length - 1)) % revs.length);
+      stopAuto(); startAuto();
+    }
+  });
+  car.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowRight'){ showRev((cur + 1) % revs.length); stopAuto(); startAuto(); e.preventDefault(); }
+    else if(e.key === 'ArrowLeft'){ showRev((cur + revs.length - 1) % revs.length); stopAuto(); startAuto(); e.preventDefault(); }
+  });
+  startAuto();
+}
+
+/* ---- FAQ accordion ---- */
+window.toggleQA = function(btn){
+  var qa = btn.closest('.qa'),
+      open = qa.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+};
+
+/* ---- gentle tilt on service cards (fine pointers only) ---- */
+if(FINE && !REDUCED){
+  document.querySelectorAll('.svc').forEach(function(card){
+    card.addEventListener('pointermove', function(e){
+      var r = card.getBoundingClientRect(),
+          px = (e.clientX - r.left) / r.width,
+          py = (e.clientY - r.top) / r.height;
+      card.style.transform = 'perspective(750px) rotateX(' + ((.5 - py) * 5) + 'deg) rotateY(' + ((px - .5) * 6) + 'deg) translateY(-6px)';
+      card.style.setProperty('--gx', (px * 100) + '%');
+      card.style.setProperty('--gy', (py * 100) + '%');
+      card.style.setProperty('--ga', '.09');
+    });
+    card.addEventListener('pointerleave', function(){
+      card.style.transform = '';
+      card.style.removeProperty('--ga');
+    });
+  });
+}
+
+/* ---- magnetic pull on the hero call button ---- */
+var heroCall = document.getElementById('heroCall');
+if(heroCall && FINE && !REDUCED){
+  heroCall.addEventListener('pointermove', function(e){
+    var r = heroCall.getBoundingClientRect(),
+        dx = (e.clientX - (r.left + r.width / 2)) * .22,
+        dy = (e.clientY - (r.top + r.height / 2)) * .35;
+    dx = Math.max(-10, Math.min(10, dx));
+    dy = Math.max(-6, Math.min(6, dy));
+    heroCall.style.transform = 'translate(' + dx + 'px,' + (dy - 3) + 'px)';
+  });
+  heroCall.addEventListener('pointerleave', function(){ heroCall.style.transform = ''; });
+}
+})();
+</script>
+</body>
+</html>
