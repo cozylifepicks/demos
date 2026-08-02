@@ -10,347 +10,278 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ============ TOKENS — LIGHT ONLY (porcelain + steel) ============ */
+/* ================= TOKENS — PROFESSIONAL NAVY (light only) ================= */
 :root{
-  --porcelain:#F5F8FA;      /* page base */
-  --porcelain-2:#EDF3F6;    /* alternating band */
-  --paper:#FFFFFF;
-  --ink:#152A38;            /* headline ink */
-  --ink-2:#0F2130;
-  --muted:#54707F;
-  --line:#DCE6EB;
-  --line-soft:rgba(21,42,56,.08);
-  --steel:#1D5C77;          /* primary accent (AA on white text) */
-  --steel-deep:#154A61;
-  --steel-tint:rgba(29,92,119,.09);
-  --copper:#A9552F;         /* warm accent, AA on white */
-  --copper-soft:#E7B999;
-  --sky:#BEDCEA;
-  --glass:rgba(255,255,255,.72);
-  --radius:8px;
-  --shadow:0 16px 40px rgba(21,42,56,.09);
-  --shadow-lift:0 28px 64px rgba(21,42,56,.15);
-  --glow:0 12px 28px rgba(29,92,119,.28);
-  --ease:cubic-bezier(.19,1,.22,1);
+  --bg:#F8FAFC;
+  --surface:#FFFFFF;
+  --band:#F1F5F9;
+  --muted-bg:#E8ECF1;
+  --ink:#0F172A;
+  --ink-2:#1E293B;
+  --muted:#475569;
+  --line:#E2E8F0;
+  --line-2:#CBD5E1;
+  --accent:#0369A1;
+  --accent-deep:#075985;
+  --accent-tint:#EEF5FA;
+  --radius:10px;
+  --radius-sm:8px;
+  --shadow-xs:0 1px 2px rgba(15,23,42,.05);
+  --shadow:0 12px 28px rgba(15,23,42,.07);
+  --shadow-lg:0 22px 50px rgba(15,23,42,.10);
+  --ease:cubic-bezier(.22,1,.36,1);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--porcelain);color:var(--ink);line-height:1.65;font-size:16.5px;overflow-x:hidden}
-h1,h2,h3{font-family:'Outfit',system-ui,sans-serif;font-weight:600;line-height:1.1;letter-spacing:-.022em}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.65;font-size:16.5px;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Outfit',system-ui,sans-serif;font-weight:600;line-height:1.14;letter-spacing:-.02em;color:var(--ink)}
 img{max-width:100%;display:block}
 a{color:inherit}
-::selection{background:var(--sky);color:var(--ink-2)}
+::selection{background:#D6E7F2;color:var(--ink)}
 .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-.skip{position:absolute;left:-9999px;top:0;background:var(--steel);color:#fff;font-weight:700;padding:14px 22px;z-index:300;border-radius:0 0 8px 0}
+.skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:#fff;font-weight:600;padding:14px 22px;z-index:300;border-radius:0 0 8px 0}
 .skip:focus{left:0}
-a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--steel-deep);outline-offset:3px}
-footer :focus-visible,.callbar :focus-visible{outline-color:var(--sky)}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--accent-deep);outline-offset:3px;border-radius:4px}
 .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-/* ============ BUTTONS ============ */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:600;font-size:1.02rem;
-  border-radius:var(--radius);padding:15px 28px;min-height:54px;text-decoration:none;cursor:pointer;border:0;
-  position:relative;overflow:hidden;transition:transform .2s ease,background .2s ease,box-shadow .2s ease,border-color .2s ease}
+/* ================= BUTTONS ================= */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:600;font-size:1.01rem;
+  border-radius:var(--radius-sm);padding:15px 26px;min-height:54px;text-decoration:none;cursor:pointer;border:1px solid transparent;
+  transition:transform .2s var(--ease),background .2s ease,box-shadow .2s ease,border-color .2s ease,color .2s ease}
 .btn svg{flex:none}
-.btn-call{background:linear-gradient(180deg,#24708F,var(--steel));color:#fff;box-shadow:var(--glow)}
-.btn-call::after{content:"";position:absolute;top:-15%;left:-70%;width:42%;height:130%;transform:skewX(-22deg);pointer-events:none;
-  background:linear-gradient(100deg,transparent,rgba(255,255,255,.55) 50%,transparent);opacity:0}
-.btn-call:hover{background:linear-gradient(180deg,var(--steel),var(--steel-deep));transform:translateY(-3px);box-shadow:0 18px 40px rgba(29,92,119,.4)}
-.btn-call:hover::after,.btn-call:focus-visible::after{opacity:1;animation:sweep .6s ease-out}
-@keyframes sweep{0%{left:-70%;opacity:1}60%{opacity:1}100%{left:135%;opacity:0}}
-.btn-ghost{background:var(--paper);color:var(--ink);border:1px solid var(--line)}
-.btn-ghost:hover{border-color:var(--steel);color:var(--steel-deep);transform:translateY(-3px);box-shadow:var(--shadow)}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 18px rgba(3,105,161,.18)}
+.btn-primary:hover{background:var(--accent-deep);transform:translateY(-2px);box-shadow:0 14px 26px rgba(3,105,161,.24)}
+.btn-secondary{background:var(--surface);color:var(--ink);border-color:var(--line-2)}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent-deep);transform:translateY(-2px);box-shadow:var(--shadow)}
 
-/* ============ SCROLL PROGRESS ============ */
-#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:130;
-  background:linear-gradient(90deg,var(--steel),var(--copper));box-shadow:0 0 10px rgba(29,92,119,.35)}
+/* ================= SCROLL PROGRESS ================= */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:130;background:var(--accent)}
 
-/* ============ HEADER (light, frosted) ============ */
-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);
+/* ================= HEADER ================= */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);
   border-bottom:1px solid var(--line);transition:box-shadow .3s ease,background .3s ease}
-header.scrolled{box-shadow:0 10px 30px rgba(21,42,56,.09);background:rgba(255,255,255,.96)}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:13px 0;gap:12px;transition:padding .3s ease}
+header.scrolled{background:rgba(255,255,255,.98);box-shadow:0 6px 20px rgba(15,23,42,.06)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:14px;transition:padding .3s ease}
 header.scrolled .nav{padding:8px 0}
-.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);font-family:'Outfit',sans-serif;font-weight:600;font-size:1.08rem;min-height:44px}
-.logo .mark{width:40px;height:40px;background:var(--steel);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;color:#fff;flex:none;transition:transform .25s ease,background .25s ease}
-.logo:hover .mark{transform:rotate(-8deg) scale(1.06);background:var(--steel-deep)}
-.logo small{display:block;font-family:'Inter',sans-serif;font-weight:500;font-size:.66rem;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;line-height:1.5}
-.nav-links{display:none;gap:24px;font-weight:500;font-size:.93rem;color:var(--muted)}
+
+/* ---- BRAND / LOGO ---- */
+.brand{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);min-height:44px}
+.brand-mark{flex:none;display:block;color:var(--ink);transition:transform .3s var(--ease)}
+.brand-mark .accent{color:var(--accent)}
+.brand-mark .spd{transition:transform .35s var(--ease)}
+.brand:hover .brand-mark .spd{transform:translateX(-2.5px)}
+.brand-txt{display:flex;flex-direction:column;justify-content:center}
+.brand-name{font-family:'Outfit',sans-serif;font-weight:600;font-size:1.14rem;line-height:1.1;letter-spacing:-.015em}
+.brand-sub{font-size:.6rem;font-weight:500;letter-spacing:.17em;text-transform:uppercase;color:var(--muted);line-height:1.6;margin-top:2px}
+header.scrolled .brand-mark{transform:scale(.94)}
+
+.nav-links{display:none;gap:26px;font-weight:500;font-size:.93rem;color:var(--muted)}
 .nav-links a{text-decoration:none;padding:10px 2px;position:relative}
-.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:6px;height:2px;background:var(--copper);transition:right .25s ease}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:5px;height:2px;background:var(--accent);transition:right .25s var(--ease)}
 .nav-links a:hover{color:var(--ink)}
 .nav-links a:hover::after{right:0}
-@media(min-width:920px){.nav-links{display:flex}}
-.nav-call{display:inline-flex;align-items:center;gap:9px;text-decoration:none;background:var(--steel);color:#fff;
-  font-weight:600;font-size:1rem;padding:11px 20px;min-height:46px;border-radius:var(--radius);transition:background .2s ease,transform .2s ease,box-shadow .2s ease}
-.nav-call:hover{background:var(--steel-deep);transform:translateY(-2px);box-shadow:var(--glow)}
+@media(min-width:940px){.nav-links{display:flex}}
+.nav-call{display:inline-flex;align-items:center;gap:9px;text-decoration:none;background:var(--accent);color:#fff;
+  font-weight:600;font-size:.98rem;padding:11px 19px;min-height:46px;border-radius:var(--radius-sm);
+  transition:background .2s ease,transform .2s var(--ease),box-shadow .2s ease}
+.nav-call:hover{background:var(--accent-deep);transform:translateY(-2px);box-shadow:0 10px 20px rgba(3,105,161,.22)}
 .nav-call .num-short{display:none}
 
-/* ============ HERO (light) ============ */
-.hero{position:relative;overflow:hidden;color:var(--ink);
-  background:linear-gradient(178deg,#FFFFFF 0%,var(--porcelain) 46%,var(--porcelain-2) 100%)}
-.hero::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
-  background:repeating-linear-gradient(90deg,rgba(21,42,56,.022) 0 1px,transparent 1px 46px)}
-.hero-grid{position:absolute;inset:-30% -12%;pointer-events:none;z-index:0;opacity:.7;
-  background:repeating-linear-gradient(76deg,rgba(169,85,47,.03) 0 1px,transparent 1px 62px);
-  animation:gridPan 68s linear infinite alternate;will-change:transform}
-@keyframes gridPan{from{transform:translate3d(-2%,-1.5%,0)}to{transform:translate3d(2%,1.5%,0)}}
-.blob{position:absolute;pointer-events:none;z-index:0;will-change:transform}
-.blob .b{border-radius:50%;filter:blur(74px)}
-.blob-1{top:-190px;right:-140px}
-.blob-1 .b{width:580px;height:480px;background:rgba(190,220,234,.72);animation:blobDrift 19s ease-in-out infinite alternate}
-.blob-2{bottom:-200px;left:-160px}
-.blob-2 .b{width:500px;height:430px;background:rgba(231,185,153,.4);animation:blobDrift 24s ease-in-out infinite alternate-reverse}
-@keyframes blobDrift{from{transform:translate3d(-3%,-2%,0) scale(1)}to{transform:translate3d(3%,3%,0) scale(1.12)}}
-/* rising "cool air" motes — light, barely there */
-.motes{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
-.motes i{position:absolute;bottom:-8%;width:5px;height:5px;border-radius:50%;background:rgba(29,92,119,.22);animation:rise-mote linear infinite}
-.motes i:nth-child(1){left:14%;animation-duration:15s;animation-delay:0s}
-.motes i:nth-child(2){left:29%;animation-duration:19s;animation-delay:2.5s;opacity:.7}
-.motes i:nth-child(3){left:47%;animation-duration:17s;animation-delay:5s;opacity:.5}
-.motes i:nth-child(4){left:66%;animation-duration:21s;animation-delay:1.5s;opacity:.6}
-.motes i:nth-child(5){left:83%;animation-duration:16s;animation-delay:7s;opacity:.45}
-@keyframes rise-mote{from{transform:translateY(0)}to{transform:translateY(-115vh)}}
-.hero-in{position:relative;z-index:2;display:grid;gap:46px;padding:74px 0 118px;align-items:center}
-.flag{display:inline-flex;align-items:center;gap:8px;background:var(--steel-tint);border:1px solid rgba(29,92,119,.28);
-  color:var(--steel-deep);font-size:.83rem;font-weight:600;letter-spacing:.05em;padding:8px 15px;border-radius:var(--radius);
-  opacity:0;animation:rise .7s .05s var(--ease) forwards}
-.flag .dot{width:8px;height:8px;border-radius:50%;background:var(--copper);box-shadow:0 0 9px rgba(169,85,47,.6);animation:pulse 2s ease-in-out infinite;flex:none}
-@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.5}}
-.hero h1{font-size:clamp(2.4rem,6.2vw,4rem);margin-top:22px}
-.hero h1 .line{display:block;opacity:0;transform:translateY(30px);animation:rise .8s var(--ease) forwards}
-.hero h1 .line:nth-child(1){animation-delay:.12s}
-.hero h1 .line:nth-child(2){animation-delay:.26s}
-.hero h1 .line:nth-child(3){animation-delay:.4s}
-@keyframes rise{to{opacity:1;transform:none}}
-.hero h1 em{font-style:normal;color:var(--steel);position:relative;display:inline-block}
-.hero h1 em::after{content:"";position:absolute;left:1%;bottom:.02em;height:.08em;width:0;border-radius:3px;
-  background:linear-gradient(90deg,var(--steel),var(--copper-soft));animation:draw .7s 1.15s var(--ease) forwards}
-@keyframes draw{to{width:97%}}
-.hero p.lead{margin-top:18px;font-size:1.13rem;color:var(--muted);max-width:33rem;opacity:0;animation:rise .8s .55s var(--ease) forwards}
-.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;opacity:0;animation:rise .8s .7s var(--ease) forwards}
-.trust{display:flex;flex-wrap:wrap;align-items:center;gap:10px 26px;margin-top:32px;color:var(--muted);font-size:.95rem;
-  opacity:0;animation:rise .8s .85s var(--ease) forwards}
-.trust .stars{color:var(--copper);letter-spacing:2px;font-size:1.05rem}
-.trust strong{color:var(--ink)}
+/* ================= HERO ================= */
+.hero{background:linear-gradient(180deg,#FFFFFF 0%,var(--bg) 100%);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.hero-in{display:grid;gap:44px;padding:58px 0 66px;align-items:center;position:relative;z-index:1}
+@media(min-width:940px){.hero-in{grid-template-columns:1.1fr .9fr;padding:66px 0 78px}}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;background:var(--accent-tint);border:1px solid #D5E5F0;color:var(--accent-deep);
+  font-size:.8rem;font-weight:600;letter-spacing:.03em;padding:7px 14px;border-radius:999px}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.45);opacity:.45}}
+.hero h1{font-size:clamp(2.25rem,5.6vw,3.5rem);margin-top:20px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lead{margin-top:16px;font-size:1.1rem;color:var(--muted);max-width:33rem}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.trust{display:flex;flex-wrap:wrap;align-items:center;gap:8px 22px;margin-top:26px;color:var(--muted);font-size:.93rem}
+.trust .stars{color:var(--accent);letter-spacing:2px;font-size:1rem}
+.trust strong{color:var(--ink);font-weight:600}
+.trust .sep{width:1px;height:16px;background:var(--line-2);display:none}
+@media(min-width:520px){.trust .sep{display:block}}
 
-/* hero photo card + rating badge */
-.stack{position:relative;max-width:430px;justify-self:center;opacity:0;animation:rise .9s .5s var(--ease) forwards}
-.stack .float{animation:bob 7s ease-in-out 1.8s infinite}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-.stack-photo{position:relative;border-radius:calc(var(--radius) + 6px);overflow:hidden;box-shadow:var(--shadow-lift);
-  border:1px solid rgba(255,255,255,.9);background:var(--paper)}
-.stack-photo img{width:100%;height:300px;object-fit:cover}
-.stack-photo::after{content:"";position:absolute;top:-20%;left:-80%;width:45%;height:150%;transform:skewX(-20deg);pointer-events:none;
-  background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);animation:shine 7.5s ease-in-out 2.4s infinite}
-@keyframes shine{0%,72%{left:-80%}88%,100%{left:150%}}
-.stack-photo.img-fail{display:none}
-.badge{position:absolute;right:-10px;bottom:-22px;background:var(--glass);backdrop-filter:blur(10px);
-  border:1px solid rgba(255,255,255,.95);border-radius:var(--radius);padding:16px 22px;box-shadow:var(--shadow);text-align:center}
-.badge .n{display:block;font-family:'Outfit',sans-serif;font-weight:700;font-size:2rem;line-height:1;color:var(--steel)}
-.badge small{color:var(--muted);font-size:.8rem}
-.card-list{margin-top:34px;background:var(--paper);border:1px solid var(--line);border-radius:calc(var(--radius) + 4px);
-  padding:22px 24px;box-shadow:var(--shadow);list-style:none;display:grid;gap:12px}
-.card-list li{display:flex;gap:11px;align-items:flex-start;font-size:.95rem;color:var(--ink)}
-.card-list li svg{flex:none;color:var(--steel);margin-top:3px}
-@media(min-width:900px){.hero-in{grid-template-columns:1.14fr .86fr}}
+.hero-side{max-width:440px;width:100%;justify-self:center}
+.photo-card{position:relative;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
+.photo-card img{width:100%;height:280px;object-fit:cover}
+.photo-card.img-fail{display:none}
+.rating-chip{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 20px;margin-top:14px;box-shadow:var(--shadow-xs)}
+.rating-chip .score{font-family:'Outfit',sans-serif;font-weight:700;font-size:2.05rem;line-height:1;color:var(--accent)}
+.rating-chip .stars{color:var(--accent);letter-spacing:2px;font-size:.95rem;line-height:1.2}
+.rating-chip small{display:block;color:var(--muted);font-size:.82rem}
+.fact-list{margin-top:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;list-style:none;display:grid;gap:11px;box-shadow:var(--shadow-xs)}
+.fact-list li{display:flex;gap:11px;align-items:flex-start;font-size:.94rem;color:var(--ink-2)}
+.fact-list li svg{flex:none;color:var(--accent);margin-top:3px}
 
-/* ============ MARQUEE (single narrow accent band) ============ */
-.marq-tilt{overflow:hidden;position:relative;z-index:3;margin-top:-56px;padding:24px 0}
-.marq{background:linear-gradient(90deg,#24708F,var(--steel) 55%,var(--steel-deep));transform:rotate(-1.1deg);width:112%;margin-left:-6%;
-  box-shadow:0 18px 44px rgba(21,42,56,.2);border-top:1px solid rgba(255,255,255,.28);border-bottom:1px solid rgba(0,0,0,.1)}
-.marq-track{display:flex;width:max-content;animation:marq 30s linear infinite}
-.marq ul{display:flex;list-style:none;gap:0;padding:13px 0}
-.marq li{font-family:'Outfit',sans-serif;font-weight:600;font-size:1.06rem;letter-spacing:.02em;color:#EEF7FA;white-space:nowrap;display:flex;align-items:center}
-.marq li::after{content:"●";margin:0 22px;font-size:.42rem;color:rgba(238,247,250,.55)}
-@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.marq:hover .marq-track{animation-play-state:paused}
+/* ================= SECTIONS ================= */
+section{padding:74px 0;position:relative}
+.band{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.band-2{background:var(--band);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.kicker{display:inline-flex;align-items:center;gap:9px;font-weight:600;letter-spacing:.16em;font-size:.72rem;text-transform:uppercase;color:var(--accent-deep)}
+.kicker::before{content:"";width:22px;height:1px;background:var(--line-2)}
+h2{font-size:clamp(1.85rem,4.2vw,2.6rem);margin-top:14px}
+.sub{color:var(--muted);margin-top:12px;max-width:40rem}
 
-/* ============ STATS ============ */
-.stats{padding:58px 0 6px}
-.stats .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;text-align:center}
-.stat{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:26px 12px;position:relative;overflow:hidden;
-  transition:transform .25s ease,box-shadow .25s ease}
-.stat::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--steel),var(--copper-soft))}
-.stat:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
-.stat .num{font-family:'Outfit',sans-serif;font-weight:700;font-size:clamp(2.2rem,4.5vw,3rem);line-height:1;color:var(--ink)}
-.stat .num .u{color:var(--copper)}
-.stat .lbl{font-size:.86rem;color:var(--muted);margin-top:9px}
+/* ================= SERVICES ================= */
+.grid-services{display:grid;gap:16px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(255px,1fr))}
+.svc{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px;
+  transition:transform .25s var(--ease),box-shadow .25s ease,border-color .25s ease}
+.svc:hover{transform:translateY(-4px);border-color:var(--line-2);box-shadow:var(--shadow)}
+.svc .ico{width:44px;height:44px;border-radius:var(--radius-sm);background:var(--accent-tint);display:flex;align-items:center;justify-content:center;
+  color:var(--accent);margin-bottom:16px;transition:background .25s ease,color .25s ease}
+.svc:hover .ico{background:var(--accent);color:#fff}
+.svc h3{font-size:1.16rem}
+.svc p{color:var(--muted);font-size:.94rem;margin-top:8px}
 
-/* ============ SECTIONS ============ */
-section{padding:76px 0;position:relative;overflow:hidden}
-.kicker{display:inline-flex;align-items:center;gap:9px;font-weight:700;letter-spacing:.18em;font-size:.74rem;text-transform:uppercase;color:var(--steel)}
-.kicker::before{content:"";width:24px;height:1px;background:var(--copper)}
-h2{font-size:clamp(1.95rem,4.6vw,2.85rem);margin-top:14px}
-.sub{color:var(--muted);margin-top:13px;max-width:40rem}
-.ghost{position:absolute;top:16px;right:-10px;font-family:'Outfit',sans-serif;font-weight:700;line-height:1;
-  font-size:clamp(4rem,13vw,9.5rem);color:transparent;-webkit-text-stroke:1px rgba(21,42,56,.07);pointer-events:none;user-select:none;z-index:0}
-section .wrap{position:relative;z-index:1}
+/* ================= STATS ================= */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:14px;margin-top:38px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px 14px;text-align:center;
+  transition:transform .25s var(--ease),box-shadow .25s ease}
+.stat:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.stat .num{font-family:'Outfit',sans-serif;font-weight:700;font-size:clamp(1.9rem,4vw,2.5rem);line-height:1;color:var(--ink)}
+.stat .num .u{color:var(--accent)}
+.stat .lbl{font-size:.83rem;color:var(--muted);margin-top:8px}
 
-/* ============ SERVICES ============ */
-.grid-services{display:grid;gap:16px;margin-top:42px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-.svc{background:radial-gradient(320px 220px at var(--gx,50%) var(--gy,0%),rgba(29,92,119,var(--ga,0)),transparent 70%),var(--paper);
-  border:1px solid var(--line);border-radius:var(--radius);padding:30px;position:relative;overflow:hidden;
-  transform-style:preserve-3d;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
-.svc::before{content:"";position:absolute;top:0;left:0;right:100%;height:3px;background:linear-gradient(90deg,var(--steel),var(--copper-soft));transition:right .35s ease}
-.svc:hover{border-color:rgba(29,92,119,.4);box-shadow:var(--shadow-lift)}
-.svc:hover::before{right:0}
-.svc::after{content:"";position:absolute;top:-20%;left:-80%;width:40%;height:140%;transform:skewX(-20deg);pointer-events:none;
-  background:linear-gradient(100deg,transparent,rgba(29,92,119,.07),transparent);opacity:0}
-.svc:hover::after{opacity:1;animation:sweep .7s ease-out}
-.svc .ico{width:48px;height:48px;border-radius:50%;background:var(--porcelain-2);display:flex;align-items:center;justify-content:center;color:var(--steel);
-  margin-bottom:16px;transition:transform .25s ease,background .25s ease,color .25s ease}
-.svc:hover .ico{transform:rotate(-8deg) scale(1.12);background:var(--steel);color:#fff}
-.svc h3{font-size:1.28rem}
-.svc p{color:var(--muted);font-size:.95rem;margin-top:8px}
-
-/* ============ STEPS ============ */
-.steps{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.grid-steps{display:grid;gap:26px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-.step{position:relative;padding-left:60px;transition:transform .25s ease}
-.step:hover{transform:translateY(-4px)}
-.step .num{position:absolute;left:0;top:0;width:44px;height:44px;border-radius:50%;background:var(--steel);color:#fff;
-  display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:1.15rem;
-  transition:transform .25s ease,background .25s ease;box-shadow:0 8px 18px rgba(29,92,119,.25)}
-.step:hover .num{transform:rotate(-10deg) scale(1.1);background:var(--copper)}
-.step h3{font-size:1.22rem}
-.step p{color:var(--muted);font-size:.95rem;margin-top:8px}
-
-/* ============ DRAWN DIVIDER ============ */
-.tool-wrap{display:flex;justify-content:center;margin-bottom:14px}
-.tool-svg{width:56px;height:56px;overflow:visible}
-.tool-path{fill:none;stroke:var(--steel);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;
-  stroke-dasharray:1;stroke-dashoffset:1}
-.drawn .tool-path{transition:stroke-dashoffset 1s ease;stroke-dashoffset:0}
-.drawn .tool-path:nth-child(2){transition-delay:.3s}
-.drawn .tool-path:nth-child(3){transition-delay:.55s}
-
-/* ============ REVIEWS ============ */
+/* ================= REVIEWS CAROUSEL ================= */
 .rev-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px}
-.score{display:flex;align-items:center;gap:16px;background:var(--paper);border:1px solid var(--line);color:var(--ink);border-radius:var(--radius);padding:18px 24px;
-  position:relative;overflow:hidden;box-shadow:var(--shadow);transition:transform .25s ease,box-shadow .25s ease}
-.score:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift)}
-.score::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(220px 120px at 85% 15%,rgba(190,220,234,.5),transparent 70%)}
-.score .big{font-family:'Outfit',sans-serif;font-weight:700;font-size:2.5rem;line-height:1;color:var(--steel);position:relative}
-.score .stars{color:var(--copper);letter-spacing:2px}
-.score .stars .st{display:inline-block}
-.js .score.in .stars .st{animation:starPop .5s var(--ease) backwards}
-.js .score.in .stars .st:nth-child(1){animation-delay:.25s}
-.js .score.in .stars .st:nth-child(2){animation-delay:.35s}
-.js .score.in .stars .st:nth-child(3){animation-delay:.45s}
-.js .score.in .stars .st:nth-child(4){animation-delay:.55s}
-.js .score.in .stars .st:nth-child(5){animation-delay:.65s}
-@keyframes starPop{from{opacity:0;transform:scale(.2) rotate(-30deg)}to{opacity:1;transform:none}}
-.score small{display:block;color:var(--muted);font-size:.83rem}
-.carousel{position:relative;margin-top:36px;max-width:760px;touch-action:pan-y}
-.rev{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--steel);border-radius:var(--radius);
-  padding:32px 30px;display:none;flex-direction:column;gap:14px;box-shadow:0 10px 30px rgba(21,42,56,.06)}
-.rev.active{display:flex;animation:fadeSlide .5s ease}
-@keyframes fadeSlide{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
-.rev .stars{color:var(--copper);letter-spacing:2px}
-.rev p{font-size:1.05rem;line-height:1.6}
-.rev .who{font-weight:600;font-size:.9rem}
-.rev .who span{display:block;font-weight:400;color:var(--muted);font-size:.81rem}
-.dots{display:flex;gap:2px;margin-top:8px}
-.dots button{width:44px;height:44px;border:none;background:none;cursor:pointer;display:grid;place-items:center;padding:0}
-.dots button .d{width:11px;height:11px;border-radius:50%;background:var(--line);transition:background .2s ease,transform .2s ease,box-shadow .2s ease}
-.dots button:hover .d{background:var(--muted)}
-.dots button.on .d{background:var(--steel);transform:scale(1.35);box-shadow:0 0 8px rgba(29,92,119,.45)}
-.all-reviews{margin-top:24px}
-.all-reviews a{display:inline-flex;align-items:center;min-height:44px;color:var(--steel-deep);font-weight:600;text-decoration-thickness:2px;transition:transform .2s ease}
-.all-reviews a:hover{transform:translateX(4px)}
+.rev-score{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 22px;box-shadow:var(--shadow-xs)}
+.rev-score .big{font-family:'Outfit',sans-serif;font-weight:700;font-size:2.2rem;line-height:1;color:var(--accent)}
+.rev-score .stars{color:var(--accent);letter-spacing:2px;line-height:1.2}
+.rev-score small{display:block;color:var(--muted);font-size:.82rem}
 
-/* ============ AREA ============ */
-.area{background:var(--paper);border-top:1px solid var(--line)}
-.area-grid{display:grid;gap:28px;margin-top:32px}
-@media(min-width:860px){.area-grid{grid-template-columns:1fr 1fr;align-items:start}}
-.map{border:0;width:100%;height:320px;border-radius:var(--radius);box-shadow:var(--shadow);background:#e6eef1}
-.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-.chip{background:var(--porcelain);border:1px solid var(--line);border-radius:var(--radius);padding:10px 18px;font-size:.92rem;font-weight:500;
-  transition:transform .2s ease,background .2s ease,color .2s ease,border-color .2s ease;cursor:default}
-.chip:hover{transform:translateY(-3px);background:var(--steel);border-color:var(--steel);color:#fff}
-.addr{margin-top:18px;font-size:1rem;color:var(--muted)}
-.addr strong{display:block;color:var(--ink);font-weight:600}
+.carousel{margin-top:36px;--gap:18px}
+.rev-view{overflow:hidden}
+.rev-track{display:flex;column-gap:var(--gap);will-change:transform;transition:transform .55s var(--ease)}
+.rev-card{flex:0 0 100%;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 24px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow-xs);
+  transition:border-color .25s ease,box-shadow .25s ease,opacity .4s ease}
+.rev-card:hover{border-color:var(--line-2);box-shadow:var(--shadow)}
+@media(min-width:900px){.rev-card{flex:0 0 calc((100% - (2 * var(--gap))) / 3)}}
+.rev-card .stars{color:var(--accent);letter-spacing:2px;font-size:.95rem;line-height:1}
+.rev-card blockquote{font-size:.97rem;color:var(--ink-2);line-height:1.62}
+.rev-card blockquote p + p{margin-top:10px}
+.rev-card .who{margin-top:auto;padding-top:6px;font-weight:600;font-size:.9rem}
+.rev-card .who span{display:block;font-weight:400;color:var(--muted);font-size:.79rem}
+.rev-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-top:20px}
+.rev-dots{display:flex;gap:2px}
+.rev-dots .dot{width:40px;height:40px;border:none;background:none;cursor:pointer;display:grid;place-items:center;padding:0}
+.rev-dots .dot .d{width:9px;height:9px;border-radius:50%;background:var(--line-2);transition:background .2s ease,transform .2s var(--ease),width .2s var(--ease)}
+.rev-dots .dot:hover .d{background:var(--muted)}
+.rev-dots .dot.on .d{background:var(--accent);width:22px;border-radius:999px}
+.all-reviews{display:inline-flex;align-items:center;gap:7px;min-height:44px;color:var(--accent-deep);font-weight:600;font-size:.95rem;
+  text-decoration-thickness:1.5px;text-underline-offset:3px;transition:gap .2s var(--ease)}
+.all-reviews:hover{gap:12px}
 
-/* ============ FAQ ============ */
-.faq-sec{background:var(--porcelain-2)}
-.faq-list{max-width:780px;margin-top:28px}
-.qa{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);margin-top:14px;overflow:hidden;transition:border-color .25s ease,box-shadow .25s ease}
-.qa:hover{box-shadow:0 10px 26px rgba(21,42,56,.08)}
-.qa.open{border-color:rgba(29,92,119,.45)}
+/* ================= STEPS ================= */
+.grid-steps{display:grid;gap:24px;margin-top:38px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.step{position:relative;padding-left:58px;transition:transform .25s var(--ease)}
+.step:hover{transform:translateY(-3px)}
+.step .num{position:absolute;left:0;top:2px;width:42px;height:42px;border-radius:50%;background:var(--accent-tint);color:var(--accent-deep);
+  border:1px solid #D5E5F0;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;
+  transition:background .25s ease,color .25s ease,transform .25s var(--ease)}
+.step:hover .num{background:var(--accent);color:#fff;transform:scale(1.06)}
+.step h3{font-size:1.14rem}
+.step p{color:var(--muted);font-size:.94rem;margin-top:7px}
+
+/* ================= FAQ ================= */
+.faq-list{max-width:790px;margin-top:30px}
+.qa{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);margin-top:12px;overflow:hidden;
+  transition:border-color .25s ease,box-shadow .25s ease}
+.qa:hover{box-shadow:var(--shadow-xs)}
+.qa.open{border-color:var(--line-2)}
 .qa .q{width:100%;text-align:left;background:none;border:none;font:inherit;color:var(--ink);font-weight:600;
-  padding:20px 22px;min-height:44px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:1.01rem}
-.qa .chev{transition:transform .3s ease;color:var(--copper);flex:none}
+  padding:19px 22px;min-height:44px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:1rem}
+.qa .chev{transition:transform .3s var(--ease);color:var(--accent);flex:none}
 .qa.open .chev{transform:rotate(180deg)}
-.qa .a{max-height:0;overflow:hidden;transition:max-height .4s ease;color:var(--muted);font-size:.95rem}
-.qa.open .a{max-height:320px}
+.qa .a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease);color:var(--muted);font-size:.95rem}
+.qa.open .a{max-height:340px}
 .qa .a p{padding:0 22px 20px}
 
-/* ============ QUOTE (light) ============ */
-.quote{background:linear-gradient(178deg,var(--porcelain) 0%,#FFFFFF 100%);position:relative;overflow:hidden;
-  border-top:1px solid var(--line)}
-.quote::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(600px 340px at 90% 10%,rgba(190,220,234,.55),transparent 62%)}
-.quote .wrap{position:relative;z-index:1}
-.form{margin-top:32px;display:grid;gap:16px;max-width:560px}
-.form label{font-weight:500;font-size:.92rem;display:block;margin-bottom:6px}
-.form input,.form textarea{width:100%;border:1px solid var(--line);background:var(--paper);color:var(--ink);
-  border-radius:var(--radius);padding:14px;font:inherit;font-size:1rem;min-height:48px;transition:border-color .2s ease,box-shadow .2s ease}
-.form input:hover,.form textarea:hover{border-color:var(--steel)}
-.form input::placeholder,.form textarea::placeholder{color:#8AA2AE}
-.form input:focus,.form textarea:focus{outline:3px solid var(--steel);outline-offset:2px;border-color:transparent}
-.form-note{font-size:.86rem;color:var(--muted)}
-.form .btn-call{justify-self:start}
+/* ================= FORM ================= */
+.form-grid{display:grid;gap:34px;margin-top:34px}
+@media(min-width:900px){.form-grid{grid-template-columns:1.05fr .95fr;align-items:start}}
+.form{display:grid;gap:15px;max-width:560px}
+.form label{font-weight:500;font-size:.9rem;display:block;margin-bottom:6px;color:var(--ink-2)}
+.form input,.form textarea{width:100%;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);
+  border-radius:var(--radius-sm);padding:13px 14px;font:inherit;font-size:1rem;min-height:48px;transition:border-color .2s ease,box-shadow .2s ease}
+.form input:hover,.form textarea:hover{border-color:var(--accent)}
+.form input::placeholder,.form textarea::placeholder{color:#94A3B8}
+.form input:focus,.form textarea:focus{outline:3px solid var(--accent);outline-offset:2px;border-color:transparent}
+.form-note{font-size:.85rem;color:var(--muted)}
+.form .btn-primary{justify-self:start}
+.contact-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;box-shadow:var(--shadow-xs)}
+.contact-card h3{font-size:1.1rem}
+.contact-card dl{margin-top:16px;display:grid;gap:14px}
+.contact-card dt{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.contact-card dd{margin-top:3px;font-size:1rem;color:var(--ink)}
+.contact-card dd a{color:var(--accent-deep);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;min-height:34px}
+.contact-card dd a:hover{text-decoration:underline}
 
-/* ============ FOOTER (thin dark band — permitted) ============ */
-footer{background:var(--ink-2);color:#9DB3BF;padding:46px 0;font-size:.91rem}
-.foot{display:flex;flex-wrap:wrap;gap:18px 40px;justify-content:space-between;align-items:center}
-.foot .fname{font-family:'Outfit',sans-serif;font-weight:600;color:#fff;font-size:1.22rem}
-.foot a{display:inline-flex;align-items:center;min-height:44px;color:#fff;font-weight:600;text-decoration:none}
-.foot a:hover{color:var(--sky)}
-.disclaimer{margin-top:24px;padding-top:18px;border-top:1px solid #1D3646;font-size:.79rem;color:#7B929F}
+/* ================= FOOTER (light) ================= */
+footer{background:var(--surface);border-top:1px solid var(--line);padding:44px 0 40px;font-size:.92rem;color:var(--muted)}
+.foot{display:flex;flex-wrap:wrap;gap:22px 40px;justify-content:space-between}
+.foot .brand{margin-bottom:10px}
+.foot a{color:var(--accent-deep);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;min-height:34px}
+.foot a:hover{text-decoration:underline}
+.disclaimer{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);font-size:.79rem;color:#64748B}
 
-/* ============ REVEALS ============ */
-.js .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s var(--ease)}
+/* ================= REVEALS / ENTRANCE ================= */
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s var(--ease)}
 .js .reveal.in{opacity:1;transform:none}
-.js .stagger>*{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s var(--ease)}
+.js .stagger>*{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s var(--ease)}
 .js .stagger.in>*{opacity:1;transform:none}
-.js .stagger.in>*:nth-child(2){transition-delay:.09s}
-.js .stagger.in>*:nth-child(3){transition-delay:.18s}
-.js .stagger.in>*:nth-child(4){transition-delay:.27s}
-.js .stagger.in>*:nth-child(5){transition-delay:.34s}
-.js .stagger.in>*:nth-child(6){transition-delay:.41s}
-.js .stagger.in>*:nth-child(7){transition-delay:.47s}
-.js .stagger.in>*:nth-child(8){transition-delay:.53s}
+.js .stagger.in>*:nth-child(2){transition-delay:.08s}
+.js .stagger.in>*:nth-child(3){transition-delay:.16s}
+.js .stagger.in>*:nth-child(4){transition-delay:.24s}
+.js .stagger.in>*:nth-child(5){transition-delay:.32s}
+.js .stagger.in>*:nth-child(6){transition-delay:.4s}
+.js .hero-anim{opacity:0;transform:translateY(22px);animation:rise .8s var(--ease) forwards}
+.js .hero-anim.d1{animation-delay:.05s}
+.js .hero-anim.d2{animation-delay:.16s}
+.js .hero-anim.d3{animation-delay:.27s}
+.js .hero-anim.d4{animation-delay:.38s}
+.js .hero-anim.d5{animation-delay:.48s}
+.js .hero-anim.d6{animation-delay:.34s}
+@keyframes rise{to{opacity:1;transform:none}}
 
-/* ============ MOBILE CALL BAR ============ */
+/* ================= MOBILE CALL BAR ================= */
 .callbar{display:none}
 @media(max-width:720px){
-  .callbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--steel);justify-content:center;box-shadow:0 -8px 26px rgba(21,42,56,.28)}
-  .callbar a{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:600;font-size:1.08rem;padding:16px;width:100%;justify-content:center;min-height:58px}
+  .callbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--accent);
+    justify-content:center;box-shadow:0 -6px 20px rgba(15,23,42,.16)}
+  .callbar a{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:600;font-size:1.05rem;
+    padding:16px;width:100%;justify-content:center;min-height:58px}
   body{padding-bottom:66px}
-  .stack{margin:0 auto}
-  .hero-in{padding:54px 0 100px}
   .nav-call .num-txt{display:none}
   .nav-call .num-short{display:inline}
-  .badge{right:8px}
+  .hero-in{padding:44px 0 52px}
+  section{padding:60px 0}
+}
+@media(max-width:400px){
+  .brand-sub{font-size:.55rem;letter-spacing:.13em}
+  .brand-name{font-size:1.02rem}
 }
 
-/* ============ REDUCED MOTION ============ */
+/* ================= REDUCED MOTION ================= */
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none !important;transition:none !important}
-  .js .reveal,.js .stagger>*{opacity:1;transform:none}
-  .flag,.hero h1 .line,.hero p.lead,.cta-row,.trust,.stack{opacity:1;transform:none}
-  .hero h1 em::after{width:97%}
-  .marq-track{animation:none !important}
-  .blob,.hero-grid,.motes{display:none}
-  .tool-path{stroke-dashoffset:0}
+  .js .reveal,.js .stagger>*,.js .hero-anim{opacity:1;transform:none}
 }
 </style>
 <noscript><style>
-.reveal,.stagger>*{opacity:1;transform:none}
+.reveal,.stagger>*,.hero-anim{opacity:1;transform:none}
 .qa .a{max-height:none}
-.tool-path{stroke-dashoffset:0}
+.rev-track{flex-wrap:wrap;row-gap:18px}
+.rev-card{flex:1 1 280px}
+.rev-dots{display:none}
 </style></noscript>
 <script>document.documentElement.className+=" js"</script>
 </head>
@@ -360,14 +291,27 @@ footer{background:var(--ink-2);color:#9DB3BF;padding:46px 0;font-size:.91rem}
 
 <header id="hdr">
   <div class="wrap nav">
-    <a class="logo" href="#top" aria-label="Fast Eddie's Appliance Repair — home">
-      <span class="mark" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M5 10h14"/><path d="M9 6h1"/><path d="M9 14h1"/></svg></span>
-      <span>Fast Eddie's<small>Appliance Repair · Tulsa</small></span>
+    <a class="brand" href="#top" aria-label="Fast Eddie's Appliance Repair — home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="42" height="42" viewBox="0 0 44 44" fill="none" role="presentation">
+          <g class="spd">
+            <path d="M2.5 15h6.5M0.5 22h5.5M2.5 29h6.5" stroke="#0369A1" stroke-width="2.4" stroke-linecap="round"/>
+          </g>
+          <rect x="13.4" y="4.4" width="26.2" height="35.2" rx="5.2" stroke="currentColor" stroke-width="2.4"/>
+          <path d="M18.4 11.6h9.4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          <circle cx="26.5" cy="25.4" r="7.6" stroke="currentColor" stroke-width="2.4"/>
+          <circle cx="26.5" cy="25.4" r="2.9" fill="#0369A1"/>
+        </svg>
+      </span>
+      <span class="brand-txt">
+        <span class="brand-name">Fast Eddie's</span>
+        <span class="brand-sub">Appliance Repair · Tulsa</span>
+      </span>
     </a>
     <nav class="nav-links" aria-label="Sections">
       <a href="#services">Repairs</a>
       <a href="#reviews">Reviews</a>
-      <a href="#area">Service area</a>
+      <a href="#how">How it works</a>
       <a href="#faq">FAQ</a>
     </nav>
     <a class="nav-call" href="tel:+19189516001">
@@ -378,233 +322,221 @@ footer{background:var(--ink-2);color:#9DB3BF;padding:46px 0;font-size:.91rem}
 </header>
 
 <main id="top">
+
+<!-- ============ 1. HERO ============ -->
 <div class="hero">
-  <div class="hero-grid" aria-hidden="true"></div>
-  <div class="motes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-  <div class="blob blob-1" data-speed="0.18" aria-hidden="true"><div class="b"></div></div>
-  <div class="blob blob-2" data-speed="0.08" aria-hidden="true"><div class="b"></div></div>
   <div class="wrap hero-in">
     <div>
-      <span class="flag"><span class="dot" aria-hidden="true"></span>In-home appliance repair · Tulsa, Oklahoma</span>
-      <h1>
-        <span class="line">The appliance guy</span>
-        <span class="line">Tulsa keeps</span>
-        <span class="line"><em>calling back.</em></span>
-      </h1>
-      <p class="lead">Refrigerators, dishwashers, washers, dryers, ovens — repaired in your kitchen, not carted off to a shop. One customer came back three years later and wrote that Eddie was just as fast the second time.</p>
-      <div class="cta-row">
-        <a class="btn btn-call" id="heroCall" href="tel:+19189516001">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="eyebrow hero-anim d1"><span class="dot" aria-hidden="true"></span>In-home appliance repair · Tulsa, Oklahoma</span>
+      <h1 class="hero-anim d2">Your kitchen and laundry, <em>working again</em>.</h1>
+      <p class="lead hero-anim d3">Refrigerators, dishwashers, washers, dryers, ovens and ranges — diagnosed and repaired in your home. Rated 4.5 across 35 Google reviews in Tulsa.</p>
+      <div class="cta-row hero-anim d4">
+        <a class="btn btn-primary" id="heroCall" href="tel:+19189516001">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           Call (918) 951-6001
         </a>
-        <a class="btn btn-ghost" href="#quote">Describe the problem</a>
+        <a class="btn btn-secondary" href="#book">Book a repair</a>
       </div>
-      <div class="trust">
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <span><strong>4.5</strong> · 35 Google reviews</span>
+      <div class="trust hero-anim d5">
+        <span><span class="stars" aria-hidden="true">★★★★★</span> <strong>4.5</strong> · 35 Google reviews</span>
+        <span class="sep" aria-hidden="true"></span>
         <span>In-home service</span>
-        <span>Warranty parts handled</span>
+        <span class="sep" aria-hidden="true"></span>
+        <span>Tulsa, OK</span>
       </div>
     </div>
-    <div class="stack">
-      <div class="float">
-        <figure class="stack-photo" data-ph>
-          <img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkgCTfidxXLjQ8RMwgmCNz00h5hGnp6hktyp36N36bSigGQKWK1VJ4E6rj7a25Nsr9OFf3MSF1HmoGZDNzgNlOglp6xMtA26ORpduVvvIhW6di4m1x1ippXPDTwolKP_1KqDfoDzA=w585-h240-k-no"
-               alt="Fast Eddie's Appliance Repair, Tulsa" loading="eager" fetchpriority="high"
-               onerror="this.closest('[data-ph]').classList.add('img-fail')">
-        </figure>
-        <div class="badge" aria-hidden="true">
-          <span class="n">4.5★</span>
-          <small>35 reviews</small>
-        </div>
+    <div class="hero-side hero-anim d6">
+      <figure class="photo-card" data-ph>
+        <img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkgCTfidxXLjQ8RMwgmCNz00h5hGnp6hktyp36N36bSigGQKWK1VJ4E6rj7a25Nsr9OFf3MSF1HmoGZDNzgNlOglp6xMtA26ORpduVvvIhW6di4m1x1ippXPDTwolKP_1KqDfoDzA=w585-h240-k-no"
+             alt="Fast Eddie's Appliance Repair, Tulsa" loading="eager" fetchpriority="high"
+             onerror="this.closest('[data-ph]').classList.add('img-fail')">
+      </figure>
+      <div class="rating-chip">
+        <span class="score" aria-hidden="true">4.5</span>
+        <span>
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <small>35 Google reviews</small>
+        </span>
       </div>
-      <ul class="card-list">
-        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Repairs done in your home</li>
-        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Warranty parts ordered and fitted</li>
-        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Straight advice on repair vs replace</li>
+      <ul class="fact-list">
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Repairs done in your home</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Manufacturer warranty parts ordered and fitted</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Straight advice on repair vs replace</li>
       </ul>
     </div>
   </div>
 </div>
 
-<div class="marq-tilt" aria-hidden="true">
-  <div class="marq">
-    <div class="marq-track">
-      <ul>
-        <li>Refrigerators</li><li>Dishwashers</li><li>Washers</li><li>Dryers</li><li>Ovens &amp; ranges</li><li>In-home service</li>
-      </ul>
-      <ul>
-        <li>Refrigerators</li><li>Dishwashers</li><li>Washers</li><li>Dryers</li><li>Ovens &amp; ranges</li><li>In-home service</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="stats" aria-label="Track record">
-  <div class="wrap stagger">
-    <div class="stat"><div class="num"><span class="cnt" data-count="35">35</span></div><div class="lbl">Google reviews</div></div>
-    <div class="stat"><div class="num"><span class="cnt" data-count="4.5" data-dec="1">4.5</span><span class="u">★</span></div><div class="lbl">Average rating</div></div>
-    <div class="stat"><div class="num"><span class="cnt" data-count="6">6</span></div><div class="lbl">Appliance types repaired</div></div>
-    <div class="stat"><div class="num"><span class="cnt" data-count="1">1</span></div><div class="lbl">Call to get booked in</div></div>
-  </div>
-</div>
-
+<!-- ============ 2. SERVICES ============ -->
 <section id="services">
-  <span class="ghost" aria-hidden="true">Fixed.</span>
   <div class="wrap">
     <span class="kicker">What gets repaired</span>
     <h2 class="reveal">Kitchen and laundry, sorted</h2>
-    <p class="sub reveal">Most appliance problems are one worn part away from working again. The job is finding which one — and being honest when a machine isn't worth the repair.</p>
+    <p class="sub reveal">Most appliance problems are one worn part away from working again. The job is finding which one — and saying so honestly when a machine isn't worth the repair.</p>
     <div class="grid-services stagger">
       <div class="svc">
-        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M5 10h14"/><path d="M9 6h1"/><path d="M9 14h1"/></svg></div>
-        <h3>Refrigerator Repair</h3>
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M5 10h14"/><path d="M9 6h1"/><path d="M9 14h1"/></svg></div>
+        <h3>Refrigerator repair</h3>
         <p>Not cooling, icing over, running constantly. One Google review describes an LG compressor replaced after other companies "wouldn't even bother to check it out".</p>
       </div>
       <div class="svc">
-        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 8h18"/><circle cx="12" cy="15" r="3"/></svg></div>
-        <h3>Dishwasher Repair &amp; Install</h3>
-        <p>Won't drain, won't fill, won't start. Old unit pulled out and the new one fitted when a replacement makes more sense — a customer's review describes exactly that.</p>
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 8h18"/><circle cx="12" cy="15" r="3"/></svg></div>
+        <h3>Dishwasher repair &amp; install</h3>
+        <p>Won't drain, won't fill, won't start. The old unit pulled out and a new one fitted when replacing makes more sense — a customer's review describes exactly that.</p>
       </div>
       <div class="svc">
-        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="13" r="4.5"/><path d="M8 6h.01"/><path d="M12 6h.01"/></svg></div>
-        <h3>Washer Repair</h3>
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="13" r="4.5"/><path d="M8 6h.01"/><path d="M12 6h.01"/></svg></div>
+        <h3>Washer repair</h3>
         <p>Leaks, drum noise, cycles that stop halfway, water that never drains away. Diagnosed and repaired where the machine stands.</p>
       </div>
       <div class="svc">
-        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="13" r="4.5"/><path d="M15.5 6.5c1 1 1 2 0 3"/></svg></div>
-        <h3>Dryer Repair</h3>
-        <p>No heat, long drying times, drums that squeal or won't turn. Usually a heating element, belt or thermostat — parts that are worth replacing.</p>
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="13" r="4.5"/><path d="M15.5 6.5c1 1 1 2 0 3"/></svg></div>
+        <h3>Dryer repair</h3>
+        <p>No heat, long drying times, drums that squeal or won't turn. Usually a heating element, belt or thermostat — parts worth replacing.</p>
       </div>
       <div class="svc">
-        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18"/><circle cx="7" cy="6.5" r=".6"/><circle cx="10" cy="6.5" r=".6"/><rect x="7" y="12" width="10" height="6" rx="1"/></svg></div>
-        <h3>Oven &amp; Range Repair</h3>
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18"/><circle cx="7" cy="6.5" r=".6"/><circle cx="10" cy="6.5" r=".6"/><rect x="7" y="12" width="10" height="6" rx="1"/></svg></div>
+        <h3>Oven &amp; range repair</h3>
         <p>Elements that won't heat, temperatures that drift, doors that won't seal, burners that won't light. Gas and electric.</p>
       </div>
       <div class="svc">
-        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
-        <h3>Warranty Parts Handled</h3>
-        <p>When a part is still under manufacturer warranty, it gets ordered and fitted for you. "They helped with, ordered the warranty parts" — a real Google review.</p>
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>Warranty parts handled</h3>
+        <p>When a part is still covered by the manufacturer, it gets ordered and fitted for you. Two Google reviews describe exactly this — an LG compressor and a Whirlpool warranty repair.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="steps">
+<!-- ============ 3. REVIEWS + NUMBERS ============ -->
+<section id="reviews" class="band">
   <div class="wrap">
-    <span class="kicker">How it goes</span>
-    <h2 class="reveal">One call, one visit, one answer</h2>
-    <div class="grid-steps stagger">
-      <div class="step"><div class="num">1</div><h3>Call and describe it</h3><p>The appliance, the make if you know it, and what it's doing wrong. That's usually enough to know what to bring.</p></div>
-      <div class="step"><div class="num">2</div><h3>Diagnosed at your house</h3><p>The machine stays where it is. Most faults are found and fixed on the same visit — the reviews keep using the word "fast".</p></div>
-      <div class="step"><div class="num">3</div><h3>Told straight what it needs</h3><p>Repair, part order, or honest advice that a replacement is the better buy. One customer took that advice and got a Bosch.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="reviews">
-  <span class="ghost" aria-hidden="true">4.5★</span>
-  <div class="wrap">
-    <div class="tool-wrap reveal" id="toolWrap" aria-hidden="true">
-      <svg class="tool-svg" viewBox="0 0 24 24">
-        <path class="tool-path" pathLength="1" d="M14.7 6.3a4 4 0 0 1-5 5L5 16v3h3l4.7-4.7a4 4 0 0 1 5-5l1.6-1.6-3-3z"/>
-        <path class="tool-path" pathLength="1" d="M7 17.5h.01"/>
-        <path class="tool-path" pathLength="1" d="M17 3.5 20.5 7"/>
-      </svg>
-    </div>
     <div class="rev-head">
       <div>
         <span class="kicker">Real Google reviews</span>
         <h2 class="reveal">What Tulsa customers wrote</h2>
       </div>
-      <div class="score reveal" role="img" aria-label="Rated 4.5 out of 5 stars across 35 Google reviews">
+      <div class="rev-score reveal" role="img" aria-label="Rated 4.5 out of 5 stars across 35 Google reviews">
         <span class="big" aria-hidden="true">4.5</span>
-        <span aria-hidden="true"><span class="stars"><span class="st">★</span><span class="st">★</span><span class="st">★</span><span class="st">★</span><span class="st">★</span></span><small>35 Google reviews</small></span>
+        <span aria-hidden="true"><span class="stars">★★★★★</span><small>35 Google reviews</small></span>
       </div>
     </div>
-    <div class="carousel reveal" id="carousel" aria-label="Customer reviews">
-      <div class="rev active">
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <p>"Repaired a LG refrigerator when others wouldn't even bother to check it out. The compressor was replaced and they helped with, ordered the warranty parts. It's been a few weeks and it still works like new!"</p>
-        <div class="who">W Farmer <span>Google review</span></div>
-      </div>
-      <div class="rev">
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <p>"Our dishwasher was on the fritz. We had Eddie come in and take out the old one and install the new one. We took his advice and got a Bosch. He was prompt, good on his word and gave us advice beyond the simple service call. Thanks!"</p>
-        <div class="who">Zuzka and Trevor <span>Google review</span></div>
-      </div>
-      <div class="rev">
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <p>"Awesome! Super fast super friendly and did a great job! I would definitely recommend. Update 2021 Eddie is just as fast and efficient as he was 3 years ago. Thanks again for your help with my fridge I really appreciate it."</p>
-        <div class="who">Ashley Humphrey <span>Google review</span></div>
-      </div>
-      <div class="dots" role="group" aria-label="Choose review">
-        <button class="on" aria-label="Show review 1"><span class="d" aria-hidden="true"></span></button>
-        <button aria-label="Show review 2"><span class="d" aria-hidden="true"></span></button>
-        <button aria-label="Show review 3"><span class="d" aria-hidden="true"></span></button>
-      </div>
-    </div>
-    <p class="all-reviews"><a href="https://www.google.com/maps/search/Fast+Eddie%27s+Appliance+Repair+Tulsa" rel="noopener">Read all 35 reviews on Google Maps →</a></p>
-  </div>
-</section>
 
-<section class="area" id="area">
-  <span class="ghost" aria-hidden="true">Tulsa</span>
-  <div class="wrap">
-    <span class="kicker">Service area</span>
-    <h2 class="reveal">Tulsa and the towns around it</h2>
-    <div class="area-grid">
-      <div class="reveal">
-        <p class="sub">Based on North Allegheny Avenue, working across Tulsa and the surrounding communities.</p>
-        <p class="addr"><strong>Fast Eddie's Appliance Repair</strong>1319 N Allegheny Ave, Tulsa, OK 74115</p>
-        <div class="chips stagger">
-          <span class="chip">Tulsa</span><span class="chip">Midtown</span><span class="chip">Brookside</span>
-          <span class="chip">Broken Arrow</span><span class="chip">Owasso</span><span class="chip">Jenks</span>
-          <span class="chip">Bixby</span><span class="chip">Sand Springs</span><span class="chip">Catoosa</span>
+    <div class="carousel reveal" id="revCar" role="group" aria-roledescription="carousel" aria-label="Customer reviews from Google">
+      <div class="rev-view">
+        <div class="rev-track">
+          <article class="rev-card">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <blockquote><p>“Repaired a LG refrigerator when others wouldn’t even bother to check it out. The compressor was replaced and they helped with, ordered the warranty parts. It’s been a few weeks and it still works like new!”</p></blockquote>
+            <div class="who">W Farmer <span>Google review</span></div>
+          </article>
+          <article class="rev-card">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <blockquote><p>“Our dishwasher was on the fritz. We had Eddie come in and take out the old one and install the new one. We took his advice and got a Bosch. He was prompt, good on his word and gave us advice beyond the simple service call. Thanks!”</p></blockquote>
+            <div class="who">Zuzka and Trevor <span>Google review</span></div>
+          </article>
+          <article class="rev-card">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <blockquote><p>“Awesome! Super fast super friendly and did a great job! I would definitely recommend.</p><p>Update 2021 Eddie is just as fast and efficient as he was 3 years ago. Thanks again for your help with my fridge I really appreciate it.”</p></blockquote>
+            <div class="who">Ashley Humphrey <span>Google review</span></div>
+          </article>
+          <article class="rev-card">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <blockquote><p>“Eddie has great customer service. He explained to me what was wrong with my washing machine and how much everything would cost to fix it. He made sure to address any concerns that I had prior to and after fixing my washer and he got it all fixed pretty quick. Thank you so much Eddie!”</p></blockquote>
+            <div class="who">C Liljohn <span>Google review</span></div>
+          </article>
+          <article class="rev-card">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <blockquote><p>“Eddy is very good at his job. He handled a Whirlpool warranty repair for us and thoroughly explained to me how the system works and what failed. I’ll be more than happy to have him back out again when this fridge fails, but that’s another review for another company.”</p></blockquote>
+            <div class="who">Zach Perkins <span>Google review</span></div>
+          </article>
+          <article class="rev-card">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <blockquote><p>“Eddie installed a 24000 BTU mini split a/c heat pump in my house. He did a wonderful, and timely install. Very personable, professional and quite knowledgeable in his trade.”</p></blockquote>
+            <div class="who">Jim Inderrieden <span>Google review</span></div>
+          </article>
         </div>
       </div>
-      <iframe class="map reveal" title="Map showing Fast Eddie's Appliance Repair at 1319 N Allegheny Ave, Tulsa" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=1319%20N%20Allegheny%20Ave%2C%20Tulsa%2C%20OK%2074115&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+      <div class="rev-foot">
+        <div class="rev-dots" role="group" aria-label="Choose a group of reviews"></div>
+        <a class="all-reviews" href="https://www.google.com/maps/search/Fast+Eddie%27s+Appliance+Repair+Tulsa" rel="noopener">Read all 35 reviews on Google
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="stats stagger" aria-label="By the numbers">
+      <div class="stat"><div class="num"><span class="cnt" data-count="35">35</span></div><div class="lbl">Google reviews</div></div>
+      <div class="stat"><div class="num"><span class="cnt" data-count="4.5" data-dec="1">4.5</span><span class="u">★</span></div><div class="lbl">Average rating</div></div>
+      <div class="stat"><div class="num"><span class="cnt" data-count="6">6</span></div><div class="lbl">Appliance types repaired</div></div>
+      <div class="stat"><div class="num"><span class="cnt" data-count="1">1</span></div><div class="lbl">Call to get booked in</div></div>
     </div>
   </div>
 </section>
 
-<section class="faq-sec" id="faq">
+<!-- ============ 4. HOW IT WORKS ============ -->
+<section id="how">
+  <div class="wrap">
+    <span class="kicker">How it goes</span>
+    <h2 class="reveal">One call, one visit, one answer</h2>
+    <div class="grid-steps stagger">
+      <div class="step"><div class="num">1</div><h3>Call and describe it</h3><p>The appliance, the make if you know it, and what it's doing wrong. That's usually enough to know what to bring.</p></div>
+      <div class="step"><div class="num">2</div><h3>Diagnosed at your house</h3><p>The machine stays where it is. Reviewers describe the fault being found and explained on the visit — "thoroughly explained to me how the system works and what failed".</p></div>
+      <div class="step"><div class="num">3</div><h3>Told straight what it needs</h3><p>Repair, a part order, or honest advice that replacing is the better buy. One customer took that advice and got a Bosch.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. FAQ ============ -->
+<section class="band-2" id="faq">
   <div class="wrap">
     <span class="kicker">Good to know</span>
     <h2 class="reveal">Questions people call with</h2>
     <div class="faq-list reveal">
       <div class="qa open">
-        <button class="q" aria-expanded="true" onclick="toggleQA(this)">Which appliances do you work on?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="a"><p>Household kitchen and laundry appliances — refrigerators, dishwashers, washers, dryers, ovens and ranges. Reviews on Google mention refrigerator and dishwasher work in particular.</p></div>
+        <button class="q" type="button" aria-expanded="true">Which appliances do you work on?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>Google reviews describe refrigerator work (including an LG compressor), a dishwasher removed and replaced, a washing machine repair and a Whirlpool warranty repair.</p></div>
       </div>
       <div class="qa">
-        <button class="q" aria-expanded="false" onclick="toggleQA(this)">Do you come to the house?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="a"><p>Yes — this is in-home service. The appliance stays where it is and the repair happens in your kitchen or laundry room.</p></div>
+        <button class="q" type="button" aria-expanded="false">Do you come to the house?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>Yes. Reviewers describe work done at home — "we had Eddie come in and take out the old one and install the new one", and another customer writes about an install "in my house".</p></div>
       </div>
       <div class="qa">
-        <button class="q" aria-expanded="false" onclick="toggleQA(this)">What if the part is under warranty?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="a"><p>It gets ordered for you. One Google review describes an LG compressor replaced with warranty parts that were ordered on the customer's behalf.</p></div>
+        <button class="q" type="button" aria-expanded="false">What if the part is under warranty?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>One review says "they helped with, ordered the warranty parts" for a replaced LG compressor, and another describes a Whirlpool warranty repair being handled.</p></div>
       </div>
       <div class="qa">
-        <button class="q" aria-expanded="false" onclick="toggleQA(this)">What if it isn't worth repairing?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="a"><p>You'll be told so. One customer's review describes being advised on a replacement, having the old dishwasher taken out and the new one installed — "advice beyond the simple service call".</p></div>
+        <button class="q" type="button" aria-expanded="false">Will I be told what's actually wrong?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>That's what reviewers highlight: "he explained to me what was wrong with my washing machine", and "thoroughly explained to me how the system works and what failed".</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="quote" id="quote">
+<!-- ============ 6. BOOKING ============ -->
+<section id="book">
   <div class="wrap">
     <span class="kicker">Get in touch</span>
     <h2 class="reveal">Something not working?</h2>
-    <p class="sub reveal">Fastest answer: call <a href="tel:+19189516001" style="color:var(--steel-deep);font-weight:600">(918) 951-6001</a>. Or leave your details and we'll get back to you:</p>
-    <form class="form reveal" onsubmit="event.preventDefault();this.querySelector('.form-note').textContent='This form is activated on your live website — for now, please call (918) 951-6001.';">
-      <div><label for="fname">Your name</label><input id="fname" name="name" placeholder="Jane Smith" autocomplete="name"></div>
-      <div><label for="fphone">Phone number</label><input id="fphone" name="phone" type="tel" placeholder="(918) 555-0100" autocomplete="tel"></div>
-      <div><label for="fjob">Which appliance, and what's it doing?</label><textarea id="fjob" name="job" rows="3" placeholder="e.g. LG fridge, about 6 years old, freezer is fine but the fridge side isn't cooling"></textarea></div>
-      <button class="btn btn-call" type="submit">Send my request</button>
-      <p class="form-note">The contact form activates on the live version — for now, call directly.</p>
-    </form>
+    <p class="sub reveal">Fastest answer is a phone call: <a href="tel:+19189516001" style="color:var(--accent-deep);font-weight:600">(918) 951-6001</a>. Or leave your details below.</p>
+    <div class="form-grid">
+      <form class="form reveal" onsubmit="event.preventDefault();this.querySelector('.form-note').textContent='This form is activated on your live website — for now, please call (918) 951-6001.';">
+        <div><label for="fname">Your name</label><input id="fname" name="name" placeholder="Jane Smith" autocomplete="name"></div>
+        <div><label for="fphone">Phone number</label><input id="fphone" name="phone" type="tel" placeholder="(918) 555-0100" autocomplete="tel"></div>
+        <div><label for="fjob">Which appliance, and what's it doing?</label><textarea id="fjob" name="job" rows="3" placeholder="e.g. LG fridge, about 6 years old, freezer is fine but the fridge side isn't cooling"></textarea></div>
+        <button class="btn btn-primary" type="submit">Send my request</button>
+        <p class="form-note">The contact form activates on the live version — for now, call directly.</p>
+      </form>
+      <div class="contact-card reveal">
+        <h3>Fast Eddie's Appliance Repair</h3>
+        <dl>
+          <div><dt>Phone</dt><dd><a href="tel:+19189516001">(918) 951-6001</a></dd></div>
+          <div><dt>Address</dt><dd>1319 N Allegheny Ave,<br>Tulsa, OK 74115</dd></div>
+          <div><dt>Rating</dt><dd>4.5 ★ · 35 Google reviews</dd></div>
+          <div><dt>On Google</dt><dd><a href="https://www.google.com/maps/search/Fast+Eddie%27s+Appliance+Repair+Tulsa" rel="noopener">View on Google Maps</a></dd></div>
+        </dl>
+      </div>
+    </div>
   </div>
 </section>
 </main>
@@ -613,7 +545,23 @@ footer{background:var(--ink-2);color:#9DB3BF;padding:46px 0;font-size:.91rem}
   <div class="wrap">
     <div class="foot">
       <div>
-        <div class="fname">Fast Eddie's Appliance Repair</div>
+        <span class="brand">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="38" height="38" viewBox="0 0 44 44" fill="none" role="presentation">
+              <g class="spd">
+                <path d="M2.5 15h6.5M0.5 22h5.5M2.5 29h6.5" stroke="#0369A1" stroke-width="2.4" stroke-linecap="round"/>
+              </g>
+              <rect x="13.4" y="4.4" width="26.2" height="35.2" rx="5.2" stroke="currentColor" stroke-width="2.4"/>
+              <path d="M18.4 11.6h9.4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+              <circle cx="26.5" cy="25.4" r="7.6" stroke="currentColor" stroke-width="2.4"/>
+              <circle cx="26.5" cy="25.4" r="2.9" fill="#0369A1"/>
+            </svg>
+          </span>
+          <span class="brand-txt">
+            <span class="brand-name">Fast Eddie's</span>
+            <span class="brand-sub">Appliance Repair · Tulsa</span>
+          </span>
+        </span>
         <div>Refrigerators · Dishwashers · Washers · Dryers · Ovens</div>
       </div>
       <div>
@@ -636,70 +584,37 @@ footer{background:var(--ink-2);color:#9DB3BF;padding:46px 0;font-size:.91rem}
 var REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 var FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-/* ---- scroll progress + header shrink + hero parallax ---- */
+/* ---- scroll progress + header shrink ---- */
 var prog = document.getElementById('progress'),
     hdr = document.getElementById('hdr'),
-    plxEls = [].slice.call(document.querySelectorAll('.blob[data-speed]')),
-    lastTop = 0, mx = 0, my = 0, ticking = false;
-function applyPlx(){
-  if(REDUCED) return;
-  for(var i = 0; i < plxEls.length; i++){
-    var s = parseFloat(plxEls[i].getAttribute('data-speed')) || 0;
-    plxEls[i].style.transform = 'translate3d(' + (mx * s * 130) + 'px,' + (lastTop * s + my * s * 90) + 'px,0)';
-  }
-}
+    ticking = false;
 function onScroll(){
   if(ticking) return;
   ticking = true;
   requestAnimationFrame(function(){
-    var h = document.documentElement, top = h.scrollTop;
-    var max = h.scrollHeight - h.clientHeight;
+    var h = document.documentElement, top = h.scrollTop,
+        max = h.scrollHeight - h.clientHeight;
     prog.style.width = (max > 0 ? (top / max * 100) : 0) + '%';
     hdr.classList.toggle('scrolled', top > 8);
-    lastTop = top;
-    applyPlx();
     ticking = false;
   });
 }
 addEventListener('scroll', onScroll, {passive:true});
 onScroll();
 
-/* ---- cursor drift on the hero atmosphere (fine pointers only) ---- */
-var hero = document.querySelector('.hero');
-if(hero && FINE && !REDUCED){
-  hero.addEventListener('pointermove', function(e){
-    var r = hero.getBoundingClientRect();
-    mx = e.clientX / Math.max(r.width, 1) - .5;
-    my = (e.clientY - r.top) / Math.max(r.height, 1) - .5;
-    applyPlx();
-  });
-  hero.addEventListener('pointerleave', function(){ mx = 0; my = 0; applyPlx(); });
-}
-
-/* ---- staggered scroll reveals + drawn divider ---- */
-var toolWrap = document.getElementById('toolWrap');
+/* ---- staggered scroll reveals ---- */
 if('IntersectionObserver' in window){
   var io = new IntersectionObserver(function(es){
     es.forEach(function(e){
       if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
     });
-  },{threshold:.15});
+  },{threshold:.14});
   document.querySelectorAll('.reveal,.stagger').forEach(function(el){ io.observe(el); });
-  if(toolWrap){
-    var tio = new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        if(e.isIntersecting){ toolWrap.classList.add('drawn'); tio.unobserve(toolWrap); }
-      });
-    },{threshold:.6});
-    tio.observe(toolWrap);
-  }
 }else{
   document.querySelectorAll('.reveal,.stagger').forEach(function(el){ el.classList.add('in'); });
-  if(toolWrap) toolWrap.classList.add('drawn');
 }
 
 /* ---- count-up stats ---- */
-var counters = document.querySelectorAll('.cnt');
 if(!REDUCED && 'IntersectionObserver' in window){
   var cio = new IntersectionObserver(function(es){
     es.forEach(function(e){
@@ -710,94 +625,115 @@ if(!REDUCED && 'IntersectionObserver' in window){
           dec = parseInt(el.getAttribute('data-dec') || '0', 10),
           t0 = performance.now();
       (function tick(t){
-        var p = Math.min((t - t0) / 1400, 1),
+        var p = Math.min((t - t0) / 1300, 1),
             v = end * (1 - Math.pow(1 - p, 3));
         el.textContent = dec ? v.toFixed(dec) : Math.round(v).toString();
         if(p < 1) requestAnimationFrame(tick);
       })(t0);
     });
   },{threshold:.5});
-  counters.forEach(function(el){ cio.observe(el); });
+  document.querySelectorAll('.cnt').forEach(function(el){ cio.observe(el); });
 }
 
-/* ---- review carousel ---- */
-var car = document.getElementById('carousel');
+/* ---- reviews carousel: 3 per view (1 on mobile), dots, autoplay, pause on hover/focus ---- */
+var car = document.getElementById('revCar');
 if(car){
-  var revs = [].slice.call(car.querySelectorAll('.rev')),
-      dotBtns = [].slice.call(car.querySelectorAll('.dots button')),
-      cur = 0, timer = null;
-  function showRev(i){
-    revs[cur].classList.remove('active');
-    dotBtns[cur].classList.remove('on');
-    cur = i;
-    revs[cur].classList.add('active');
-    dotBtns[cur].classList.add('on');
+  var view = car.querySelector('.rev-view'),
+      track = car.querySelector('.rev-track'),
+      cards = [].slice.call(car.querySelectorAll('.rev-card')),
+      dotsWrap = car.querySelector('.rev-dots'),
+      dots = [], per = 1, pages = 1, page = 0, timer = null;
+
+  function perView(){ return matchMedia('(min-width: 900px)').matches ? 3 : 1; }
+  function gapPx(){
+    var cs = getComputedStyle(track);
+    return parseFloat(cs.columnGap || cs.gap || '0') || 0;
   }
-  function startAuto(){
-    if(REDUCED || timer) return;
-    timer = setInterval(function(){ showRev((cur + 1) % revs.length); }, 6500);
+  function go(i){
+    page = ((i % pages) + pages) % pages;
+    var offset = page * (view.clientWidth + gapPx());
+    track.style.transform = 'translate3d(' + (-offset) + 'px,0,0)';
+    for(var d = 0; d < dots.length; d++){
+      dots[d].classList.toggle('on', d === page);
+      dots[d].setAttribute('aria-current', d === page ? 'true' : 'false');
+    }
+    for(var c = 0; c < cards.length; c++){
+      var shown = c >= page * per && c < (page + 1) * per;
+      cards[c].setAttribute('aria-hidden', shown ? 'false' : 'true');
+    }
   }
-  function stopAuto(){ clearInterval(timer); timer = null; }
-  dotBtns.forEach(function(b, i){
-    b.addEventListener('click', function(){ showRev(i); stopAuto(); startAuto(); });
+  function build(){
+    per = perView();
+    pages = Math.ceil(cards.length / per);
+    if(page > pages - 1) page = pages - 1;
+    dotsWrap.innerHTML = '';
+    dots = [];
+    for(var i = 0; i < pages; i++){
+      (function(idx){
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'dot';
+        b.setAttribute('aria-label', 'Show reviews ' + (idx + 1) + ' of ' + pages);
+        b.innerHTML = '<span class="d" aria-hidden="true"></span>';
+        b.addEventListener('click', function(){ go(idx); restart(); });
+        dotsWrap.appendChild(b);
+        dots.push(b);
+      })(i);
+    }
+    go(page);
+  }
+  function start(){
+    if(REDUCED || timer || pages < 2) return;
+    timer = setInterval(function(){ go(page + 1); }, 6500);
+  }
+  function stop(){ clearInterval(timer); timer = null; }
+  function restart(){ stop(); start(); }
+
+  car.addEventListener('mouseenter', stop);
+  car.addEventListener('mouseleave', start);
+  car.addEventListener('focusin', stop);
+  car.addEventListener('focusout', start);
+  car.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowRight'){ go(page + 1); restart(); e.preventDefault(); }
+    else if(e.key === 'ArrowLeft'){ go(page - 1); restart(); e.preventDefault(); }
   });
-  car.addEventListener('mouseenter', stopAuto);
-  car.addEventListener('mouseleave', startAuto);
-  car.addEventListener('focusin', stopAuto);
-  car.addEventListener('focusout', startAuto);
   var swipeX = null;
   car.addEventListener('pointerdown', function(e){ if(e.pointerType === 'touch') swipeX = e.clientX; });
   car.addEventListener('pointerup', function(e){
     if(swipeX === null) return;
     var dx = e.clientX - swipeX; swipeX = null;
-    if(Math.abs(dx) > 44){
-      showRev((cur + (dx < 0 ? 1 : revs.length - 1)) % revs.length);
-      stopAuto(); startAuto();
-    }
+    if(Math.abs(dx) > 44){ go(page + (dx < 0 ? 1 : -1)); restart(); }
   });
-  car.addEventListener('keydown', function(e){
-    if(e.key === 'ArrowRight'){ showRev((cur + 1) % revs.length); stopAuto(); startAuto(); e.preventDefault(); }
-    else if(e.key === 'ArrowLeft'){ showRev((cur + revs.length - 1) % revs.length); stopAuto(); startAuto(); e.preventDefault(); }
+
+  var rt = null;
+  addEventListener('resize', function(){
+    clearTimeout(rt);
+    rt = setTimeout(build, 160);
   });
-  startAuto();
+
+  build();
+  start();
 }
 
 /* ---- FAQ accordion ---- */
-window.toggleQA = function(btn){
-  var qa = btn.closest('.qa'),
-      open = qa.classList.toggle('open');
-  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-};
-
-/* ---- gentle tilt on service cards (fine pointers only) ---- */
-if(FINE && !REDUCED){
-  document.querySelectorAll('.svc').forEach(function(card){
-    card.addEventListener('pointermove', function(e){
-      var r = card.getBoundingClientRect(),
-          px = (e.clientX - r.left) / r.width,
-          py = (e.clientY - r.top) / r.height;
-      card.style.transform = 'perspective(750px) rotateX(' + ((.5 - py) * 5) + 'deg) rotateY(' + ((px - .5) * 6) + 'deg) translateY(-6px)';
-      card.style.setProperty('--gx', (px * 100) + '%');
-      card.style.setProperty('--gy', (py * 100) + '%');
-      card.style.setProperty('--ga', '.08');
-    });
-    card.addEventListener('pointerleave', function(){
-      card.style.transform = '';
-      card.style.removeProperty('--ga');
-    });
+document.querySelectorAll('.qa .q').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var qa = btn.parentNode,
+        open = qa.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
-}
+});
 
-/* ---- magnetic pull on the hero call button ---- */
+/* ---- magnetic pull on the hero call button (fine pointers only) ---- */
 var heroCall = document.getElementById('heroCall');
 if(heroCall && FINE && !REDUCED){
   heroCall.addEventListener('pointermove', function(e){
     var r = heroCall.getBoundingClientRect(),
-        dx = (e.clientX - (r.left + r.width / 2)) * .22,
-        dy = (e.clientY - (r.top + r.height / 2)) * .35;
-    dx = Math.max(-10, Math.min(10, dx));
-    dy = Math.max(-6, Math.min(6, dy));
-    heroCall.style.transform = 'translate(' + dx + 'px,' + (dy - 3) + 'px)';
+        dx = (e.clientX - (r.left + r.width / 2)) * .18,
+        dy = (e.clientY - (r.top + r.height / 2)) * .3;
+    dx = Math.max(-8, Math.min(8, dx));
+    dy = Math.max(-5, Math.min(5, dy));
+    heroCall.style.transform = 'translate(' + dx + 'px,' + (dy - 2) + 'px)';
   });
   heroCall.addEventListener('pointerleave', function(){ heroCall.style.transform = ''; });
 }

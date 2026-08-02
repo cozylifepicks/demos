@@ -6,302 +6,283 @@
 <title>1&amp;Done Maintenance LLC — Handyman, Drywall &amp; Roof Repair in Fort Wayne, IN</title>
 <meta name="description" content="Fort Wayne's 4.9-star handyman and home maintenance crew. Drywall and texture repair, roofing fixes, carpentry and honest pricing. Call (260) 372-8388.">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#1A1A1D">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
+<meta name="theme-color" content="#F5F5F0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ============ TOKENS ============ */
+/* ============ TOKENS — SAGE NEUTRAL + CALM TEAL (light only) ============ */
 :root{
-  --char:#1A1A1D; --char-2:#141416; --char-3:#202024; --char-4:#232327;
-  --paper:#FAF8F4; --card:#FFFFFF; --mist:#F1EDE5; --line:#E5DFD4;
-  --ink:#26241F; --muted:#6B655A;
-  --copper:#B0703C; --copper-bright:#C98A50; --copper-deep:#8F5A2E; --copper-ink:#1F1208;
-  --dark-body:#B8B2A8; --dark-dim:#9B948A;
-  --radius:10px;
-  --shadow:0 16px 40px rgba(26,26,29,.10);
-  --glow-copper:0 12px 28px rgba(176,112,60,.30);
+  --bg:#F5F5F0;
+  --surface:#FFFFFF;
+  --band:#EFEFE9;
+  --ink:#0F172A;
+  --ink-2:#334155;
+  --primary:#6B7280;
+  --muted:#4B5563;
+  --line:#EDEEEF;
+  --line-2:#DCDDD7;
+  --accent:#0891B2;        /* graphic accent (marks, dots, icons) */
+  --accent-deep:#0E7490;   /* text + buttons: AA contrast */
+  --accent-tint:#E9F4F7;
+  --r:10px;
+  --r-sm:8px;
+  --shadow-xs:0 1px 2px rgba(15,23,42,.05);
+  --shadow:0 12px 28px rgba(15,23,42,.07);
+  --ease:cubic-bezier(.22,1,.36,1);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.62;font-size:16.5px;overflow-x:hidden}
-h1,h2,h3,.num{font-family:'Space Grotesk',sans-serif;letter-spacing:-.02em;line-height:1.08}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.64;font-size:16.5px;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Space Grotesk',system-ui,sans-serif;font-weight:700;letter-spacing:-.025em;line-height:1.12;color:var(--ink)}
 img{max-width:100%;display:block}
 a{color:inherit}
-::selection{background:var(--copper-bright);color:var(--copper-ink)}
-.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
-[id]{scroll-margin-top:120px}
-.skip{position:absolute;left:-9999px;top:0;background:var(--copper);color:#fff;font-weight:700;padding:14px 22px;border-radius:0 0 10px 0;z-index:200}
+::selection{background:#CFE9F0;color:var(--ink)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+[id]{scroll-margin-top:96px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--accent-deep);color:#fff;font-weight:600;padding:14px 22px;border-radius:0 0 8px 0;z-index:200}
 .skip:focus{left:0}
-a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--copper-deep);outline-offset:3px}
-.dark :focus-visible,header :focus-visible,footer :focus-visible{outline-color:var(--copper-bright)}
-.callbar :focus-visible{outline-color:#16110B}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--accent-deep);outline-offset:3px;border-radius:4px}
 
 /* ============ BUTTONS ============ */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:1.02rem;
-  border-radius:var(--radius);padding:15px 28px;min-height:54px;text-decoration:none;cursor:pointer;border:0;
-  position:relative;overflow:hidden;transition:transform .2s ease,background .2s ease,box-shadow .2s ease,border-color .2s ease}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:600;font-size:1.01rem;
+  border-radius:var(--r-sm);padding:15px 26px;min-height:54px;text-decoration:none;cursor:pointer;border:1px solid transparent;
+  transition:transform .2s var(--ease),background .2s ease,box-shadow .2s ease,border-color .2s ease,color .2s ease}
 .btn svg{flex:none}
-.btn::after{content:"";position:absolute;top:-14%;left:-75%;width:42%;height:130%;transform:skewX(-22deg);pointer-events:none;
-  background:linear-gradient(100deg,transparent,rgba(255,255,255,.3),transparent);opacity:0}
-.btn:hover::after,.btn:focus-visible::after{opacity:1;animation:sweep .6s ease-out}
-@keyframes sweep{0%{left:-75%;opacity:1}100%{left:135%;opacity:0}}
-.btn-call{background:linear-gradient(180deg,var(--copper-bright),var(--copper));color:var(--copper-ink);box-shadow:var(--glow-copper)}
-.btn-call:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(176,112,60,.42)}
-.btn-ghost{background:transparent;color:#F2EFE9;border:1px solid rgba(255,255,255,.3)}
-.btn-ghost:hover{border-color:rgba(201,138,80,.75);color:#fff;transform:translateY(-2px)}
+.btn-primary{background:var(--accent-deep);color:#fff;box-shadow:0 8px 18px rgba(14,116,144,.18)}
+.btn-primary:hover{background:#0B5F76;transform:translateY(-2px);box-shadow:0 14px 26px rgba(14,116,144,.24)}
+.btn-secondary{background:var(--surface);color:var(--ink);border-color:var(--line-2)}
+.btn-secondary:hover{border-color:var(--accent-deep);color:var(--accent-deep);transform:translateY(-2px);box-shadow:var(--shadow)}
 
 /* ============ SCROLL PROGRESS ============ */
-#progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:120;
-  background:linear-gradient(90deg,var(--copper-deep),var(--copper-bright))}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:130;background:var(--accent)}
 
-/* ============ TOP BAR (demo note + header) ============ */
-.topbar{position:sticky;top:0;z-index:80}
-.demo-note{position:relative;background:var(--char-4);color:#CFC9BE;font-size:.84rem;font-weight:500;text-align:center;padding:9px 52px;border-bottom:1px solid rgba(255,255,255,.06)}
-.demo-note button{position:absolute;right:4px;top:50%;transform:translateY(-50%);background:none;border:none;color:#CFC9BE;font-size:1.05rem;cursor:pointer;padding:12px 16px;min-width:44px;min-height:44px}
+/* ============ HEADER ============ */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line-2);transition:box-shadow .3s ease,background .3s ease}
+header.scrolled{background:rgba(255,255,255,.98);box-shadow:0 6px 20px rgba(15,23,42,.06)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:14px;transition:padding .3s ease}
+header.scrolled .nav{padding:8px 0}
 
-header{background:rgba(20,20,22,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07);
-  transition:box-shadow .3s,background .3s}
-header.scrolled{box-shadow:0 12px 34px rgba(10,10,12,.5);background:rgba(17,17,19,.97)}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:13px 0;gap:12px;transition:padding .3s}
-header.scrolled .nav{padding:7px 0}
-.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#F5F2EC;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.08rem;min-height:44px}
-.logo .mark{width:40px;height:40px;background:rgba(201,138,80,.08);border:1px solid rgba(201,138,80,.55);border-radius:9px;
-  display:flex;align-items:center;justify-content:center;color:var(--copper-bright);flex:none;font-weight:700;font-size:.82rem;letter-spacing:.02em;transition:transform .25s,background .25s}
-.logo:hover .mark{transform:rotate(-5deg);background:rgba(201,138,80,.16)}
-.logo small{display:block;font-family:'Inter',sans-serif;font-weight:500;font-size:.68rem;letter-spacing:.16em;color:var(--dark-dim);text-transform:uppercase;line-height:1.35}
-.nav-links{display:none;gap:26px;font-weight:600;font-size:.92rem;color:#B6AFA4}
+/* ---- BRAND / LOGO ---- */
+.brand{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);min-height:44px}
+.brand-mark{flex:none;display:block;color:var(--ink);transition:transform .3s var(--ease)}
+.brand-mark .tick{stroke-dasharray:26;stroke-dashoffset:0;transition:stroke-dashoffset .45s var(--ease)}
+.brand:hover .brand-mark .tick{stroke-dashoffset:26}
+.brand-txt{display:flex;flex-direction:column;justify-content:center}
+.brand-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.15rem;line-height:1.08;letter-spacing:-.03em;white-space:nowrap}
+.brand-sub{font-size:.59rem;font-weight:500;letter-spacing:.17em;text-transform:uppercase;color:var(--primary);line-height:1.6;margin-top:3px}
+header.scrolled .brand-mark{transform:scale(.94)}
+
+.nav-links{display:none;gap:26px;font-weight:500;font-size:.93rem;color:var(--muted)}
 .nav-links a{text-decoration:none;padding:10px 2px;position:relative}
-.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:4px;height:2px;background:var(--copper-bright);transition:right .25s ease}
-.nav-links a:hover{color:#fff}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:5px;height:2px;background:var(--accent);transition:right .25s var(--ease)}
+.nav-links a:hover{color:var(--ink)}
 .nav-links a:hover::after{right:0}
 @media(min-width:960px){.nav-links{display:flex}}
-.nav-call{display:inline-flex;align-items:center;gap:9px;text-decoration:none;background:linear-gradient(180deg,var(--copper-bright),var(--copper));color:var(--copper-ink);
-  font-weight:700;font-size:1rem;padding:11px 20px;min-height:46px;border-radius:var(--radius);transition:transform .2s,box-shadow .2s}
-.nav-call:hover{transform:translateY(-2px);box-shadow:var(--glow-copper)}
+.nav-call{display:inline-flex;align-items:center;gap:9px;text-decoration:none;background:var(--accent-deep);color:#fff;
+  font-weight:600;font-size:.97rem;padding:11px 19px;min-height:46px;border-radius:var(--r-sm);
+  transition:background .2s ease,transform .2s var(--ease),box-shadow .2s ease}
+.nav-call:hover{background:#0B5F76;transform:translateY(-2px);box-shadow:0 10px 20px rgba(14,116,144,.22)}
+.nav-call .num-short{display:none}
 
 /* ============ HERO ============ */
-.hero{background:linear-gradient(180deg,var(--char-2) 0%,var(--char) 45%,#18181A 100%);color:#F5F2EC;position:relative;overflow:hidden}
-.atmo{position:absolute;inset:0;pointer-events:none;will-change:transform}
-.atmo .g{position:absolute;border-radius:50%}
-.atmo .g1{width:min(640px,90vw);height:440px;top:-12%;right:-10%;
-  background:radial-gradient(closest-side,rgba(176,112,60,.17),transparent 70%);animation:drift1 18s ease-in-out infinite alternate}
-.atmo .g2{width:min(520px,80vw);height:400px;bottom:-18%;left:-12%;
-  background:radial-gradient(closest-side,rgba(245,240,230,.05),transparent 70%);animation:drift2 23s ease-in-out infinite alternate}
-@keyframes drift1{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(-48px,38px,0) scale(1.12)}}
-@keyframes drift2{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(42px,-26px,0) scale(1.08)}}
-.gridlines{position:absolute;inset:0;pointer-events:none;opacity:.6;
-  background-image:linear-gradient(rgba(201,138,80,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(201,138,80,.07) 1px,transparent 1px);
-  background-size:46px 46px;animation:gridDrift 80s linear infinite;
-  -webkit-mask-image:radial-gradient(80% 75% at 50% 30%,#000 25%,transparent 100%);
-  mask-image:radial-gradient(80% 75% at 50% 30%,#000 25%,transparent 100%)}
-@keyframes gridDrift{from{background-position:0 0}to{background-position:92px 46px}}
-.hero-tool{position:absolute;top:6%;right:-6%;width:min(540px,52vw);pointer-events:none;will-change:transform}
-.hero-tool svg{display:block;width:100%;height:auto;overflow:visible;animation:toolFloat 15s ease-in-out infinite}
-.hero-tool .hero-draw{fill:none;stroke:rgba(201,138,80,.17);stroke-width:.55;stroke-linejoin:round;stroke-linecap:round;
-  stroke-dasharray:1;stroke-dashoffset:1;animation:drawU 2.4s ease .5s forwards}
-@keyframes toolFloat{0%,100%{transform:rotate(-18deg) translateY(0)}50%{transform:rotate(-16.5deg) translateY(-14px)}}
-@media(max-width:720px){.hero-tool{display:none}}
-.hero-in{position:relative;z-index:2;padding:92px 0 128px;max-width:820px}
-.flag{display:inline-flex;align-items:center;gap:10px;background:rgba(201,138,80,.07);border:1px solid rgba(201,138,80,.35);
-  color:#D9D2C6;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:9px 16px;border-radius:999px;
-  opacity:0;animation:rise .6s ease .05s forwards}
-.flag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--copper-bright);flex:none}
-.hero h1{font-size:clamp(3rem,9.5vw,5.8rem);font-weight:700;letter-spacing:-.035em;line-height:.98;margin-top:28px}
-.hero h1 .line{display:block;opacity:0;transform:translateY(32px);animation:rise .75s cubic-bezier(.2,.7,.2,1) forwards}
-.hero h1 .line:nth-child(2){animation-delay:.13s}
-.hero h1 .line:nth-child(3){animation-delay:.26s}
-.hero h1 .am{color:var(--copper-bright)}
-@keyframes rise{to{opacity:1;transform:none}}
-.hero p.lead{margin-top:26px;font-size:1.13rem;color:var(--dark-body);max-width:34rem;opacity:0;animation:rise .75s ease .42s forwards}
-.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;opacity:0;animation:rise .75s ease .56s forwards}
-.trust{display:flex;flex-wrap:wrap;align-items:center;gap:10px 26px;margin-top:34px;color:#A8A199;font-size:.95rem;opacity:0;animation:rise .75s ease .7s forwards}
-.trust .stars{color:var(--copper-bright);letter-spacing:2px;font-size:1.02rem}
-.trust strong{color:#fff}
+.hero{background:linear-gradient(180deg,#FFFFFF 0%,var(--bg) 100%);border-bottom:1px solid var(--line-2);position:relative}
+.hero-in{display:grid;gap:44px;padding:58px 0 66px;align-items:center}
+@media(min-width:940px){.hero-in{grid-template-columns:1.12fr .88fr;padding:70px 0 80px}}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;background:var(--accent-tint);border:1px solid #CFE4EA;color:var(--accent-deep);
+  font-size:.79rem;font-weight:600;letter-spacing:.03em;padding:7px 14px;border-radius:999px}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.45);opacity:.45}}
+.hero h1{font-size:clamp(2.4rem,6.4vw,4rem);margin-top:20px;line-height:1.02}
+.hero h1 .uword{position:relative;display:inline-block;color:var(--accent-deep)}
+.uline-svg{position:absolute;left:-1%;bottom:-.1em;width:102%;height:.24em;overflow:visible}
+.uline-path{fill:none;stroke:var(--accent);stroke-width:6;stroke-linecap:round;opacity:.9;
+  stroke-dasharray:1;stroke-dashoffset:1;animation:drawU .8s cubic-bezier(.5,0,.3,1) 1s forwards}
+@keyframes drawU{to{stroke-dashoffset:0}}
+.hero .lead{margin-top:18px;font-size:1.1rem;color:var(--muted);max-width:33rem}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.trust{display:flex;flex-wrap:wrap;align-items:center;gap:8px 22px;margin-top:26px;color:var(--muted);font-size:.93rem}
+.trust .stars{color:var(--accent);letter-spacing:2px;font-size:1rem}
+.trust strong{color:var(--ink);font-weight:600}
+.trust .sep{width:1px;height:16px;background:var(--line-2);display:none}
+@media(min-width:520px){.trust .sep{display:block}}
 
-/* ============ MARQUEE ============ */
-.marq-belt{background:var(--char-2);overflow:hidden;border-top:1px solid rgba(201,138,80,.22);border-bottom:1px solid rgba(201,138,80,.22)}
-.marq-track{display:flex;width:max-content;animation:marq 34s linear infinite}
-.marq ul{display:flex;list-style:none;padding:15px 0;margin:0}
-.marq li{font-family:'Space Grotesk',sans-serif;font-weight:500;text-transform:uppercase;letter-spacing:.18em;font-size:.79rem;
-  color:#A39C90;white-space:nowrap;display:flex;align-items:center}
-.marq li::after{content:"✦";margin:0 24px;color:rgba(201,138,80,.6);font-size:.62rem;letter-spacing:0}
-@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.marq:hover .marq-track{animation-play-state:paused}
-
-/* ============ STATS BAND ============ */
-.band{background:var(--char);color:#F5F2EC}
-.band-in{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:rgba(255,255,255,.08)}
-.band-in .cell{background:var(--char);padding:34px 20px;text-align:center;transition:background .25s}
-.band-in .cell:hover{background:var(--char-3)}
-.band .n{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2.05rem;color:#F2EFE9;line-height:1;letter-spacing:-.02em}
-.band .n .u{color:var(--copper-bright)}
-.band .l{font-size:.83rem;color:var(--dark-dim);margin-top:9px;letter-spacing:.04em}
+.hero-side{max-width:430px;width:100%;justify-self:center}
+.rating-chip{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r);
+  padding:20px 22px;box-shadow:var(--shadow)}
+.rating-chip .score{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2.3rem;line-height:1;color:var(--accent-deep)}
+.rating-chip .stars{color:var(--accent);letter-spacing:2px;font-size:1rem;line-height:1.2}
+.rating-chip small{display:block;color:var(--muted);font-size:.83rem}
+.fact-list{margin-top:14px;background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r);
+  padding:20px 22px;list-style:none;display:grid;gap:12px;box-shadow:var(--shadow-xs)}
+.fact-list li{display:flex;gap:11px;align-items:flex-start;font-size:.94rem;color:var(--ink-2)}
+.fact-list li svg{flex:none;color:var(--accent-deep);margin-top:3px}
 
 /* ============ SECTIONS ============ */
-section{padding:84px 0;position:relative;overflow:hidden}
-.ghost-word{position:absolute;top:24px;right:-10px;font-family:'Space Grotesk',sans-serif;font-weight:700;text-transform:uppercase;line-height:1;
-  font-size:clamp(4rem,13vw,9.5rem);letter-spacing:-.02em;color:transparent;
-  -webkit-text-stroke:1.2px rgba(38,36,31,.07);pointer-events:none;user-select:none}
-.quote .ghost-word{-webkit-text-stroke-color:rgba(255,255,255,.045)}
-.kicker{display:inline-flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.18em;font-size:.74rem;text-transform:uppercase;color:var(--copper-deep)}
-.kicker::before{content:"";width:26px;height:2px;background:var(--copper);border-radius:1px}
-.dark .kicker,.quote .kicker{color:var(--copper-bright)}
-h2{font-size:clamp(1.85rem,4.3vw,2.6rem);font-weight:700;margin-top:14px}
-.sub{color:var(--muted);margin-top:13px;max-width:40rem}
-.dark .sub{color:var(--dark-body)}
+section{padding:74px 0;position:relative}
+.band{background:var(--surface);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+.band-2{background:var(--band);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-weight:600;letter-spacing:.16em;font-size:.72rem;text-transform:uppercase;color:var(--accent-deep)}
+.kicker::before{content:"";width:22px;height:1px;background:var(--line-2)}
+h2{font-size:clamp(1.8rem,4.2vw,2.55rem);margin-top:14px}
+.sub{color:var(--muted);margin-top:12px;max-width:40rem}
 
 /* ============ SERVICES ============ */
-.grid-services{display:grid;gap:18px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(245px,1fr))}
-.svc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;
-  position:relative;overflow:hidden;transform-style:preserve-3d;
-  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
-.svc:hover{border-color:rgba(176,112,60,.5);box-shadow:0 22px 46px rgba(26,26,29,.12)}
-.svc::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .3s;pointer-events:none;
-  background:radial-gradient(300px 200px at var(--gx,70%) var(--gy,20%),rgba(176,112,60,.09),transparent 70%)}
-.svc:hover::before{opacity:1}
-.svc .ico{width:52px;height:52px;border-radius:10px;background:var(--mist);display:flex;align-items:center;justify-content:center;color:var(--copper-deep);margin-bottom:16px;
-  transition:transform .25s,background .25s,color .25s}
-.svc:hover .ico{transform:rotate(-6deg) scale(1.1);background:var(--copper);color:var(--copper-ink)}
-.svc h3{font-size:1.2rem;font-weight:700}
-.svc p{color:var(--muted);font-size:.95rem;margin-top:8px}
+.grid-services{display:grid;gap:16px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(245px,1fr))}
+.svc{background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r);padding:28px 26px;
+  transition:transform .25s var(--ease),box-shadow .25s ease,border-color .25s ease}
+.svc:hover{transform:translateY(-4px);border-color:#C7D8DC;box-shadow:var(--shadow)}
+.svc .ico{width:46px;height:46px;border-radius:var(--r-sm);background:var(--accent-tint);display:flex;align-items:center;justify-content:center;
+  color:var(--accent-deep);margin-bottom:16px;transition:background .25s ease,color .25s ease}
+.svc:hover .ico{background:var(--accent-deep);color:#fff}
+.svc h3{font-size:1.14rem}
+.svc p{color:var(--muted);font-size:.94rem;margin-top:8px}
+
+/* ============ STATS ============ */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:38px}
+.stat{background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r);padding:22px 14px;text-align:center;
+  transition:transform .25s var(--ease),box-shadow .25s ease}
+.stat:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.stat .num{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(1.55rem,3.4vw,2.1rem);line-height:1.1;color:var(--ink)}
+.stat .num .u{color:var(--accent)}
+.stat .lbl{font-size:.82rem;color:var(--muted);margin-top:8px}
+
+/* ============ REVIEWS CAROUSEL ============ */
+.rev-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px}
+.rev-score{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r);padding:16px 22px;box-shadow:var(--shadow-xs)}
+.rev-score .big{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2.2rem;line-height:1;color:var(--accent-deep)}
+.rev-score .stars{color:var(--accent);letter-spacing:2px;line-height:1.2}
+.rev-score small{display:block;color:var(--muted);font-size:.82rem}
+
+.carousel{margin-top:36px;--gap:18px}
+.rev-view{overflow:hidden}
+.rev-track{display:flex;column-gap:var(--gap);will-change:transform;transition:transform .55s var(--ease)}
+.rev-card{flex:0 0 100%;background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r);
+  padding:26px 24px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow-xs);
+  transition:border-color .25s ease,box-shadow .25s ease}
+.rev-card:hover{border-color:#C7D8DC;box-shadow:var(--shadow)}
+@media(min-width:900px){.rev-card{flex:0 0 calc((100% - (2 * var(--gap))) / 3)}}
+.rev-card .stars{color:var(--accent);letter-spacing:2px;font-size:.95rem;line-height:1}
+.rev-card blockquote{font-size:.95rem;color:var(--ink-2);line-height:1.62}
+.rev-card .who{margin-top:auto;padding-top:6px;font-weight:600;font-size:.89rem}
+.rev-card .who span{display:block;font-weight:400;color:var(--muted);font-size:.79rem}
+.rev-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-top:20px}
+.rev-dots{display:flex;gap:2px}
+.rev-dots .dot{width:40px;height:40px;border:none;background:none;cursor:pointer;display:grid;place-items:center;padding:0}
+.rev-dots .dot .d{width:9px;height:9px;border-radius:50%;background:var(--line-2);transition:background .2s ease,width .2s var(--ease)}
+.rev-dots .dot:hover .d{background:var(--primary)}
+.rev-dots .dot.on .d{background:var(--accent-deep);width:22px;border-radius:999px}
+.all-reviews{display:inline-flex;align-items:center;gap:7px;min-height:44px;color:var(--accent-deep);font-weight:600;font-size:.95rem;
+  text-decoration-thickness:1.5px;text-underline-offset:3px;transition:gap .2s var(--ease)}
+.all-reviews:hover{gap:12px}
 
 /* ============ STEPS ============ */
-.steps{background:var(--mist)}
-.grid-steps{display:grid;gap:18px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-.step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px;position:relative;overflow:hidden;
-  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
-.step::before{content:"";position:absolute;left:0;top:0;right:100%;height:3px;background:linear-gradient(90deg,var(--copper-deep),var(--copper-bright));transition:right .35s ease}
-.step:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:rgba(176,112,60,.45)}
+.grid-steps{display:grid;gap:16px;margin-top:38px;grid-template-columns:repeat(auto-fit,minmax(245px,1fr))}
+.step{background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r);padding:28px 26px;position:relative;overflow:hidden;
+  transition:transform .25s var(--ease),box-shadow .25s ease,border-color .25s ease}
+.step::before{content:"";position:absolute;left:0;top:0;right:100%;height:2px;background:var(--accent);transition:right .4s var(--ease)}
+.step:hover{transform:translateY(-4px);border-color:#C7D8DC;box-shadow:var(--shadow)}
 .step:hover::before{right:0}
-.step .num{font-weight:700;font-size:2.2rem;color:var(--copper-deep);line-height:1;transition:transform .25s}
-.step:hover .num{transform:scale(1.08)}
-.step h3{margin-top:10px;font-size:1.18rem;font-weight:700}
-.step p{color:var(--muted);font-size:.95rem;margin-top:8px}
-
-/* ============ REVIEWS ============ */
-.rev-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px}
-.score{display:flex;align-items:center;gap:16px;background:var(--char);color:#F5F2EC;border-radius:var(--radius);padding:18px 24px;box-shadow:0 16px 36px rgba(26,26,29,.22)}
-.score .big{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2.5rem;line-height:1;color:var(--copper-bright)}
-.score .stars{color:var(--copper-bright);letter-spacing:2px}
-.score small{display:block;color:#A8A199;font-size:.83rem}
-.carousel{position:relative;margin-top:36px;max-width:780px}
-.rev{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--copper);border-radius:var(--radius);
-  padding:30px;display:none;flex-direction:column;gap:14px;box-shadow:0 14px 32px rgba(26,26,29,.07)}
-.rev.active{display:flex;animation:fadeSlide .5s ease}
-@keyframes fadeSlide{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
-.rev .stars{color:var(--copper);letter-spacing:2px}
-.rev p{font-size:1.01rem}
-.rev .who{font-weight:700;font-size:.9rem}
-.rev .who span{display:block;font-weight:500;color:var(--muted);font-size:.81rem}
-.dots{display:flex;gap:2px;margin-top:8px}
-.dots button{width:44px;height:44px;border:none;background:none;cursor:pointer;display:grid;place-items:center;padding:0}
-.dots button .d{width:10px;height:10px;border-radius:50%;background:var(--line);transition:background .2s,transform .2s}
-.dots button:hover .d{background:var(--muted)}
-.dots button.on .d{background:var(--copper-deep);transform:scale(1.35)}
-.all-reviews{margin-top:24px}
-.all-reviews a{display:inline-flex;align-items:center;min-height:44px;color:var(--copper-deep);font-weight:700;text-decoration-thickness:2px}
-
-/* ============ AREA ============ */
-.area{background:var(--mist)}
-.area-grid{display:grid;gap:28px;margin-top:32px}
-@media(min-width:860px){.area-grid{grid-template-columns:1fr 1fr;align-items:start}}
-.map{border:0;width:100%;height:320px;border-radius:var(--radius);box-shadow:var(--shadow);background:#E8E3D9}
-.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-.chip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:10px 19px;font-size:.92rem;font-weight:600;
-  transition:transform .2s,background .2s,color .2s,border-color .2s;cursor:default}
-.chip:hover{transform:translateY(-3px);background:var(--char);border-color:var(--char);color:#F2EFE9}
-.addr{margin-top:18px;font-size:1rem;color:var(--muted)}
-.addr strong{display:block;color:var(--ink);font-weight:700}
+.step .num{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.9rem;line-height:1;color:var(--accent-deep);opacity:.85}
+.step h3{margin-top:12px;font-size:1.12rem}
+.step p{color:var(--muted);font-size:.94rem;margin-top:8px}
 
 /* ============ FAQ ============ */
-.faq-wrap{max-width:780px;margin-top:30px}
-.qa{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-top:14px;overflow:hidden;
-  transition:border-color .25s,box-shadow .25s}
-.qa.open{border-color:rgba(176,112,60,.5);box-shadow:0 12px 28px rgba(26,26,29,.07)}
-.qa .q{width:100%;text-align:left;background:none;border:none;font:inherit;color:var(--ink);font-weight:700;
-  padding:20px 22px;min-height:44px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:1.02rem}
-.qa .chev{transition:transform .3s;color:var(--copper-deep);flex:none}
+.faq-list{max-width:790px;margin-top:30px}
+.qa{background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r);margin-top:12px;overflow:hidden;
+  transition:border-color .25s ease,box-shadow .25s ease}
+.qa:hover{box-shadow:var(--shadow-xs)}
+.qa.open{border-color:#C7D8DC}
+.qa .q{width:100%;text-align:left;background:none;border:none;font:inherit;color:var(--ink);font-weight:600;
+  padding:19px 22px;min-height:44px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:1rem}
+.qa .chev{transition:transform .3s var(--ease);color:var(--accent-deep);flex:none}
 .qa.open .chev{transform:rotate(180deg)}
-.qa .a{max-height:0;overflow:hidden;transition:max-height .4s ease;color:var(--muted);font-size:.96rem}
-.qa.open .a{max-height:340px}
+.qa .a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease);color:var(--muted);font-size:.95rem}
+.qa.open .a{max-height:420px}
 .qa .a p{padding:0 22px 20px}
 
-/* ============ TOOL DIVIDER (stroke draw) ============ */
-.tool-wrap{display:flex;justify-content:center;padding-bottom:12px}
-.tool-svg{width:52px;height:52px;overflow:visible;transform:rotate(-14deg)}
-.tool-path{fill:none;stroke:var(--copper);stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round;
-  stroke-dasharray:1;stroke-dashoffset:1}
-.drawn .tool-path{transition:stroke-dashoffset 1.4s ease .1s;stroke-dashoffset:0}
+/* ============ FORM ============ */
+.form-grid{display:grid;gap:34px;margin-top:34px}
+@media(min-width:900px){.form-grid{grid-template-columns:1.05fr .95fr;align-items:start}}
+.form{display:grid;gap:15px;max-width:560px}
+.form label{font-weight:500;font-size:.9rem;display:block;margin-bottom:6px;color:var(--ink-2)}
+.form input,.form textarea{width:100%;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);
+  border-radius:var(--r-sm);padding:13px 14px;font:inherit;font-size:1rem;min-height:48px;transition:border-color .2s ease}
+.form input:hover,.form textarea:hover{border-color:var(--accent-deep)}
+.form input::placeholder,.form textarea::placeholder{color:#9CA3AF}
+.form input:focus,.form textarea:focus{outline:3px solid var(--accent-deep);outline-offset:2px;border-color:transparent}
+.form-note{font-size:.85rem;color:var(--muted)}
+.form .btn-primary{justify-self:start}
+.contact-card{background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r);padding:26px 24px;box-shadow:var(--shadow-xs)}
+.contact-card h3{font-size:1.06rem}
+.contact-card dl{margin-top:16px;display:grid;gap:14px}
+.contact-card dt{font-size:.71rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.contact-card dd{margin-top:3px;font-size:1rem;color:var(--ink)}
+.contact-card dd a{color:var(--accent-deep);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;min-height:34px}
+.contact-card dd a:hover{text-decoration:underline}
+.contact-card .areas{font-size:.93rem;color:var(--muted)}
 
-/* ============ HEADLINE UNDERLINE DRAW ============ */
-.uword{position:relative;display:inline-block}
-.uline-svg{position:absolute;left:-2%;bottom:-.08em;width:104%;height:.28em;overflow:visible}
-.uline-path{fill:none;stroke:var(--copper);stroke-width:6;stroke-linecap:round;opacity:.85;
-  stroke-dasharray:1;stroke-dashoffset:1;
-  animation:drawU .8s cubic-bezier(.5,0,.3,1) 1.05s forwards}
-@keyframes drawU{to{stroke-dashoffset:0}}
+/* ============ FOOTER (light) ============ */
+footer{background:var(--surface);border-top:1px solid var(--line-2);padding:44px 0 40px;font-size:.92rem;color:var(--muted)}
+.foot{display:flex;flex-wrap:wrap;gap:22px 40px;justify-content:space-between}
+.foot .brand{margin-bottom:10px}
+.foot a{color:var(--accent-deep);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;min-height:34px}
+.foot a:hover{text-decoration:underline}
+.disclaimer{margin-top:26px;padding-top:18px;border-top:1px solid var(--line-2);font-size:.79rem;color:#6B7280}
 
-/* ============ QUOTE ============ */
-.quote{background:var(--char);color:#F5F2EC;position:relative;overflow:hidden}
-.quote::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(620px 340px at 88% 0%,rgba(176,112,60,.15),transparent 62%)}
-.quote .wrap{position:relative;z-index:1}
-.form{margin-top:32px;display:grid;gap:16px;max-width:560px}
-.form label{font-weight:600;font-size:.92rem;display:block;margin-bottom:6px}
-.form input,.form textarea{width:100%;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.05);color:#fff;
-  border-radius:8px;padding:14px;font:inherit;font-size:1rem;min-height:48px;transition:border-color .2s,background .2s}
-.form input::placeholder,.form textarea::placeholder{color:#948D82}
-.form input:hover,.form textarea:hover{border-color:rgba(255,255,255,.42)}
-.form input:focus,.form textarea:focus{outline:3px solid var(--copper-bright);outline-offset:2px;border-color:transparent;background:rgba(255,255,255,.09)}
-.form-note{font-size:.86rem;color:var(--dark-body)}
-.form .btn-call{justify-self:start}
-
-/* ============ FOOTER ============ */
-footer{background:#111113;color:#9A948B;padding:46px 0;font-size:.91rem}
-.foot{display:flex;flex-wrap:wrap;gap:18px 40px;justify-content:space-between;align-items:center}
-.foot .fname{font-family:'Space Grotesk',sans-serif;font-weight:700;color:#F5F2EC;font-size:1.2rem}
-.foot a{display:inline-flex;align-items:center;min-height:44px;color:#F2EFE9;font-weight:700;text-decoration:none}
-.foot a:hover{color:var(--copper-bright)}
-.disclaimer{margin-top:24px;padding-top:18px;border-top:1px solid #26262B;font-size:.79rem;color:#868076}
-
-/* ============ REVEALS ============ */
-.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+/* ============ REVEALS / ENTRANCE ============ */
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s var(--ease)}
 .js .reveal.in{opacity:1;transform:none}
-.js .stagger>*{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.js .stagger>*{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s var(--ease)}
 .js .stagger.in>*{opacity:1;transform:none}
 .js .stagger.in>*:nth-child(2){transition-delay:.08s}
 .js .stagger.in>*:nth-child(3){transition-delay:.16s}
 .js .stagger.in>*:nth-child(4){transition-delay:.24s}
 .js .stagger.in>*:nth-child(5){transition-delay:.32s}
 .js .stagger.in>*:nth-child(6){transition-delay:.4s}
-.js .stagger.in>*:nth-child(7){transition-delay:.46s}
-.js .stagger.in>*:nth-child(8){transition-delay:.52s}
+.js .hero-anim{opacity:0;transform:translateY(22px);animation:rise .8s var(--ease) forwards}
+.js .hero-anim.d1{animation-delay:.05s}
+.js .hero-anim.d2{animation-delay:.16s}
+.js .hero-anim.d3{animation-delay:.27s}
+.js .hero-anim.d4{animation-delay:.38s}
+.js .hero-anim.d5{animation-delay:.48s}
+.js .hero-anim.d6{animation-delay:.34s}
+@keyframes rise{to{opacity:1;transform:none}}
 
 /* ============ MOBILE CALL BAR ============ */
 .callbar{display:none}
 @media(max-width:720px){
-  .callbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:100;background:linear-gradient(180deg,var(--copper-bright),var(--copper));
-    justify-content:center;box-shadow:0 -8px 26px rgba(10,10,12,.4)}
-  .callbar a{display:flex;align-items:center;gap:10px;color:var(--copper-ink);text-decoration:none;font-weight:700;font-size:1.08rem;padding:16px;width:100%;justify-content:center;min-height:58px}
+  .callbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--accent-deep);
+    justify-content:center;box-shadow:0 -6px 20px rgba(15,23,42,.18)}
+  .callbar a{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:600;font-size:1.05rem;
+    padding:16px;width:100%;justify-content:center;min-height:58px}
   body{padding-bottom:66px}
+  .nav-call .num-txt{display:none}
+  .nav-call .num-short{display:inline}
+  .hero-in{padding:44px 0 52px}
+  section{padding:60px 0}
+}
+@media(max-width:400px){
+  .brand-name{font-size:1.05rem}
+  .brand-sub{font-size:.54rem;letter-spacing:.12em}
 }
 
 /* ============ REDUCED MOTION ============ */
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none !important;transition:none !important}
-  .js .reveal,.js .stagger>*{opacity:1;transform:none}
-  .flag,.hero h1 .line,.hero p.lead,.cta-row,.trust{opacity:1;transform:none}
-  .marq-track{animation:none !important}
-  [data-speed]{transform:none !important}
-  .tool-path,.uline-path,.hero-tool .hero-draw{stroke-dashoffset:0}
+  .js .reveal,.js .stagger>*,.js .hero-anim{opacity:1;transform:none}
+  .uline-path{stroke-dashoffset:0}
 }
 </style>
 <noscript><style>
-.reveal,.stagger>*{opacity:1;transform:none}
+.reveal,.stagger>*,.hero-anim{opacity:1;transform:none}
 .qa .a{max-height:none}
-.tool-path,.hero-draw{stroke-dashoffset:0}
+.rev-track{flex-wrap:wrap;row-gap:18px}
+.rev-card{flex:1 1 280px}
+.rev-dots{display:none}
 </style></noscript>
 <script>document.documentElement.className+=" js"</script>
 </head>
@@ -309,242 +290,245 @@ footer{background:#111113;color:#9A948B;padding:46px 0;font-size:.91rem}
 <a class="skip" href="#top">Skip to content</a>
 <div id="progress" aria-hidden="true"></div>
 
-<div class="topbar">
-  <header id="hdr">
-    <div class="wrap nav">
-      <a class="logo" href="#top" aria-label="1&amp;Done Maintenance LLC — home">
-        <span class="mark" aria-hidden="true">1&amp;D</span>
-        <span>1&amp;Done Maintenance<small>Fort Wayne · Indiana</small></span>
-      </a>
-      <nav class="nav-links" aria-label="Sections">
-        <a href="#services">Services</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#faq">FAQ</a>
-        <a href="#quote">Get a quote</a>
-      </nav>
-      <a class="nav-call" href="tel:+12603728388">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        (260) 372-8388
-      </a>
-    </div>
-  </header>
-</div>
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="1&amp;Done Maintenance LLC — home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="42" height="42" viewBox="0 0 44 44" fill="none" role="presentation">
+          <rect x="3.4" y="3.4" width="37.2" height="37.2" rx="9.5" stroke="currentColor" stroke-width="2.3"/>
+          <path d="M13.6 15.4 17.4 12v20" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path class="tick" d="m21.8 26.4 3.9 3.9 7.5-10.4" stroke="#0891B2" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="brand-txt">
+        <span class="brand-name">1&amp;Done</span>
+        <span class="brand-sub">Maintenance · Fort Wayne</span>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#services">Services</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="nav-call" href="tel:+12603728388">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="num-txt">(260) 372-8388</span><span class="num-short" aria-hidden="true">Call</span>
+    </a>
+  </div>
+</header>
 
 <main id="top">
-<div class="hero dark">
-  <div class="atmo" data-speed="0.16" aria-hidden="true">
-    <div class="g g1"></div>
-    <div class="g g2"></div>
-  </div>
-  <div class="gridlines" data-speed="0.06" aria-hidden="true"></div>
-  <div class="hero-tool" data-speed="0.1" aria-hidden="true">
-    <svg viewBox="0 0 24 24">
-      <path class="hero-draw" pathLength="1" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-    </svg>
-  </div>
+
+<!-- ============ 1. HERO ============ -->
+<div class="hero">
   <div class="wrap hero-in">
     <div>
-      <span class="flag">Handyman &amp; home maintenance · Fort Wayne, IN</span>
-      <h1>
-        <span class="line">One call.</span>
-        <span class="line">One visit.</span>
-        <span class="line am"><span class="uword">Done.<svg class="uline-svg" viewBox="0 0 210 22" preserveAspectRatio="none" aria-hidden="true"><path class="uline-path" pathLength="1" d="M6 15 C 55 6, 150 4, 204 12"/></svg></span></span>
-      </h1>
-      <p class="lead">Drywall that disappears into the wall, roof repairs you can't spot afterwards, and the whole punch list handled by people who answer the phone. 154 Fort Wayne neighbours, 4.9 stars.</p>
-      <div class="cta-row">
-        <a class="btn btn-call magnet" href="tel:+12603728388">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="eyebrow hero-anim d1"><span class="dot" aria-hidden="true"></span>Handyman &amp; home maintenance · Fort Wayne, IN</span>
+      <h1 class="hero-anim d2">One call. One visit. <span class="uword">Done.<svg class="uline-svg" viewBox="0 0 210 22" preserveAspectRatio="none" aria-hidden="true"><path class="uline-path" pathLength="1" d="M6 15 C 55 6, 150 4, 204 12"/></svg></span></h1>
+      <p class="lead hero-anim d3">Drywall and ceiling repairs that disappear into the wall, roof fixes you can't spot afterwards, and the whole punch list handled by people who answer the phone. 4.9 stars across 154 Fort Wayne reviews.</p>
+      <div class="cta-row hero-anim d4">
+        <a class="btn btn-primary" id="heroCall" href="tel:+12603728388">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           Call (260) 372-8388
         </a>
-        <a class="btn btn-ghost" href="#quote">Request a quote</a>
+        <a class="btn btn-secondary" href="#book">Book a repair</a>
       </div>
-      <div class="trust">
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <span><strong>4.9</strong> · 154 Google reviews</span>
-        <span>Fast response</span>
-        <span>Weekend calls answered</span>
+      <div class="trust hero-anim d5">
+        <span><span class="stars" aria-hidden="true">★★★★★</span> <strong>4.9</strong> · 154 Google reviews</span>
+        <span class="sep" aria-hidden="true"></span>
+        <span>Fort Wayne, Indiana</span>
       </div>
+    </div>
+    <div class="hero-side hero-anim d6">
+      <div class="rating-chip">
+        <span class="score" aria-hidden="true">4.9</span>
+        <span>
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <small>154 Google reviews</small>
+        </span>
+      </div>
+      <ul class="fact-list">
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Drywall, texture and ceiling repair</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Roof and storm repairs</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Whole punch lists, one visit</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Locally owned in Fort Wayne</li>
+      </ul>
     </div>
   </div>
 </div>
 
-<div class="marq-belt" aria-hidden="true">
-  <div class="marq">
-    <div class="marq-track">
-      <ul>
-        <li>Drywall &amp; ceiling repair</li><li>Roof &amp; storm repairs</li><li>General handyman work</li><li>Garage doors &amp; openers</li><li>Carpentry &amp; finish work</li><li>Landlord &amp; turnover repairs</li>
-      </ul>
-      <ul>
-        <li>Drywall &amp; ceiling repair</li><li>Roof &amp; storm repairs</li><li>General handyman work</li><li>Garage doors &amp; openers</li><li>Carpentry &amp; finish work</li><li>Landlord &amp; turnover repairs</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="band" aria-label="Track record">
-  <div class="wrap band-in stagger">
-    <div class="cell"><div class="n"><span class="cnt" data-count="4.9" data-dec="1">4.9</span><span class="u">★</span></div><div class="l">Google rating</div></div>
-    <div class="cell"><div class="n"><span class="cnt" data-count="154">154</span></div><div class="l">Google reviews</div></div>
-    <div class="cell"><div class="n">Same week</div><div class="l">Typical turnaround</div></div>
-    <div class="cell"><div class="n">Fort Wayne</div><div class="l">Locally owned</div></div>
-  </div>
-</div>
-
+<!-- ============ 2. SERVICES ============ -->
 <section id="services">
-  <span class="ghost-word" aria-hidden="true">REPAIR</span>
   <div class="wrap">
     <span class="kicker">What we do</span>
     <h2 class="reveal">Repairs that look like nothing ever happened</h2>
     <p class="sub reveal">Interior, exterior, big or small — the kind of work where the proof is that you can't tell it was done.</p>
     <div class="grid-services stagger">
-      <div class="svc tilt">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
-        <h3>Drywall &amp; Ceiling Repair</h3>
-        <p>Holes, cracks, water damage — patched and textured to match, including Spanish lace and popcorn ceilings.</p>
+      <div class="svc">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+        <h3>Drywall &amp; ceiling repair</h3>
+        <p>Holes, cracks, water damage — patched and textured to match, including the Spanish lace and popcorn ceilings one reviewer describes as an "impeccable" finish.</p>
       </div>
-      <div class="svc tilt">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 12 10-8 10 8"/><path d="M4 11v9h16v-9"/><path d="M9 20v-6h6v6"/></svg></div>
-        <h3>Roof &amp; Storm Repairs</h3>
-        <p>Missing shingles after a windstorm put back seamlessly — often the same weekend you call.</p>
+      <div class="svc">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 12 10-8 10 8"/><path d="M4 11v9h16v-9"/><path d="M9 20v-6h6v6"/></svg></div>
+        <h3>Roof &amp; storm repairs</h3>
+        <p>Shingles lost to a windstorm put back so the roof "looks seamless", in the words of a customer who called the day after the storm.</p>
       </div>
-      <div class="svc tilt">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-        <h3>General Handyman Work</h3>
-        <p>Doors, trim, fixtures, mounts and the twenty small jobs that have been waiting since spring.</p>
+      <div class="svc">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3>General handyman work</h3>
+        <p>Doors, trim, fixtures, mounts and the twenty small jobs that have been waiting since spring — reviewers describe long lists tackled in one go.</p>
       </div>
-      <div class="svc tilt">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 16V9"/><path d="M12 16V5"/><path d="M17 16v-4"/></svg></div>
-        <h3>Garage Doors &amp; Openers</h3>
-        <p>Doors that stick, springs that have given up, openers that ignore the remote — diagnosed and fixed.</p>
+      <div class="svc">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 16V9"/><path d="M12 16V5"/><path d="M17 16v-4"/></svg></div>
+        <h3>Garage doors &amp; openers</h3>
+        <p>Doors that stick or won't open all the way, springs that have given up, openers that ignore the remote — diagnosed and figured out.</p>
       </div>
-      <div class="svc tilt">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 12-8.4 8.4a1.5 1.5 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="M21.5 11.5 19.6 9.6A2 2 0 0 1 19 8.2V7l-2.3-2.3a6 6 0 0 0-4.2-1.7L9 3l.9.8A6.2 6.2 0 0 1 12 8.4V10l2 2h1.2a2 2 0 0 1 1.4.6l1.9 1.9"/></svg></div>
-        <h3>Carpentry &amp; Finish Work</h3>
+      <div class="svc">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 12-8.4 8.4a1.5 1.5 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="M21.5 11.5 19.6 9.6A2 2 0 0 1 19 8.2V7l-2.3-2.3a6 6 0 0 0-4.2-1.7L9 3l.9.8A6.2 6.2 0 0 1 12 8.4V10l2 2h1.2a2 2 0 0 1 1.4.6l1.9 1.9"/></svg></div>
+        <h3>Carpentry &amp; finish work</h3>
         <p>Trim, shelving, framing repairs and rot replacement — square, level, and cleanly finished.</p>
       </div>
-      <div class="svc tilt">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
-        <h3>Landlord &amp; Turnover Repairs</h3>
+      <div class="svc">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>Landlord &amp; turnover repairs</h3>
         <p>Between tenants or before a sale: a single crew for the whole list, invoiced once.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="steps">
-  <span class="ghost-word" aria-hidden="true">DONE</span>
+<!-- ============ 3. REVIEWS + NUMBERS ============ -->
+<section id="reviews" class="band">
   <div class="wrap">
-    <span class="kicker">How it works</span>
-    <h2 class="reveal">Why it's called 1&amp;Done</h2>
-    <div class="grid-steps stagger">
-      <div class="step tilt"><div class="num">01</div><h3>You get a fast answer</h3><p>Call or message with what's wrong. Reviewers keep mentioning the same thing: they respond fast.</p></div>
-      <div class="step tilt"><div class="num">02</div><h3>A great rate, up front</h3><p>You hear the price before the work starts — no surprise line items at the end.</p></div>
-      <div class="step tilt"><div class="num">03</div><h3>Finished in one trip</h3><p>The job gets done the week you call, and the repair blends in like it was never broken.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="reviews">
-  <span class="ghost-word" aria-hidden="true">4.9★</span>
-  <div class="wrap">
-    <div class="tool-wrap reveal" id="toolWrap">
-      <svg class="tool-svg" viewBox="0 0 24 24" aria-hidden="true"><path class="tool-path" pathLength="1" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-    </div>
     <div class="rev-head">
       <div>
         <span class="kicker">Real Google reviews</span>
         <h2 class="reveal">154 reviews. 4.9 stars.</h2>
       </div>
-      <div class="score reveal" role="img" aria-label="Rated 4.9 out of 5 stars across 154 Google reviews">
+      <div class="rev-score reveal" role="img" aria-label="Rated 4.9 out of 5 stars across 154 Google reviews">
         <span class="big" aria-hidden="true">4.9</span>
         <span aria-hidden="true"><span class="stars">★★★★★</span><small>154 Google reviews</small></span>
       </div>
     </div>
-    <div class="carousel reveal" id="carousel" aria-label="Customer reviews">
-      <div class="rev active">
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <p>"We needed a couple dry wall repairs with a Spanish lace texture and a popcorn ceiling (husband fell through the ceiling 😱). They were extremely professional. Responded fast and came out the same week we contacted them to do the repair. The finish is impeccable."</p>
-        <div class="who">Sara Causer <span>Google review</span></div>
-      </div>
-      <div class="rev">
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <p>"We had an insane windstorm yesterday and later in the day noticed some shingles were gone. Reached out and the came out on a Saturday, gave us a great rate and the job looks seamless! Like there wasn't any work that needed done!"</p>
-        <div class="who">Andrew and Erin Harris <span>Google review</span></div>
-      </div>
-      <div class="rev">
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <p>"I had a great experience with this handyman! He was very professional, friendly, and easy to communicate with from start to finish. He showed up on time, got straight to work, and completed the job quickly without cutting corners."</p>
-        <div class="who">Sergio Torino <span>Google review</span></div>
-      </div>
-      <div class="dots" role="group" aria-label="Choose review">
-        <button class="on" aria-label="Show review 1"><span class="d" aria-hidden="true"></span></button>
-        <button aria-label="Show review 2"><span class="d" aria-hidden="true"></span></button>
-        <button aria-label="Show review 3"><span class="d" aria-hidden="true"></span></button>
-      </div>
-    </div>
-    <p class="all-reviews"><a href="https://www.google.com/maps/search/1%26Done+Maintenance+LLC+Fort+Wayne+IN" rel="noopener">Read all 154 reviews on Google Maps →</a></p>
-  </div>
-</section>
 
-<section class="area" id="area">
-  <span class="ghost-word" aria-hidden="true">LOCAL</span>
-  <div class="wrap">
-    <span class="kicker">Where to find us</span>
-    <h2 class="reveal">Based in Fort Wayne, working across Allen County</h2>
-    <div class="area-grid">
-      <div class="reveal">
-        <p class="sub">Home base is on 24th Avenue — but most days we're out at a house somewhere across the county.</p>
-        <p class="addr"><strong>1&amp;Done Maintenance LLC</strong>2223 24th Ave, Fort Wayne, IN 46802</p>
-        <div class="chips stagger">
-          <span class="chip">Fort Wayne</span><span class="chip">New Haven</span><span class="chip">Huntertown</span>
-          <span class="chip">Leo-Cedarville</span><span class="chip">Woodburn</span><span class="chip">Grabill</span>
-          <span class="chip">Roanoke</span><span class="chip">Allen County</span>
+    <div class="carousel reveal" id="revCar" role="group" aria-roledescription="carousel" aria-label="Customer reviews from Google">
+      <div class="rev-view">
+        <div class="rev-track">
+          <article class="rev-card">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <blockquote><p>“We needed a couple dry wall repairs with a Spanish lace texture and a popcorn ceiling (husband fell through the ceiling 😱). They were extremely professional. Responded fast and came out the same week we contacted them to do the repair. The finish is impeccable.”</p></blockquote>
+            <div class="who">Sara Causer <span>Google review</span></div>
+          </article>
+          <article class="rev-card">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <blockquote><p>“We had an insane windstorm yesterday and later in the day noticed some shingles were gone. Reached out and the came out on a Saturday, gave us a great rate and the job looks seamless! Like there wasn’t any work that needed done!”</p></blockquote>
+            <div class="who">Andrew and Erin Harris <span>Google review</span></div>
+          </article>
+          <article class="rev-card">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <blockquote><p>“I had a great experience with this handyman! He was very professional, friendly, and easy to communicate with from start to finish. He showed up on time, got straight to work, and completed the job quickly without cutting corners. The quality of his work was excellent.”</p></blockquote>
+            <div class="who">Sergio Torino Lakefront <span>Google review</span></div>
+          </article>
+          <article class="rev-card">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <blockquote><p>“Johnnie got offered a job that was pretty complex but that did not steer him away instead he tackled it head on and exceeded our expectations.”</p></blockquote>
+            <div class="who">Courtney Hessling <span>Google review</span></div>
+          </article>
+          <article class="rev-card">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <blockquote><p>“He recently tackled a huge list of repairs at my home, everything from plumbing (recaulking sinks, replacing pipes, and removing an old water filtration system) to electrical work like replacing outlets and bathroom fans.”</p></blockquote>
+            <div class="who">Levi Schlegel <span>Google review</span></div>
+          </article>
+          <article class="rev-card">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <blockquote><p>“Very pleased with the service I received from John called him on Friday with an issue with my garage door, not opening all the way. John stated he had never worked on this type of garage door, but he would be able to figure it out.”</p></blockquote>
+            <div class="who">Nichelle Hines <span>Google review</span></div>
+          </article>
         </div>
       </div>
-      <iframe class="map reveal" title="Map showing 2223 24th Ave, Fort Wayne, Indiana" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=2223%2024th%20Ave%2C%20Fort%20Wayne%2C%20IN%2046802&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe>
+      <div class="rev-foot">
+        <div class="rev-dots" role="group" aria-label="Choose a group of reviews"></div>
+        <a class="all-reviews" href="https://www.google.com/maps/search/1%26Done+Maintenance+LLC+Fort+Wayne+IN" rel="noopener">Read all 154 reviews on Google
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="stats stagger" aria-label="By the numbers">
+      <div class="stat"><div class="num"><span class="cnt" data-count="4.9" data-dec="1">4.9</span><span class="u">★</span></div><div class="lbl">Google rating</div></div>
+      <div class="stat"><div class="num"><span class="cnt" data-count="154">154</span></div><div class="lbl">Google reviews</div></div>
+      <div class="stat"><div class="num">Same week</div><div class="lbl">Typical turnaround</div></div>
+      <div class="stat"><div class="num">Fort Wayne</div><div class="lbl">Locally owned</div></div>
     </div>
   </div>
 </section>
 
-<section id="faq">
-  <span class="ghost-word" aria-hidden="true">ASK</span>
+<!-- ============ 4. HOW IT WORKS ============ -->
+<section id="how">
+  <div class="wrap">
+    <span class="kicker">How it works</span>
+    <h2 class="reveal">Why it's called 1&amp;Done</h2>
+    <div class="grid-steps stagger">
+      <div class="step"><div class="num" aria-hidden="true">01</div><h3>You get a fast answer</h3><p>Call or message with what's wrong. Reviewers keep mentioning the same thing — "responded fast", and one customer called on a Friday about a garage door.</p></div>
+      <div class="step"><div class="num" aria-hidden="true">02</div><h3>The job gets tackled head on</h3><p>Including the awkward ones: one review describes a complex job "tackled head on", another an unfamiliar garage door that got figured out anyway.</p></div>
+      <div class="step"><div class="num" aria-hidden="true">03</div><h3>Finished so it blends in</h3><p>"The finish is impeccable." "The job looks seamless! Like there wasn't any work that needed done!" That's the standard the reviews describe.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. FAQ ============ -->
+<section class="band-2" id="faq">
   <div class="wrap">
     <span class="kicker">Good to know</span>
     <h2 class="reveal">Questions, answered straight</h2>
-    <div class="faq-wrap reveal">
+    <div class="faq-list reveal">
       <div class="qa open">
-        <button class="q" aria-expanded="true" onclick="toggleQA(this)">What kind of work do you take on?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="a"><p>Drywall and ceiling texture repair (including Spanish lace and popcorn), roof and shingle fixes after storms, carpentry and finish work, garage doors and openers, and general handyman lists — the same jobs described in the services above.</p></div>
+        <button class="q" type="button" aria-expanded="true">What kind of work do you take on?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>Reviews describe drywall and texture repair (Spanish lace, popcorn ceilings), shingle repairs after a storm, garage doors, and one "huge list of repairs" that ran from recaulking sinks and replacing pipes to replacing outlets and bathroom fans.</p></div>
       </div>
       <div class="qa">
-        <button class="q" aria-expanded="false" onclick="toggleQA(this)">How quickly do you respond?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="a"><p>Fast response is the thing reviewers mention most. One family had their drywall repaired the same week they made contact; another had storm-damaged shingles fixed on a Saturday, the day after they reached out.</p></div>
+        <button class="q" type="button" aria-expanded="false">How quickly do you respond?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>Fast response is what reviewers mention most. One family had drywall repaired "the same week we contacted them"; another noticed missing shingles after a windstorm and had someone out on the Saturday.</p></div>
       </div>
       <div class="qa">
-        <button class="q" aria-expanded="false" onclick="toggleQA(this)">Will I be able to see the repair afterwards?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="a"><p>The goal is that you can't. Reviewers describe the finish as "impeccable" and roof repairs that look "seamless — like there wasn't any work that needed done." Textures are matched to what's already on your walls and ceilings.</p></div>
+        <button class="q" type="button" aria-expanded="false">Will I be able to see the repair afterwards?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>Reviewers say no — the finish is described as "impeccable", and a roof repair as "seamless! Like there wasn't any work that needed done!"</p></div>
       </div>
       <div class="qa">
-        <button class="q" aria-expanded="false" onclick="toggleQA(this)">Do I know the price before work starts?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="a"><p>Yes — you hear the price up front, before the work begins, with no surprise line items at the end. Reviewers mention being given "a great rate."</p></div>
+        <button class="q" type="button" aria-expanded="false">What if the job is complicated or unusual?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="a"><p>One review describes a job that "was pretty complex but that did not steer him away"; another, an unfamiliar type of garage door where the answer was that "he would be able to figure it out".</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="quote dark" id="quote">
-  <span class="ghost-word" aria-hidden="true">CALL</span>
+<!-- ============ 6. BOOKING ============ -->
+<section id="book">
   <div class="wrap">
-    <span class="kicker">Get a quote</span>
+    <span class="kicker">Get in touch</span>
     <h2 class="reveal">Tell us what needs fixing</h2>
-    <p class="sub reveal">Fastest answer: call <a href="tel:+12603728388" style="color:#fff;font-weight:700">(260) 372-8388</a>. Or leave your details and we'll get back to you:</p>
-    <form class="form reveal" onsubmit="event.preventDefault();this.querySelector('.form-note').textContent='This form is activated on your live website — for now, please call (260) 372-8388.';">
-      <div><label for="fname">Your name</label><input id="fname" name="name" placeholder="Jane Smith" autocomplete="name"></div>
-      <div><label for="fphone">Phone number</label><input id="fphone" name="phone" type="tel" placeholder="(260) 555-0100" autocomplete="tel"></div>
-      <div><label for="fjob">What needs doing?</label><textarea id="fjob" name="job" rows="3" placeholder="e.g. Patch and re-texture a ceiling in the back bedroom, plus two loose shingles above the garage"></textarea></div>
-      <button class="btn btn-call magnet" type="submit">Send my request</button>
-      <p class="form-note">The contact form activates on the live version — for now, call directly.</p>
-    </form>
+    <p class="sub reveal">Fastest answer: call <a href="tel:+12603728388" style="color:var(--accent-deep);font-weight:600">(260) 372-8388</a>. Or leave your details below.</p>
+    <div class="form-grid">
+      <form class="form reveal" onsubmit="event.preventDefault();this.querySelector('.form-note').textContent='This form is activated on your live website — for now, please call (260) 372-8388.';">
+        <div><label for="fname">Your name</label><input id="fname" name="name" placeholder="Jane Smith" autocomplete="name"></div>
+        <div><label for="fphone">Phone number</label><input id="fphone" name="phone" type="tel" placeholder="(260) 555-0100" autocomplete="tel"></div>
+        <div><label for="fjob">What needs doing?</label><textarea id="fjob" name="job" rows="3" placeholder="e.g. Patch and re-texture a ceiling in the back bedroom, plus two loose shingles above the garage"></textarea></div>
+        <button class="btn btn-primary" type="submit">Send my request</button>
+        <p class="form-note">The contact form activates on the live version — for now, call directly.</p>
+      </form>
+      <div class="contact-card reveal">
+        <h3>1&amp;Done Maintenance LLC</h3>
+        <dl>
+          <div><dt>Phone</dt><dd><a href="tel:+12603728388">(260) 372-8388</a></dd></div>
+          <div><dt>Address</dt><dd>2223 24th Ave,<br>Fort Wayne, IN 46802</dd></div>
+          <div><dt>Service area</dt><dd class="areas">Fort Wayne · New Haven · Huntertown · Leo-Cedarville · Woodburn · Grabill · Roanoke · Allen County</dd></div>
+          <div><dt>Rating</dt><dd>4.9 ★ · 154 Google reviews</dd></div>
+          <div><dt>On Google</dt><dd><a href="https://www.google.com/maps/search/1%26Done+Maintenance+LLC+Fort+Wayne+IN" rel="noopener">View on Google Maps</a></dd></div>
+        </dl>
+      </div>
+    </div>
   </div>
 </section>
 </main>
@@ -553,7 +537,19 @@ footer{background:#111113;color:#9A948B;padding:46px 0;font-size:.91rem}
   <div class="wrap">
     <div class="foot">
       <div>
-        <div class="fname">1&amp;Done Maintenance LLC</div>
+        <span class="brand">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="38" height="38" viewBox="0 0 44 44" fill="none" role="presentation">
+              <rect x="3.4" y="3.4" width="37.2" height="37.2" rx="9.5" stroke="currentColor" stroke-width="2.3"/>
+              <path d="M13.6 15.4 17.4 12v20" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path class="tick" d="m21.8 26.4 3.9 3.9 7.5-10.4" stroke="#0891B2" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="brand-txt">
+            <span class="brand-name">1&amp;Done</span>
+            <span class="brand-sub">Maintenance · Fort Wayne</span>
+          </span>
+        </span>
         <div>Handyman · Drywall · Roof repair · Carpentry</div>
       </div>
       <div>
@@ -576,10 +572,9 @@ footer{background:#111113;color:#9A948B;padding:46px 0;font-size:.91rem}
 var REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 var FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-/* ---- scroll progress + header shrink + hero parallax ---- */
+/* ---- scroll progress + shrinking header ---- */
 var prog = document.getElementById('progress'),
     hdr = document.getElementById('hdr'),
-    plx = [].slice.call(document.querySelectorAll('[data-speed]')),
     ticking = false;
 function onScroll(){
   if(ticking) return;
@@ -590,47 +585,25 @@ function onScroll(){
         max = h.scrollHeight - h.clientHeight;
     if(prog) prog.style.width = (max > 0 ? (top / max * 100) : 0) + '%';
     if(hdr) hdr.classList.toggle('scrolled', top > 10);
-    if(!REDUCED){
-      for(var i = 0; i < plx.length; i++){
-        var s = parseFloat(plx[i].getAttribute('data-speed')) || 0;
-        plx[i].style.transform = 'translate3d(0,' + (top * s) + 'px,0)';
-      }
-    }
     ticking = false;
   });
 }
 addEventListener('scroll', onScroll, {passive:true});
 onScroll();
 
-/* ---- scroll reveals ---- */
+/* ---- staggered scroll reveals ---- */
 if('IntersectionObserver' in window){
   var io = new IntersectionObserver(function(es){
     es.forEach(function(e){
       if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
     });
-  },{threshold:.15});
+  },{threshold:.14});
   document.querySelectorAll('.reveal,.stagger').forEach(function(el){ io.observe(el); });
 }else{
   document.querySelectorAll('.reveal,.stagger').forEach(function(el){ el.classList.add('in'); });
 }
 
-/* ---- wrench stroke-draw divider ---- */
-var toolWrap = document.getElementById('toolWrap');
-if(toolWrap){
-  if('IntersectionObserver' in window){
-    var tio = new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        if(e.isIntersecting){ toolWrap.classList.add('drawn'); tio.unobserve(toolWrap); }
-      });
-    },{threshold:.6});
-    tio.observe(toolWrap);
-  }else{
-    toolWrap.classList.add('drawn');
-  }
-}
-
 /* ---- count-up stats ---- */
-var counters = document.querySelectorAll('.cnt');
 if(!REDUCED && 'IntersectionObserver' in window){
   var cio = new IntersectionObserver(function(es){
     es.forEach(function(e){
@@ -641,81 +614,117 @@ if(!REDUCED && 'IntersectionObserver' in window){
           dec = parseInt(el.getAttribute('data-dec') || '0', 10),
           t0 = performance.now();
       (function tick(t){
-        var p = Math.min((t - t0) / 1400, 1),
+        var p = Math.min((t - t0) / 1300, 1),
             v = end * (1 - Math.pow(1 - p, 3));
-        el.textContent = dec ? v.toFixed(dec) : Math.round(v).toLocaleString('en-US');
+        el.textContent = dec ? v.toFixed(dec) : Math.round(v).toString();
         if(p < 1) requestAnimationFrame(tick);
       })(t0);
     });
   },{threshold:.5});
-  counters.forEach(function(el){ cio.observe(el); });
+  document.querySelectorAll('.cnt').forEach(function(el){ cio.observe(el); });
 }
 
-/* ---- review carousel ---- */
-var car = document.getElementById('carousel');
+/* ---- reviews carousel: 3 per view (1 on mobile), dots, autoplay, pause on hover/focus ---- */
+var car = document.getElementById('revCar');
 if(car){
-  var revs = [].slice.call(car.querySelectorAll('.rev')),
-      dotBtns = [].slice.call(car.querySelectorAll('.dots button')),
-      cur = 0, timer = null;
-  var showRev = function(i){
-    revs[cur].classList.remove('active');
-    dotBtns[cur].classList.remove('on');
-    cur = i;
-    revs[cur].classList.add('active');
-    dotBtns[cur].classList.add('on');
-  };
-  var startAuto = function(){
-    if(REDUCED || timer) return;
-    timer = setInterval(function(){ showRev((cur + 1) % revs.length); }, 6500);
-  };
-  var stopAuto = function(){ clearInterval(timer); timer = null; };
-  dotBtns.forEach(function(b, i){
-    b.addEventListener('click', function(){ showRev(i); stopAuto(); startAuto(); });
-  });
-  car.addEventListener('mouseenter', stopAuto);
-  car.addEventListener('mouseleave', startAuto);
-  car.addEventListener('focusin', stopAuto);
-  car.addEventListener('focusout', startAuto);
+  var view = car.querySelector('.rev-view'),
+      track = car.querySelector('.rev-track'),
+      cards = [].slice.call(car.querySelectorAll('.rev-card')),
+      dotsWrap = car.querySelector('.rev-dots'),
+      dots = [], per = 1, pages = 1, page = 0, timer = null;
+
+  function perView(){ return matchMedia('(min-width: 900px)').matches ? 3 : 1; }
+  function gapPx(){
+    var cs = getComputedStyle(track);
+    return parseFloat(cs.columnGap || cs.gap || '0') || 0;
+  }
+  function go(i){
+    page = ((i % pages) + pages) % pages;
+    var offset = page * (view.clientWidth + gapPx());
+    track.style.transform = 'translate3d(' + (-offset) + 'px,0,0)';
+    for(var d = 0; d < dots.length; d++){
+      dots[d].classList.toggle('on', d === page);
+      dots[d].setAttribute('aria-current', d === page ? 'true' : 'false');
+    }
+    for(var c = 0; c < cards.length; c++){
+      var shown = c >= page * per && c < (page + 1) * per;
+      cards[c].setAttribute('aria-hidden', shown ? 'false' : 'true');
+    }
+  }
+  function build(){
+    per = perView();
+    pages = Math.ceil(cards.length / per);
+    if(page > pages - 1) page = pages - 1;
+    dotsWrap.innerHTML = '';
+    dots = [];
+    for(var i = 0; i < pages; i++){
+      (function(idx){
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'dot';
+        b.setAttribute('aria-label', 'Show reviews ' + (idx + 1) + ' of ' + pages);
+        b.innerHTML = '<span class="d" aria-hidden="true"></span>';
+        b.addEventListener('click', function(){ go(idx); restart(); });
+        dotsWrap.appendChild(b);
+        dots.push(b);
+      })(i);
+    }
+    go(page);
+  }
+  function start(){
+    if(REDUCED || timer || pages < 2) return;
+    timer = setInterval(function(){ go(page + 1); }, 6500);
+  }
+  function stop(){ clearInterval(timer); timer = null; }
+  function restart(){ stop(); start(); }
+
+  car.addEventListener('mouseenter', stop);
+  car.addEventListener('mouseleave', start);
+  car.addEventListener('focusin', stop);
+  car.addEventListener('focusout', start);
   car.addEventListener('keydown', function(e){
-    if(e.key === 'ArrowRight'){ showRev((cur + 1) % revs.length); e.preventDefault(); }
-    else if(e.key === 'ArrowLeft'){ showRev((cur - 1 + revs.length) % revs.length); e.preventDefault(); }
+    if(e.key === 'ArrowRight'){ go(page + 1); restart(); e.preventDefault(); }
+    else if(e.key === 'ArrowLeft'){ go(page - 1); restart(); e.preventDefault(); }
   });
-  startAuto();
+  var swipeX = null;
+  car.addEventListener('pointerdown', function(e){ if(e.pointerType === 'touch') swipeX = e.clientX; });
+  car.addEventListener('pointerup', function(e){
+    if(swipeX === null) return;
+    var dx = e.clientX - swipeX; swipeX = null;
+    if(Math.abs(dx) > 44){ go(page + (dx < 0 ? 1 : -1)); restart(); }
+  });
+
+  var rt = null;
+  addEventListener('resize', function(){
+    clearTimeout(rt);
+    rt = setTimeout(build, 160);
+  });
+
+  build();
+  start();
 }
 
 /* ---- FAQ accordion ---- */
-window.toggleQA = function(btn){
-  var qa = btn.closest('.qa'),
-      open = qa.classList.toggle('open');
-  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-};
-
-/* ---- tilt cards + cursor glow (hover-capable devices only) ---- */
-if(FINE && !REDUCED){
-  document.querySelectorAll('.tilt').forEach(function(card){
-    card.addEventListener('pointermove', function(e){
-      var r = card.getBoundingClientRect(),
-          px = (e.clientX - r.left) / r.width,
-          py = (e.clientY - r.top) / r.height;
-      card.style.transform = 'perspective(760px) rotateX(' + ((.5 - py) * 6) + 'deg) rotateY(' + ((px - .5) * 8) + 'deg) translateY(-6px)';
-      card.style.setProperty('--gx', (px * 100) + '%');
-      card.style.setProperty('--gy', (py * 100) + '%');
-    });
-    card.addEventListener('pointerleave', function(){ card.style.transform = ''; });
+document.querySelectorAll('.qa .q').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var qa = btn.parentNode,
+        open = qa.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
-}
+});
 
-/* ---- magnetic CTA buttons ---- */
-if(FINE && !REDUCED){
-  document.querySelectorAll('.magnet').forEach(function(btn){
-    btn.addEventListener('pointermove', function(e){
-      var r = btn.getBoundingClientRect(),
-          dx = Math.max(-12, Math.min(12, (e.clientX - (r.left + r.width / 2)) * .2)),
-          dy = Math.max(-7, Math.min(7, (e.clientY - (r.top + r.height / 2)) * .35));
-      btn.style.transform = 'translate(' + dx + 'px,' + (dy - 3) + 'px)';
-    });
-    btn.addEventListener('pointerleave', function(){ btn.style.transform = ''; });
+/* ---- magnetic pull on the hero call button (fine pointers only) ---- */
+var heroCall = document.getElementById('heroCall');
+if(heroCall && FINE && !REDUCED){
+  heroCall.addEventListener('pointermove', function(e){
+    var r = heroCall.getBoundingClientRect(),
+        dx = (e.clientX - (r.left + r.width / 2)) * .18,
+        dy = (e.clientY - (r.top + r.height / 2)) * .3;
+    dx = Math.max(-8, Math.min(8, dx));
+    dy = Math.max(-5, Math.min(5, dy));
+    heroCall.style.transform = 'translate(' + dx + 'px,' + (dy - 2) + 'px)';
   });
+  heroCall.addEventListener('pointerleave', function(){ heroCall.style.transform = ''; });
 }
 })();
 </script>
